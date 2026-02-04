@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--<script src="../JS/common.js"></script>
+    <script src="../JS/jquery.lastest.min.js"></script>
+    <script src="../JS/jQuery.base64.js"></script>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title></title>
+    <link href="../js/bootstrap-5.3.8/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../js/bootstrap-5.3.8/js/bootstrap.bundle.min.js"></script>
+    <link href="../css/css-afterlogin.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="../js/swiper-11.2.10/swiper-bundle.min.css" />
+    <script src="../js/swiper-11.2.10/swiper-bundle.min.js"></script>
+    <style>
+        :root { --bg-color: #1b2033; --font-color: #fff; --primary-color: #c084fc; --secondary-color: #2b3248; --accent-color: #c084fc; }
+        /*        :root { --bg-color: #FCFDF9; --font-color: #166534; --primary-color: #22C55E; --secondary-color: #DCFCE7; --accent-color: #166534; }
+        */
+    </style>
+</head>
+
+<body style=" ">
+
+    <div id="layout">
+        <section class="sectiondownload">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="downlaod-icon">
+                    <img src="../image/icn-testing.png" />
+                </div>
+                <div class="doanload-content">
+                    Read to play? Download App now.
+                    <br />
+                    Earn daily free reward!
+                </div>
+                    <button class="iconBtn" aria-label="Download">
+                        <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+                            <path d="M5 20h14v-2H5v2Zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1Z" />
+                        </svg>
+                        Download
+                    </button>
+                <div>
+                    <button class="icnX" aria-label="closeDownload">
+                        X
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            //close download
+            document.addEventListener('click', (e) => {
+                const closeBtn = e.target.closest('.icnX[aria-label="closeDownload"]');
+                if (!closeBtn) return;
+
+                const banner = closeBtn.closest('.sectiondownload');
+                if (!banner) return;
+
+                banner.classList.add('is-hidden');
+            });
+        </script>
+        <aside class="sidebar sidebar--main">
+            <!-- rail + main menu -->
+            <div class="sidebar--wrapper">
+                <div class="sidebar--content">
+                    <div class="navtop">
+                        <div class="nav-t">
+                            <div class="nav-tl">
+                                <div>
+                                    <span class="pill__iconBtn" aria-label="Player">
+                                        <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+                                            <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4.42 0-8 2-8 4.5V21h16v-2.5C20 16 16.42 14 12 14Z" />
+                                        </svg>
+
+                                    </span>
+                                </div>
+                                <div>
+                                    <span class="pill__text" aria-label="playerName">PLAYER998</span>
+                                    <div class="nav-tlb">
+                                        <span class="pill__icon">
+                                            <!-- coin icon -->
+                                            <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+                                                <path d="M12 2C7.03 2 3 4.24 3 7v10c0 2.76 4.03 5 9 5s9-2.24 9-5V7c0-2.76-4.03-5-9-5Zm0 2c4.42 0 7 .97 7 3s-2.58 3-7 3-7-.97-7-3 2.58-3 7-3Zm0 16c-4.42 0-7-.97-7-3v-2.1c1.63 1.3 4.43 2.1 7 2.1s5.37-.8 7-2.1V17c0 2.03-2.58 3-7 3Zm0-6c-4.42 0-7-.97-7-3V8.9C6.63 10.2 9.43 11 12 11s5.37-.8 7-2.1V11c0 2.03-2.58 3-7 3Z" />
+                                            </svg>
+                                        </span>
+                                        <span class="pill__text">9,000,000</span>
+                                        <button class="pill__iconBtn" aria-label="Gift">
+                                            <!-- gift icon -->
+                                            <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+                                                <path d="M20 7h-1.18A3 3 0 0 0 16 3c-1.38 0-2.63.78-3.22 2.02L12 6.76l-.78-1.74A3.56 3.56 0 0 0 8 3 3 3 0 0 0 5.18 7H4a2 2 0 0 0-2 2v2h10V7h2v4h10V9a2 2 0 0 0-2-2ZM8 5c.6 0 1.13.35 1.35.9L10 7H6.2A1.5 1.5 0 0 1 8 5Zm8 0a1.5 1.5 0 0 1 1.8 2H14l.65-1.1C14.87 5.35 15.4 5 16 5ZM2 13v7a2 2 0 0 0 2 2h8v-9H2Zm12 9h8a2 2 0 0 0 2-2v-7H14v9Z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="nav-tr">
+                                <button class="iconBtn" aria-label="Language">
+                                    <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+                                        <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm7.93 9h-3.1a15.4 15.4 0 0 0-1.25-5.02A8.03 8.03 0 0 1 19.93 11ZM12 4c1.1 0 2.8 2.24 3.54 7H8.46C9.2 6.24 10.9 4 12 4ZM4.07 13h3.1a15.4 15.4 0 0 0 1.25 5.02A8.03 8.03 0 0 1 4.07 13Zm3.1-2h-3.1a8.03 8.03 0 0 1 4.35-5.02A15.4 15.4 0 0 0 7.17 11Zm1.29 2h6.08c-.74 4.76-2.44 7-3.54 7s-2.8-2.24-3.54-7Zm7.12 5.02A15.4 15.4 0 0 0 16.83 13h3.1a8.03 8.03 0 0 1-4.35 5.02Z" />
+                                    </svg>
+                                </button>
+
+                                <button class="iconBtn" aria-label="Notifications">
+                                    <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+                                        <path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22Zm7-6V11a7 7 0 0 0-5-6.71V3a2 2 0 1 0-4 0v1.29A7 7 0 0 0 5 11v5l-2 2v1h20v-1Z" />
+                                    </svg>
+                                </button>
+
+                                <button class="iconBtn" aria-label="Power">
+                                    <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+                                        <path d="M13 3h-2v10h2V3Zm4.83 2.17-1.42 1.42A7 7 0 1 1 7.6 6.59L6.17 5.17A9 9 0 1 0 17.83 5.17Z" />
+                                    </svg>
+                                </button>
+
+                            </div>
+                        </div>
+                        <div class="nav-b">
+                            <a herf="#" class="btn-deposit btn btn-1 btn-pill">Deposit</a>
+                            <a herf="#" class="btn-withdraw btn btn-1 btn-pill">Withdraw</a>
+                            <button data-action="toggle-sidebar" class="btn btn-2 btn-pill">☰</button>
+                        </div>
+                    </div>
+                    <section class="panels" data-panel="APPS">
+                        <div class="panel-promo">
+                            <h4 class="section-title">
+                                <img src="../image/icon-testing.png" />
+                                Promo
+                            </h4>
+                            <div class="promo-banner">
+                                <div class="banner swiper swiper-single">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide banner-slide">
+                                            <img src="../image/banner-testing.png" />
+                                        </div>
+                                        <div class="swiper-slide banner-slide">
+                                            <img src="../image/banner-testing.png" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="apps promo-list">
+                                <ul class="app-list ">
+                                    <li class="app">
+                                        <a href="#" class="app-badge">
+                                            <img src="../image/icn-testing.png" />
+                                            GameName
+                                        </a>
+                                    </li>
+                                    <li class="app">
+                                        <a href="#" class="app-badge">
+                                            <img src="../image/icn-testing.png" />
+                                            GameName
+                                        </a>
+                                    </li>
+                                    <li class="app">
+                                        <a href="#" class="app-badge">
+                                            <img src="../image/icn-testing.png" />
+                                            GameName
+                                        </a>
+                                    </li>
+                                    <li class="app">
+                                        <a href="#" class="app-badge">
+                                            <img src="../image/icn-testing.png" />
+                                            GameName
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- promo script -->
+                            <script>
+                                const swiper = new Swiper('.swiper-single', {
+                                    speed: 400,
+                                    spaceBetween: 100,
+                                });
+                            </script>
+
+                        </div>
+                        <div class="panel-fav">
+                            <h4 class="section-title">
+                                <img src="../image/icon-testing.png" />
+                                Favourite
+                            </h4>
+                            <div class="apps promo-list">
+                                <ul class="app-list ">
+                                    <li class="app">
+                                        <a href="#" class="app-badge">
+                                            <img src="../image/icn-testing.png" />
+                                            GameName
+                                        </a>
+                                    </li>
+                                    <li class="app">
+                                        <a href="#" class="app-badge">
+                                            <img src="../image/icn-testing.png" />
+                                            GameName
+                                        </a>
+                                    </li>
+                                    <li class="app">
+                                        <a href="#" class="app-badge">
+                                            <img src="../image/icn-testing.png" />
+                                            GameName
+                                        </a>
+                                    </li>
+                                    <li class="app">
+                                        <a href="#" class="app-badge">
+                                            <img src="../image/icn-testing.png" />
+                                            GameName
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="panel-newv">
+                            <h4 class="section-title">
+                                <img src="../image/icon-testing.png" />
+                                New
+                            </h4>
+                            <div class="apps promo-list">
+                                <ul class="app-list ">
+                                    <li class="app">
+                                        <a href="#" class="app-badge">
+                                            <img src="../image/icn-testing.png" />
+                                            GameName
+                                        </a>
+                                    </li>
+                                    <li class="app">
+                                        <a href="#" class="app-badge">
+                                            <img src="../image/icn-testing.png" />
+                                            GameName
+                                        </a>
+                                    </li>
+                                    <li class="app">
+                                        <a href="#" class="app-badge">
+                                            <img src="../image/icn-testing.png" />
+                                            GameName
+                                        </a>
+                                    </li>
+                                    <li class="app">
+                                        <a href="#" class="app-badge">
+                                            <img src="../image/icn-testing.png" />
+                                            GameName
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </section>
+                    <nav class="navprod" aria-label="prod navigation">
+                        <ul class="prod-nav nav--left border-top-1">
+                            <li>
+                                <a href="#">
+                                    <span><img src="../image/icon-testing.png" /></span> Daily
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span><img src="../image/icon-testing.png" /></span> Friend
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span><img src="../image/icon-testing.png" /></span> PK
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span><img src="../image/icon-testing.png" /></span> Treasure
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span><img src="../image/icon-testing.png" /></span> Lucky Draw
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span><img src="../image/icon-testing.png" /></span> Redeem
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <nav aria-label="main navigation" class="navmain">
+                        <ul class="menu-nav nav--left border-top-1">
+                            <li>
+                                <a href="#">
+                                    <img src="../image/icon-testing.png" /> Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" aria-current="page">
+                                    <img src="../image/icon-testing.png" /> Slots
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="../image/icon-testing.png" /> Live Casino
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="../image/icon-testing.png" /> SportsBook
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="../image/icon-testing.png" /> P2P
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="../image/icon-testing.png" /> Battle
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="../image/icon-testing.png" /> Lottery
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="../image/icon-testing.png" /> Promotions
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="../image/icon-testing.png" /> VIP
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div>
+
+            </div>
+        </aside>
+
+        <div class="overlay" data-action="close-all" aria-hidden="true"></div>
+        <!-- Main -->
+        <main id="main" class="main">
+            <!-- mobile 你还可以放一个按钮来开 promo（右侧） -->
+            <!-- main content -->
+            <header class="header">
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div class="toplogo">
+                        <button data-action="toggle-sidebar" class="btn btn-2 d-md-none">></button>
+
+                        <img src="../image/logo-testing.png" style="height:40px;" />
+                    </div>
+                    <div class="topbar">
+                        <div class="topbar__left">
+                            <div class="pill">
+                                <span class="pill__text">MYR 1,570.00</span>
+                                <span class="pill__iconBtn" aria-label="Wallet">
+                                    <!-- wallet icon -->
+                                    <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+                                        <path d="M20 7H6a3 3 0 0 0-3 3v7a3 3 0 0 0 3 3h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Zm0 12H6a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h14v2h-4a2 2 0 0 0 0 4h4v3a0 0 0 0 1 0 0Zm0-5h-4a0 0 0 0 1 0 0v-2a0 0 0 0 1 0 0h4v2Z" />
+                                    </svg>
+                                </span>
+                            </div>
+
+                            <div class="pill">
+                                <span class="pill__icon">
+                                    <!-- coin icon -->
+                                    <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+                                        <path d="M12 2C7.03 2 3 4.24 3 7v10c0 2.76 4.03 5 9 5s9-2.24 9-5V7c0-2.76-4.03-5-9-5Zm0 2c4.42 0 7 .97 7 3s-2.58 3-7 3-7-.97-7-3 2.58-3 7-3Zm0 16c-4.42 0-7-.97-7-3v-2.1c1.63 1.3 4.43 2.1 7 2.1s5.37-.8 7-2.1V17c0 2.03-2.58 3-7 3Zm0-6c-4.42 0-7-.97-7-3V8.9C6.63 10.2 9.43 11 12 11s5.37-.8 7-2.1V11c0 2.03-2.58 3-7 3Z" />
+                                    </svg>
+                                </span>
+                                <span class="pill__text">9,000,000</span>
+                                <button class="pill__iconBtn" aria-label="Gift">
+                                    <!-- gift icon -->
+                                    <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+                                        <path d="M20 7h-1.18A3 3 0 0 0 16 3c-1.38 0-2.63.78-3.22 2.02L12 6.76l-.78-1.74A3.56 3.56 0 0 0 8 3 3 3 0 0 0 5.18 7H4a2 2 0 0 0-2 2v2h10V7h2v4h10V9a2 2 0 0 0-2-2ZM8 5c.6 0 1.13.35 1.35.9L10 7H6.2A1.5 1.5 0 0 1 8 5Zm8 0a1.5 1.5 0 0 1 1.8 2H14l.65-1.1C14.87 5.35 15.4 5 16 5ZM2 13v7a2 2 0 0 0 2 2h8v-9H2Zm12 9h8a2 2 0 0 0 2-2v-7H14v9Z" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <a href="#" class="pill pill--btn" id="playerBtn" type="button">
+                                <span class="pill__text" aria-label="playerName">PLAYER998</span>
+                                <!-- user icon -->
+                                <span class="pill__iconBtn" aria-label="Player">
+                                    <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+                                        <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4.42 0-8 2-8 4.5V21h16v-2.5C20 16 16.42 14 12 14Z" />
+                                    </svg>
+
+                                </span>
+                            </a>
+                            <div class="dropdown">
+                                <button class="badge btn-level dropdown-toggle" id="playerLevel" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-auto-close="outside">
+                                    <span class="badge__icon">☼</span>
+                                    <span class="badge__text">LV.1</span>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="playerLevel" aria-hidden="true">
+                                    <div class="dropdown__inner">
+                                        <div class="level">
+                                            <a href="#" class="level__item">
+                                                <span class="level__left">
+                                                    <span class="level__dot">⚙️</span>
+                                                    <span>Sports</span>
+                                                </span>
+                                                <span class="level__right">LV.0</span>
+                                            </a>
+                                            <a href="#" class="level__item">
+                                                <span class="level__left">
+                                                    <span class="level__dot">🎰</span>
+                                                    <span>casino</span>
+                                                </span>
+                                                <span class="level__right">LV.0</span>
+                                            </a>
+                                            <a href="#" class="level__item">
+                                                <span class="level__left">
+                                                    <span class="level__dot">🎮</span>
+                                                    <span>Games</span>
+                                                </span>
+                                                <span class="level__right">LV.0</span>
+                                            </a>
+                                            <a href="#" class="level__item">
+                                                <span class="level__left">
+                                                    <span class="level__dot">🎟️</span>
+                                                    <span>Lottery</span>
+                                                </span>
+                                                <span class="level__right">LV.0</span>
+                                            </a>
+                                            <a href="#" class="level__item">
+                                                <span class="level__left">
+                                                    <span class="level__dot">🧧</span>
+                                                    <span>P2P</span>
+                                                </span>
+                                                <span class="level__right">LV.0</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="topbar__right">
+
+                            <button class="iconBtn" aria-label="Download">
+                                <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+                                    <path d="M5 20h14v-2H5v2Zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1Z" />
+                                </svg>
+                            </button>
+                            <button class="iconBtn" aria-label="Language">
+                                <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+                                    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm7.93 9h-3.1a15.4 15.4 0 0 0-1.25-5.02A8.03 8.03 0 0 1 19.93 11ZM12 4c1.1 0 2.8 2.24 3.54 7H8.46C9.2 6.24 10.9 4 12 4ZM4.07 13h3.1a15.4 15.4 0 0 0 1.25 5.02A8.03 8.03 0 0 1 4.07 13Zm3.1-2h-3.1a8.03 8.03 0 0 1 4.35-5.02A15.4 15.4 0 0 0 7.17 11Zm1.29 2h6.08c-.74 4.76-2.44 7-3.54 7s-2.8-2.24-3.54-7Zm7.12 5.02A15.4 15.4 0 0 0 16.83 13h3.1a8.03 8.03 0 0 1-4.35 5.02Z" />
+                                </svg>
+                            </button>
+
+                            <button class="iconBtn" aria-label="Notifications">
+                                <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+                                    <path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22Zm7-6V11a7 7 0 0 0-5-6.71V3a2 2 0 1 0-4 0v1.29A7 7 0 0 0 5 11v5l-2 2v1h20v-1Z" />
+                                </svg>
+                            </button>
+
+                            <button class="iconBtn" aria-label="Power">
+                                <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+                                    <path d="M13 3h-2v10h2V3Zm4.83 2.17-1.42 1.42A7 7 0 1 1 7.6 6.59L6.17 5.17A9 9 0 1 0 17.83 5.17Z" />
+                                </svg>
+                            </button>
+
+                            <!-- dropdown -->
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <section class="banner">
+                <style>
+                    .swiper-slide img { width: 100%; }
+
+                    .banner-main { height: 250px; }
+                        .banner-main .swiper-wrapper,
+                        .banner-main .swiper-slide { height: 100%; }
+                        .banner-main .banner-slide { background-position: center; background-size: cover; background-repeat: no-repeat; }
+                </style>
+                <div class="banner swiper banner-main js-banner">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide banner-slide" data-bg="../image/banner-testing.png"></div>
+                        <div class="swiper-slide banner-slide" data-bg="../image/banner-testing.png"></div>
+                        <div class="swiper-slide banner-slide" data-bg="../image/banner-testing.png"></div>
+                        <div class="swiper-slide banner-slide" data-bg="../image/banner-testing.png"></div>
+                        <div class="swiper-slide banner-slide" data-bg="../image/banner-testing.png"></div>
+                    </div>
+
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        if (typeof Swiper === 'undefined') return;
+
+                        /* ========= 可调参数区 ========= */
+                        const BP_MOBILE_MAX = 767;
+                        const BP_TABLET_MAX = 1024;
+
+                        // >1024 视为 desktop 的基准张数
+                        const DESKTOP_OPEN_COUNT = 2;     // sidebar 展开（nav slide 出来）
+                        const DESKTOP_CLOSED_COUNT = 3;   // sidebar 收起（rail）
+
+                        // 768~1024：比 desktop 少几张（想少2就改 2）
+                        const TABLET_DELTA = 1;
+
+                        const SPACE_BETWEEN = 16;
+                        const SPEED = 400;
+                        /* ============================ */
+
+                        const bannerEl = document.querySelector('.js-banner');
+                        if (!bannerEl) return;
+
+                        // 1) data-bg -> background-image（一次性）
+                        bannerEl.querySelectorAll('.swiper-slide[data-bg]').forEach(slide => {
+                            const url = slide.dataset.bg;
+                            if (!url) return;
+                            slide.style.backgroundImage = `url("${url}")`;
+                            slide.style.backgroundPosition = 'center';
+                            slide.style.backgroundSize = 'cover';
+                            slide.style.backgroundRepeat = 'no-repeat';
+                        });
+
+                        // 2) 初始化 Swiper（轮播本体）
+                        const swiper = new Swiper(bannerEl, {
+                            slidesPerView: 1,
+                            spaceBetween: SPACE_BETWEEN,
+                            speed: SPEED,
+                            loop: false,
+                            pagination: {
+                                el: bannerEl.querySelector('.swiper-pagination'),
+                                clickable: true,
+                            },
+                            navigation: {
+                                nextEl: bannerEl.querySelector('.swiper-button-next'),
+                                prevEl: bannerEl.querySelector('.swiper-button-prev'),
+                            },
+                        });
+
+                        const isSidebarClosed = () => document.body.classList.contains('sidebar-close');
+
+                        function clamp(n, min, max) {
+                            return Math.max(min, Math.min(max, n));
+                        }
+
+                        function getSlidesPerView() {
+                            const w = window.innerWidth;
+
+                            // mobile：永远 1
+                            if (w <= BP_MOBILE_MAX) return 1;
+
+                            const desktopBase = isSidebarClosed() ? DESKTOP_CLOSED_COUNT : DESKTOP_OPEN_COUNT;
+
+                            // tablet：比 desktop 少 TABLET_DELTA（至少 1）
+                            if (w <= BP_TABLET_MAX) {
+                                return clamp(desktopBase - TABLET_DELTA, 1, desktopBase);
+                            }
+
+                            // desktop
+                            return desktopBase;
+                        }
+
+                        function updateBanner() {
+                            const target = getSlidesPerView();
+                            if (swiper.params.slidesPerView === target) return;
+
+                            swiper.params.slidesPerView = target;
+                            swiper.update();
+                        }
+
+                        // 3) 首次应用
+                        updateBanner();
+
+                        // 4) sidebar 状态变化（body class 变化）时更新
+                        const observer = new MutationObserver(updateBanner);
+                        observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+                        // 5) resize 更新（跨断点）
+                        window.addEventListener('resize', updateBanner);
+                    });
+                </script>
+
+            </section>
+            <section class="mt-3">
+                <div class="vendor-tabs">
+                    <div class="vendor-rail">
+                        <div class="vender-filter">
+                            <ul class="filter">
+                                <li class="filter-btn active" data-filter="all">
+                                    <span><img src="../image/icon-testing.png" /></span>All
+                                </li>
+                                <li class="filter-btn" data-filter="hot">
+                                    <span><img src="../image/icon-testing.png" /></span>Hot
+                                </li>
+                                <li class="filter-btn" data-filter="bigwin">
+                                    <span><img src="../image/icon-testing.png" /></span>Big Win
+                                </li>
+                                <li class="filter-btn" data-filter="fav">
+                                    <span><img src="../image/icon-testing.png" /></span>Favorites
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="vendor-search">
+                            <input id="vendor-search" type="search" placeholder="Search vendors..." autocomplete="off">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="vendors">
+                    <ul class="vendor-list">
+                        <li class="vendor" data-tag="new" data-vendor-name="pt gaming">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-tag="promo" data-vendor-name="pragmatic play">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-tag="hot" data-vendor-name="live22">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-vendor-name="fastspin">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-tag="new" data-vendor-name="advant play">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-tag="promo" data-vendor-name="crowd play">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-tag="hot" data-vendor-name="fa chai">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-vendor-name="microgaming">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-vendor-name="pegasus">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-vendor-name="spadegaming">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-vendor-name="yggdrasil">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-vendor-name="hacksaw">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-vendor-name="galaxsys">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-vendor-name="spribe">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-vendor-name="joker">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-vendor-name="betsoft">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-tag="new" data-vendor-name="relax">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-tag="promo" data-vendor-name="mimi gaming">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-tag="hot" data-vendor-name="creative gaming">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor">
+                            <div class="vendor-img" data-image="../image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <img src="../image/icon-testing.png" />
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                </button>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <script>
+                    //render background image form data
+                    document.querySelectorAll('.vendor-img').forEach(el => {
+                        const src = el.dataset.image;
+                        if (src) {
+                            el.style.backgroundImage = `url("${src}")`;
+                        }
+                    });
+                </script>
+                <style>
+                    .vendor.hidden { display: none; }
+                    .vendor-empty { }
+                </style>
+                <script>
+                    //filter and search
+                    // Vendor filter + search + empty states (JS-generated)
+                    // Rules:
+                    // 1) If search has query and 0 results -> show "no results"
+                    // 2) Else if filter === 'fav' and 0 results -> show "fav empty"
+                    // 3) Else if filter === 'all' and 0 results -> show "all empty"
+                    // 4) Else (other filters with 0 results) -> show nothing
+
+                    const filterBtns = document.querySelectorAll('.filter-btn');
+                    const searchInput = document.getElementById('vendor-search');
+
+                    let emptyNode = null; // only one empty node at a time
+                    let currentFilter = 'all';
+                    let currentQuery = '';
+
+                    /** ===== NEW: state classes (you can rename these) ===== */
+                    const LIST_FILTERING_CLASS = 'is-filtering';   // filtering in progress
+                    const LIST_EMPTY_CLASS = 'is-empty';           // 0 visible vendors after filter
+
+                    function normalize(str) {
+                        return (str || '').trim().toLowerCase().replace(/\s+/g, ' ');
+                    }
+
+                    function removeEmptyNode() {
+                        if (emptyNode) {
+                            emptyNode.remove();
+                            emptyNode = null;
+                        }
+                    }
+
+                    function ensureEmptyNode(vendorList, type, text) {
+                        // Same type -> update text only
+                        if (emptyNode && emptyNode.dataset.emptyType === type) {
+                            emptyNode.textContent = text;
+                            return;
+                        }
+
+                        // Different type -> recreate
+                        removeEmptyNode();
+
+                        emptyNode = document.createElement('p');
+                        emptyNode.className = `vendor-empty vendor-empty--${type}`;
+                        emptyNode.dataset.emptyType = type;
+                        emptyNode.textContent = text;
+
+                        vendorList.appendChild(emptyNode);
+                    }
+
+                    function applyFilters() {
+                        const vendors = document.querySelectorAll('.vendor');
+                        const vendorList = document.querySelector('.vendor-list') || document.body;
+
+                        /** ===== NEW: mark as "filtering" while we compute/show/hide ===== */
+                        vendorList.classList.add(LIST_FILTERING_CLASS);
+
+                        const q = normalize(currentQuery);
+                        let visibleCount = 0;
+
+                        vendors.forEach(vendor => {
+                            const tag = vendor.dataset.tag || '';
+                            const isFav = vendor.dataset.fav === 'true'; // missing -> false
+                            const name = normalize(vendor.dataset.vendorName);
+
+                            // filter pass
+                            let passFilter = false;
+                            switch (currentFilter) {
+                                case 'all':
+                                    passFilter = true;
+                                    break;
+                                case 'fav':
+                                    passFilter = isFav;
+                                    break;
+                                default:
+                                    passFilter = tag === currentFilter; // hot/new/future
+                                    break;
+                            }
+
+                            // search pass
+                            const passSearch = q === '' ? true : name.includes(q);
+
+                            const shouldShow = passFilter && passSearch;
+                            vendor.classList.toggle('hidden', !shouldShow);
+
+                            if (shouldShow) visibleCount++;
+                        });
+
+                        /** ===== NEW: list empty state class ===== */
+                        vendorList.classList.toggle(LIST_EMPTY_CLASS, visibleCount === 0);
+
+                        // ===== empty states =====
+                        if (visibleCount > 0) {
+                            removeEmptyNode();
+                            vendorList.classList.remove(LIST_FILTERING_CLASS); // done
+                            return;
+                        }
+
+                        // 1) search no result
+                        if (q !== '') {
+                            const raw = currentQuery.trim();
+                            ensureEmptyNode(vendorList, 'noresult', `No results found for “${raw}”.`);
+                            vendorList.classList.remove(LIST_FILTERING_CLASS); // done
+                            return;
+                        }
+
+                        // 2) fav empty
+                        if (currentFilter === 'fav') {
+                            ensureEmptyNode(
+                                vendorList,
+                                'fav',
+                                'You don’t have any favorites yet. Start exploring and save the ones you like.'
+                            );
+                            vendorList.classList.remove(LIST_FILTERING_CLASS); // done
+                            return;
+                        }
+
+                        // 3) all empty
+                        if (currentFilter === 'all') {
+                            ensureEmptyNode(vendorList, 'all', 'No vendors available.');
+                            vendorList.classList.remove(LIST_FILTERING_CLASS); // done
+                            return;
+                        }
+
+                        // 4) other filters empty
+                        ensureEmptyNode(vendorList, 'soon', 'Coming soon.');
+                        vendorList.classList.remove(LIST_FILTERING_CLASS); // done
+                    }
+
+                    // filter click
+                    filterBtns.forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            currentFilter = btn.dataset.filter || 'all';
+
+                            filterBtns.forEach(b => b.classList.remove('active'));
+                            btn.classList.add('active');
+
+                            applyFilters();
+                        });
+                    });
+
+                    // search input
+                    if (searchInput) {
+                        searchInput.addEventListener('input', () => {
+                            currentQuery = searchInput.value || '';
+                            applyFilters();
+                        });
+                    }
+
+                    // init
+                    applyFilters();
+
+
+
+                </script>
+            </section>
+        </main>
+    </div>
+    <script>
+        //side menu
+        document.addEventListener('DOMContentLoaded', () => {
+            const BP_MOBILE_MAX = 767;
+            const body = document.body;
+
+            const isMobile = () => window.innerWidth <= BP_MOBILE_MAX;
+
+            /* ===== Desktop =====
+               - 默认：打开
+               - 用 sidebar-close 关闭
+            */
+            const setDesktopClosed = (closed) => {
+                body.classList.toggle('sidebar-close', !!closed);
+            };
+            const isDesktopClosed = () => body.classList.contains('sidebar-close');
+
+            /* ===== Mobile =====
+               - 默认：关闭
+               - 用 sidebar-open 打开
+            */
+            const setMobileOpen = (open) => {
+                body.classList.toggle('sidebar-open', !!open);
+            };
+            const isMobileOpen = () => body.classList.contains('sidebar-open');
+
+            /* ===== Breakpoint 切换时的默认状态 ===== */
+            let lastMode = null;
+            function applyDefaults(force = false) {
+                const mode = isMobile() ? 'mobile' : 'desktop';
+                if (!force && mode === lastMode) return;
+                lastMode = mode;
+
+                if (mode === 'mobile') {
+                    // mobile 默认关
+                    setDesktopClosed(false); // 清 desktop 状态
+                    setMobileOpen(false);
+                } else {
+                    // desktop 默认开
+                    setMobileOpen(false);    // 清 mobile 状态
+                    setDesktopClosed(false);
+                }
+            }
+
+            /* ===== Click handling ===== */
+            document.addEventListener('click', (e) => {
+                const btn = e.target.closest?.('[data-action="toggle-sidebar"]');
+                if (!btn) return;
+
+                e.preventDefault();
+
+                if (isMobile()) {
+                    setMobileOpen(!isMobileOpen());
+                } else {
+                    setDesktopClosed(!isDesktopClosed());
+                }
+            });
+
+            /* ===== Overlay / main 点击关闭（可选） ===== */
+            document.querySelector('main')?.addEventListener('click', () => {
+                if (isMobile() && isMobileOpen()) {
+                    setMobileOpen(false);
+                }
+            });
+
+            applyDefaults(true);
+            window.addEventListener('resize', () => applyDefaults(false));
+        });
+    </script>
+    <script>
+        // fav button
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('.btn-fav');
+            if (!btn) return;
+
+            e.preventDefault();
+
+            const item = btn.closest('.vendor');
+            if (!item) return;
+
+            const isFav = item.dataset.fav === 'true';
+
+            if (isFav) {
+                // 取消收藏
+                item.removeAttribute('data-fav');
+                btn.classList.remove('active');
+                btn.setAttribute('aria-pressed', 'false');
+            } else {
+                // 加收藏
+                item.dataset.fav = 'true';
+                btn.classList.add('active');
+                btn.setAttribute('aria-pressed', 'true');
+            }
+        });
+
+    </script>
+
+</body>
+</html>
