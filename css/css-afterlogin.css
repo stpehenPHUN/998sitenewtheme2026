@@ -154,7 +154,7 @@ a { color: var(--font-color); text-decoration: none; }
 .pill__caret { width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 7px solid var(--primary-color); opacity: .7; }
 
 /* badge (LV.1) */
-.badge { display: flex; align-items: center; gap: var(--space-2); color: var(--primary-color); font-weight: var(--font-bold); font-size: var(--text-xs); background-color: transparent; border: 0; box-shadow: none; }
+.badge { display: flex; align-items: center; gap: var(--space-1); color: var(--primary-color); font-weight: var(--font-bold); font-size: var(--text-xs); background-color: transparent; border: 0; box-shadow: none; }
     .badge.show { /*background-color:var(--secondary-color);*/ }
 .badge__icon { width: 26px; height: 26px; display: grid; place-items: center; }
 .badge:active { transform: translateY(1px); }
@@ -181,7 +181,7 @@ a { color: var(--font-color); text-decoration: none; }
 }
 
 @media(max-width:1299.98px) {
-    .topbar__left .pill { display: none; }
+    .topbar__left .pill:not(#dompet) { display: none; }
     .topbar__right .iconBtn:not([aria-label="Download"]) { display: none; }
     .dropdown-menu:after { left: auto; right: 36px; }
 }
@@ -324,3 +324,4 @@ a { color: var(--font-color); text-decoration: none; }
 @media (min-width:768px) {
     .sectiondownload { display: none; }
 }
+
