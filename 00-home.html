@@ -1,0 +1,1271 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="../JS/common.js"></script>
+    <script src="../JS/jquery.lastest.min.js"></script>
+    <script src="../JS/jQuery.base64.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title></title>
+    <link href="../theme/js/swiper/css/swiper.min.css" rel="stylesheet" />
+    <script src="../theme/js/swiper/js/swiper.min.js"></script>
+    <link href="../theme/js/bootstrap-5.3.8/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../theme/js/bootstrap-5.3.8/js/bootstrap.bundle.min.js"></script>
+    <script src="../theme/js/gsap/gsap.min.js"></script>
+    <script src="../theme/js/gsap/ScrollTrigger.min.js"></script>
+    <script src="../theme/js/gsap/Draggable.min.js"></script>
+    <link href="../css/02-style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="body-container">
+        <header id="divHeader" class="header">
+            <div class="header-wrapper">
+                <div class="header-left">
+                    <div class="headerleft-wrapper">
+                        <div class="menubtn ">
+                            <button class="navbar-toggler btn-menu burger js-menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#divMenu" data-target="#divMenu" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                        <div class="divHeader-logo">
+                            <img src="../image/logo_5.png" class="img-logo" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="header-right">
+                    <div class="headerright-wrapper">
+                        <div class="headerright-box">
+
+                            <div class="header-auth mx-lg-3">
+                                <a href="#" class="login btn btn1">
+                                    LOG IN
+                                </a>
+                                <a href="#" class="register btn btn2">
+                                    REGISTER
+                                </a>
+                            </div>
+                            <div class="language-box">
+                                <div class="selected_language">
+                                    <img src="../image/flag-malaysia.png" class="lang-main_img" />
+                                </div>
+                                <div class="language_dropdown dropdown col">
+                                    <div class="language-wrapper">
+                                        <div class="ld-top">
+                                            Region and Language
+                                        </div>
+                                        <div class="language_list">
+                                            <div class="language_my language_boxes">
+                                                <div class="lbs-img">
+                                                    <img src="../image/flag-malaysia.png" />
+                                                </div>
+                                                <div>
+                                                    <h6>Malaysia</h6>
+                                                    <ul class="lang-list">
+                                                        <li class="active">
+                                                            <a href="#">English</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">简体中文</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="language_sg language_boxes">
+                                                <div class="lbs-img">
+                                                    <img src="../image/flag-singapore.png" />
+                                                </div>
+                                                <div>
+                                                    <h6>Singapore</h6>
+                                                    <ul class="lang-list">
+                                                        <li>
+                                                            <a href="#">English</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">简体中文</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </header>
+        <style>
+        </style>
+        <div class="body-wrapper">
+
+            <div class="nav-overlay"></div>
+            <nav class="sideNav">
+                <div class="sidebar-sticky">
+                    <div class="nav-top">
+                        <div class="usdt-box">
+                            <div id="v2cryptocurrency"> 1USDT = 4.13MYR</div>
+                        </div>
+
+
+                    </div>
+                    <div id='menuContainer'>
+                        <div id="cssmenu" class="cmsmenu">
+                            <ul>
+                                <li class="has-sub">
+                                    <a href="#">
+                                        All Games
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a>
+                                                <img src="../image/flag-malaysia.png" />Sportsbook
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <img src="../image/flag-malaysia.png" />Live Casino
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <img src="../image/flag-malaysia.png" />Slot Games
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <img src="../image/flag-malaysia.png" />Lottery
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <img src="../image/flag-malaysia.png" />Cockfight
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <img src="../image/flag-malaysia.png" />Horse Racing
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <a href="#">Explore</a>
+                                    <ul>
+                                        <li class="active">
+                                            <a href="#">
+                                                <img src="../image/icn-more.png" />Home
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="#">
+                                                <img src="../image/icn-more.png" />Promotion
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="#">
+                                                <img src="../image/icn-more.png" />VIP
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="#">
+                                                <img src="../image/icn-more.png" />GD Rewards
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <img src="../image/flag-malaysia.png" />Wiiner List
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <img src="../image/flag-malaysia.png" />Hall of Ranking
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <img src="../image/flag-malaysia.png" />Affiliate
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <a href="#">Support</a>
+                                    <ul>
+
+                                        <li>
+                                            <a>
+                                                <img src="../image/flag-malaysia.png" />Terms
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <img src="../image/flag-malaysia.png" />Privacy
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <img src="../image/flag-malaysia.png" />Help
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <img src="../image/flag-malaysia.png" />KYC
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="nav-bottom">
+                        NAV BOTTOM
+                    </div>
+
+                </div>
+            </nav>
+            <div class="divBody">
+
+                <main id="divMain" class="main-body">
+                    <div id="theme-contain-home">
+                        <div class="">
+                            <div class="hero">
+                                <div class="w1440 d-lg-flex p-lg-4 flex-wrap">
+                                    <div class="col-lg-6 order-lg-2 order-1">
+                                        <img src="../image/banner-test2.jpg" style="width:100%;" />
+                                    </div>
+                                    <div class="notification-box d-none d-lg-block order-3 mx-4 w-100">
+                                        <div class="notification-container w1440">
+                                            <div class="notification-icn">
+                                                <img src="../image/flag-china.png" />
+                                            </div>
+                                            <div class="notification-scroll">
+                                                <marquee id="horizontal-scrolling-msg" scrollamount="3" onmouseover="this.stop()" onmouseout="this.start()">
+                                                    <ul>
+                                                        <li>
+                                                            Lorem ipsum dolor sit amet consectetur. Morbi nec nulla diam ultricies. Quis ut sed nunc tempus egestas massa congue. Morbi nec nulla diam ultricies. Lorem ipsum dolor sit amet consectetur.
+                                                        </li>
+                                                    </ul>
+                                                </marquee>
+                                            </div>
+                                            <script>
+                                                $('#horizontal-scrolling-msg').attr('scrollamount', '6')
+                                            </script>
+                                        </div>
+                                    </div>
+                                    <div class="allgames order-2 order-lg-4 w-100">
+                                        <div class="w1440 my-5">
+                                            <div id="gamelist" class="mb-5">
+                                                <div class="d-md-flex justify-content-between align-items-center">
+                                                    <div class="d-none d-md-block">
+                                                        <p class="m-0">Our Product</p>
+                                                        <h4>Games <font>GDBET333</font></h4>
+                                                    </div>
+                                                    <div id="tab-games" class="gl-tabgames d-lg-flex align-items-center justify-content-between p-3 p-md-3">
+                                                        <div class="gl-tabs">
+                                                            <div class="gl-tab">
+                                                                <button class="btn-gl active" data-gl-target="all">
+                                                                    <img src="../image/icn_games.png" /> All Games
+                                                                </button>
+                                                                <button class="btn-gl" data-gl-target="sport">
+                                                                    <img src="../image/icn_scoccer.png" /> Sport
+                                                                </button>
+                                                                <button class="btn-gl" data-gl-target="casino">
+                                                                    <img src="../image/icn_poker.png" />  Casino
+                                                                </button>
+                                                                <button class="btn-gl" data-gl-target="games">
+                                                                    <img src="../image/icn_slot.png" />  Slots
+                                                                </button>
+                                                                <!--<button class="btn-gl" data-gl-target="lottery">
+                                                                    Lottery
+                                                                </button>-->
+                                                                <!--<button class="btn-gl" data-gl-target="p2p">
+                                    P2P
+                                </button>-->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="gl-box active" data-gl-box="all">
+                                                    <div class="gl-box-wrapper reveal-group">
+
+                                                        <div class="gl-item all games">
+                                                            <img src="../../00-design/img-gsl-g-01.png" />
+                                                            <div class="gl-hover">
+                                                                <div class="gl-detail">
+                                                                    <button class="btn-play bg-gold btn">Play</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gl-item all games">
+                                                            <img src="../../00-design/img-gsl-g-01.png" />
+                                                            <div class="gl-hover">
+                                                                <div class="gl-detail">
+                                                                    <button class="btn-play bg-gold btn">Play</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gl-item all games">
+                                                            <img src="../../00-design/img-gsl-g-01.png" />
+                                                            <div class="gl-hover">
+                                                                <div class="gl-detail">
+                                                                    <button class="btn-play bg-gold btn">Play</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gl-item all games">
+                                                            <img src="../../00-design/img-gsl-g-01.png" />
+                                                            <div class="gl-hover">
+                                                                <div class="gl-detail">
+                                                                    <button class="btn-play bg-gold btn">Play</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gl-item all games">
+                                                            <img src="../../00-design/img-gsl-g-01.png" />
+                                                            <div class="gl-hover">
+                                                                <div class="gl-detail">
+                                                                    <button class="btn-play bg-gold btn">Play</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gl-item all games">
+                                                            <img src="../../00-design/img-gsl-g-01.png" />
+                                                            <div class="gl-hover">
+                                                                <div class="gl-detail">
+                                                                    <button class="btn-play bg-gold btn">Play</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gl-item all games">
+                                                            <img src="../../00-design/img-gsl-g-01.png" />
+                                                            <div class="gl-hover">
+                                                                <div class="gl-detail">
+                                                                    <button class="btn-play bg-gold btn">Play</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gl-item all games">
+                                                            <img src="../../00-design/img-gsl-g-01.png" />
+                                                            <div class="gl-hover">
+                                                                <div class="gl-detail">
+                                                                    <button class="btn-play bg-gold btn">Play</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gl-item all games">
+                                                            <img src="../../00-design/img-gsl-g-01.png" />
+                                                            <div class="gl-hover">
+                                                                <div class="gl-detail">
+                                                                    <button class="btn-play bg-gold btn">Play</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gl-item all games">
+                                                            <img src="../../00-design/img-gsl-g-01.png" />
+                                                            <div class="gl-hover">
+                                                                <div class="gl-detail">
+                                                                    <button class="btn-play bg-gold btn">Play</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gl-item all games">
+                                                            <img src="../../00-design/img-gsl-g-01.png" />
+                                                            <div class="gl-hover">
+                                                                <div class="gl-detail">
+                                                                    <button class="btn-play bg-gold btn">Play</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gl-item all games">
+                                                            <img src="../../00-design/img-gsl-g-01.png" />
+                                                            <div class="gl-hover">
+                                                                <div class="gl-detail">
+                                                                    <button class="btn-play bg-gold btn">Play</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <script type="text/javascript">
+                                                $(function () {
+                                                    var $tabs = $('[data-gl-target]');
+                                                    var $items = $('.gl-box-wrapper .gl-item');
+
+                                                    var $noRes = $('<div class="gl-no-result w-100 text-center p-5" style="display:none;">No Result</div>');
+                                                    $('.gl-box-wrapper').append($noRes);
+
+                                                    function applyFilter() {
+                                                        var cat = ($tabs.filter('.active').data('gl-target') || 'all').toString();
+                                                        var visibleCount = 0;
+
+                                                        $items.each(function () {
+                                                            var $it = $(this);
+                                                            var inCat = (cat === 'all') ? true : $it.hasClass(cat);
+                                                            $it.toggle(inCat);
+                                                            if (inCat) visibleCount++;
+                                                        });
+
+                                                        $noRes.toggle(visibleCount === 0);
+                                                    }
+
+                                                    $tabs.on('click', function () {
+                                                        $tabs.removeClass('active');
+                                                        $(this).addClass('active');
+                                                        applyFilter();
+                                                    });
+
+                                                    if ($tabs.filter('.active').length === 0) {
+                                                        $tabs.first().addClass('active');
+                                                    }
+
+                                                    applyFilter();
+                                                });
+
+
+                                            </script>
+                                        </div>
+                                        <script>
+                                            (() => {
+                                                const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                                                function setupRevealGroup(groupEl) {
+                                                    const children = [...groupEl.children];
+                                                    if (!children.length) return;
+
+                                                    // 初始化
+                                                    children.forEach((el, i) => {
+                                                        el.classList.add('reveal-item');
+                                                        el.style.setProperty('--rv-delay', `${i * 70}ms`);
+                                                        if (prefersReduced) el.classList.add('in');
+                                                    });
+
+                                                    if (prefersReduced) return;
+
+                                                    // 滚动触发动画
+                                                    const io = new IntersectionObserver((entries, obs) => {
+                                                        entries.forEach(entry => {
+                                                            if (entry.isIntersecting) {
+                                                                children.forEach(el => el.classList.add('in'));
+                                                                obs.unobserve(entry.target);
+                                                            }
+                                                        });
+                                                    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+                                                    io.observe(groupEl);
+                                                }
+
+                                                // 初始化所有 .reveal-group
+                                                function initAll() {
+                                                    document.querySelectorAll('.reveal-group').forEach(setupRevealGroup);
+                                                }
+
+                                                initAll();
+
+                                                // 窗口大小变化时重置延迟
+                                                let t;
+                                                window.addEventListener('resize', () => {
+                                                    clearTimeout(t);
+                                                    t = setTimeout(initAll, 150);
+                                                });
+                                            })();
+                                        </script>
+
+                                    </div>
+                                    <div class="col-lg-6 d-flex justify-content-center justify-content-lg-end align-items-center text-center text-lg-start py-5 py-lg-0 pe-lg-5 order-3 order-lg-1">
+                                        <div class="reveal-group">
+                                            <h1>Welcome to <font>GDBET333</font></h1>
+                                            <h4 data-delay="100">The Best and Trust Online Casino Malaysia</h4>
+                                            <div data-delay="300" class="collapse mt-4" id="myCollapseContent">
+                                                <p>
+                                                    GDBET333 Casino is now available with Trusted Online Casino Malaysia games. Now you can play at the Best Online Casino Malaysia. As a Live Casino Malaysia, we have gained huge popularity with adding new updates to Malaysia casino games. All our games are now technology-driven.
+                                                </p>
+                                            </div>
+
+                                            <button class="text-center mt-5 mx-auto d-block p-2 d-lg-none"
+                                                    id="myCollapseButton"
+                                                    type="button"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target="#myCollapseContent"
+                                                    aria-expanded="false"
+                                                    aria-controls="myCollapseContent">
+                                                <span class="text-collapsed">More info</span>
+                                                <span class="text-expanded">Hide info</span>
+                                            </button>
+
+                                            <a data-delay="600" href="#" class="register btn btn2 mt-3">Join Now</a>
+                                        </div>
+
+                                    </div>
+                                    <style>
+                                        #myCollapseButton.text - expanded { display: none; }
+                                        #myCollapseContent.show + #myCollapseButton.text - collapsed { display: none; }
+                                        #myCollapseContent.show + #myCollapseButton.text - expanded { display: inline; }
+
+                                        /* desktop：强制展开（不依赖 .show class） */
+                                        @media(min-width: 992px) { /* lg = 992px */
+                                            #myCollapseContent { display: block !important; /* 强制可见 */ height: auto !important; visibility: visible !important; }
+                                        }
+                                    </style>
+                                    <script>
+                                        document.addEventListener('DOMContentLoaded', () => {
+                                            const el = document.getElementById('myCollapseContent');
+                                            const btn = document.getElementById('myCollapseButton');
+                                            const collapse = bootstrap.Collapse.getOrCreateInstance(el, { toggle: false });
+
+                                            const mq = window.matchMedia('(min-width: 992px)'); // lg
+
+                                            function sync() {
+                                                if (mq.matches) {
+                                                    collapse.show();
+                                                    btn?.setAttribute('aria-expanded', 'true');
+                                                } else {
+                                                    collapse.hide();
+                                                    btn?.setAttribute('aria-expanded', 'false');
+                                                }
+                                            }
+
+                                            sync();
+                                            mq.addEventListener('change', sync);
+                                        });
+                                    </script>
+
+                                </div>
+
+                            </div>
+                            <div class="partner-logo my-4" style="">
+                                <div class="w1440">
+                                    <div class="d-flex justify-content-between align-items-center  m-4">
+                                        <h4>Our Game Providers</h4>
+                                    </div>
+                                </div>
+                                <div class="marquee logo-marquee horizontal" data-axis="x" data-respect-reduced-motion="true">
+                                    <div class="col col-left" data-dir="left" data-speed="40">
+                                        <ul class="list">
+                                            <li>
+                                                <img src="../image/partner_logo-ezugi.png" />
+                                            </li>
+                                            <li>
+                                                <img src="../image/partner_logo-pt.png" />
+                                            </li>
+                                            <li>
+                                                <img src="../image/partner_logo-wcasino.png" />
+                                            </li>
+                                            <li>
+                                                <img src="../image/partner_logo-dodod.png" />
+                                            </li>
+                                            <li>
+                                                <img src="../image/partner_logo-microgaminglive.png" />
+                                            </li>
+
+                                            <li>
+                                                <img src="../image/partner_logo-pp.png" />
+                                            </li>
+                                            <li>
+                                                <img src="../image/partner_logo-evo.png" />
+                                            </li>
+                                            <li>
+                                                <img src="../image/partner_logo-rcb998.png" />
+                                            </li>
+                                            <li>
+                                                <img src="../image/partner_logo-miki.png" />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col col-right" data-dir="right" data-speed="40">
+                                        <ul class="list">
+                                            <li>
+                                                <img src="../image/partner_logo-ams.png" />
+                                            </li>
+                                            <li>
+                                                <img src="../image/partner_logo-fastspin.png" />
+                                            </li>
+                                            <li>
+                                                <img src="../image/partner_logo-pegasus.png" />
+                                            </li>
+                                            <li>
+                                                <img src="../image/partner_logo-aigaming.png" />
+                                            </li>
+                                            <li>
+                                                <img src="../../00-design/logo_5.png" />
+                                            </li>
+                                            <li>
+                                                <img src="../../00-design/logo_5.png" />
+                                            </li>
+                                            <li>
+                                                <img src="../../00-design/logo_5.png" />
+                                            </li>
+                                            <li>
+                                                <img src="../../00-design/logo_5.png" />
+                                            </li>
+                                            <li>
+                                                <img src="../../00-design/logo_5.png" />
+                                            </li>
+                                            <li>
+                                                <img src="../../00-design/logo_5.png" />
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                                <script>
+                                    (() => {
+                                        gsap.registerPlugin(ScrollTrigger);
+
+                                        // === 你的原有变量/函数 ===
+                                        const tlMap = new WeakMap();
+
+                                        // 可选：尊重系统减少动效
+                                        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                                        function makeLoopBand(ul) {
+                                            [...ul.querySelectorAll('[data-clone]')].forEach(n => n.remove());
+                                            const frag = document.createDocumentFragment();
+                                            [...ul.children].forEach(li => {
+                                                const clone = li.cloneNode(true);
+                                                clone.setAttribute('data-clone', '1');
+                                                frag.appendChild(clone);
+                                            });
+                                            ul.appendChild(frag);
+                                        }
+
+                                        function buildColumn(col, rootAxis) {
+                                            const ul = col.querySelector('.list');
+                                            if (!ul) return;
+
+                                            if (prefersReduced) { gsap.set(ul, { clearProps: 'transform' }); return; }
+
+                                            makeLoopBand(ul);
+
+                                            const axis = (col.dataset.axis || rootAxis || 'y').toLowerCase(); // 'x'|'y'
+                                            const isX = axis === 'x';
+                                            const dir = (col.dataset.dir || (isX ? 'left' : 'up')).toLowerCase();
+                                            const speed = Math.max(1, parseFloat(col.dataset.speed) || 40); // px/s
+
+                                            const L = (isX ? ul.scrollWidth : ul.scrollHeight) / 2;
+
+                                            // 起止
+                                            const prop = isX ? 'x' : 'y';
+                                            const from = (isX ? (dir === 'right') : (dir === 'down')) ? -L : 0;
+                                            const to = (isX ? (dir === 'right') : (dir === 'down')) ? 0 : -L;
+
+                                            // 清旧
+                                            const old = tlMap.get(ul);
+                                            if (old) old.kill();
+
+                                            const fromVars = {}; fromVars[prop] = from;
+                                            const toVars = {
+                                                duration: L / speed,
+                                                ease: 'none',
+                                                repeat: -1,
+                                                modifiers: {}
+                                            };
+                                            toVars[prop] = to;
+                                            toVars.modifiers[prop] = v => {
+                                                let n = parseFloat(v);
+                                                n = ((n + L) % L) - L; // wrap 到 [-L, 0)
+                                                return n + 'px';
+                                            };
+
+                                            const tl = gsap.fromTo(ul, fromVars, toVars);
+                                            // hover 暂停/恢复
+                                            const pause = () => tl.pause();
+                                            const play = () => tl.play();
+                                            col.addEventListener('pointerenter', pause);
+                                            col.addEventListener('pointerleave', play);
+
+                                            tlMap.set(ul, tl);
+                                        }
+
+                                        async function imagesReady(scopeEl) {
+                                            const imgs = [...scopeEl.querySelectorAll('img')];
+                                            if (!imgs.length) return;
+                                            await Promise.all(imgs.map(img => {
+                                                if ('decode' in img) return img.decode().catch(() => { });
+                                                if (img.complete) return Promise.resolve();
+                                                return new Promise(res => img.addEventListener('load', res, { once: true }));
+                                            }));
+                                        }
+
+                                        function buildRoot(root) {
+                                            const rootAxis = (root.dataset.axis || 'y').toLowerCase();
+                                            [...root.querySelectorAll('.col')].forEach(col => buildColumn(col, rootAxis));
+                                        }
+
+                                        // === 新增：入场动画（一次）后再启动 marquee ===
+                                        function setupEnterThenMarquee(root) {
+                                            if (prefersReduced) { buildRoot(root); return; }
+
+                                            const cols = [...root.querySelectorAll('.col')];
+
+                                            // 先把列本身设为“待入场”状态（左右各 60px，透明）
+                                            cols.forEach(col => {
+                                                const dir = (col.dataset.dir || 'left').toLowerCase();
+                                                const fromX = dir === 'right' ? -200 : 200;
+                                                gsap.set(col, { x: fromX, autoAlpha: 0 });
+                                            });
+
+                                            ScrollTrigger.create({
+                                                trigger: root,
+                                                start: 'top 80%',
+                                                once: true,
+                                                onEnter: () => {
+                                                    // ✅ 同步：一进入视口就启动无缝 marquee（内部 ul 开始移动）
+                                                    buildRoot(root);
+
+                                                    // ✅ 同时做“滑入”动画（作用在列容器 .col，不会影响 ul 的位移）
+                                                    gsap.to(cols, {
+                                                        x: 0,
+                                                        autoAlpha: 1,
+                                                        duration: 0.6,
+                                                        ease: 'power2.out',
+                                                        stagger: 0.1
+                                                    });
+                                                }
+                                            });
+                                        }
+                                        function initAll() {
+                                            const roots = [...document.querySelectorAll('.marquee')];
+                                            roots.forEach(root => setupEnterThenMarquee(root));
+                                        }
+
+                                        (async function start() {
+                                            const roots = [...document.querySelectorAll('.marquee')];
+                                            await Promise.all(roots.map(r => imagesReady(r)));
+                                            initAll();
+
+                                            // 尺寸变化后重建（只重建 marquee，不重复入场）
+                                            let rid;
+                                            window.addEventListener('resize', () => {
+                                                cancelAnimationFrame(rid);
+                                                rid = requestAnimationFrame(() => {
+                                                    roots.forEach(r => buildRoot(r));
+                                                });
+                                            });
+                                        })();
+
+                                        // === 可选：对外 API 仍然可用 ===
+                                        function pickRoot(rootSel) {
+                                            if (rootSel instanceof Element) return rootSel;
+                                            if (typeof rootSel === 'string') return document.querySelector(rootSel);
+                                            return document.querySelector('.marquee');
+                                        }
+                                        window.Marquee = {
+                                            rebuild(rootSel) {
+                                                const root = pickRoot(rootSel); if (!root) return;
+                                                buildRoot(root);
+                                            },
+                                            setSpeed(rootSel, colIndex, pxPerSec) {
+                                                const root = pickRoot(rootSel); if (!root) return;
+                                                const col = root.querySelectorAll('.col')[colIndex]; if (!col) return;
+                                                col.dataset.speed = pxPerSec;
+                                                buildColumn(col, (root.dataset.axis || 'y').toLowerCase());
+                                            },
+                                            setDirection(rootSel, colIndex, dir) {
+                                                const root = pickRoot(rootSel); if (!root) return;
+                                                const col = root.querySelectorAll('.col')[colIndex]; if (!col) return;
+                                                col.dataset.dir = dir;
+                                                buildColumn(col, (root.dataset.axis || 'y').toLowerCase());
+                                            },
+                                            setAxis(rootSel, colIndex, axis) {
+                                                const root = pickRoot(rootSel); if (!root) return;
+                                                const col = root.querySelectorAll('.col')[colIndex]; if (!col) return;
+                                                col.dataset.axis = axis;
+                                                buildColumn(col, (root.dataset.axis || 'y').toLowerCase());
+                                            }
+                                        };
+                                    })();
+                                </script>
+
+                            </div>
+                            <div class="hotgames my-5">
+                                <div class="w1440">
+                                    <div class="d-flex justify-content-between align-items-center  m-4">
+                                        <h4>Hot Games</h4>
+                                        <a href="#" class="btn2 btn px-4">See All</a>
+                                    </div>                        <div class="menubtn">
+                                        <button class="navbar-toggler btn-menu burger js-menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#divMenu" data-target="#divMenu" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </button>
+                                    </div>
+
+                                    <div class="hg-container">
+                                        <div class="hg-wrapper reveal-group">
+                                            <div class="gl-item">
+                                                <div class="position-relative overflow-hidden">
+                                                    <img src="../image/img-best-game-01.png" />
+                                                    <div class="gl-hover">
+                                                        <div class="gl-detail">
+                                                            <a href="#" class="btn-play bg-gold btn">Play</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <b>test</b>
+                                                <p>lorem ipsum</p>
+                                            </div>
+                                            <div class="gl-item">
+                                                <div class="position-relative overflow-hidden">
+                                                    <img src="../image/img-best-game-02.png" />
+                                                    <div class="gl-hover">
+                                                        <div class="gl-detail">
+                                                            <button class="btn-play bg-gold btn">Play</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <b>test</b>
+                                                <p>lorem ipsum</p>
+                                            </div>
+                                            <div class="gl-item">
+                                                <div class="position-relative overflow-hidden">
+                                                    <img src="../image/img-best-game-03.png" />
+                                                    <div class="gl-hover">
+                                                        <div class="gl-detail">
+                                                            <button class="btn-play bg-gold btn">Play</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <b>test</b>
+                                                <p>lorem ipsum</p>
+                                            </div>
+                                            <div class="gl-item">
+                                                <div class="position-relative overflow-hidden">
+                                                    <img src="../image/img-best-game-04.png" />
+                                                    <div class="gl-hover">
+                                                        <div class="gl-detail">
+                                                            <button class="btn-play bg-gold btn">Play</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <b>test</b>
+                                                <p>lorem ipsum</p>
+                                            </div>
+                                            <div class="gl-item">
+                                                <div class="position-relative overflow-hidden">
+                                                    <img src="../image/img-best-game-05.png" />
+                                                    <div class="gl-hover">
+                                                        <div class="gl-detail">
+                                                            <button class="btn-play bg-gold btn">Play</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <b>test</b>
+                                                <p>lorem ipsum</p>
+                                            </div>
+                                            <div class="gl-item">
+                                                <div class="position-relative overflow-hidden">
+                                                    <img src="../image/img-best-game-06.png" />
+                                                    <div class="gl-hover">
+                                                        <div class="gl-detail">
+                                                            <button class="btn-play bg-gold btn">Play</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <b>test</b>
+                                                <p>lorem ipsum</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <script>
+                                    (() => {
+                                        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                                        function setupRevealGroup(groupEl) {
+                                            const children = [...groupEl.children];
+                                            if (!children.length) return;
+
+                                            const groupDelay = parseInt(groupEl.dataset.delay || '0', 10);   // 整组开场延迟
+                                            const stepDelay = parseInt(groupEl.dataset.step || '70', 10);  // 每项间隔
+
+                                            children.forEach((el, i) => {
+                                                el.classList.add('reveal-item');
+
+                                                // 每个子项可单独覆盖自己的 delay
+                                                const customDelay = el.dataset.delay
+                                                    ? parseInt(el.dataset.delay, 10)
+                                                    : groupDelay + i * stepDelay;
+
+                                                el.style.setProperty('--rv-delay', `${customDelay}ms`);
+
+                                                if (prefersReduced) el.classList.add('in');
+                                            });
+
+                                            if (prefersReduced) return;
+
+                                            const io = new IntersectionObserver((entries, obs) => {
+                                                entries.forEach(entry => {
+                                                    if (entry.isIntersecting) {
+                                                        children.forEach(el => el.classList.add('in'));
+                                                        obs.unobserve(entry.target);
+                                                    }
+                                                });
+                                            }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+                                            io.observe(groupEl);
+                                        }
+
+                                        function initAll() {
+                                            document.querySelectorAll('.reveal-group').forEach(setupRevealGroup);
+                                        }
+
+                                        initAll();
+
+                                        let t;
+                                        window.addEventListener('resize', () => {
+                                            clearTimeout(t);
+                                            t = setTimeout(initAll, 150);
+                                        });
+                                    })();
+                                </script>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </main>
+                <footer class="divFooter" style="">
+                    <div class="mobile-footer">
+                        <div class="mf-wrapper">
+                            <ul>
+                                <li>
+                                    <div class="menubtn">
+                                        <button class="navbar-toggler btn-menu burger js-menu-toggle m-auto" type="button" data-bs-toggle="collapse" data-bs-target="#divMenu" data-target="#divMenu" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>Menu
+                                        </button>
+                                    </div>
+                                    
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../image/icn-more.png" />img</a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../image/icn-more.png" />img</a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../image/icn-more.png" />img</a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../image/icn-more.png" />img</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-span" style="margin:60px;">
+                        <div style="height:50px; text-align:center;">
+                            asldkjf
+                        </div>
+                    </div>
+                    <div class="footer-container">
+                        <div class="footer-wrapper">
+                            <div class="footer-top">
+                                <img src="../image/logo_5-w.png" class="img-logo" />
+                            </div>
+                            <div class="footer-qlink">
+                                <ul>
+                                    <li>
+                                        <a href="#terms">Terms</a>
+                                    </li>
+                                    <li>
+                                        <a href="#about">About</a>
+                                    </li>
+                                    <li>
+                                        <a href="#privacy">Privacy</a>
+                                    </li>
+                                    <li>
+                                        <a href="#contact">Contact</a>
+                                    </li>
+                                    <li>
+                                        <a href="#help">Help</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="footer-copyright">
+                                Copyright &copy; All Rights Reserved.
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            //$(window).scroll(function () {
+                            //    if ($(this).scrollTop() > 10) { // Change 100 to your desired scroll threshold
+                            //        $('.header ').addClass('scrolled');
+                            //    } else {
+                            //        $('.header ').removeClass('scrolled');
+                            //    }
+                            //});
+
+
+                            function bindResponsiveMenus() {
+                                const isMobile = $(window).width() < 1024;
+
+                                // ---- 清除旧事件 ----
+                                //$(".has-sub").off("click");
+                                $(".selected_language").off("click");
+                                $(".js-menu-toggle").off("click");
+                                //$("#divMenu").off("hidden.bs.collapse");
+                                $(document).off("click.languageGlobalClose");
+
+                                // ===========================
+                                // ✅ 主菜单 / has-sub 处理（现在 desktop + mobile 都是 click）
+                                // ===========================
+                                //$(".has-sub").on("click", function (e) {
+                                //    e.preventDefault();
+                                //    e.stopPropagation();
+
+                                //    const $this = $(this);
+                                //    const $submenu = $this.find("> ul");
+
+                                //    // 1. 打开/关闭当前 submenu
+                                //    const willOpen = $submenu.is(":hidden");
+                                //    $submenu.stop(true, true).slideToggle();
+
+                                //    // 2. 清理它下面更深层
+                                //    $this.find("> ul ul").css("display", "none");
+                                //    $this.find("> ul li").removeClass("on");
+
+                                //    // 3. toggle 自己的 on class
+                                //    $this.toggleClass("on", willOpen);
+
+                                //    // 4. 收起其它兄弟的 submenu
+                                //    $(".has-sub").not($this).each(function () {
+                                //        $(this).removeClass("on");
+                                //        $(this).find("> ul").stop(true, true).slideUp();
+                                //    });
+
+                                //    // 5. 当 nav 被点开时 -> 必须关掉 language dropdown & 取消active
+                                //    $(".language_dropdown").stop(true, true).slideUp();
+                                //    $(".selected_language").removeClass("active");
+                                //});
+
+
+                                // ===========================
+                                // ✅ 汉堡按钮（js-menu-toggle）
+                                // ===========================
+                                // 点击汉堡按钮准备展开/收起主导航的时候：
+                                //   - 关掉语言 dropdown
+                                //   - 也把语言按钮的 active 拿掉
+                                $(".js-menu-toggle").on("click", function () {
+                                    $(".language_dropdown").stop(true, true).slideUp();
+                                    $(".selected_language").removeClass("active");
+                                });
+
+                                // 当主导航整个 collapse 收起来后（bootstrap 事件）
+                                //   - 把所有子菜单状态清干净
+                                //$("#divMenu").on("hidden.bs.collapse", function () {
+                                //    $(".has-sub > ul").slideUp(0);
+                                //    $(".has-sub").removeClass("on");
+                                //});
+
+
+                                // ===========================
+                                // ✅ 语言选择 (selected_language)
+                                //    桌面 & mobile 都是 click
+                                // ===========================
+                                $(".selected_language").on("click", function (e) {
+                                    e.stopPropagation();
+
+                                    const $this = $(this);
+                                    const $dropdown = $this.siblings(".language_dropdown");
+
+                                    // 1. 打开语言之前，强制关主菜单 (bootstrap collapse)
+                                    //$("#divMenu").collapse("hide");
+
+                                    // 2. toggle 自己
+                                    const willOpen = $dropdown.is(":hidden");
+                                    $dropdown.stop(true, true).slideToggle();
+
+                                    // 3. 收起其它 language-box
+                                    $(".language-box").not($this.parent()).each(function () {
+                                        $(this).find(".language_dropdown").stop(true, true).slideUp();
+                                        $(this).find(".selected_language").removeClass("active");
+                                    });
+
+                                    // 4. toggle active 状态（高亮国旗那个按钮）
+                                    $this.toggleClass("active", willOpen);
+
+                                    // 5. 当语言 dropdown 被打开时，必须关掉所有 has-sub 的 submenu
+                                    //$(".has-sub").removeClass("on");
+                                    //$(".has-sub > ul").stop(true, true).slideUp();
+                                });
+
+
+                                // ===========================
+                                // ✅ 点击页面空白处，全部收掉
+                                // ===========================
+                                $(document).on("click.languageGlobalClose", function (e) {
+                                    // 如果点的不是语言组件
+                                    if (!$(e.target).closest(".language-box").length) {
+                                        $(".language_dropdown").stop(true, true).slideUp();
+                                        $(".selected_language").removeClass("active");
+                                    }
+
+                                    //// 如果点的不是主菜单项（.has-sub）和不是汉堡按钮
+                                    //if (
+                                    //    !$(e.target).closest(".has-sub").length &&
+                                    //    !$(e.target).closest("#divMenu").length &&
+                                    //    !$(e.target).closest(".js-menu-toggle").length
+                                    //) {
+                                    //    $(".has-sub").removeClass("on");
+                                    //    $(".has-sub > ul").stop(true, true).slideUp();
+                                    //}
+                                });
+
+
+                                // ===========================
+                                // ✅ 额外：移动端 has-sub 的原逻辑 vs 桌面
+                                // ===========================
+                                // 因为我们现在 desktop 也用 click 展开 has-sub，
+                                // 所以 desktop 那边原本靠 :hover 的CSS要关掉或改掉，
+                                // 否则 hover 会把 display:block 写出来，跟 slideUp/slideDown 打架。
+
+                                if (!isMobile) {
+                                    // 建议把桌面那条 ".has-sub:hover > ul { display:block; }" 的CSS移除
+                                    // 或者至少在CSS里包一层 @media (min-width:1024px){ ... } 并先注释掉
+                                    // 现在的展开/收起全靠上面 click 逻辑
+                                }
+                            }
+
+                            // init
+                            bindResponsiveMenus();
+
+                            // on resize，重新绑定
+                            $(window).on("resize", function () {
+                                bindResponsiveMenus();
+                            });
+
+
+
+                        });
+                    </script>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const mDesktop = window.matchMedia('(min-width: 1500.01px)'); // 真·desktop 
+        const mHybrid = window.matchMedia('(min-width: 992px) and (max-width: 1500px)'); // hybrid 
+        const mMobile = window.matchMedia('(max-width: 991.98px)'); // mobile 
+
+        const bodyContainer = document.getElementById('body-container');
+        const toggleBtns = document.querySelectorAll('.js-menu-toggle');
+        const nav = document.querySelector('nav');
+        const divBody = document.querySelector('.divBody');
+        const overlay = document.querySelector('.nav-overlay'); // 有就用，没有也不影响
+
+        function syncAria(open) {
+            toggleBtns.forEach(btn => btn.setAttribute('aria-expanded', String(open)));
+        }
+        // 你之前的 sticky 高度计算函数（如果有的话）建议继续调用
+        const sidebarSticky = document.querySelector('.sidebar-sticky');
+        function getOuterHeight(el) {
+            return el ?
+                Math.ceil(el.getBoundingClientRect().height) : 0;
+        }
+        function updateStickyOffsets() {
+            if (!sidebarSticky) return;
+            const divHeader = document.querySelector('#divHeader') || document.querySelector('.header') || document.querySelector('header');
+            const mobileFooter = document.querySelector('.mobile-footer');
+            const innerH = window.innerHeight;
+            const headerH = getOuterHeight(divHeader);
+            const footerH = mMobile.matches ? getOuterHeight(mobileFooter) : 0;
+            sidebarSticky.style.top = headerH;
+            sidebarSticky.style.bottom = footerH;
+            sidebarSticky.style.height = innerH - headerH - footerH;
+        }
+
+        // 状态切换 
+        function setModeDesktop(open) {
+            bodyContainer.classList.remove('nav-open', 'nav-float-open');
+            bodyContainer.classList.toggle('nav-collapsed', !open);
+            syncAria(open);
+            updateStickyOffsets();
+        }
+        function setModeMobile(open) {
+            bodyContainer.classList.remove('nav-collapsed', 'nav-float-open');
+            bodyContainer.classList.toggle('nav-open', open);
+            syncAria(open);
+            updateStickyOffsets();
+        }
+
+        // Hybrid：collapsed=rail；open=float overlay（不挤 body） 
+        function setModeHybrid(open) {
+            bodyContainer.classList.remove('nav-open'); // mobile 用的 class 清掉 
+            bodyContainer.classList.toggle('nav-float-open', open); bodyContainer.classList.toggle('nav-collapsed', !open); // rail 状态 
+            syncAria(open);
+            updateStickyOffsets();
+        }
+
+        // 初始：按模式决定默认 
+        function applyByBreakpoint() {
+            if (mDesktop.matches) {
+                setModeDesktop(true); // >=1200 默认展开（共享宽度）
+            } else if (mHybrid.matches) {
+                setModeHybrid(false); // 992~1200 默认 rail（不挡内容）
+            } else {
+                setModeMobile(false); // <992 默认关闭 
+            }
+        } applyByBreakpoint();
+
+        // breakpoint change / resize 
+        const onChange = () => applyByBreakpoint();
+        [mDesktop, mHybrid, mMobile].forEach(mq => mq.addEventListener ? mq.addEventListener('change', onChange) : mq.addListener(onChange));
+        window.addEventListener('resize', updateStickyOffsets);
+
+        // 按钮点击 
+        toggleBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation(); // ✅ 关键：别让 click 冒泡到 divBody
+
+                if (mDesktop.matches) {
+                    const isOpen = !bodyContainer.classList.contains('nav-collapsed');
+                    setModeDesktop(!isOpen);
+                } else if (mHybrid.matches) {
+                    const isOpen = bodyContainer.classList.contains('nav-float-open');
+                    setModeHybrid(!isOpen);
+                } else {
+                    const isOpen = bodyContainer.classList.contains('nav-open');
+                    setModeMobile(!isOpen);
+                }
+            });
+        });
+
+
+        // 点击外面关闭：mobile & hybrid 
+        function closeIfOverlayMode() { if (mMobile.matches) setModeMobile(false); else if (mHybrid.matches) setModeHybrid(false); }
+
+        // 1) 如果你有 nav-overlay：点它关 
+        overlay?.addEventListener('click', closeIfOverlayMode);
+        // 2) 点内容区关（hybrid/mobile）
+        divBody?.addEventListener('click', () => { if (mMobile.matches && bodyContainer.classList.contains('nav-open')) closeIfOverlayMode(); if (mHybrid.matches && bodyContainer.classList.contains('nav-float-open')) closeIfOverlayMode(); });
+        // nav 内点击不冒泡 
+        nav?.addEventListener('click', (e) => e.stopPropagation()); updateStickyOffsets();
+    });
+</script>
+</body>
+</html>
