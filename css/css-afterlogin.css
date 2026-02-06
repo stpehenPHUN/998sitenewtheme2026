@@ -255,13 +255,19 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
     .section-title img { margin-right: var(--space-2); margin-left: var(--space-2); width: var(--icn-w24) }
 
 /* app icon */
-.app-list { padding: 0; margin: var(--space-2); padding: var(--space-1); display: flex; justify-content: space-between; }
+.app-list { padding: 0; margin: var(--space-2); padding: var(--space-1); display: flex; justify-content: space-between; }a
 .app { list-style-type: none; flex: 1 1 25%; max-width: 25%; }
 .app-badge { color: var(--primary-color); font-size: var(--text-xxs); text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: var(--space-1); }
     .app-badge img { width: 100%; border: var(--border-width) solid var(--primary-color); border-radius: var(--radius-md); display: block; margin-bottom: var(--space-1); }
 
-@media (min-width:768px) {
-    .app-list { padding: var(--space-1) }
+.mini-icons { border: var(--border-width) solid var(--primary-color); border-radius: var(--radius-md); display: flex; flex-wrap: wrap; margin-bottom: var(--space-1); padding:var(--space-1);}
+    .mini-icons img { border-radius: var(--radius-sm); max-width:calc(50% - (var(--space-1)/2)); margin-bottom:0;}
+        .mini-icons img:nth-child(odd) { margin-right: calc(var(--space-1) / 2); }
+        .mini-icons img:nth-child(even) { margin-left: calc(var(--space-1) / 2); }
+        .mini-icons img:nth-child(1), .mini-icons img:nth-child(2) { margin-bottom: calc(var(--space-1) / 2); }
+        .mini-icons img:nth-child(3), .mini-icons img:nth-child(4) { margin-top: calc(var(--space-1) / 2); }
+        
+            @media (min-width:768px) { .app-list { padding: var(--space-1) }
     .app-badge img { }
 }
 
