@@ -255,7 +255,7 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
     .section-title img { margin-right: var(--space-2); margin-left: var(--space-2); width: var(--icn-w24) }
 
 /* app icon */
-.app-list { padding: 0; margin: var(--space-2); padding: var(--space-1); display: flex; justify-content: space-between; }a
+.app-list { padding: 0; margin: var(--space-2); padding: var(--space-1); display: flex; justify-content: space-between; }
 .app { list-style-type: none; flex: 1 1 25%; max-width: 25%; }
 .app-badge { color: var(--primary-color); font-size: var(--text-xxs); text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: var(--space-1); }
     .app-badge img { width: 100%; border: var(--border-width) solid var(--primary-color); border-radius: var(--radius-md); display: block; margin-bottom: var(--space-1); }
@@ -276,13 +276,16 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
 .vendor-rail { display: flex; align-items: center; gap: var(--space-2); }
     .vendor-rail::-webkit-scrollbar { display: none; }
 .filter { margin: 0; padding: 0; display: flex; flex: 0 0 auto; scroll-snap-align: start; white-space: nowrap; }
-.filter-btn { list-style-type: none; padding: var(--space-2) var(--space-4); border: var(--border-width) solid thick; border-radius: var(--radius-pill); cursor: pointer; margin: var(--space-1); }
+.filter-btn { list-style-type: none; padding: var(--space-2) var(--space-4); border: var(--border-width) solid thick; border-radius: var(--radius-pill); cursor: pointer; margin: var(--space-1); color:var(--white-color);}
     .filter-btn.active { background-color: var(--primary-color); border: var(--border-width) solid var(--accent-color); }
     .filter-btn img { width: 100%; }
     .filter-btn span { width: var(--icn-w18); display: inline-block; }
     .filter-btn svg { fill: var(--white-color); }
 
-.vendor-searchcontainer { position: relative; }
+    .filter-btn.active { color: var(--font-color); }
+        .filter-btn.active svg{fill:var(--font-color);}
+
+        .vendor-searchcontainer { position: relative; }
 #vendor-search { border-radius: var(--radius-pill); background-color: var(--bg-color); border: var(--border-width) solid var(--bg-color); padding: var(--space-2) var(--space-4); padding-right: calc(var(--space-4) * 2); color: var( --font-color); }
 .input-icon { position: absolute; right: var(--space-2); top: 50%; transform: translateY(-50%); width: var(--icn-w24); height: var(--icn-w24); pointer-events: none; color: var(--white-color); fill: var(--font-color); }
 
