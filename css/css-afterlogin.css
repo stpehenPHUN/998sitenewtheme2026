@@ -19,7 +19,11 @@
 /*@media(max-width:1203.98px) and (min-width:768px){
     :root { --rail-w: 62px; --drawer-w: 230px; }
 }
-*//* font-family */
+
+*/
+.swiper { --swiper-navigation-color: #ffffff; /* Sets arrows to white */ --swiper-pagination-color: #ffffff; /* Optional: sets pagination to white */ }
+
+/* font-family */
 @font-face { font-family: 'Poppins'; src: url('../font/Poppins-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Poppins'; src: url('../font/Poppins-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
 
@@ -212,7 +216,7 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
 .topbar__right { border-left: var(--border-width) solid var(--primary-color); padding-left: var(--space-3); }
 .iconBtn { background-color: transparent; border: 0; }
 .iconBtn { display: grid; place-items: center; border-radius: var(--radius-md); color: var(--primary-color); cursor: pointer; transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out), background var(--duration-fast) var(--ease-out); aspect-ratio: 1/1; }
-    .iconBtn:hover { box-shadow: var(--shadow-md); background: color-mix(in srgb, var(--secondary-color) 10%, var( --font-color)); }
+    .iconBtn:hover {  background: var(--secondary-color); color:var(--white-color) }
     .iconBtn:active { transform: translateY(1px); }
 
 
