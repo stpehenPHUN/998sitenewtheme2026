@@ -291,6 +291,7 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
 .vendor-img { transition: transform var(--duration-normal) var(--ease-interact); height: var(--item-h); background-size: cover; background-position: center; background-repeat: no-repeat; }
     .vendor-img img { }
 .btn-play.btn-round, .btn-fav.btn-round { line-height: 0; }
+.btn-play svg{width:var(--icn-w24); height:var(--icn-w24); fill:var(--white-color);}
 .btn-play img { width: var(--icn-w18); height: var(--icn-w18); }
 .btn-fav img { width: var(--icn-w18); height: var(--icn-w18); }
 
