@@ -216,7 +216,7 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
 .topbar__right { border-left: var(--border-width) solid var(--primary-color); padding-left: var(--space-3); }
 .iconBtn { background-color: transparent; border: 0; }
 .iconBtn { display: grid; place-items: center; border-radius: var(--radius-md); color: var(--primary-color); cursor: pointer; transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out), background var(--duration-fast) var(--ease-out); aspect-ratio: 1/1; }
-    .iconBtn:hover {  background: var(--secondary-color); color:var(--white-color) }
+    .iconBtn:hover {  background: var(--secondary-color); color:var(--font-color); }
     .iconBtn:active { transform: translateY(1px); }
 
 
