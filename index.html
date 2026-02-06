@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-    <!--<script src="../JS/common.js"></script>
-    <script src="../JS/jquery.lastest.min.js"></script>
-    <script src="../JS/jQuery.base64.js"></script>-->
+    <!--<script src="JS/common.js"></script>
+    <script src="JS/jquery.lastest.min.js"></script>
+    <script src="JS/jQuery.base64.js"></script>-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title></title>
@@ -15,16 +15,9 @@
     <link rel="stylesheet" href="js/swiper-11.2.10/swiper-bundle.min.css" />
     <script src="js/swiper-11.2.10/swiper-bundle.min.js"></script>
     <style>
-        :root { 
-            --bg-color: #1b2033; 
-            --font-color: #fff; 
-            --primary-color: #c084fc; 
-            --secondary-color: #2b3248; 
-            --accent-color: #c084fc; 
+        :root { --bg-color: #1b2033; --font-color: #fff; --primary-color: #c084fc; --secondary-color: #2b3248; --accent-color: #c084fc; }
+        /*:root { --bg-color: #1A1B26; --font-color: #A9B1D6; --primary-color: #7AA2F7; --secondary-color: #24283B; --accent-color: #F7768E; }*/
 
-        }
-        /*        :root { --bg-color: #FCFDF9; --font-color: #166534; --primary-color: #22C55E; --secondary-color: #DCFCE7; --accent-color: #166534; }
-        */
     </style>
 </head>
 
@@ -41,12 +34,12 @@
                     <br />
                     Earn daily free reward!
                 </div>
-                    <button class="iconBtn" aria-label="Download">
-                        <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
-                            <path d="M5 20h14v-2H5v2Zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1Z" />
-                        </svg>
-                        Download
-                    </button>
+                <button class="iconBtn" aria-label="Download">
+                    <svg viewBox="0 0 20 20" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                        <path d="M5 20h14v-2H5v2Zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1Z" />
+                    </svg>
+                    Download
+                </button>
                 <div>
                     <button class="icnX" aria-label="closeDownload">
                         X
@@ -76,62 +69,73 @@
                             <div class="nav-tl">
                                 <div>
                                     <span class="pill__iconBtn" aria-label="Player">
-                                        <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
-                                            <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4.42 0-8 2-8 4.5V21h16v-2.5C20 16 16.42 14 12 14Z" />
+                                        <svg viewBox="-4 0 20 20" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                                            <path d="M12.517 12.834v1.9a1.27 1.27 0 0 1-1.267 1.267h-9.5a1.27 1.27 0 0 1-1.267-1.267v-1.9A3.176 3.176 0 0 1 3.65 9.667h5.7a3.176 3.176 0 0 1 3.167 3.167zM3.264 5.48A3.236 3.236 0 1 1 6.5 8.717a3.236 3.236 0 0 1-3.236-3.236z" />
                                         </svg>
-
                                     </span>
                                 </div>
-                                <div>
-                                    <span class="pill__text" aria-label="playerName">PLAYER998</span>
+                                <div class="nav-trt">
+                                    <div class="nav-tbt">
+                                        <span class="pill__text" aria-label="playerName">PLAYER998</span>
+                                        <div class="nav-tr">
+                                            <button class="iconBtn" aria-label="Notifications">
+                                                <svg viewBox="0 0 16 16" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                                                    <path fill-rule="evenodd" d="M8,1 C11.8659932,1 15,4.13400675 15,8 C15,11.8659932 11.8659932,15 8,15 C4.13400675,15 1,11.8659932 1,8 C1,4.13400675 4.13400675,1 8,1 Z M8.96515973,9.00117633 L7.03484027,9.00117633 C7.12137413,10.2320385 7.36481835,11.3402224 7.71696972,12.1619089 C7.79348978,12.3404557 7.87172301,12.496879 7.94824865,12.6292915 L8,12.713 L8.05175135,12.6292915 C8.10276844,12.5410165 8.15454446,12.44207 8.20606586,12.3330113 L8.28303028,12.1619089 C8.63518165,11.3402224 8.87862587,10.2320385 8.96515973,9.00117633 Z M5.03044222,9.00099906 L3.10025909,9.0011864 C3.4031332,10.491395 4.36879751,11.740808 5.67610553,12.4282788 C5.33910207,11.4654592 5.10953483,10.2898775 5.03044222,9.00099906 Z M12.8997409,9.0011864 L10.9695578,9.00099906 C10.8904652,10.2898775 10.6608979,11.4654592 10.3237161,12.4277375 C11.6312025,11.740808 12.5968668,10.491395 12.8997409,9.0011864 Z M5.67628393,3.57226248 L5.59436492,3.61568174 C4.32832407,4.31182571 3.39636062,5.54039637 3.10005628,6.99981203 L5.03038108,6.99999768 C5.10941648,5.7107286 5.33901516,4.53478884 5.67628393,3.57226248 Z M8,3.286 L7.94824865,3.37070855 C7.87172301,3.50312104 7.79348978,3.65954431 7.71696972,3.83809113 C7.36472343,4.65999912 7.1212429,5.76855889 7.03477034,6.99981901 L8.96522966,6.99981901 C8.8787571,5.76855889 8.63527657,4.65999912 8.28303028,3.83809113 C8.20651022,3.65954431 8.12827699,3.50312104 8.05175135,3.37070855 L8,3.286 Z M10.3238945,3.57172124 L10.3806361,3.73984101 C10.686808,4.66995318 10.8951132,5.78461983 10.9696189,6.99999768 L12.8999437,6.99981203 C12.5972981,5.50916307 11.6314944,4.25934557 10.3238945,3.57172124 Z" />
+                                                </svg>
+                                            </button>
+
+                                            <button class="iconBtn" aria-label="Notifications">
+                                                <svg viewBox="0 0 22 22" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                                                    <path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22Zm7-6V11a7 7 0 0 0-5-6.71V3a2 2 0 1 0-4 0v1.29A7 7 0 0 0 5 11v5l-2 2v1h20v-1Z" />
+                                                </svg>
+                                            </button>
+
+                                            <button class="iconBtn" aria-label="Power">
+                                                <svg viewBox="0 0 22 22" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                                                    <path d="M13 3h-2v10h2V3Zm4.83 2.17-1.42 1.42A7 7 0 1 1 7.6 6.59L6.17 5.17A9 9 0 1 0 17.83 5.17Z" />
+                                                </svg>
+                                            </button>
+
+                                        </div>
+
+                                    </div>
                                     <div class="nav-tlb">
                                         <span class="pill__icon">
                                             <!-- coin icon -->
-                                            <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
-                                                <path d="M12 2C7.03 2 3 4.24 3 7v10c0 2.76 4.03 5 9 5s9-2.24 9-5V7c0-2.76-4.03-5-9-5Zm0 2c4.42 0 7 .97 7 3s-2.58 3-7 3-7-.97-7-3 2.58-3 7-3Zm0 16c-4.42 0-7-.97-7-3v-2.1c1.63 1.3 4.43 2.1 7 2.1s5.37-.8 7-2.1V17c0 2.03-2.58 3-7 3Zm0-6c-4.42 0-7-.97-7-3V8.9C6.63 10.2 9.43 11 12 11s5.37-.8 7-2.1V11c0 2.03-2.58 3-7 3Z" />
+                                            <svg width="24px" height="24px" class="icon icon-primarycolor" viewBox="0 0 1024 1024">
+                                                <path d="M161.92 580.736l29.888 58.88C171.328 659.776 160 681.728 160 704c0 82.304 155.328 160 352 160s352-77.696 352-160c0-22.272-11.392-44.16-31.808-64.32l30.464-58.432C903.936 615.808 928 657.664 928 704c0 129.728-188.544 224-416 224S96 833.728 96 704c0-46.592 24.32-88.576 65.92-123.264z" />
+                                                <path d="M161.92 388.736l29.888 58.88C171.328 467.84 160 489.792 160 512c0 82.304 155.328 160 352 160s352-77.696 352-160c0-22.272-11.392-44.16-31.808-64.32l30.464-58.432C903.936 423.808 928 465.664 928 512c0 129.728-188.544 224-416 224S96 641.728 96 512c0-46.592 24.32-88.576 65.92-123.264z" />
+                                                <path d="M512 544c-227.456 0-416-94.272-416-224S284.544 96 512 96s416 94.272 416 224-188.544 224-416 224zm0-64c196.672 0 352-77.696 352-160S708.672 160 512 160s-352 77.696-352 160 155.328 160 352 160z" />
                                             </svg>
                                         </span>
                                         <span class="pill__text">9,000,000</span>
                                         <button class="pill__iconBtn" aria-label="Gift">
                                             <!-- gift icon -->
-                                            <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
-                                                <path d="M20 7h-1.18A3 3 0 0 0 16 3c-1.38 0-2.63.78-3.22 2.02L12 6.76l-.78-1.74A3.56 3.56 0 0 0 8 3 3 3 0 0 0 5.18 7H4a2 2 0 0 0-2 2v2h10V7h2v4h10V9a2 2 0 0 0-2-2ZM8 5c.6 0 1.13.35 1.35.9L10 7H6.2A1.5 1.5 0 0 1 8 5Zm8 0a1.5 1.5 0 0 1 1.8 2H14l.65-1.1C14.87 5.35 15.4 5 16 5ZM2 13v7a2 2 0 0 0 2 2h8v-9H2Zm12 9h8a2 2 0 0 0 2-2v-7H14v9Z" />
+                                            <svg viewBox="0 0 20 20" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 0C3.11929 0 2 1.11929 2 2.5V2.78571C2 3.23408 2.13327 3.65133 2.36235 4H1.5C0.671573 4 0 4.67157 0 5.5V6.5C0 7.32843 0.671573 8 1.5 8H7V4H8V8H13.5C14.3284 8 15 7.32843 15 6.5V5.5C15 4.67157 14.3284 4 13.5 4H12.6377C12.8667 3.65133 13 3.23408 13 2.78571V2.5C13 1.11929 11.8807 0 10.5 0C9.22684 0 8.11245 0.679792 7.5 1.69621C6.88755 0.679792 5.77316 0 4.5 0ZM8 4H10.7857C11.4563 4 12 3.45635 12 2.78571V2.5C12 1.67157 11.3284 1 10.5 1C9.11929 1 8 2.11929 8 3.5V4ZM7 4H4.21429C3.54365 4 3 3.45635 3 2.78571V2.5C3 1.67157 3.67157 1 4.5 1C5.88071 1 7 2.11929 7 3.5V4Z" />
+                                                <path d="M7 9H1V12.5C1 13.8807 2.11929 15 3.5 15H7V9Z" />
+                                                <path d="M8 15H11.5C12.8807 15 14 13.8807 14 12.5V9H8V15Z" />
                                             </svg>
                                         </button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="nav-tr">
-                                <button class="iconBtn" aria-label="Language">
-                                    <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
-                                        <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm7.93 9h-3.1a15.4 15.4 0 0 0-1.25-5.02A8.03 8.03 0 0 1 19.93 11ZM12 4c1.1 0 2.8 2.24 3.54 7H8.46C9.2 6.24 10.9 4 12 4ZM4.07 13h3.1a15.4 15.4 0 0 0 1.25 5.02A8.03 8.03 0 0 1 4.07 13Zm3.1-2h-3.1a8.03 8.03 0 0 1 4.35-5.02A15.4 15.4 0 0 0 7.17 11Zm1.29 2h6.08c-.74 4.76-2.44 7-3.54 7s-2.8-2.24-3.54-7Zm7.12 5.02A15.4 15.4 0 0 0 16.83 13h3.1a8.03 8.03 0 0 1-4.35 5.02Z" />
-                                    </svg>
-                                </button>
-
-                                <button class="iconBtn" aria-label="Notifications">
-                                    <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
-                                        <path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22Zm7-6V11a7 7 0 0 0-5-6.71V3a2 2 0 1 0-4 0v1.29A7 7 0 0 0 5 11v5l-2 2v1h20v-1Z" />
-                                    </svg>
-                                </button>
-
-                                <button class="iconBtn" aria-label="Power">
-                                    <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
-                                        <path d="M13 3h-2v10h2V3Zm4.83 2.17-1.42 1.42A7 7 0 1 1 7.6 6.59L6.17 5.17A9 9 0 1 0 17.83 5.17Z" />
-                                    </svg>
-                                </button>
-
-                            </div>
                         </div>
                         <div class="nav-b">
                             <a herf="#" class="btn-deposit btn btn-1 btn-pill">Deposit</a>
                             <a herf="#" class="btn-withdraw btn btn-1 btn-pill">Withdraw</a>
-                            <button data-action="toggle-sidebar" class="btn btn-2 btn-pill">☰</button>
+                            <button data-action="toggle-app" class="d-md-none btn btn-1  btn-pill">
+                                <svg width="23px" height="23px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10,13H3a1,1,0,0,0-1,1v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V14A1,1,0,0,0,10,13ZM9,20H4V15H9ZM21,2H14a1,1,0,0,0-1,1v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V3A1,1,0,0,0,21,2ZM20,9H15V4h5Zm1,4H14a1,1,0,0,0-1,1v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V14A1,1,0,0,0,21,13Zm-1,7H15V15h5ZM10,2H3A1,1,0,0,0,2,3v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V3A1,1,0,0,0,10,2ZM9,9H4V4H9Z" /></svg>
+                            </button>
+                            <button data-action="toggle-sidebar" class="btn btn-2 btn-pill">
+                                <svg width="20px" height="20px" viewBox="0 0 1024 1024" class="icon"><path d="M364.8 106.666667L298.666667 172.8 637.866667 512 298.666667 851.2l66.133333 66.133333L768 512z"  /></svg>
+                            </button>
                         </div>
                     </div>
                     <section class="panels" data-panel="APPS">
                         <div class="panel-promo">
                             <h4 class="section-title">
-                                <img src="image/icon-testing.png" />
+                                <img src="image/menu-speaker.png" />
                                 Promo
                             </h4>
                             <div class="promo-banner">
@@ -168,8 +172,8 @@
                                     </li>
                                     <li class="app">
                                         <a href="#" class="app-badge">
-                                            <img src="image/icn-testing.png" />
-                                            GameName
+                                            <img src="image/icn-testing2.png" />
+                                            More
                                         </a>
                                     </li>
                                 </ul>
@@ -179,78 +183,11 @@
                                 const swiper = new Swiper('.swiper-single', {
                                     speed: 400,
                                     spaceBetween: 100,
+                                    autoplay: {
+                                        delay: 5000,
+                                    },
                                 });
                             </script>
-
-                        </div>
-                        <div class="panel-fav">
-                            <h4 class="section-title">
-                                <img src="image/icon-testing.png" />
-                                Favourite
-                            </h4>
-                            <div class="apps promo-list">
-                                <ul class="app-list ">
-                                    <li class="app">
-                                        <a href="#" class="app-badge">
-                                            <img src="image/icn-testing.png" />
-                                            GameName
-                                        </a>
-                                    </li>
-                                    <li class="app">
-                                        <a href="#" class="app-badge">
-                                            <img src="image/icn-testing.png" />
-                                            GameName
-                                        </a>
-                                    </li>
-                                    <li class="app">
-                                        <a href="#" class="app-badge">
-                                            <img src="image/icn-testing.png" />
-                                            GameName
-                                        </a>
-                                    </li>
-                                    <li class="app">
-                                        <a href="#" class="app-badge">
-                                            <img src="image/icn-testing.png" />
-                                            GameName
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-                        <div class="panel-newv">
-                            <h4 class="section-title">
-                                <img src="image/icon-testing.png" />
-                                New
-                            </h4>
-                            <div class="apps promo-list">
-                                <ul class="app-list ">
-                                    <li class="app">
-                                        <a href="#" class="app-badge">
-                                            <img src="image/icn-testing.png" />
-                                            GameName
-                                        </a>
-                                    </li>
-                                    <li class="app">
-                                        <a href="#" class="app-badge">
-                                            <img src="image/icn-testing.png" />
-                                            GameName
-                                        </a>
-                                    </li>
-                                    <li class="app">
-                                        <a href="#" class="app-badge">
-                                            <img src="image/icn-testing.png" />
-                                            GameName
-                                        </a>
-                                    </li>
-                                    <li class="app">
-                                        <a href="#" class="app-badge">
-                                            <img src="image/icn-testing.png" />
-                                            GameName
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
 
                         </div>
                     </section>
@@ -258,32 +195,42 @@
                         <ul class="prod-nav nav--left border-top-1">
                             <li>
                                 <a href="#">
-                                    <span><img src="image/icon-testing.png" /></span> Daily
+                                    <span><img src="image/menu-daily.png" /></span> Daily
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <span><img src="image/icon-testing.png" /></span> Friend
+                                    <span><img src="image/menu-friend.png" /></span> Friend
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <span><img src="image/icon-testing.png" /></span> PK
+                                    <span><img src="image/menu-pk.png" /></span> PK
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <span><img src="image/icon-testing.png" /></span> Treasure
+                                    <span><img src="image/menu-tressure.png" /></span> Treasure
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <span><img src="image/icon-testing.png" /></span> Lucky Draw
+                                    <span><img src="image/menu-luckydraw.png" /></span> Lucky Draw
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <span><img src="image/icon-testing.png" /></span> Redeem
+                                    <span><img src="image/menu-redeem.png" /></span> Redeem
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span><img src="image/menu-deposit.png" /></span> Deposit
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span><img src="image/menu-withdraw.png" /></span> Withdraw
                                 </a>
                             </li>
                         </ul>
@@ -292,47 +239,47 @@
                         <ul class="menu-nav nav--left border-top-1">
                             <li>
                                 <a href="#">
-                                    <img src="image/icon-testing.png" /> Home
+                                    <img src="image/menu-home.png" /> Home
                                 </a>
                             </li>
                             <li>
                                 <a href="#" aria-current="page">
-                                    <img src="image/icon-testing.png" /> Slots
+                                    <img src="image/menu-slots.png" /> Slots
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <img src="image/icon-testing.png" /> Live Casino
+                                    <img src="image/menu-casino.png" /> Live Casino
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <img src="image/icon-testing.png" /> SportsBook
+                                    <img src="image/menu-sports.png" /> SportsBook
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <img src="image/icon-testing.png" /> P2P
+                                    <img src="image/menu-gaming2.png" /> P2P
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <img src="image/icon-testing.png" /> Battle
+                                    <img src="image/menu-fishing.png" /> Battle
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <img src="image/icon-testing.png" /> Lottery
+                                    <img src="image/menu-lottery.png" /> Lottery
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <img src="image/icon-testing.png" /> Promotions
+                                    <img src="image/menu-promo.png" /> Promotions
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <img src="image/icon-testing.png" /> VIP
+                                    <img src="image/menu-vip.png" /> VIP
                                 </a>
                             </li>
                         </ul>
@@ -352,45 +299,45 @@
                 <div class="d-flex justify-content-between align-items-center">
 
                     <div class="toplogo">
-                        <button data-action="toggle-sidebar" class="btn btn-2 d-md-none">></button>
-
-                        <img src="image/logo-testing.png" style="height:40px;" />
+                        <button data-action="toggle-sidebar" class="btn btn-2 btn-pill d-md-none">
+                            <svg width="20px" height="20px" viewBox="0 0 1024 1024" class="icon"><path d="M364.8 106.666667L298.666667 172.8 637.866667 512 298.666667 851.2l66.133333 66.133333L768 512z" /></svg>
+                        </button>
+                        <img src="image/logo-testing.png" style="height:36px;" />
                     </div>
                     <div class="topbar">
                         <div class="topbar__left">
-                            <div class="pill" id="dompet">
-                                <span class="pill__text">MYR 1,570.00</span>
+                            <div class="btn btn-1 btn-pill btnwicon" id="dompet">
+                                <span class="pill__text">MYR 1570K</span>
                                 <span class="pill__iconBtn" aria-label="Wallet">
                                     <!-- wallet icon -->
-                                    <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
-                                        <path d="M20 7H6a3 3 0 0 0-3 3v7a3 3 0 0 0 3 3h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Zm0 12H6a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h14v2h-4a2 2 0 0 0 0 4h4v3a0 0 0 0 1 0 0Zm0-5h-4a0 0 0 0 1 0 0v-2a0 0 0 0 1 0 0h4v2Z" />
+                                    <svg viewBox="-6 -6 28 28">
+                                        <path  d="M14.5 4h-12.12c-0.057 0.012-0.123 0.018-0.19 0.018-0.552 0-1-0.448-1-1 0-0.006 0-0.013 0-0.019l12.81-0.499v-1.19c0.005-0.041 0.008-0.089 0.008-0.138 0-0.652-0.528-1.18-1.18-1.18-0.049 0-0.097 0.003-0.144 0.009l-11.374 1.849c-0.771 0.289-1.31 1.020-1.31 1.877 0 0.011 0 0.023 0 0.034l-0 10.728c-0 0.003-0 0.006-0 0.010 0 0.828 0.672 1.5 1.5 1.5 0 0 0 0 0 0h13c0 0 0 0 0 0 0.828 0 1.5-0.672 1.5-1.5 0-0.004-0-0.007-0-0.011v-8.999c0-0.012 0.001-0.027 0.001-0.041 0-0.801-0.649-1.45-1.45-1.45-0.018 0-0.036 0-0.053 0.001zM13 11c-0.828 0-1.5-0.672-1.5-1.5s0.672-1.5 1.5-1.5c0.828 0 1.5 0.672 1.5 1.5s-0.672 1.5-1.5 1.5z"></path>
                                     </svg>
                                 </span>
                             </div>
 
-                            <div class="pill">
+                            <div class="btn btn-1 btn-pill btnwicon">
                                 <span class="pill__icon">
                                     <!-- coin icon -->
-                                    <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
-                                        <path d="M12 2C7.03 2 3 4.24 3 7v10c0 2.76 4.03 5 9 5s9-2.24 9-5V7c0-2.76-4.03-5-9-5Zm0 2c4.42 0 7 .97 7 3s-2.58 3-7 3-7-.97-7-3 2.58-3 7-3Zm0 16c-4.42 0-7-.97-7-3v-2.1c1.63 1.3 4.43 2.1 7 2.1s5.37-.8 7-2.1V17c0 2.03-2.58 3-7 3Zm0-6c-4.42 0-7-.97-7-3V8.9C6.63 10.2 9.43 11 12 11s5.37-.8 7-2.1V11c0 2.03-2.58 3-7 3Z" />
-                                    </svg>
+                                    <svg width="24px" height="24px" class="icon icon-primarycolor" viewBox="0 0 1024 1024">
+                                    <path d="M161.92 580.736l29.888 58.88C171.328 659.776 160 681.728 160 704c0 82.304 155.328 160 352 160s352-77.696 352-160c0-22.272-11.392-44.16-31.808-64.32l30.464-58.432C903.936 615.808 928 657.664 928 704c0 129.728-188.544 224-416 224S96 833.728 96 704c0-46.592 24.32-88.576 65.92-123.264z" /><path d="M161.92 388.736l29.888 58.88C171.328 467.84 160 489.792 160 512c0 82.304 155.328 160 352 160s352-77.696 352-160c0-22.272-11.392-44.16-31.808-64.32l30.464-58.432C903.936 423.808 928 465.664 928 512c0 129.728-188.544 224-416 224S96 641.728 96 512c0-46.592 24.32-88.576 65.92-123.264z" /><path d="M512 544c-227.456 0-416-94.272-416-224S284.544 96 512 96s416 94.272 416 224-188.544 224-416 224zm0-64c196.672 0 352-77.696 352-160S708.672 160 512 160s-352 77.696-352 160 155.328 160 352 160z" /></svg>
                                 </span>
                                 <span class="pill__text">9,000,000</span>
                                 <button class="pill__iconBtn" aria-label="Gift">
                                     <!-- gift icon -->
-                                    <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
-                                        <path d="M20 7h-1.18A3 3 0 0 0 16 3c-1.38 0-2.63.78-3.22 2.02L12 6.76l-.78-1.74A3.56 3.56 0 0 0 8 3 3 3 0 0 0 5.18 7H4a2 2 0 0 0-2 2v2h10V7h2v4h10V9a2 2 0 0 0-2-2ZM8 5c.6 0 1.13.35 1.35.9L10 7H6.2A1.5 1.5 0 0 1 8 5Zm8 0a1.5 1.5 0 0 1 1.8 2H14l.65-1.1C14.87 5.35 15.4 5 16 5ZM2 13v7a2 2 0 0 0 2 2h8v-9H2Zm12 9h8a2 2 0 0 0 2-2v-7H14v9Z" />
+                                    <svg viewBox="0 0 15 15">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 0C3.11929 0 2 1.11929 2 2.5V2.78571C2 3.23408 2.13327 3.65133 2.36235 4H1.5C0.671573 4 0 4.67157 0 5.5V6.5C0 7.32843 0.671573 8 1.5 8H7V4H8V8H13.5C14.3284 8 15 7.32843 15 6.5V5.5C15 4.67157 14.3284 4 13.5 4H12.6377C12.8667 3.65133 13 3.23408 13 2.78571V2.5C13 1.11929 11.8807 0 10.5 0C9.22684 0 8.11245 0.679792 7.5 1.69621C6.88755 0.679792 5.77316 0 4.5 0ZM8 4H10.7857C11.4563 4 12 3.45635 12 2.78571V2.5C12 1.67157 11.3284 1 10.5 1C9.11929 1 8 2.11929 8 3.5V4ZM7 4H4.21429C3.54365 4 3 3.45635 3 2.78571V2.5C3 1.67157 3.67157 1 4.5 1C5.88071 1 7 2.11929 7 3.5V4Z" />
+                                        <path d="M7 9H1V12.5C1 13.8807 2.11929 15 3.5 15H7V9Z" />
+                                        <path d="M8 15H11.5C12.8807 15 14 13.8807 14 12.5V9H8V15Z" />
                                     </svg>
                                 </button>
                             </div>
 
-                            <a href="#" class="pill pill--btn" id="playerBtn" type="button">
+                            <a href="#" class="btn btn-1 btn-pill btnwicon" id="playerBtn" type="button">
                                 <span class="pill__text" aria-label="playerName">PLAYER998</span>
                                 <!-- user icon -->
                                 <span class="pill__iconBtn" aria-label="Player">
-                                    <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
-                                        <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4.42 0-8 2-8 4.5V21h16v-2.5C20 16 16.42 14 12 14Z" />
-                                    </svg>
+                                    <svg viewBox="-5 -3 24 24" xmlns="http://www.w3.org/2000/svg" class="cf-icon-svg"><path d="M12.517 12.834v1.9a1.27 1.27 0 0 1-1.267 1.267h-9.5a1.27 1.27 0 0 1-1.267-1.267v-1.9A3.176 3.176 0 0 1 3.65 9.667h5.7a3.176 3.176 0 0 1 3.167 3.167zM3.264 5.48A3.236 3.236 0 1 1 6.5 8.717a3.236 3.236 0 0 1-3.236-3.236z" /></svg>
 
                                 </span>
                             </a>
@@ -404,35 +351,45 @@
                                         <div class="level">
                                             <a href="#" class="level__item">
                                                 <span class="level__left">
-                                                    <span class="level__dot">⚙️</span>
+                                                    <span class="level__dot">
+                                                        <img src="image/menu-sports.png" />
+                                                    </span>
                                                     <span>Sports</span>
                                                 </span>
                                                 <span class="level__right">LV.0</span>
                                             </a>
                                             <a href="#" class="level__item">
                                                 <span class="level__left">
-                                                    <span class="level__dot">🎰</span>
+                                                    <span class="level__dot">
+                                                        <img src="image/menu-casino.png" />
+                                                    </span>
                                                     <span>casino</span>
                                                 </span>
                                                 <span class="level__right">LV.0</span>
                                             </a>
                                             <a href="#" class="level__item">
                                                 <span class="level__left">
-                                                    <span class="level__dot">🎮</span>
+                                                    <span class="level__dot">
+                                                        <img src="image/menu-slots.png" />
+                                                    </span>
                                                     <span>Games</span>
                                                 </span>
                                                 <span class="level__right">LV.0</span>
                                             </a>
                                             <a href="#" class="level__item">
                                                 <span class="level__left">
-                                                    <span class="level__dot">🎟️</span>
+                                                    <span class="level__dot">
+                                                        <img src="image/menu-lottery.png" />
+                                                    </span>
                                                     <span>Lottery</span>
                                                 </span>
                                                 <span class="level__right">LV.0</span>
                                             </a>
                                             <a href="#" class="level__item">
                                                 <span class="level__left">
-                                                    <span class="level__dot">🧧</span>
+                                                    <span class="level__dot">
+                                                        <img src="image/menu-gaming2.png" />
+                                                    </span>
                                                     <span>P2P</span>
                                                 </span>
                                                 <span class="level__right">LV.0</span>
@@ -447,24 +404,24 @@
                         <div class="topbar__right">
 
                             <button class="iconBtn" aria-label="Download">
-                                <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+                                <svg viewBox="0 0 20 20" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
                                     <path d="M5 20h14v-2H5v2Zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1Z" />
                                 </svg>
                             </button>
                             <button class="iconBtn" aria-label="Language">
-                                <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
-                                    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm7.93 9h-3.1a15.4 15.4 0 0 0-1.25-5.02A8.03 8.03 0 0 1 19.93 11ZM12 4c1.1 0 2.8 2.24 3.54 7H8.46C9.2 6.24 10.9 4 12 4ZM4.07 13h3.1a15.4 15.4 0 0 0 1.25 5.02A8.03 8.03 0 0 1 4.07 13Zm3.1-2h-3.1a8.03 8.03 0 0 1 4.35-5.02A15.4 15.4 0 0 0 7.17 11Zm1.29 2h6.08c-.74 4.76-2.44 7-3.54 7s-2.8-2.24-3.54-7Zm7.12 5.02A15.4 15.4 0 0 0 16.83 13h3.1a8.03 8.03 0 0 1-4.35 5.02Z" />
+                                <svg viewBox="0 0 15 15" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M8,1 C11.8659932,1 15,4.13400675 15,8 C15,11.8659932 11.8659932,15 8,15 C4.13400675,15 1,11.8659932 1,8 C1,4.13400675 4.13400675,1 8,1 Z M8.96515973,9.00117633 L7.03484027,9.00117633 C7.12137413,10.2320385 7.36481835,11.3402224 7.71696972,12.1619089 C7.79348978,12.3404557 7.87172301,12.496879 7.94824865,12.6292915 L8,12.713 L8.05175135,12.6292915 C8.10276844,12.5410165 8.15454446,12.44207 8.20606586,12.3330113 L8.28303028,12.1619089 C8.63518165,11.3402224 8.87862587,10.2320385 8.96515973,9.00117633 Z M5.03044222,9.00099906 L3.10025909,9.0011864 C3.4031332,10.491395 4.36879751,11.740808 5.67610553,12.4282788 C5.33910207,11.4654592 5.10953483,10.2898775 5.03044222,9.00099906 Z M12.8997409,9.0011864 L10.9695578,9.00099906 C10.8904652,10.2898775 10.6608979,11.4654592 10.3237161,12.4277375 C11.6312025,11.740808 12.5968668,10.491395 12.8997409,9.0011864 Z M5.67628393,3.57226248 L5.59436492,3.61568174 C4.32832407,4.31182571 3.39636062,5.54039637 3.10005628,6.99981203 L5.03038108,6.99999768 C5.10941648,5.7107286 5.33901516,4.53478884 5.67628393,3.57226248 Z M8,3.286 L7.94824865,3.37070855 C7.87172301,3.50312104 7.79348978,3.65954431 7.71696972,3.83809113 C7.36472343,4.65999912 7.1212429,5.76855889 7.03477034,6.99981901 L8.96522966,6.99981901 C8.8787571,5.76855889 8.63527657,4.65999912 8.28303028,3.83809113 C8.20651022,3.65954431 8.12827699,3.50312104 8.05175135,3.37070855 L8,3.286 Z M10.3238945,3.57172124 L10.3806361,3.73984101 C10.686808,4.66995318 10.8951132,5.78461983 10.9696189,6.99999768 L12.8999437,6.99981203 C12.5972981,5.50916307 11.6314944,4.25934557 10.3238945,3.57172124 Z" />
                                 </svg>
                             </button>
 
                             <button class="iconBtn" aria-label="Notifications">
-                                <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+                                <svg viewBox="0 0 22 22" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
                                     <path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22Zm7-6V11a7 7 0 0 0-5-6.71V3a2 2 0 1 0-4 0v1.29A7 7 0 0 0 5 11v5l-2 2v1h20v-1Z" />
                                 </svg>
                             </button>
 
                             <button class="iconBtn" aria-label="Power">
-                                <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+                                <svg viewBox="0 0 22 22" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
                                     <path d="M13 3h-2v10h2V3Zm4.83 2.17-1.42 1.42A7 7 0 1 1 7.6 6.59L6.17 5.17A9 9 0 1 0 17.83 5.17Z" />
                                 </svg>
                             </button>
@@ -478,18 +435,18 @@
                 <style>
                     .swiper-slide img { width: 100%; }
 
-                    .banner-main { height: 250px; }
+                    .banner-main { }
                         .banner-main .swiper-wrapper,
                         .banner-main .swiper-slide { height: 100%; }
                         .banner-main .banner-slide { background-position: center; background-size: cover; background-repeat: no-repeat; }
                 </style>
                 <div class="banner swiper banner-main js-banner">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing.png"></div>
-                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing.png"></div>
-                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing.png"></div>
-                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing.png"></div>
-                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing.png"></div>
+                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing3.png"></div>
+                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing2.png"></div>
+                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing3.png"></div>
+                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing2.png"></div>
+                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing.png3"></div>
                     </div>
 
                     <div class="swiper-pagination"></div>
@@ -541,6 +498,9 @@
                             navigation: {
                                 nextEl: bannerEl.querySelector('.swiper-button-next'),
                                 prevEl: bannerEl.querySelector('.swiper-button-prev'),
+                            },
+                            autoplay: {
+                                delay: 5000,
                             },
                         });
 
@@ -594,24 +554,39 @@
                         <div class="vender-filter">
                             <ul class="filter">
                                 <li class="filter-btn active" data-filter="all">
-                                    <span><img src="image/icon-testing.png" /></span>All
+                                    <span>
+                                        <svg viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+<path d="M57,44.5c-1.5,0-2.7-1.2-2.7-2.7V24.5c0-1.5,1.2-2.7,2.7-2.7h17.6c1.5,0,2.7,1.2,2.7,2.7v17.3
+	c0,1.5-1.2,2.7-2.7,2.7H57z" />
+<path d="M64.6,54.7L54.3,65.8c-0.6,0.6-0.6,1.7,0,2.3l10.3,11.1c0.7,0.7,1.8,0.7,2.5,0l10.3-11.1
+	c0.6-0.6,0.6-1.7,0-2.3L67.1,54.7C66.4,54,65.2,54,64.6,54.7z" />
+<circle cx="33.8" cy="66.6" r="11.6" />
+<path d="M23.6,25.7l8.9-5.1c0.8-0.5,1.8-0.5,2.7,0l8.9,5.1c0.8,0.5,1.3,1.4,1.3,2.3v10.2c0,0.9-0.5,1.8-1.3,2.3
+	l-8.9,5.1c-0.8,0.5-1.8,0.5-2.7,0l-8.9-5.1c-0.8-0.5-1.4-1.4-1.4-2.3V28C22.2,27,22.8,26.1,23.6,25.7z" />
+</svg>
+                                    </span>All
                                 </li>
                                 <li class="filter-btn" data-filter="hot">
-                                    <span><img src="image/icon-testing.png" /></span>Hot
+                                    <span>
+                                        <svg viewBox="0 0 20 20" ><path d="M10 0s8 7.58 8 12a8 8 0 1 1-16 0c0-1.5.91-3.35 2.12-5.15A3 3 0 0 0 10 6V0zM8 0a3 3 0 1 0 0 6V0z" /></svg>
+                                    </span>Hot
                                 </li>
                                 <li class="filter-btn" data-filter="bigwin">
-                                    <span><img src="image/icon-testing.png" /></span>Big Win
+                                    <span>
+                                        <svg viewBox="0 0 20 20"  preserveAspectRatio="xMinYMin" class="jam jam-crown"><path d='M2.776 5.106L3.648 11h12.736l.867-5.98-3.493 3.02-3.755-4.827-3.909 4.811-3.318-2.918zm10.038-1.537l-.078.067.141.014 1.167 1.499 1.437-1.242.14.014-.062-.082 2.413-2.086a1 1 0 0 1 1.643.9L18.115 13H1.922L.399 2.7a1 1 0 0 1 1.65-.898L4.35 3.827l-.05.06.109-.008 1.444 1.27 1.212-1.493.109-.009-.06-.052L9.245.976a1 1 0 0 1 1.565.017l2.005 2.576zM2 14h16v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z' /></svg>
+                                    </span>Big Win
                                 </li>
                                 <li class="filter-btn" data-filter="fav">
-                                    <span><img src="image/icon-testing.png" /></span>Favorites
+                                    <span>
+                                        <svg class="heart" viewBox="0 0 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
+                                    </span>Favorites
                                 </li>
                             </ul>
                         </div>
-                        
                         <div class="vendor-searchcontainer">
                             <input id="vendor-search" type="search" placeholder="Search vendors..." autocomplete="off">
                             <svg class="input-icon" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M17.545 15.467l-3.779-3.779a6.15 6.15 0 0 0 .898-3.21c0-3.417-2.961-6.377-6.378-6.377A6.185 6.185 0 0 0 2.1 8.287c0 3.416 2.961 6.377 6.377 6.377a6.15 6.15 0 0 0 3.115-.844l3.799 3.801a.953.953 0 0 0 1.346 0l.943-.943c.371-.371.236-.84-.135-1.211zM4.004 8.287a4.282 4.282 0 0 1 4.282-4.283c2.366 0 4.474 2.107 4.474 4.474a4.284 4.284 0 0 1-4.283 4.283c-2.366-.001-4.473-2.109-4.473-4.474z" />
+                                <path d="M17.545 15.467l-3.779-3.779a6.15 6.15 0 0 0 .898-3.21c0-3.417-2.961-6.377-6.378-6.377A6.185 6.185 0 0 0 2.1 8.287c0 3.416 2.961 6.377 6.377 6.377a6.15 6.15 0 0 0 3.115-.844l3.799 3.801a.953.953 0 0 0 1.346 0l.943-.943c.371-.371.236-.84-.135-1.211zM4.004 8.287a4.282 4.282 0 0 1 4.282-4.283c2.366 0 4.474 2.107 4.474 4.474a4.284 4.284 0 0 1-4.283 4.283c-2.366-.001-4.473-2.109-4.473-4.474z"></path>
                             </svg>
                         </div>
 
@@ -628,7 +603,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -641,7 +616,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -654,7 +629,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -667,7 +642,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -680,7 +655,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -693,7 +668,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -706,7 +681,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -719,7 +694,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -732,7 +707,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -745,7 +720,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -758,7 +733,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -771,7 +746,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -784,7 +759,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -797,7 +772,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -810,7 +785,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -823,7 +798,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -836,7 +811,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -849,7 +824,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -862,7 +837,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -875,7 +850,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -888,7 +863,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -901,7 +876,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -914,7 +889,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -927,7 +902,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -940,7 +915,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -953,7 +928,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -966,7 +941,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -979,7 +954,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -992,7 +967,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -1005,7 +980,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -1018,7 +993,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -1031,7 +1006,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -1044,7 +1019,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -1057,7 +1032,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -1070,7 +1045,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -1083,7 +1058,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -1096,7 +1071,7 @@
                                     <img src="image/icon-testing.png" />
                                 </a>
                                 <button class="btn-fav btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.528a6 6 0 0 0-8.243 8.715l6.829 6.828a2 2 0 0 0 2.828 0l6.829-6.828A6 6 0 0 0 12 4.528zm-1.172 1.644l.465.464a1 1 0 0 0 1.414 0l.465-.464a4 4 0 1 1 5.656 5.656L12 18.657l-6.828-6.829a4 4 0 0 1 5.656-5.656z" /></svg>
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
                                 </button>
                             </div>
                         </li>
@@ -1370,8 +1345,41 @@
         });
 
     </script>
+    <script>
+        const btn = document.querySelector('[data-action="toggle-app"]');
+        const nav = document.querySelector('.navprod');
+        const body = document.body;
 
+        function openNav() {
+            nav.classList.add('active');
+            body.classList.add('no-scroll');
+        }
+
+        function closeNav() {
+            nav.classList.remove('active');
+            body.classList.remove('no-scroll');
+        }
+
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            nav.classList.contains('active') ? closeNav() : openNav();
+        });
+
+        /* 点击遮罩（navprod）关掉 */
+        nav.addEventListener('click', () => {
+            closeNav();
+        });
+
+        /* 点击菜单面板（ul）不要关 */
+        nav.querySelector('.prod-nav').addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        /* 可选：ESC 关闭 */
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeNav();
+        });
+
+    </script>
 </body>
 </html>
-
-
