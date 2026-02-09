@@ -225,7 +225,7 @@ body.sidebar-animating .span-toggle { transition: none !important; }
 @media(min-width:1024px) {
     .toplogo, .topbar { margin: var(--space-4) var(--space-5); }
     .logo-img { height: var(--icn-w40) }
-    .topbar__left .btn-1 { padding-top: var(--space-2); padding-bottom: var(--space-2); }
+    .topbar__left .p_p1 { padding-top: calc(var(--space-2) + 1px); padding-bottom: calc(var(--space-2) + 1px) }
 }
 
 @media(max-width:767.98px) {
