@@ -113,7 +113,7 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
     .menu-nav li { list-style-type: none; }
         .menu-nav li > a { display: block; padding: var(--space-2); border-radius: var(--radius-md); }
             .menu-nav li > a:hover { background-color: var(--bg-color) !important; }
-            .menu-nav li > a[aria-current] { background-color: var(--primary-color) !important; color: var( --font-color); }
+            .menu-nav li > a[aria-current] { background-color: var(--primary-color) !important; color: var(--white-color); }
             .menu-nav li > a img { margin-right: var(--space-2); width: var(--icn-w30); height: var(--icn-w30); }
     .menu-nav:hover li > a[aria-current] { }
 .sidebar-header__quick .btn-2 { padding-left: var(--space-2); padding-right: var(--space-2); }
@@ -316,15 +316,15 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
 .vendor-rail { display: flex; align-items: center; gap: var(--space-2); }
     .vendor-rail::-webkit-scrollbar { display: none; }
 .filter { margin: 0; padding: 0; display: flex; flex: 0 0 auto; scroll-snap-align: start; white-space: nowrap; }
-.filter-btn { list-style-type: none; padding: var(--space-2) var(--space-4); border-radius: var(--radius-pill); cursor: pointer; margin: var(--space-1); color: var(--white-color); }
+.filter-btn { list-style-type: none; padding: var(--space-2) var(--space-4); border-radius: var(--radius-pill); cursor: pointer; margin: var(--space-1); color: var(--font-color); }
     .filter-btn:hover { background-color: var(--bg-color); }
     .filter-btn.active { background-color: var(--primary-color); border: var(--border-width) solid var(--accent-color); }
     .filter-btn img { width: 100%; }
     .filter-btn span { width: var(--icn-w18); display: inline-block; }
     .filter-btn svg { fill: var(--white-color); }
 
-    .filter-btn.active { color: var(--font-color); }
-        .filter-btn.active svg { fill: var(--font-color); }
+    .filter-btn.active { color: var(--white-color); }
+        .filter-btn.active svg { fill: var(--white-color); }
 
 .vendor-searchcontainer { position: relative; }
 .input-icon { position: absolute; right: var(--space-2); top: 50%; transform: translateY(-50%); width: var(--icn-w24); height: var(--icn-w24); pointer-events: none; color: var(--white-color); fill: var(--font-color); }
