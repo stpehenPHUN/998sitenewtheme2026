@@ -169,7 +169,8 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
 @media (max-width:1023.89px) {
     .nav-tlb { }
         .nav-tlb > ul { gap: var(--space-1); }
-            .nav-tlb > ul li { background: var(--bg-color) }
+            .nav-tlb > ul li { background: var(--bg-color); display: flex; justify-content: center; align-items: center; } }
+
 
         .nav-tlb .btn-2 .pill__text { font-size: var(--text-xs); }
 }
