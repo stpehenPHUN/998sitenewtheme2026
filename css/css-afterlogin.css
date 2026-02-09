@@ -185,7 +185,7 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
         .navprod .prod-nav { position: absolute; top: 60px; left: var(--space-4); right: var(--space-4); background: var(--secondary-color); padding: var(--space-3); border: var(--border-width) solid var(--accent-color); border-radius: var(--radius-md); transform: translateY(-12px) scale(0.98); opacity: 0; transition: transform 260ms cubic-bezier(.2,.8,.2,1), opacity 200ms ease; max-height: calc(100vh - 120px); overflow: auto; -webkit-overflow-scrolling: touch; }
         .navprod.active .prod-nav { transform: translateY(0) scale(1); opacity: 1; }
 
-    .nav-b [data-action="toggle-sidebar"] { padding:0;}
+    .nav-b [data-action="toggle-sidebar"] { padding-left: var(--space-2); padding-right: var(--space-2); }
 }
 
 @media (max-width:365px) {
