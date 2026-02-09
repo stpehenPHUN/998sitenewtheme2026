@@ -497,7 +497,7 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
 /* ===== Wheel Picker（单列） ===== */
 :root { --item-h: 44px; --visible: 5; }
 
-.wheel { position: relative; height: calc(var(--item-h) * var(--visible)); margin: var(--space-3) var(--space-3) var(--space-2); border-radius: var(--radius-md); background: var(--bg-color); border: var(--border-width) solid var(--primary-color); overflow: hidden; outline: none; }
+.wheel { position: relative; height: calc(var(--item-h) * var(--visible)); margin: var(--space-3) var(--space-3) var(--space-2); border-radius: var(--radius-md); background: var(--bg-color); border: var(--border-width) solid var(--secondary-color); overflow: hidden; outline: none; }
 
 .wheel__scroller { height: 100%; overflow-y: auto; scroll-snap-type: y mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .wheel__scroller::-webkit-scrollbar { display: none; }
