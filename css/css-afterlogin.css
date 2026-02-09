@@ -204,10 +204,13 @@ body.sidebar-animating .span-toggle { transition: none !important; }
         .sidebar-nav--product.active .prod-nav { transform: translateY(0) scale(1); opacity: 1; }
 
     .sidebar-header__actions [data-action="toggle-sidebar"] { padding-left: var(--space-2); padding-right: var(--space-2); }
+    .btn-with-icon { gap: var(--space-1) }
+
 }
 
 @media (max-width:365px) {
-    .sidebar-header__quick > ul { }
+    .pill__text .currency {display:none; }
+    .topbar__left{gap:0;}
 }
 /*--------- body header */
 .toplogo, .topbar { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); margin: var(--space-2) var(--space-2); }
@@ -254,6 +257,8 @@ body.sidebar-animating .span-toggle { transition: none !important; }
 
     .ml-1 { margin-left: var(--space-1); }
     .mr--2 { margin-right: calc(var(--space-2) * -1); }
+
+    .btn.plan{margin:0 !important;}
 }
 
 /* player button pill */
