@@ -1,11 +1,5 @@
 /* === Design Tokens === */
-:root { /* colors */ --bg-color: #FFFFFF; --secondary-color: #EDF2F7; --primary-color: #1A202C; --accent-color: #3182CE; --font-color: #2D3748; --white-color: #FFFFFF; /* typography */ --font-family-base: 'Poppins',system-ui,-apple-system,BlinkMacSystemFont,sans-serif; font-size: 16px; --text-xxs: 0.65625rem; /* 10.5px */ --text-xs: 0.75rem; /* 12px */ --text-sm: 0.875rem; /* 14px */ --text-base: 1rem; /* 16px */ --text-lg: 1.125rem; /* 18px */ --text-xl: 1.25rem; /* 20px */ --text-2xl: 1.5rem; /* 24px */ --leading-tight: 1.2; --leading-normal: 1.5; --leading-relaxed: 1.7; --font-regular: 400; --font-medium: 500; --font-semibold: 600; --font-bold: 700; /* borders */ --border-width: 1px; --border-secondary-color: var(--primary-color); /* radius & shadow */ --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px; --radius-xl: 16px; --radius-pill: 9999px; --shadow-sm: 0 1px 2px rgba(0,0,0,.05); --shadow-md: 0 4px 12px rgba(0,0,0,.12); /* spacing */ --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 24px; --space-6: 32px; /* motion */ --duration-fast: 120ms; --duration-normal: 240ms; --duration-slow: 400ms; --ease-out: cubic-bezier(0.16,1,0.3,1); --ease-in: cubic-bezier(0.32,0,0.67,0); --ease-in-out: cubic-bezier(0.65,0,0.35,1); --ease-interact: cubic-bezier(0.16,1,0.3,1); --ease-move: cubic-bezier(0.22,1,0.36,1); /* icon sizing */ --icn-w12: 12px; --icn-w16: 16px; --icn-w18: 18px; --icn-w24: 24px; --icn-w30: 30px; --icn-w40: 40px; --icn-w44: 44px; --icn-w50: 50px; --icn-w56: 56px; /* sidenav */ --rail-w: 62px; --drawer-w: 250px; --sidebar-w: calc(var(--rail-w) + var(--drawer-w)); --bp: 992px; /* focus ring */ --focus-ring: 0 0 0 3px rgba(49,130,206,.25); /* vendorlist */ --item-h: 95px; --item-game-h: 65px; }
-}
-
-@media (min-width:768px) {
-    :root { --item-game-h: 105px; --item-min: 150px; --item-w: 8vw; --item-max: 180px; }
-}
-
+:root { /* colors */ --bg-color: #FFFFFF; --secondary-color: #EDF2F7; --primary-color: #1A202C; --accent-color: #3182CE; --font-color: #2D3748; --white-color: #FFFFFF; /* typography */ --font-family-base: 'Poppins',system-ui,-apple-system,BlinkMacSystemFont,sans-serif; font-size: 16px; --text-xxs: 0.65625rem; /* 10.5px */ --text-xs: 0.75rem; /* 12px */ --text-sm: 0.875rem; /* 14px */ --text-base: 1rem; /* 16px */ --text-lg: 1.125rem; /* 18px */ --text-xl: 1.25rem; /* 20px */ --text-2xl: 1.5rem; /* 24px */ --leading-tight: 1.2; --leading-normal: 1.5; --leading-relaxed: 1.7; --font-regular: 400; --font-medium: 500; --font-semibold: 600; --font-bold: 700; /* borders */ --border-width: 1px; --border-secondary-color: var(--primary-color); /* radius & shadow */ --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px; --radius-xl: 16px; --radius-pill: 9999px; --shadow-sm: 0 1px 2px rgba(0,0,0,.05); --shadow-md: 0 4px 12px rgba(0,0,0,.12); /* spacing */ --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 24px; --space-6: 32px; /* motion */ --duration-fast: 120ms; --duration-normal: 240ms; --duration-slow: 400ms; --ease-out: cubic-bezier(0.16,1,0.3,1); --ease-in: cubic-bezier(0.32,0,0.67,0); --ease-in-out: cubic-bezier(0.65,0,0.35,1); --ease-interact: cubic-bezier(0.16,1,0.3,1); --ease-move: cubic-bezier(0.22,1,0.36,1); /* icon sizing */ --icn-w12: 12px; --icn-w16: 16px; --icn-w18: 18px; --icn-w24: 24px; --icn-w30: 30px; --icn-w40: 40px; --icn-w44: 44px; --icn-w50: 50px; --icn-w56: 56px; /* sidenav */ --rail-w: 62px; --drawer-w: 250px; --sidebar-w: calc(var(--rail-w) + var(--drawer-w)); --bp: 992px; /* focus ring */ --focus-ring: 0 0 0 3px rgba(49,130,206,.25); }
 .swiper { --swiper-navigation-color: #ffffff; /* Sets arrows to white */ --swiper-pagination-color: #ffffff; /* Optional: sets pagination to white */ }
 
 /* font-family */
@@ -379,6 +373,11 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
 
 
 /* vendor List */
+:root { --item-h: 95px; --item-game-h: 65px; }
+
+@media (min-width:768px) {
+    :root { --item-game-h: 105px; /* 卡片高度锁死 */ --item-min: 150px; --item-w: 8vw; /* 最小宽度 */ --item-max: 180px; }
+}
 
 .vendors { margin: var(--space-2); }
 .vendor-list { margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-2); justify-content: flex-start; justify-content: start; /* 左对齐，不拉伸 */ align-content: start; }
@@ -510,6 +509,7 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
 
 .wheel__fade { position: absolute; inset: 0; pointer-events: none; background: var(--bg-color) }
 
+/* 无障碍：聚焦轮盘时给一点提示 */
 .wheel:focus { box-shadow: 0 0 0 3px rgba(120,220,255,.25); }
 
 
