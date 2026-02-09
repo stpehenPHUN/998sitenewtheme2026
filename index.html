@@ -80,7 +80,7 @@
                                         <span class="pill__text" aria-label="playerName">PLAYER998</span>
                                         <div class="nav-tr">
 
-                                            <div id="togglesettings" class="settingbox open">
+                                            <div id="togglesettings" class="settingbox">
                                                 <div class="settingboxwrapper">
                                                     <div class="settingsbox">
                                                         <div class="settingsboxwrapper">
@@ -105,7 +105,7 @@
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <button id="btn-settingsbox" class="btn-setting__open" aria-label="Open Settings Box">
+                                                        <button id="btn-settingsbox" class="btn-setting__close" aria-label="Open Settings Box">
                                                             <svg viewBox="0 0 34 34"><path d="M13,16c0,1.654,1.346,3,3,3s3-1.346,3-3s-1.346-3-3-3S13,14.346,13,16z" id="XMLID_294_" /><path d="M13,26c0,1.654,1.346,3,3,3s3-1.346,3-3s-1.346-3-3-3S13,24.346,13,26z" id="XMLID_295_" /><path d="M13,6c0,1.654,1.346,3,3,3s3-1.346,3-3s-1.346-3-3-3S13,4.346,13,6z" id="XMLID_297_" /></svg>
                                                         </button>
                                                     </div>
@@ -116,7 +116,7 @@
 
                                     </div>
                                     <div class="nav-tlb">
-                                        <ul class="d-flex align-items-center m-0 p-0">
+                                        <ul class="d-flex m-0 p-0">
                                             <li class="list-unstyled">
                                                 <div class="btn btn-2 btn-pill p-1 d-flex align-items-center" aria-label="Wallet">
                                                     <!-- wallet icon -->
@@ -149,12 +149,12 @@
                             </div>
                         </div>
                         <div class="nav-b">
-                            <a herf="#" class="btn-deposit btn btn-1 btn-pill">Deposit</a>
-                            <a herf="#" class="btn-withdraw btn btn-1 btn-pill">Withdraw</a>
+                            <a herf="#" class="btn-deposit btn btn-1 btn-pill btnh">Deposit</a>
+                            <a herf="#" class="btn-withdraw btn btn-1 btn-pill btnh">Withdraw</a>
                             <button data-action="toggle-app" class="d-md-none btn btn-1  btn-pill">
                                 <svg width="23px" height="23px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10,13H3a1,1,0,0,0-1,1v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V14A1,1,0,0,0,10,13ZM9,20H4V15H9ZM21,2H14a1,1,0,0,0-1,1v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V3A1,1,0,0,0,21,2ZM20,9H15V4h5Zm1,4H14a1,1,0,0,0-1,1v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V14A1,1,0,0,0,21,13Zm-1,7H15V15h5ZM10,2H3A1,1,0,0,0,2,3v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V3A1,1,0,0,0,10,2ZM9,9H4V4H9Z" /></svg>
                             </button>
-                            <button data-action="toggle-sidebar" class="btn btn-2 btn-pill">
+                            <button data-action="toggle-sidebar" class="btn btn-2 btn-pill btnh">
                                 <svg width="20px" height="20px" viewBox="0 0 1024 1024" class="icon"><path d="M364.8 106.666667L298.666667 172.8 637.866667 512 298.666667 851.2l66.133333 66.133333L768 512z" /></svg>
                             </button>
                         </div>
@@ -346,7 +346,7 @@
                     </div>
                     <div class="topbar">
                         <div class="topbar__left">
-                            <div class="btn btn-1 btn-pill btnwicon" id="dompet">
+                            <div class="btn btn-1 btn-pill btnwicon btnnonh" id="dompet">
                                 <span class="pill__iconBtn" aria-label="Wallet">
                                     <!-- wallet icon -->
                                     <svg viewBox="-6 -6 28 28">
@@ -359,7 +359,7 @@
                                 </button>
                             </div>
 
-                            <div class="btn btn-1 btn-pill btnwicon">
+                            <div class="btn btn-1 btn-pill btnwicon btnnonh">
                                 <button class="pill__iconBtn" aria-label="Gift">
                                     <!-- gift icon -->
                                     <svg viewBox="0 0 15 15">
@@ -371,7 +371,7 @@
                                 <span class="pill__text">9,000,000</span>
                             </div>
 
-                            <a href="#" class="btn btn-1 btn-pill btnwicon" id="playerBtn" type="button">
+                            <a href="#" class="btn btn-1 btn-pill btnwicon btnnonh" id="playerBtn" type="button">
                                 <span class="pill__iconBtn" aria-label="Player">
                                     <svg viewBox="-5 -3 24 24" xmlns="http://www.w3.org/2000/svg" class="cf-icon-svg"><path d="M12.517 12.834v1.9a1.27 1.27 0 0 1-1.267 1.267h-9.5a1.27 1.27 0 0 1-1.267-1.267v-1.9A3.176 3.176 0 0 1 3.65 9.667h5.7a3.176 3.176 0 0 1 3.167 3.167zM3.264 5.48A3.236 3.236 0 1 1 6.5 8.717a3.236 3.236 0 0 1-3.236-3.236z" /></svg>
 
@@ -1628,7 +1628,7 @@
     <script>
         //search
         document.addEventListener('DOMContentLoaded', () => {
-            const BP_MOBILE_MAX = 767.98;
+            const BP_MOBILE_MAX = 1024;
 
             const isMobile = () => window.innerWidth <= BP_MOBILE_MAX;
 
