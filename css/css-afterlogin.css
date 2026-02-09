@@ -321,7 +321,7 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
     .filter-btn.active { background-color: var(--primary-color); border: var(--border-width) solid var(--accent-color); }
     .filter-btn img { width: 100%; }
     .filter-btn span { width: var(--icn-w18); display: inline-block; }
-    .filter-btn svg { fill: var(--white-color); }
+    .filter-btn svg { fill: var(--font-color); }
 
     .filter-btn.active { color: var(--white-color); }
         .filter-btn.active svg { fill: var(--white-color); }
