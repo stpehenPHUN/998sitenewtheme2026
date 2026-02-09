@@ -403,7 +403,7 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
 .btn-fav { color: var(--font-color); border: 0 !important; }
     .btn-fav.active { color: var(--primary-color); background-color: var(--secondary-color); border-color: var(--secondary-color) !important; }
     .btn-fav svg { fill: transparent; }
-        .btn-fav svg path { stroke: var(--font-color); fill-rule: nonzero; clip-rule: nonzero; }
+        .btn-fav svg path { stroke: var(--white-color); fill-rule: nonzero; clip-rule: nonzero; }
     .btn-fav.active { background-color: var(--secondary-color); }
         .btn-fav.active svg { fill: var(--primary-color); }
             .btn-fav.active svg path { stroke: currentColor; }
