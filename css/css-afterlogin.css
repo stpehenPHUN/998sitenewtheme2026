@@ -424,7 +424,7 @@ body.sidebar-animating .span-toggle { transition: none !important; }
 .vendors { margin: var(--space-2); }
 .vendor-list { margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); justify-content: flex-start; justify-content: start; /* 左对齐，不拉伸 */ align-content: start; }
     .vendor-list.is-empty { display: block; margin: var(--space-4) var(--space-2); }
-.vendor-empty { text-align: center; }
+.vendor-empty { text-align: center; font-size:var(--text-sm);}
 .vendor { list-style-type: none; position: relative; overflow: hidden; border-radius: var(--radius-md); border-top: var(--border-width) solid var(--primary-color); aspect-ratio: 1/1; }
 .vendor-img { transition: transform var(--duration-normal) var(--ease-interact); height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; }
     .vendor-img img { }
