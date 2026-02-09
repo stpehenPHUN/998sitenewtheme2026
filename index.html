@@ -13,7 +13,6 @@
     <script src="js/swiper-11.2.10/swiper-bundle.min.js"></script>
 
     <link href="css/css-afterlogin.css" rel="stylesheet" />
-
     <style>
         :root { --bg-color: #1b2033; --font-color: #fff; --primary-color: #c084fc; --secondary-color: #2b3248; --accent-color: #c084fc; }
         /*:root { --bg-color: #1A1B26; --font-color: #A9B1D6; --primary-color: #7AA2F7; --secondary-color: #24283B; --accent-color: #F7768E; }*/
@@ -64,9 +63,9 @@
             <!-- rail + main menu -->
             <div class="sidebar--wrapper">
                 <div class="sidebar--content">
-                    <div class="navtop">
-                        <div class="nav-t">
-                            <div class="nav-tl">
+                    <div class="sidebar-header">
+                        <div class="sidebar-header__top">
+                            <div class="sidebar-header__profile">
                                 <div>
                                     <span class="pill__iconBtn" aria-label="Player">
                                         <svg viewBox="-4 0 20 20" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
@@ -74,15 +73,15 @@
                                         </svg>
                                     </span>
                                 </div>
-                                <div class="nav-trt">
-                                    <div class="nav-tbt">
+                                <div class="sidebar-header__profile-body">
+                                    <div class="sidebar-header__profile-top">
                                         <span class="pill__text" aria-label="playerName">PLAYER998</span>
-                                        <div class="nav-tr">
+                                        <div class="sidebar-header__tools">
 
-                                            <div id="togglesettings" class="settingbox">
-                                                <div class="settingboxwrapper">
-                                                    <div class="settingsbox">
-                                                        <div class="settingsboxwrapper">
+                                            <div id="togglesettings" class="settings-menu">
+                                                <div class="settings-menu__wrap">
+                                                    <div class="settings-menu__panel">
+                                                        <div class="settings-menu__inner">
                                                             <button class="iconBtn" data-lang-trigger aria-label="language" type="button">
                                                                 <svg viewBox="0 0 16 16" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
                                                                     <path fill-rule="evenodd" d="M8,1 C11.8659932,1 15,4.13400675 15,8 C15,11.8659932 11.8659932,15 8,15 C4.13400675,15 1,11.8659932 1,8 C1,4.13400675 4.13400675,1 8,1 Z M8.96515973,9.00117633 L7.03484027,9.00117633 C7.12137413,10.2320385 7.36481835,11.3402224 7.71696972,12.1619089 C7.79348978,12.3404557 7.87172301,12.496879 7.94824865,12.6292915 L8,12.713 L8.05175135,12.6292915 C8.10276844,12.5410165 8.15454446,12.44207 8.20606586,12.3330113 L8.28303028,12.1619089 C8.63518165,11.3402224 8.87862587,10.2320385 8.96515973,9.00117633 Z M5.03044222,9.00099906 L3.10025909,9.0011864 C3.4031332,10.491395 4.36879751,11.740808 5.67610553,12.4282788 C5.33910207,11.4654592 5.10953483,10.2898775 5.03044222,9.00099906 Z M12.8997409,9.0011864 L10.9695578,9.00099906 C10.8904652,10.2898775 10.6608979,11.4654592 10.3237161,12.4277375 C11.6312025,11.740808 12.5968668,10.491395 12.8997409,9.0011864 Z M5.67628393,3.57226248 L5.59436492,3.61568174 C4.32832407,4.31182571 3.39636062,5.54039637 3.10005628,6.99981203 L5.03038108,6.99999768 C5.10941648,5.7107286 5.33901516,4.53478884 5.67628393,3.57226248 Z M8,3.286 L7.94824865,3.37070855 C7.87172301,3.50312104 7.79348978,3.65954431 7.71696972,3.83809113 C7.36472343,4.65999912 7.1212429,5.76855889 7.03477034,6.99981901 L8.96522966,6.99981901 C8.8787571,5.76855889 8.63527657,4.65999912 8.28303028,3.83809113 C8.20651022,3.65954431 8.12827699,3.50312104 8.05175135,3.37070855 L8,3.286 Z M10.3238945,3.57172124 L10.3806361,3.73984101 C10.686808,4.66995318 10.8951132,5.78461983 10.9696189,6.99999768 L12.8999437,6.99981203 C12.5972981,5.50916307 11.6314944,4.25934557 10.3238945,3.57172124 Z" />
@@ -114,7 +113,7 @@
                                         
 
                                     </div>
-                                    <div class="nav-tlb">
+                                    <div class="sidebar-header__quick">
                                         <ul class="d-flex m-0 p-0">
                                             <li class="list-unstyled">
                                                 <div class="btn btn-2 btn-pill d-flex align-items-center" aria-label="Wallet">
@@ -146,10 +145,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="nav-b">
+                        <div class="sidebar-header__actions">
                             <a herf="#" class="btn-deposit btn btn-1 btn-pill btnh btn--hover">Deposit</a>
                             <a herf="#" class="btn-withdraw btn btn-1 btn-pill btnh btn--hover">Withdraw</a>
-                            <button data-action="toggle-app" class="d-md-none btn btn-1  btn-pill">
+                            <button data-action="toggle-app" class="d-md-none btn btn-1 btn-pill">
                                 <svg width="23px" height="23px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10,13H3a1,1,0,0,0-1,1v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V14A1,1,0,0,0,10,13ZM9,20H4V15H9ZM21,2H14a1,1,0,0,0-1,1v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V3A1,1,0,0,0,21,2ZM20,9H15V4h5Zm1,4H14a1,1,0,0,0-1,1v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V14A1,1,0,0,0,21,13Zm-1,7H15V15h5ZM10,2H3A1,1,0,0,0,2,3v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V3A1,1,0,0,0,10,2ZM9,9H4V4H9Z" /></svg>
                             </button>
                             <button data-action="toggle-sidebar" class="btn btn-2 btn-pill btnh btn--hover">
@@ -178,7 +177,7 @@
                                 </div>
                             </div>
                             <div class="apps promo-list">
-                                <ul class="app-list ">
+                                <ul class="app-list">
                                     <li class="app">
                                         <a href="#" class="app-badge">
                                             <div class="single-icon">
@@ -234,7 +233,7 @@
 
                         </div>
                     </section>
-                    <nav class="navprod" aria-label="prod navigation">
+                    <nav class="sidebar-nav sidebar-nav--product" aria-label="prod navigation">
                         <ul class="prod-nav nav--left border-top-1">
                             <li>
                                 <a href="#">
@@ -273,7 +272,7 @@
                             </li>
                         </ul>
                     </nav>
-                    <nav aria-label="main navigation" class="navmain">
+                    <nav aria-label="main navigation" class="sidebar-nav sidebar-nav--main">
                         <ul class="menu-nav nav--left border-top-1">
                             <li>
                                 <a href="#">
@@ -344,7 +343,7 @@
                     </div>
                     <div class="topbar">
                         <div class="topbar__left">
-                            <div class="btn btn-1 btn-pill btnwicon btn-with-icon btnnonh btn--no-hover" id="dompet">
+                            <div class="btn btn-1 btn-pill btn-with-icon btn--no-active btn--no-hover" id="dompet">
                                 <span class="pill__iconBtn" aria-label="Wallet">
                                     <!-- wallet icon -->
                                     <svg viewBox="-6 -6 28 28">
@@ -357,7 +356,7 @@
                                 </button>
                             </div>
 
-                            <div class="btn btn-1 btn-pill btnwicon btn-with-icon btnnonh btn--no-hover">
+                            <div class="btn btn-1 btn-pill btn-with-icon btn--no-active btn--no-hover">
                                 <button class="pill__iconBtn" aria-label="Gift">
                                     <!-- gift icon -->
                                     <svg viewBox="0 0 15 15">
@@ -369,7 +368,7 @@
                                 <span class="pill__text">9,000,000</span>
                             </div>
 
-                            <a href="#" class="btn btn-1 btn-pill btnwicon btn-with-icon btnnonh btn--no-hover" id="playerBtn" type="button">
+                            <a href="#" class="btn btn-1 btn-pill btn-with-icon btn--no-active btn--no-hover" id="playerBtn" type="button">
                                 <span class="pill__iconBtn" aria-label="Player">
                                     <svg viewBox="-5 -3 24 24" xmlns="http://www.w3.org/2000/svg" class="cf-icon-svg"><path d="M12.517 12.834v1.9a1.27 1.27 0 0 1-1.267 1.267h-9.5a1.27 1.27 0 0 1-1.267-1.267v-1.9A3.176 3.176 0 0 1 3.65 9.667h5.7a3.176 3.176 0 0 1 3.167 3.167zM3.264 5.48A3.236 3.236 0 1 1 6.5 8.717a3.236 3.236 0 0 1-3.236-3.236z" /></svg>
 
@@ -653,7 +652,7 @@
                         <div class="vendor-searchcontainer" data-search>
 
                             <div class="search-wrapper">
-                                <input class="vendor-search" type="search" placeholder="Search" autocomplete="off" name="search" />
+                                <input class="vendor-search" type="search" placeholder="Search" autocomplete="off" name="search" / id="vendor-search">
                                 <button class="vendor-searchbtn" type="button" aria-label="Search" data-action="toggle-search">
                                     <svg class="input-icon" viewBox="0 0 22 22" aria-hidden="true">
                                         <path d="M17.545 15.467l-3.779-3.779a6.15 6.15 0 0 0 .898-3.21c0-3.417-2.961-6.377-6.378-6.377A6.185 6.185 0 0 0 2.1 8.287c0 3.416 2.961 6.377 6.377 6.377a6.15 6.15 0 0 0 3.115-.844l3.799 3.801a.953.953 0 0 0 1.346 0l.943-.943c.371-.371.236-.84-.135-1.211zM4.004 8.287a4.282 4.282 0 0 1 4.282-4.283c2.366 0 4.474 2.107 4.474 4.474a4.284 4.284 0 0 1-4.283 4.283c-2.366-.001-4.473-2.109-4.473-4.474z"></path>
@@ -1589,7 +1588,7 @@
     </script>
     <script>
         const btn = document.querySelector('[data-action="toggle-app"]');
-        const nav = document.querySelector('.navprod');
+        const nav = document.querySelector('.sidebar-nav sidebar-nav--product');
         const body = document.body;
 
         function openNav() {
@@ -1607,7 +1606,7 @@
             nav.classList.contains('active') ? closeNav() : openNav();
         });
 
-        /* 点击遮罩（navprod）关掉 */
+        /* 点击遮罩（sidebar-nav sidebar-nav--product）关掉 */
         nav.addEventListener('click', () => {
             closeNav();
         });
