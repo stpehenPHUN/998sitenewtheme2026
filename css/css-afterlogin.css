@@ -231,8 +231,9 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
 /* badge (LV.1) */
 .badge { display: flex; align-items: center; gap: var(--space-1); color: var(--primary-color); font-weight: var(--font-bold); font-size: var(--text-xs); background-color: transparent; border: 0; box-shadow: none; }
     .badge.show { /*background-color:var(--secondary-color);*/ }
-.badge__icon { width: 26px; height: 26px; display: grid; place-items: center; }
-.badge:active { transform: translateY(1px); }
+.badge__icon { width: 26px; height: 26px; display: grid; place-items: center;  }
+    .badge__icon svg { fill: var(--primary-color); }
+    .badge:active { transform: translateY(1px); }
 
 .badge__text { font-size: var(--text-xs); font-weight: var(--font-bold); }
 
