@@ -147,7 +147,7 @@ body.sidebar-animating .span-toggle { transition: none !important; }
             .menu-nav li > a img { margin-right: var(--space-2); width: var(--icn-w30); height: var(--icn-w30); }
     .menu-nav:hover li > a[aria-current] { }
 .sidebar-header__quick .btn-2 { padding-left: var(--space-2); padding-right: var(--space-2); }
-.pill__text { /* font-size: var(--text-sm);*/ }
+.pill__text {  font-size: var(--text-sm); }
 
 @media(min-width:768px) {
     .prod-nav { }
@@ -205,11 +205,11 @@ body.sidebar-animating .span-toggle { transition: none !important; }
 
     .sidebar-header__actions [data-action="toggle-sidebar"] { padding-left: var(--space-2); padding-right: var(--space-2); }
     .btn-with-icon { gap: var(--space-1) }
+    .pill__text .currency {display:none; }
 
 }
 
 @media (max-width:365px) {
-    .pill__text .currency {display:none; }
     .topbar__left{gap:0;}
 }
 /*--------- body header */
