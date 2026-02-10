@@ -592,8 +592,8 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 .wheel__spacer { height: calc((var(--item-h) * (var(--visible) - 1)) / 2); }
 
 .wheel__item { height: var(--item-h); display: flex; align-items: center; justify-content: center; scroll-snap-align: center; color: var(--font-color); opacity: .42; transform: scale(.92); transition: opacity .12s ease, transform .12s ease; cursor: default; }
-
-.wheel__window { position: absolute; left: 10px; right: 10px; top: 50%; height: var(--item-h); transform: translateY(-50%); border-radius: var(--radius-md); border: var(--border-width) solid var(--primary-color); box-shadow: inset 0 0 0 1px rgba(255,255,255,.04); pointer-events: none; }
+    .wheel__item img{width:var(--icn-w24); margin-right:var(--space-2);}
+    .wheel__window { position: absolute; left: 10px; right: 10px; top: 50%; height: var(--item-h); transform: translateY(-50%); border-radius: var(--radius-md); border: var(--border-width) solid var(--primary-color); box-shadow: inset 0 0 0 1px rgba(255,255,255,.04); pointer-events: none; }
 
 .wheel__fade { position: absolute; inset: 0; pointer-events: none; background: var(--bg-color) }
 
@@ -610,7 +610,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
     .langSheet__backdrop { display: none !important; }
 
     /* panel 不要从底部滑上来、也不要占满宽 */
-    .langSheet__panel { transform: none !important; transition: none !important; border-radius: var(--radius-md); padding: var(--space-2); background: var(--secondary-color); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: var(--border-width) solid var(--primary-color); box-shadow: 0 12px 30px rgba(0,0,0,.35); }
+    .langSheet__panel { transform: none !important; transition: none !important; border-radius: var(--radius-md); padding: var(--space-2); background: var(--secondary-color); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: var(--border-width) solid var(--primary-color); box-shadow: 0 12px 30px rgba(0,0,0,.35); margin-right:var(--space-3);}
         .langSheet__panel:after { content: ''; position: absolute; width: var(--icn-w12); height: var(--icn-w12); transform: rotate(45deg); border-top: var(--border-width) solid var(--primary-color); border-left: var(--border-width) solid var(--primary-color); background-color: var(--secondary-color); top: -6px; left: 40px; }
         /* header 全部隐藏（你说的“其他东西都不显示”） */
         .langSheet__header { display: none !important; }
