@@ -124,8 +124,7 @@
                                                     <svg class="icon" viewBox="-3 -3 24 24">
                                                         <path d="M14.5 4h-12.12c-0.057 0.012-0.123 0.018-0.19 0.018-0.552 0-1-0.448-1-1 0-0.006 0-0.013 0-0.019l12.81-0.499v-1.19c0.005-0.041 0.008-0.089 0.008-0.138 0-0.652-0.528-1.18-1.18-1.18-0.049 0-0.097 0.003-0.144 0.009l-11.374 1.849c-0.771 0.289-1.31 1.020-1.31 1.877 0 0.011 0 0.023 0 0.034l-0 10.728c-0 0.003-0 0.006-0 0.010 0 0.828 0.672 1.5 1.5 1.5 0 0 0 0 0 0h13c0 0 0 0 0 0 0.828 0 1.5-0.672 1.5-1.5 0-0.004-0-0.007-0-0.011v-8.999c0-0.012 0.001-0.027 0.001-0.041 0-0.801-0.649-1.45-1.45-1.45-0.018 0-0.036 0-0.053 0.001zM13 11c-0.828 0-1.5-0.672-1.5-1.5s0.672-1.5 1.5-1.5c0.828 0 1.5 0.672 1.5 1.5s-0.672 1.5-1.5 1.5z"></path>
                                                     </svg>
-                                                    <span class="pill__text">MYR 157.12K</span>
-                                                    <button class="btn plan btn-pillml-1 mr--2 mr-n2 d-block small">
+                                                    <span class="pill__text"><span class="currency">MYR</span> 157.12K</span>                                                    <button class="btn plan btn-pillml-1 mr--2 mr-n2 d-block small">
                                                         <svg class="pill__iconBtn plan" aria-label="WalletRefresh" viewBox="-1.5 -2.5 24 24"><path d='M17.83 4.194l.42-1.377a1 1 0 1 1 1.913.585l-1.17 3.825a1 1 0 0 1-1.248.664l-3.825-1.17a1 1 0 1 1 .585-1.912l1.672.511A7.381 7.381 0 0 0 3.185 6.584l-.26.633a1 1 0 1 1-1.85-.758l.26-.633A9.381 9.381 0 0 1 17.83 4.194zM2.308 14.807l-.327 1.311a1 1 0 1 1-1.94-.484l.967-3.88a1 1 0 0 1 1.265-.716l3.828.954a1 1 0 0 1-.484 1.941l-1.786-.445a7.384 7.384 0 0 0 13.216-1.792 1 1 0 1 1 1.906.608 9.381 9.381 0 0 1-5.38 5.831 9.386 9.386 0 0 1-11.265-3.328z' /></svg>
                                                     </button>
                                                 </div>
@@ -480,11 +479,45 @@
                                     <path d='M8 6.641l1.121-1.12a1 1 0 0 1 1.415 1.413L7.707 9.763a.997.997 0 0 1-1.414 0L3.464 6.934A1 1 0 1 1 4.88 5.52L6 6.641V1a1 1 0 1 1 2 0v5.641zM1 12h12a1 1 0 0 1 0 2H1a1 1 0 0 1 0-2z' />
                                 </svg>
                             </button>
-                            <button class="iconBtn btn-pill" data-lang-trigger aria-label="language" type="button">
-                                <svg viewBox="2 2 20 20" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
-                                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z" />
-                                </svg>
-                            </button>
+                            <div>
+                                <button class="iconBtn btn-pill" data-lang-trigger aria-label="language" type="button">
+                                    <svg viewBox="2 2 20 20" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z" />
+                                    </svg>
+                                </button>
+
+                                <div class="langSheet" aria-hidden="true">
+                                    <div class="langSheet__backdrop" data-close></div>
+
+                                    <div class="langSheet__panel">
+                                        <div class="langSheet__header">
+                                            <button class="langSheet__textBtn" data-close>Close</button>
+                                            <div class="langSheet__title">Language</div>
+                                            <button class="langSheet__textBtn langSheet__primary" data-lang-done>
+                                                Done
+                                            </button>
+                                        </div>
+
+                                        <div class="wheel" tabindex="0">
+                                            <div class="wheel__fade"></div>
+                                            <div class="wheel__window"></div>
+
+                                            <div class="wheel__scroller">
+                                                <div class="wheel__spacer"></div>
+
+                                                <div class="wheel__item" data-value="en">English</div>
+                                                <div class="wheel__item" data-value="zh">简体中文</div>
+                                                <div class="wheel__item" data-value="ja">日本語</div>
+                                                <div class="wheel__item" data-value="ko">한국어</div>
+                                                <div class="wheel__item" data-value="ms">Bahasa Melayu</div>
+
+                                                <div class="wheel__spacer"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                             <button class="iconBtn btn-pill" aria-label="Notifications">
                                 <svg viewBox="0 0 16 16" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
                                     <path d="M7.5 0C4.46243 0 2 2.46243 2 5.5V10H1V11H14V10H13V5.5C13 2.46243 10.5376 0 7.5 0Z"  />
@@ -645,10 +678,15 @@
                                         <svg viewBox="-3 -2 24 24"><path d="M10 0s8 7.58 8 12a8 8 0 1 1-16 0c0-1.5.91-3.35 2.12-5.15A3 3 0 0 0 10 6V0zM8 0a3 3 0 1 0 0 6V0z" /></svg>
                                     </span>Hot
                                 </li>
-                                <li class="filter-btn" data-filter="bigwin">
+                                <li class="filter-btn" data-filter="recommend">
                                     <span>
-                                        <svg viewBox="0 -1 20 20" preserveAspectRatio="xMinYMin" class="jam jam-crown"><path d='M2.776 5.106L3.648 11h12.736l.867-5.98-3.493 3.02-3.755-4.827-3.909 4.811-3.318-2.918zm10.038-1.537l-.078.067.141.014 1.167 1.499 1.437-1.242.14.014-.062-.082 2.413-2.086a1 1 0 0 1 1.643.9L18.115 13H1.922L.399 2.7a1 1 0 0 1 1.65-.898L4.35 3.827l-.05.06.109-.008 1.444 1.27 1.212-1.493.109-.009-.06-.052L9.245.976a1 1 0 0 1 1.565.017l2.005 2.576zM2 14h16v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z' /></svg>
-                                    </span>Big Win
+                                        <svg viewBox="0 2 50 50" preserveAspectRatio="xMinYMin" class="jam jam-crown">
+                                            <path d="M10.5,21h-5C4.7,21,4,21.7,4,22.5v23C4,46.3,4.7,47,5.5,47H8c2.2,0,4-1.8,4-4V22.5C12,21.7,11.3,21,10.5,21
+		z"></path>
+                                            <path d="M44,22h-6c-2.2,0-4-1.8-4-4V8c0-2.2-1.8-4-4-4h-2.5C26.7,4,26,4.7,26,5.5v6c0,5.3-3.7,10.5-8.5,10.5
+		c-0.8,0-1.5,0.7-1.5,1.5v20c0,0.8,0.6,1.5,1.4,1.5c6.8,0.3,9.1,3,16.2,3c7.5,0,14.4-0.8,14.4-9.5v-5V26C48,23.8,46.2,22,44,22z"></path>
+                                        </svg>
+                                    </span>Recommend
                                 </li>
                                 <li class="filter-btn" data-filter="fav">
                                     <span>
@@ -1327,51 +1365,38 @@
                 </script>
             </section>
         </main>
-        <div class="langSheet" aria-hidden="true">
-            <div class="langSheet__backdrop" data-close></div>
-
-            <div class="langSheet__panel">
-                <div class="langSheet__header">
-                    <button class="langSheet__textBtn" data-close>Close</button>
-                    <div class="langSheet__title">Language</div>
-                    <button class="langSheet__textBtn langSheet__primary" data-lang-done>
-                        Done
-                    </button>
-                </div>
-
-                <div class="wheel" tabindex="0">
-                    <div class="wheel__fade"></div>
-                    <div class="wheel__window"></div>
-
-                    <div class="wheel__scroller">
-                        <div class="wheel__spacer"></div>
-
-                        <div class="wheel__item" data-value="en">English</div>
-                        <div class="wheel__item" data-value="zh">简体中文</div>
-                        <div class="wheel__item" data-value="ja">日本語</div>
-                        <div class="wheel__item" data-value="ko">한국어</div>
-                        <div class="wheel__item" data-value="ms">Bahasa Melayu</div>
-
-                        <div class="wheel__spacer"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <script>
         (() => {
+            const BREAKPOINT = 1024;
 
             const sheet = document.querySelector(".langSheet");
+            const panel = sheet.querySelector(".langSheet__panel");
             const scroller = sheet.querySelector(".wheel__scroller");
             const wheel = sheet.querySelector(".wheel");
             const doneBtn = sheet.querySelector("[data-lang-done]");
 
-            const ITEM_H = 44;
-            let currentValue = "en";
+            const ITEM_H = 44; // mobile wheel 用
+            let currentValue = localStorage.getItem("lang") || "en";
 
-            /* ---------- open / close ---------- */
+            let activeTrigger = null;
 
-            function openSheet() {
+            // desktop dropdown 状态
+            let pinned = false; // click toggle “锁定打开”
+            let hoveringTrigger = false;
+            let hoveringPanel = false;
+            let suppressHoverUntilLeave = false;
+
+            const isDesktop = () => window.innerWidth >= BREAKPOINT;
+            const isOpen = () => sheet.classList.contains("isOpen");
+            const isHovering = () => hoveringTrigger || hoveringPanel;
+
+            /* =========================
+               Open / Close
+            ========================= */
+
+            function openMobileSheet(triggerBtn) {
+                activeTrigger = triggerBtn;
                 sheet.classList.add("isOpen");
                 sheet.setAttribute("aria-hidden", "false");
                 document.body.style.overflow = "hidden";
@@ -1381,121 +1406,247 @@
                 updateVisual();
             }
 
-            function closeSheet() {
+            function openDesktopDropdown(triggerBtn) {
+                activeTrigger = triggerBtn;
+                sheet.classList.add("isOpen");
+                sheet.setAttribute("aria-hidden", "false");
+                document.body.style.overflow = ""; // desktop 不锁滚动
+
+                // 定位到按钮下方
+                const r = triggerBtn.getBoundingClientRect();
+                sheet.style.left = `${r.left + window.scrollX}px`;
+                sheet.style.top = `${r.bottom + window.scrollY + 8}px`;
+
+                // 简单防溢出（右侧）
+                requestAnimationFrame(() => {
+                    const rect = panel.getBoundingClientRect();
+                    const overflowX = rect.right - window.innerWidth;
+                    if (overflowX > 0) {
+                        sheet.style.left = `${(r.left + window.scrollX) - overflowX - 8}px`;
+                    }
+                });
+            }
+
+            function closeAll() {
                 sheet.classList.remove("isOpen");
                 sheet.setAttribute("aria-hidden", "true");
                 document.body.style.overflow = "";
             }
 
-            /* ---------- trigger buttons ---------- */
+            /* =========================
+               Triggers: click + hover (desktop)
+            ========================= */
 
-            document.querySelectorAll("[data-lang-trigger]").forEach(btn => {
-                btn.addEventListener("click", openSheet);
+            const triggers = document.querySelectorAll("[data-lang-trigger]");
+
+            triggers.forEach(btn => {
+                // click toggle
+                btn.addEventListener("click", (e) => {
+                    activeTrigger = btn;
+
+                    if (!isDesktop()) {
+                        // mobile：直接打开 sheet（你原逻辑）
+                        openMobileSheet(btn);
+                        return;
+                    }
+
+                    // desktop：click toggle（pin/unpin）
+                    if (!isOpen()) {
+                        // 目前关着：打开并锁定
+                        pinned = true;
+                        suppressHoverUntilLeave = false;
+                        openDesktopDropdown(btn);
+                        return;
+                    }
+
+                    // 目前开着：
+                    if (!pinned) {
+                        // 仅 hover 打开状态 → 点击 = pin（锁定打开）
+                        pinned = true;
+                        suppressHoverUntilLeave = false;
+                        openDesktopDropdown(btn); // 重新定位（如果有多个按钮）
+                    } else {
+                        // pinned 打开 → 点击 = 关闭并解除 pin
+                        pinned = false;
+                        closeAll();
+
+                        // 如果此刻还在 hover 区域：抑制 hover，直到鼠标离开
+                        if (isHovering()) suppressHoverUntilLeave = true;
+                    }
+                });
+
+                // hover open（desktop）
+                btn.addEventListener("mouseenter", () => {
+                    if (!isDesktop()) return;
+                    hoveringTrigger = true;
+                    activeTrigger = btn;
+
+                    if (pinned) {
+                        // 已锁定：只需要确保定位到当前按钮
+                        openDesktopDropdown(btn);
+                        return;
+                    }
+                    if (suppressHoverUntilLeave) return;
+
+                    openDesktopDropdown(btn);
+                });
+
+                btn.addEventListener("mouseleave", () => {
+                    if (!isDesktop()) return;
+                    hoveringTrigger = false;
+
+                    // 离开 hover 区域（trigger + panel 都不在）时重置 suppress
+                    if (!isHovering()) suppressHoverUntilLeave = false;
+
+                    // 非 pinned 时，hover 离开就关闭（但如果鼠标正进入 panel，会由 panel 的 enter 保持）
+                    if (!pinned && !isHovering()) closeAll();
+                });
             });
 
-            sheet.addEventListener("click", e => {
-                if (e.target.closest("[data-close]")) closeSheet();
+            // panel hover：允许从 trigger 移到 dropdown 仍保持打开
+            panel.addEventListener("mouseenter", () => {
+                if (!isDesktop()) return;
+                hoveringPanel = true;
+                if (!pinned && suppressHoverUntilLeave) return; // 关闭后还没离开，不要复活
+                if (activeTrigger) openDesktopDropdown(activeTrigger);
             });
 
-            window.addEventListener("keydown", e => {
-                if (e.key === "Escape" && sheet.classList.contains("isOpen")) {
-                    closeSheet();
+            panel.addEventListener("mouseleave", () => {
+                if (!isDesktop()) return;
+                hoveringPanel = false;
+
+                if (!isHovering()) suppressHoverUntilLeave = false;
+                if (!pinned && !isHovering()) closeAll();
+            });
+
+            // 点击关闭（mobile 的 data-close）
+            sheet.addEventListener("click", (e) => {
+                if (!e.target.closest("[data-close]")) return;
+
+                closeAll();
+                pinned = false;
+
+                // 如果桌面还在 hover 范围内，抑制 hover 直到离开
+                if (isDesktop() && isHovering()) suppressHoverUntilLeave = true;
+            });
+
+            // 点击外部关闭（desktop）
+            document.addEventListener("click", (e) => {
+                if (!isDesktop()) return;
+                if (!isOpen()) return;
+
+                const insideSheet = sheet.contains(e.target);
+                const onTrigger = activeTrigger && activeTrigger.contains(e.target);
+
+                if (!insideSheet && !onTrigger) {
+                    closeAll();
+                    pinned = false;
+                    // 外部点击一般已经离开 hover，但保险：如果还 hover，就抑制
+                    if (isHovering()) suppressHoverUntilLeave = true;
                 }
             });
 
-            /* ---------- wheel picker ---------- */
+            // Esc 关闭
+            window.addEventListener("keydown", (e) => {
+                if (e.key !== "Escape") return;
+                if (!isOpen()) return;
 
-            function getItems() {
-                return [...sheet.querySelectorAll(".wheel__item")];
+                closeAll();
+                pinned = false;
+                if (isDesktop() && isHovering()) suppressHoverUntilLeave = true;
+            });
+
+            /* =========================
+               Select behavior
+            ========================= */
+
+            // Desktop：点击 item 直接选中并关闭
+            // Mobile：点击 item 滚到中间
+            scroller.addEventListener("click", (e) => {
+                const item = e.target.closest(".wheel__item");
+                if (!item) return;
+
+                if (isDesktop()) {
+                    selectLang(item.dataset.value);
+                    closeAll();
+                    pinned = false;
+                    // 点击项之后一般鼠标还在 panel，上面会立刻 hover 复活，所以也抑制到离开
+                    suppressHoverUntilLeave = true;
+                    return;
+                }
+
+                scrollToValue(item.dataset.value, true);
+            });
+
+            // Mobile Done
+            doneBtn.addEventListener("click", () => {
+                if (isDesktop()) return;
+                localStorage.setItem("lang", currentValue);
+                closeAll();
+            });
+
+            function selectLang(value) {
+                currentValue = value;
+                localStorage.setItem("lang", value);
+                // TODO: 在这里接你的 i18n 切换逻辑
             }
+
+            /* =========================
+               Mobile wheel snap (only mobile)
+            ========================= */
+
+            function getItems() { return [...sheet.querySelectorAll(".wheel__item")]; }
 
             function scrollToValue(value, smooth = true) {
                 const target = getItems().find(i => i.dataset.value === value);
                 if (!target) return;
 
-                const top =
-                    target.offsetTop -
-                    (scroller.clientHeight / 2 - target.offsetHeight / 2);
-
-                scroller.scrollTo({
-                    top,
-                    behavior: smooth ? "smooth" : "auto"
-                });
-            }
-
-            function getNearest() {
-                const center = scroller.scrollTop + scroller.clientHeight / 2;
-
-                let best = null, dist = Infinity;
-
-                getItems().forEach(el => {
-                    const c = el.offsetTop + el.offsetHeight / 2;
-                    const d = Math.abs(c - center);
-
-                    if (d < dist) {
-                        dist = d;
-                        best = el;
-                    }
-
-                    const t = Math.min(d / (ITEM_H * 2), 1);
-                    el.style.opacity = 0.42 + (1 - t) * 0.58;
-                    el.style.transform = `scale(${0.92 + (1 - t) * 0.08})`;
-                });
-
-                return best;
+                const top = target.offsetTop - (scroller.clientHeight / 2 - target.offsetHeight / 2);
+                scroller.scrollTo({ top, behavior: smooth ? "smooth" : "auto" });
             }
 
             function updateVisual() {
-                const n = getNearest();
-                if (n) currentValue = n.dataset.value;
+                if (isDesktop()) return;
+
+                const center = scroller.scrollTop + scroller.clientHeight / 2;
+                let best = null, bestDist = Infinity;
+
+                getItems().forEach(el => {
+                    const elCenter = el.offsetTop + el.offsetHeight / 2;
+                    const d = Math.abs(elCenter - center);
+                    if (d < bestDist) { bestDist = d; best = el; }
+
+                    const t = Math.min(d / (ITEM_H * 2), 1);
+                    el.style.opacity = String(0.42 + (1 - t) * 0.58);
+                    el.style.transform = `scale(${0.92 + (1 - t) * 0.08})`;
+                });
+
+                if (best) currentValue = best.dataset.value;
             }
 
-            function snap() {
-                const target = getNearest();
-                if (!target) return;
-
-                const top =
-                    target.offsetTop -
-                    (scroller.clientHeight / 2 - target.offsetHeight / 2);
-
-                scroller.scrollTo({ top, behavior: "smooth" });
-            }
-
-            /* scroll interaction */
             let snapTimer = null;
             scroller.addEventListener("scroll", () => {
+                if (isDesktop()) return;
                 updateVisual();
                 clearTimeout(snapTimer);
-                snapTimer = setTimeout(snap, 120);
+                snapTimer = setTimeout(() => scrollToValue(currentValue, true), 120);
             });
 
-            /* click item */
-            scroller.addEventListener("click", e => {
-                const item = e.target.closest(".wheel__item");
-                if (item) scrollToValue(item.dataset.value, true);
-            });
+            /* =========================
+               Resize: 形态切换时收起 + 重置状态
+            ========================= */
 
-            /* keyboard */
-            wheel.addEventListener("keydown", e => {
-                if (!["ArrowUp", "ArrowDown"].includes(e.key)) return;
-                e.preventDefault();
-                scroller.scrollBy({
-                    top: (e.key === "ArrowDown" ? 1 : -1) * ITEM_H,
-                    behavior: "smooth"
-                });
+            window.addEventListener("resize", () => {
+                closeAll();
+                pinned = false;
+                hoveringTrigger = false;
+                hoveringPanel = false;
+                suppressHoverUntilLeave = false;
             });
-
-            /* done button */
-            doneBtn.addEventListener("click", () => {
-                localStorage.setItem("lang", currentValue);
-                closeSheet();
-            });
-
-            /* init */
-            const saved = localStorage.getItem("lang");
-            if (saved) currentValue = saved;
 
         })();
+
+
 
     </script>
     <script>
