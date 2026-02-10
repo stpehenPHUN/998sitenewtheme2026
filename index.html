@@ -1644,13 +1644,14 @@
             nav.classList.add('active');
             body.classList.add('no-scroll');
 
-            // B：打开后的短时间内吞掉 panel 点击（防误点）
-            blockPanelUntil = performance.now() + 250;
+            blockPanelUntil = performance.now() + 300;
 
-            // 动画状态
-            setAnimating(true);
-            window.setTimeout(() => setAnimating(false), DURATION + 40);
+            panel.style.pointerEvents = 'none';
+            requestAnimationFrame(() => {
+                panel.style.pointerEvents = '';
+            });
         }
+
 
         function closeNav() {
             nav.classList.remove('active');
