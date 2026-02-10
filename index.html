@@ -1622,39 +1622,78 @@
 
     </script>
     <script>
-        const btn = document.querySelector('[data-action="toggle-app"]');
-        const nav = document.querySelector('.sidebar-nav.sidebar-nav--product');
-        const body = document.body;
+       const btn = document.querySelector('[data-action="toggle-app"]');
+const nav = document.querySelector('.sidebar-nav.sidebar-nav--product');
+const body = document.body;
 
-        function openNav() {
-            nav.classList.add('active');
-            body.classList.add('no-scroll');
-        }
+const ANIM_CLASS = 'nav-animating';
+const DURATION = 260; // 跟 CSS transition 对齐
 
-        function closeNav() {
-            nav.classList.remove('active');
-            body.classList.remove('no-scroll');
-        }
+function withNavAnimation(action) {
+    nav.classList.add(ANIM_CLASS);
 
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            nav.classList.contains('active') ? closeNav() : openNav();
-        });
+    // 强制 reflow，确保 animating 先生效
+    void nav.offsetWidth;
 
-        /* 点击遮罩（sidebar-nav sidebar-nav--product）关掉 */
-        nav.addEventListener('click', () => {
-            closeNav();
-        });
+    action();
 
-        /* 点击菜单面板（ul）不要关 */
-        nav.querySelector('.prod-nav').addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
+    let done = false;
+    const cleanup = () => {
+        if (done) return;
+        done = true;
+        nav.classList.remove(ANIM_CLASS);
+    };
 
-        /* 可选：ESC 关闭 */
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeNav();
-        });
+    const onEnd = (e) => {
+        if (e.target !== nav) return;
+        if (!['opacity', 'transform', 'max-height'].includes(e.propertyName)) return;
+        nav.removeEventListener('transitionend', onEnd);
+        cleanup();
+    };
+
+    nav.addEventListener('transitionend', onEnd);
+
+    // 兜底：防止 transitionend 没触发
+    setTimeout(cleanup, DURATION + 40);
+}
+
+function openNav() {
+    withNavAnimation(() => {
+        nav.classList.add('active');
+        body.classList.add('no-scroll');
+    });
+}
+
+function closeNav() {
+    withNavAnimation(() => {
+        nav.classList.remove('active');
+        body.classList.remove('no-scroll');
+    });
+}
+
+btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    nav.classList.contains('active') ? closeNav() : openNav();
+});
+
+/* 点击遮罩关掉 */
+nav.addEventListener('click', () => {
+    if (!nav.classList.contains('active')) return;
+    closeNav();
+});
+
+/* 点 panel（ul）不要关 */
+nav.querySelector('.prod-nav').addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+/* ESC 关闭 */
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('active')) {
+        closeNav();
+    }
+});
 
     </script>
     <script>
