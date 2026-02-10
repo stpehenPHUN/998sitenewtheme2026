@@ -331,10 +331,11 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 
 @media(max-width:1299.98px) {
     .topbar__left .btn-1:not(#dompet) { display: none; }
-    .topbar__right .iconBtn:not([aria-label="Download"]) { display: none; }
     .dropdown-menu:after { left: auto; right: 36px; }
 }
-
+@media (max-width:1023.98px){
+    .topbar__right .iconBtn:not([aria-label="Download"]) { display: none; }
+}
 @media (max-width:767.98px) {
     .topbar__left .btn-1 {; }
     .pill__iconBtn { margin-right: var(--space-1); }
