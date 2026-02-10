@@ -145,7 +145,7 @@ body.sidebar-animating .span-toggle { transition: none !important; }
     .sidebar-header__actions.btn-withdraw { margin-right: auto; }
     .sidebar-header__actions [data-action].btn { margin-left: auto; }
 
-.prod-nav { margin-left: 0; padding-left: 0; margin: var(--space-2); margin-bottom: 1rem; display: flex; flex-wrap: wrap; padding-top: var(--space-4); margin: var(--space-4) var(--space-2); }
+.prod-nav { margin-left: 0; padding-left: 0; margin: var(--space-2); margin-bottom: 1rem; display: flex; flex-wrap: wrap; padding-top: var(--space-4); margin: var(--space-4) var(--space-2); font-size:var(--text-xs);}
     .prod-nav li { list-style-type: none; flex: 1 1 25%; max-width: 25%; }
         .prod-nav li > a { margin: var(--space-1); text-align: center; color: var(--accent-color); display: flex; flex-direction: column; }
             .prod-nav li > a > span.nav-icon { display: block; border: var(--border-width) solid var(--border-secondary-color); padding: var(--space-2); margin-bottom: var(--space-1); margin-left: auto; margin-right: auto; border-radius: var(--radius-md); background-color: var(--secondary-color); max-width: var(--icn-w56); }
@@ -337,7 +337,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
     .topbar__right .iconBtn:not([aria-label="Download"]) { display: none; }
 }
 @media (max-width:767.98px) {
-    .topbar__left .btn-1 {; }
+    .topbar__left .btn-1 { }
     .pill__iconBtn { margin-right: var(--space-1); }
 }
 
@@ -365,7 +365,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 .app-list { padding: 0; margin: var(--space-2); padding: var(--space-1); display: flex; justify-content: space-between; }
 .app { list-style-type: none; flex: 1 1 25%; max-width: 25%; }
 .app-badge { color: var(--primary-color); text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: var(--space-1); min-width: 0; }
-.game-name { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display: block; width: 100%; min-width: 0; }
+.game-name { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display: block; width: 100%; min-width: 0; font-size:var(--text-xs); }
 .app-badge .single-icon { border: var(--border-width) solid var(--primary-color); border-radius: var(--radius-md); margin-bottom: var(--space-1); max-width: var(--icn-w56); overflow: hidden; }
 .app-badge img { width: 100%; display: block; transition: transform var(--duration-normal) var(--ease-interact); }
 .app-badge:hover img { transform: scale(1.1); }
