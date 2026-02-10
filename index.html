@@ -1622,78 +1622,54 @@
 
     </script>
     <script>
-       const btn = document.querySelector('[data-action="toggle-app"]');
-const nav = document.querySelector('.sidebar-nav.sidebar-nav--product');
-const body = document.body;
+        const btn = document.querySelector('[data-action="toggle-app"]');
+        const nav = document.querySelector('.sidebar-nav.sidebar-nav--product');
+        const panel = nav.querySelector('.prod-nav');
+        const body = document.body;
 
-const ANIM_CLASS = 'nav-animating';
-const DURATION = 260; // 跟 CSS transition 对齐
+        let scheduled = 0;
 
-function withNavAnimation(action) {
-    nav.classList.add(ANIM_CLASS);
+        function openNav() {
+            nav.classList.add('active');
+            body.classList.add('no-scroll');
+        }
 
-    // 强制 reflow，确保 animating 先生效
-    void nav.offsetWidth;
+        function closeNav() {
+            nav.classList.remove('active');
+            body.classList.remove('no-scroll');
+        }
 
-    action();
+        function toggleNav() {
+            nav.classList.contains('active') ? closeNav() : openNav();
+        }
 
-    let done = false;
-    const cleanup = () => {
-        if (done) return;
-        done = true;
-        nav.classList.remove(ANIM_CLASS);
-    };
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
 
-    const onEnd = (e) => {
-        if (e.target !== nav) return;
-        if (!['opacity', 'transform', 'max-height'].includes(e.propertyName)) return;
-        nav.removeEventListener('transitionend', onEnd);
-        cleanup();
-    };
+            // 取消上一次排队，避免连点
+            if (scheduled) cancelAnimationFrame(scheduled);
 
-    nav.addEventListener('transitionend', onEnd);
+            // 关键：下一帧才切 class（这一下 click 不会落到刚出现的 item 上）
+            scheduled = requestAnimationFrame(() => {
+                scheduled = 0;
+                toggleNav();
+            });
+        });
 
-    // 兜底：防止 transitionend 没触发
-    setTimeout(cleanup, DURATION + 40);
-}
+        /* 点遮罩关掉 */
+        nav.addEventListener('click', () => {
+            if (nav.classList.contains('active')) closeNav();
+        });
 
-function openNav() {
-    withNavAnimation(() => {
-        nav.classList.add('active');
-        body.classList.add('no-scroll');
-    });
-}
+        /* 点面板不关 */
+        panel.addEventListener('click', (e) => e.stopPropagation());
 
-function closeNav() {
-    withNavAnimation(() => {
-        nav.classList.remove('active');
-        body.classList.remove('no-scroll');
-    });
-}
+        /* ESC 关闭 */
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && nav.classList.contains('active')) closeNav();
+        });
 
-btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    nav.classList.contains('active') ? closeNav() : openNav();
-});
-
-/* 点击遮罩关掉 */
-nav.addEventListener('click', () => {
-    if (!nav.classList.contains('active')) return;
-    closeNav();
-});
-
-/* 点 panel（ul）不要关 */
-nav.querySelector('.prod-nav').addEventListener('click', (e) => {
-    e.stopPropagation();
-});
-
-/* ESC 关闭 */
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && nav.classList.contains('active')) {
-        closeNav();
-    }
-});
 
     </script>
     <script>
