@@ -206,6 +206,8 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 
 
         .sidebar-header__quick .btn-2 .pill__text { }
+    .pill__text .currency { display: none; }
+
 }
 
 @media (max-width:365px) {
@@ -226,7 +228,6 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 
     .sidebar-header__actions [data-action="toggle-sidebar"] { padding-left: var(--space-2); padding-right: var(--space-2); }
     .btn-with-icon { gap: var(--space-1) }
-    .pill__text .currency { display: none; }
 }
 
 @media (max-width:365px) {
