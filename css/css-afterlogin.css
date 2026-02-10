@@ -132,7 +132,7 @@ body.sidebar-animating .span-toggle { transition: none !important; }
 /* NAV List */
 .sidebar-header { margin: var(--space-3) var(--space-2) var(--space-2); }
 
-.sidebar-header__top { margin-bottom: var(--space-4); }
+.sidebar-header__top { margin-bottom: var(--space-2); }
 .sidebar-header__tools { display: flex; gap: var(--space-1); }
 .sidebar-header__profile { display: flex; /* align-items: center;*/ }
     .sidebar-header__profile [aria-label="Player"] { background: transparent; border: var(--border-width) solid var(--primary-color); color: var(--primary-color); }
@@ -146,7 +146,7 @@ body.sidebar-animating .span-toggle { transition: none !important; }
     .sidebar-header__profile .pill__iconBtn[aria-label="Player"] svg { width: 100%; height: 100%; }
 
 
-.sidebar-header__profile-top { display: flex; justify-content: space-between; align-items: center; /* margin-top: var(--space-3);*/ margin-bottom: var(--space-1); margin-right: var(--space-2); margin-left: var(--space-1); }
+.sidebar-header__profile-top { display: flex; justify-content: space-between; align-items: center; /* margin-top: var(--space-3);*/ margin-bottom: var(--space-1); margin-right: var(--space-2); margin-left: var(--space-2); }
 .sidebar-header__tools { /* margin-top: calc(var(--space-3) * -1)*/ }
 
 .sidebar-header__actions { display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); }
@@ -193,11 +193,14 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 
     body.sidebar-close .btn-deposit { display: none; }
     body.sidebar-close .btn-withdraw { display: none; }
+    body.sidebar-close .btn-bet { display: none; }
     body.sidebar-close [data-action].btn { border: 0; }
 
     body.sidebar-close .sidebar-header__actions { justify-content: center; }
 
     body.sidebar-close .sidebar-header__top { display: none; }
+
+    .sidebar-header__actions .btn { padding-left: var(--space-3); padding-right: var(--space-3); }
 }
 
 @media (min-width:1024px) {
@@ -211,6 +214,11 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 
 
         .sidebar-header__quick .btn-2 .pill__text { }
+
+}
+
+@media (max-width:365px) {
+    .sidebar-header__actions { flex-wrap: wrap; justify-content: normal; }
 }
 
 @media (max-width:767.98px) {
