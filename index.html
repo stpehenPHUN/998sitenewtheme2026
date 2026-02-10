@@ -1624,46 +1624,76 @@
     <script>
         const btn = document.querySelector('[data-action="toggle-app"]');
         const nav = document.querySelector('.sidebar-nav.sidebar-nav--product');
-        const panel = nav.querySelector('.prod-nav');
+        const panel = nav?.querySelector('.prod-nav');
         const body = document.body;
 
+        if (!btn || !nav || !panel) {
+            console.warn('toggle-app / sidebar-nav--product / .prod-nav not found');
+        }
+
+        const ANIM_CLASS = 'nav-animating';
+        const DURATION = 260; // 跟你的 CSS transition 对齐（200~300 都行）
         let scheduled = 0;
+        let blockPanelUntil = 0;
+
+        function setAnimating(on) {
+            nav.classList.toggle(ANIM_CLASS, !!on);
+        }
 
         function openNav() {
             nav.classList.add('active');
             body.classList.add('no-scroll');
+
+            // B：打开后的短时间内吞掉 panel 点击（防误点）
+            blockPanelUntil = performance.now() + 250;
+
+            // 动画状态
+            setAnimating(true);
+            window.setTimeout(() => setAnimating(false), DURATION + 40);
         }
 
         function closeNav() {
             nav.classList.remove('active');
             body.classList.remove('no-scroll');
+
+            setAnimating(true);
+            window.setTimeout(() => setAnimating(false), DURATION + 40);
         }
 
         function toggleNav() {
             nav.classList.contains('active') ? closeNav() : openNav();
         }
 
+        /* A：按钮点击时，下一帧才切换（避免同一次 click 命中新元素） */
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
 
-            // 取消上一次排队，避免连点
             if (scheduled) cancelAnimationFrame(scheduled);
-
-            // 关键：下一帧才切 class（这一下 click 不会落到刚出现的 item 上）
             scheduled = requestAnimationFrame(() => {
                 scheduled = 0;
                 toggleNav();
             });
         });
 
-        /* 点遮罩关掉 */
+        /* 点击遮罩关掉 */
         nav.addEventListener('click', () => {
             if (nav.classList.contains('active')) closeNav();
         });
 
-        /* 点面板不关 */
-        panel.addEventListener('click', (e) => e.stopPropagation());
+        /* panel：不要冒泡关掉 + B：刚打开时吞掉第一次误点 */
+        panel.addEventListener(
+            'click',
+            (e) => {
+                if (performance.now() < blockPanelUntil) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return;
+                }
+                e.stopPropagation();
+            },
+            true // capture：更早拦截，保险
+        );
 
         /* ESC 关闭 */
         document.addEventListener('keydown', (e) => {
