@@ -250,7 +250,8 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 
 @media(max-width:767.98px) {
     .toplogo { gap: normal; padding-left: 0; }
-    .topbar__right { display: none; }
+    .topbar__right > *:not(.languagebox) { display: none; }
+    .languagebox{}
 }
 
 /* generic icon sizing */
@@ -562,7 +563,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 }
 
 /* language */
-.langSheet { position: fixed; inset: 0; display: grid; grid-template-rows: 1fr auto; z-index: 9999; pointer-events: none; opacity: 0; transition: opacity var(--duration-fast) var(--ease-interact);}
+.langSheet { position: fixed; inset: 0; display: grid; grid-template-rows: 1fr auto; z-index: 9999; pointer-events: none; opacity: 0; transition: opacity var(--duration-fast) var(--ease-interact); top:0; bottom:0; left:0; right:0; margin:auto;}
     .langSheet.isOpen { pointer-events: auto; opacity: 1; }
 
 /* 重点：blur 背景 */
