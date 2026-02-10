@@ -201,10 +201,10 @@ body.sidebar-animating .span-toggle { transition: none !important; }
 
     body.no-scroll { overflow: hidden; }
         body.no-scroll .sidebar { overflow: hidden; }
-    .sidebar-nav--product { position: fixed; inset: 0; /* top/right/bottom/left 全 0 */ width: 100%; height: 100%; z-index: 9999; /* blur 背景（遮罩层本体） */ backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); /* 通常还会叠一点半透明暗色更像手机 */ background: rgba(0, 0, 0, 0.25); /* 初始隐藏：用可动画属性，不用 display */ opacity: 0; pointer-events: none; transition: opacity 220ms ease; visibility:hidden; }
+    .sidebar-nav--product { position: fixed; inset: 0; /* top/right/bottom/left 全 0 */ width: 100%; height: 100%; z-index: 9999; /* blur 背景（遮罩层本体） */ backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); /* 通常还会叠一点半透明暗色更像手机 */ background: rgba(0, 0, 0, 0.25); /* 初始隐藏：用可动画属性，不用 display */ opacity: 0; pointer-events: none; transition: opacity 220ms ease; pointer-events: none; }
+        .sidebar-nav--product.nav-animating { pointer-events: none; }
 
-        .sidebar-nav--product.active { opacity: 1; pointer-events: auto; visibility:visible; }
-
+        .sidebar-nav--product.active { opacity: 1; pointer-events: auto;  }
         .sidebar-nav--product .prod-nav { position: absolute; top: 60px; left: var(--space-4); right: var(--space-4); background: var(--secondary-color); padding: var(--space-3); border: var(--border-width) solid var(--accent-color); border-radius: var(--radius-md); transform: translateY(-12px) scale(0.98); opacity: 0; transition: transform 260ms cubic-bezier(.2,.8,.2,1), opacity 200ms ease; max-height: calc(100vh - 120px); overflow: auto; -webkit-overflow-scrolling: touch; }
         .sidebar-nav--product.active .prod-nav { transform: translateY(0) scale(1); opacity: 1; }
 
