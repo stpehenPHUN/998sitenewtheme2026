@@ -253,7 +253,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 @media(max-width:767.98px) {
     .toplogo { gap: normal; padding-left: 0; }
     .topbar__right > *:not(.languagebox) { display: none; }
-    .topbar__right{padding:0;}
+    .topbar__right{padding:0 !important;}
     .languagebox { }
 }
 
