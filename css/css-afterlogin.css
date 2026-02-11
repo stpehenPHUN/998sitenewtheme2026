@@ -64,7 +64,7 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
 .sidebar.sidebar--main { transition: width var(--duration-normal) var(--ease-interact), transform var(--duration-normal) var(--ease-interact); will-change: width, transform; }
 
 @media (min-width:768px) {
-    .sidebar { position: fixed; top: 0; left: 0; height: 100vh; height: 100dvh; width: var(--sidebar-w); background-color: var(--secondary-color); color: var(--font-color); z-index: 1000; overflow: visible; transition: width var(--duration-normal) var(--ease-in), transform var(--duration-normal) var(--ease-in); max-width: var(--sidebar-w); }
+    .sidebar { position: fixed; top: 0; left: 0; height: 100vh; height: 100dvh; width: var(--sidebar-w); background-color: var(--secondary-color); color: var(--font-color); z-index: 1000; transition: width var(--duration-normal) var(--ease-in), transform var(--duration-normal) var(--ease-in); max-width: var(--sidebar-w); overflow-x:visible; overflow-y:auto;}
     .sidebar--wrapper { width: var(--sidebar-w); }
     .main { margin-left: var(--sidebar-w); transition: margin-left var(--duration-normal) var(--ease-in) }
     body.sidebar-close .sidebar { width: var(--rail-w); }
