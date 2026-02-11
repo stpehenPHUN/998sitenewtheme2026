@@ -125,8 +125,9 @@ body.sidebar-animating .span-toggle { transition: none !important; }
 .sidebar-header { margin: var(--space-3) var(--space-2) var(--space-2); }
 
 .sidebar-header__top { margin-bottom: var(--space-2); }
-.sidebar-header__tools { display: flex; gap: var(--space-1); }
-.sidebar-header__profile { display: flex; /* align-items: center;*/ }
+.sidebar-header__tools { display: flex; gap: var(--space-1); position:absolute; right:var(--space-3); }
+.sidebar--main .dropdown-menu:after { right: auto; left: 40px; }
+    .sidebar-header__profile { display: flex; /* align-items: center;*/ }
     .sidebar-header__profile [aria-label="Player"] { background: transparent; border: var(--border-width) solid var(--primary-color); color: var(--primary-color); }
     .sidebar-header__profile [aria-label="playerName"] { }
 .sidebar-header__quick { display: flex; color: var(--primary-color); align-items: center; }
@@ -252,7 +253,8 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 @media(max-width:767.98px) {
     .toplogo { gap: normal; padding-left: 0; }
     .topbar__right > *:not(.languagebox) { display: none; }
-    .languagebox{}
+    .topbar__right{display:none;}
+    .languagebox { }
 }
 
 /* generic icon sizing */
@@ -632,12 +634,10 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
         .wheel__item:hover { background: var(--bg-color); }
 }
 
-
-
 /* toggle nav */
 .settings-menu__wrap { display: flex; align-items: center; border-radius: var(--radius-pill); }
 .settings-menu__inner { display: flex; align-items: center; }
-.settings-menu.open .settings-menu__wrap { background-color: rgba(255,255,255,0.1); }
+.settings-menu.open .settings-menu__wrap { background-color: var(--bg-color); }
 .settings-menu__panel { max-width: 0; transition: max-width var(--duration-fast) var(--ease-interact); overflow: hidden; }
 .settings-menu.open .settings-menu__panel { max-width: 150px; padding-left: var(--space-1); padding-right: var(--space-1); }
 
