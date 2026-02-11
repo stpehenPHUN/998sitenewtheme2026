@@ -2044,20 +2044,36 @@
     </script>
     <script>
         document.addEventListener("click", (e) => {
-            const btn = e.target.closest("#btn-settingsbox");
-            if (!btn) return;
-
+            const btn = document.querySelector("#btn-settingsbox");
             const box = document.querySelector("#togglesettings");
-            if (!box) return;
+            if (!btn || !box) return;
+
+            const clickedBtn = e.target.closest("#btn-settingsbox");
+            const clickedInsideBox = e.target.closest("#togglesettings");
 
             const isOpen = box.classList.contains("open");
-            box.classList.toggle("open", !isOpen);
 
-            btn.classList.toggle("btn-setting__open", isOpen);
-            btn.classList.toggle("btn-setting__close", !isOpen);
+            // 1) 点按钮：toggle
+            if (clickedBtn) {
+                const nextState = !isOpen;
 
-            // 无障碍：告诉读屏当前状态
-            btn.setAttribute("aria-expanded", String(!isOpen));
+                box.classList.toggle("open", nextState);
+                btn.classList.toggle("btn-setting__open", nextState);
+                btn.classList.toggle("btn-setting__close", !nextState);
+                btn.setAttribute("aria-expanded", String(nextState));
+                return;
+            }
+
+            // 2) 点 box 内：不关
+            if (clickedInsideBox) return;
+
+            // 3) 点其他地方：如果开着就关
+            if (isOpen) {
+                box.classList.remove("open");
+                btn.classList.remove("btn-setting__open");
+                btn.classList.add("btn-setting__close");
+                btn.setAttribute("aria-expanded", "false");
+            }
         });
 
 
