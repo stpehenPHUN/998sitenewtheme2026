@@ -64,7 +64,7 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
 .sidebar.sidebar--main { transition: width var(--duration-normal) var(--ease-interact), transform var(--duration-normal) var(--ease-interact); will-change: width, transform; }
 
 @media (min-width:768px) {
-    .sidebar { position: fixed; top: 0; left: 0; height: 100vh; height: 100dvh; width: var(--sidebar-w); background-color: var(--secondary-color); color: var(--font-color); z-index: 1000; transition: width var(--duration-normal) var(--ease-in), transform var(--duration-normal) var(--ease-in); max-width: var(--sidebar-w); overflow-x:visible; overflow-y:auto;}
+    .sidebar { position: fixed; top: 0; left: 0; height: 100vh; height: 100dvh; width: var(--sidebar-w); background-color: var(--secondary-color); color: var(--font-color); z-index: 1000; transition: width var(--duration-normal) var(--ease-in), transform var(--duration-normal) var(--ease-in); max-width: var(--sidebar-w); overflow-x: visible; overflow-y: auto; }
     .sidebar--wrapper { width: var(--sidebar-w); }
     .main { margin-left: var(--sidebar-w); transition: margin-left var(--duration-normal) var(--ease-in) }
     body.sidebar-close .sidebar { width: var(--rail-w); }
@@ -93,8 +93,10 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
     body.sidebar-close .prod-nav,
     body.sidebar-close .prod-nav li { overflow: visible; /* 关键：tooltip 才能飞出去 */ }
 
-        /* 2) 维持你原本 rail 模式把文字“隐藏”的策略 */
-        body.sidebar-close .nav--left a { position: relative; /* tooltip 的定位基准 */ overflow: visible; /* 避免 a 自己裁掉 tooltip */ /* 继续隐藏正常文字（你原本就这样做） */ }
+
+    body.sidebar-close  .sidebar { overflow:visible !important;}
+    /* 2) 维持你原本 rail 模式把文字“隐藏”的策略 */
+    body.sidebar-close .nav--left a { position: relative; /* tooltip 的定位基准 */ overflow: visible; /* 避免 a 自己裁掉 tooltip */ /* 继续隐藏正常文字（你原本就这样做） */ }
 
     /* 3) tooltip（span-toggle）本体样式 */
     body.sidebar-close .span-toggle { position: absolute; left: calc(100% + 10px); top: 50%; transform: translateY(-50%) translateX(-4px); opacity: 0; pointer-events: none; /* 重点：不要跟着 a 的 font-size:0 */ line-height: 1; white-space: nowrap; background: var(--primary-color); color: var(--font-color); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); box-shadow: 0 8px 20px rgba(0,0,0,.18); transition: opacity var(--duration-fast) var(--ease-interact), transform var(--duration-fast) var(--ease-interact); z-index: 50; }
@@ -125,9 +127,9 @@ body.sidebar-animating .span-toggle { transition: none !important; }
 .sidebar-header { margin: var(--space-3) var(--space-2) var(--space-2); }
 
 .sidebar-header__top { margin-bottom: var(--space-2); }
-.sidebar-header__tools { display: flex; gap: var(--space-1); position:absolute; right:var(--space-3); }
+.sidebar-header__tools { display: flex; gap: var(--space-1); position: absolute; right: var(--space-3); }
 .sidebar--main .dropdown-menu:after { right: auto; left: 40px; }
-    .sidebar-header__profile { display: flex; /* align-items: center;*/ }
+.sidebar-header__profile { display: flex; /* align-items: center;*/ }
     .sidebar-header__profile [aria-label="Player"] { background: transparent; border: var(--border-width) solid var(--primary-color); color: var(--primary-color); }
     .sidebar-header__profile [aria-label="playerName"] { }
 .sidebar-header__quick { display: flex; color: var(--primary-color); align-items: center; }
@@ -146,7 +148,7 @@ body.sidebar-animating .span-toggle { transition: none !important; }
     .sidebar-header__actions.btn-withdraw { margin-right: auto; }
     .sidebar-header__actions [data-action].btn { margin-left: auto; }
 
-.prod-nav { margin-left: 0; padding-left: 0; margin: var(--space-2); margin-bottom: 1rem; display: flex; flex-wrap: wrap; padding-top: var(--space-4); margin: var(--space-4) var(--space-2); font-size:var(--text-xs);}
+.prod-nav { margin-left: 0; padding-left: 0; margin: var(--space-2); margin-bottom: 1rem; display: flex; flex-wrap: wrap; padding-top: var(--space-4); margin: var(--space-4) var(--space-2); font-size: var(--text-xs); }
     .prod-nav li { list-style-type: none; flex: 1 1 25%; max-width: 25%; }
         .prod-nav li > a { margin: var(--space-1); text-align: center; color: var(--accent-color); display: flex; flex-direction: column; }
             .prod-nav li > a > span.nav-icon { display: block; border: var(--border-width) solid var(--border-secondary-color); padding: var(--space-2); margin-bottom: var(--space-1); margin-left: auto; margin-right: auto; border-radius: var(--radius-md); background-color: var(--secondary-color); max-width: var(--icn-w56); }
@@ -200,7 +202,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
     .sidebar-header { margin-top: var(--space-4); margin-bottom: var(--space-4); }
 }
 
-@media (max-width:1023.89px) {
+@media (max-width:1023.98px) {
     .sidebar-header__quick { }
         .sidebar-header__quick > ul { gap: var(--space-1); }
             .sidebar-header__quick > ul li { background: var(--bg-color); display: flex; justify-content: center; align-items: center; }
@@ -208,7 +210,6 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 
         .sidebar-header__quick .btn-2 .pill__text { }
     .pill__text .currency { display: none; }
-
 }
 
 @media (max-width:365px) {
@@ -235,7 +236,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
     .topbar__left { gap: 0; }
 }
 /*--------- body header */
-.toplogo, .topbar { display: flex; justify-content: space-between; align-items: center;  margin: var(--space-2) var(--space-2); }
+.toplogo, .topbar { display: flex; justify-content: space-between; align-items: center; margin: var(--space-2) var(--space-2); }
     .toplogo [data-action="toggle-sidebar"] { padding: 0; }
 .topbar__left,
 .topbar__right { display: flex; align-items: center; gap: var(--space-1); flex-wrap: nowrap; }
@@ -253,7 +254,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 @media(max-width:767.98px) {
     .toplogo { gap: normal; padding-left: 0; }
     .topbar__right > *:not(.languagebox) { display: none; }
-    .topbar__right{padding:0 !important;}
+    .topbar__right { padding: 0 !important; }
     .languagebox { }
 }
 
@@ -307,7 +308,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 
 .badge__text { }
 
-.dropdown-menu { background-color: var(--secondary-color); border: var(--border-width) solid var(--primary-color); margin-top: var(--space-2) !important; position: relative; border-radius:var(--radius-md);}
+.dropdown-menu { background-color: var(--secondary-color); border: var(--border-width) solid var(--primary-color); margin-top: var(--space-2) !important; position: relative; border-radius: var(--radius-md); }
     .dropdown-menu:after { content: ''; position: absolute; width: var(--icn-w12); height: var(--icn-w12); transform: rotate(45deg); border-top: var(--border-width) solid var(--primary-color); border-left: var(--border-width) solid var(--primary-color); background-color: var(--secondary-color); top: -6px; left: 48px; }
 .level { margin: 0; padding: 0 var(--space-2); }
 .level__item { list-style-type: none; display: flex; justify-content: space-between; align-items: center; color: var( --font-color); padding: var(--space-2); align-items: center; }
@@ -335,9 +336,11 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
     .topbar__left .btn-1:not(#dompet) { display: none; }
     .dropdown-menu:after { left: auto; right: 36px; }
 }
-@media (max-width:1023.98px){
+
+@media (max-width:1023.98px) {
     .topbar__right .iconBtn:not([aria-label="Download"]) { display: none; }
 }
+
 @media (max-width:767.98px) {
     .topbar__left .btn-1 { }
     .pill__iconBtn { margin-right: var(--space-1); }
@@ -367,7 +370,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 .app-list { padding: 0; margin: var(--space-2); padding: var(--space-1); display: flex; justify-content: space-between; }
 .app { list-style-type: none; flex: 1 1 25%; max-width: 25%; }
 .app-badge { color: var(--primary-color); text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: var(--space-1); min-width: 0; }
-.game-name { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display: block; width: 100%; min-width: 0; font-size:var(--text-xs); }
+.game-name { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display: block; width: 100%; min-width: 0; font-size: var(--text-xs); }
 .app-badge .single-icon { border: var(--border-width) solid var(--primary-color); border-radius: var(--radius-md); margin-bottom: var(--space-1); max-width: var(--icn-w56); overflow: hidden; }
 .app-badge img { width: 100%; display: block; transition: transform var(--duration-normal) var(--ease-interact); }
 .app-badge:hover img { transform: scale(1.1); }
@@ -524,10 +527,13 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
     .vendor:hover .vendor-img { transform: scale(1.1); }
 }
 
-@media (max-width:1023.89px) and (min-width:767.98px) {
+@media (max-width:1023.98px) and (min-width:767.98px) {
     .sidebar-close .vendor-list { grid-template-columns: repeat(4, 1fr); }
 }
 
+@media (max-width:1023.98px) {
+    .vendor-hover .btn-play { position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; width: auto; height: auto; }
+}
 
 /* mobile download top*/
 .sectiondownload, .download-bar { width: 100%; padding: var(--space-2); background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); color: var( --font-color); }
@@ -567,7 +573,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 }
 
 /* language */
-.langSheet { position: fixed; inset: 0; display: grid; grid-template-rows: 1fr auto; z-index: 9999; pointer-events: none; opacity: 0; transition: opacity var(--duration-fast) var(--ease-interact); top:0; bottom:0; left:0; right:0; margin:auto;}
+.langSheet { position: fixed; inset: 0; display: grid; grid-template-rows: 1fr auto; z-index: 9999; pointer-events: none; opacity: 0; transition: opacity var(--duration-fast) var(--ease-interact); top: 0; bottom: 0; left: 0; right: 0; margin: auto; }
     .langSheet.isOpen { pointer-events: auto; opacity: 1; }
 
 /* 重点：blur 背景 */
@@ -594,8 +600,8 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 .wheel__spacer { height: calc((var(--item-h) * (var(--visible) - 1)) / 2); }
 
 .wheel__item { height: var(--item-h); display: flex; align-items: center; justify-content: center; scroll-snap-align: center; color: var(--font-color); opacity: .42; transform: scale(.92); transition: opacity .12s ease, transform .12s ease; cursor: default; }
-    .wheel__item img{width:var(--icn-w24); margin-right:var(--space-2);}
-    .wheel__window { position: absolute; left: 10px; right: 10px; top: 50%; height: var(--item-h); transform: translateY(-50%); border-radius: var(--radius-md); border: var(--border-width) solid var(--primary-color); box-shadow: inset 0 0 0 1px rgba(255,255,255,.04); pointer-events: none; }
+    .wheel__item img { width: var(--icn-w24); margin-right: var(--space-2); }
+.wheel__window { position: absolute; left: 10px; right: 10px; top: 50%; height: var(--item-h); transform: translateY(-50%); border-radius: var(--radius-md); border: var(--border-width) solid var(--primary-color); box-shadow: inset 0 0 0 1px rgba(255,255,255,.04); pointer-events: none; }
 
 .wheel__fade { position: absolute; inset: 0; pointer-events: none; background: var(--bg-color) }
 
@@ -604,18 +610,18 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 
 @media (min-width:1024px) {
     .langSheet { pointer-events: none; max-height: 0; overflow: hidden; margin-top: 4px; }
-        .langSheet.isOpen { pointer-events: auto; max-height:300px; overflow:visible;}
-        .langSheet:hover {z-index:99999;}
-        .langSheet { position: absolute; inset: auto; width: auto; height: auto; display: block; opacity: 1; /* 不走 overlay 淡入 */ transition: none; z-index: 99; margin-left: calc(var(--space-6) * -1); }
+        .langSheet.isOpen { pointer-events: auto; max-height: 300px; overflow: visible; }
+        .langSheet:hover { z-index: 99999; }
+    .langSheet { position: absolute; inset: auto; width: auto; height: auto; display: block; opacity: 1; /* 不走 overlay 淡入 */ transition: none; z-index: 99; margin-left: calc(var(--space-6) * -1); }
 
     /* backdrop 不显示 */
     .langSheet__backdrop { display: none !important; }
 
     /* panel 不要从底部滑上来、也不要占满宽 */
-    .langSheet__panel { transform: none !important; transition: none !important; border-radius: var(--radius-md); padding: var(--space-2); background: var(--secondary-color); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: var(--border-width) solid var(--primary-color); box-shadow: 0 12px 30px rgba(0,0,0,.35); margin-right:var(--space-3);}
+    .langSheet__panel { transform: none !important; transition: none !important; border-radius: var(--radius-md); padding: var(--space-2); background: var(--secondary-color); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: var(--border-width) solid var(--primary-color); box-shadow: 0 12px 30px rgba(0,0,0,.35); margin-right: var(--space-3); }
         .langSheet__panel:after { content: ''; position: absolute; width: var(--icn-w12); height: var(--icn-w12); transform: rotate(45deg); border-top: var(--border-width) solid var(--primary-color); border-left: var(--border-width) solid var(--primary-color); background-color: var(--secondary-color); top: -6px; left: 40px; }
-        /* header 全部隐藏（你说的“其他东西都不显示”） */
-        .langSheet__header { display: none !important; }
+    /* header 全部隐藏（你说的“其他东西都不显示”） */
+    .langSheet__header { display: none !important; }
 
     /* wheel 的装饰都隐藏，只保留 scroller 列表 */
     .wheel__fade,
@@ -653,3 +659,18 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 #btn-settingsbox { background: var(--bg-color) }
     #btn-settingsbox.btn-setting__open svg { transform: rotate(90deg); }
     #btn-settingsbox.btn-setting__open { background: var(--primary-color) }
+
+
+
+/* dragonbones swiper banner */
+.heroSwiper { width: 100%; }
+    .heroSwiper .swiper-slide { position: relative; }
+
+/* banner 高度你自己定一个就好，别重复写 */
+.dbWrap { position: relative; width: 100%; height: 500px; overflow: hidden; }
+
+.heroTab.is-active { /* 你自己的active样式 */ }
+
+@media (max-width: 1023.98px) {
+    .heroTab { cursor: default; }
+}
