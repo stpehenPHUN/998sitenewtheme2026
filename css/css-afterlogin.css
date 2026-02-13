@@ -661,16 +661,31 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
     #btn-settingsbox.btn-setting__open { background: var(--primary-color) }
 
 
-
+/*****************************    P2P Banner   */
+.bigtext { font-size: clamp( var(--text-lg), 1.2vw + var(--text-sm), var(--text-2xl) ); }
+.banner-main { }
 /* dragonbones swiper banner */
-.heroSwiper { width: 100%; }
+.heroSwiper {  height:auto;}
     .heroSwiper .swiper-slide { position: relative; }
 
 /* banner 高度你自己定一个就好，别重复写 */
-.dbWrap { position: relative; width: 100%; height: 500px; overflow: hidden; }
+.dbWrap { position: relative; width: 100%; height: 200px; overflow: hidden; }
+.p2pcontent { position: absolute; z-index: 3;  top: calc(var(--space-3) * 3); left: var(--space-3); }
+.p2p-bg { background-image: url('../image/p2pbannerbg.jpg'); position:absolute; top:10%; bottom:0; left:0; margin:auto; width:80%; background-size:cover;z-index:-1; border-radius:var(--radius-md); border-top:var(--space-1) solid var(--primary-color);}
+
+.vendors-square .vendor { height:auto; aspect-ratio:1/1;}
 
 .heroTab.is-active { /* 你自己的active样式 */ }
 
 @media (max-width: 1023.98px) {
     .heroTab { cursor: default; }
+}
+
+@media(min-width:1024px) {
+    .dbWrap { height: 500px;  }
+
+    .vendors-float { position: absolute; bottom: 0; z-index: 4; display: flex; left: var(--space-4); }
+        .vendors-float .vendor-list { display:flex;}
+        .vendors-float .vendor { min-width: var(--item-max); }
+    .p2pcontent { top: calc(var(--space-5) * 3); left: var(--space-6); }
 }
