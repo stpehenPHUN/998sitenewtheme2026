@@ -634,6 +634,124 @@
                     </div>
                 </div>
             </header>
+            <section class="banner">
+                <style>
+                    .swiper-slide img { width: 100%; }
+
+                    .banner-main { }
+                        .banner-main .swiper-wrapper,
+                        .banner-main .swiper-slide { height: 100%; }
+                        .banner-main .banner-slide { background-position: center; background-size: cover; background-repeat: no-repeat; }
+                </style>
+                <div class="banner swiper banner-main js-banner">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing3.png"></div>
+                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing2.png"></div>
+                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing3.png"></div>
+                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing2.png"></div>
+                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing3.png"></div>
+                    </div>
+
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        if (typeof Swiper === 'undefined') return;
+
+                        /* ========= 可调参数区 ========= */
+                        const BP_MOBILE_MAX = 767;
+                        const BP_TABLET_MAX = 1024;
+
+                        // >1024 视为 desktop 的基准张数
+                        const DESKTOP_OPEN_COUNT = 2;     // sidebar 展开（nav slide 出来）
+                        const DESKTOP_CLOSED_COUNT = 3;   // sidebar 收起（rail）
+
+                        // 768~1024：比 desktop 少几张（想少2就改 2）
+                        const TABLET_DELTA = 1;
+
+                        const SPACE_BETWEEN = 16;
+                        const SPEED = 400;
+                        /* ============================ */
+
+                        const bannerEl = document.querySelector('.js-banner');
+                        if (!bannerEl) return;
+
+                        // 1) data-bg -> background-image（一次性）
+                        bannerEl.querySelectorAll('.swiper-slide[data-bg]').forEach(slide => {
+                            const url = slide.dataset.bg;
+                            if (!url) return;
+                            slide.style.backgroundImage = `url("${url}")`;
+                            slide.style.backgroundPosition = 'center';
+                            slide.style.backgroundSize = 'cover';
+                            slide.style.backgroundRepeat = 'no-repeat';
+                        });
+
+                        // 2) 初始化 Swiper（轮播本体）
+                        const swiper = new Swiper(bannerEl, {
+                            slidesPerView: 1,
+                            spaceBetween: SPACE_BETWEEN,
+                            speed: SPEED,
+                            loop: false,
+                            pagination: {
+                                el: bannerEl.querySelector('.swiper-pagination'),
+                                clickable: true,
+                            },
+                            navigation: {
+                                nextEl: bannerEl.querySelector('.swiper-button-next'),
+                                prevEl: bannerEl.querySelector('.swiper-button-prev'),
+                            },
+                            autoplay: {
+                                delay: 5000,
+                            },
+                            rewind: true,
+                        });
+
+                        const isSidebarClosed = () => document.body.classList.contains('sidebar-close');
+
+                        function clamp(n, min, max) {
+                            return Math.max(min, Math.min(max, n));
+                        }
+
+                        function getSlidesPerView() {
+                            const w = window.innerWidth;
+
+                            // mobile：永远 1
+                            if (w <= BP_MOBILE_MAX) return 1;
+
+                            const desktopBase = isSidebarClosed() ? DESKTOP_CLOSED_COUNT : DESKTOP_OPEN_COUNT;
+
+                            // tablet：比 desktop 少 TABLET_DELTA（至少 1）
+                            if (w <= BP_TABLET_MAX) {
+                                return clamp(desktopBase - TABLET_DELTA, 1, desktopBase);
+                            }
+
+                            // desktop
+                            return desktopBase;
+                        }
+
+                        function updateBanner() {
+                            const target = getSlidesPerView();
+                            if (swiper.params.slidesPerView === target) return;
+
+                            swiper.params.slidesPerView = target;
+                            swiper.update();
+                        }
+
+                        // 3) 首次应用
+                        updateBanner();
+
+                        // 4) sidebar 状态变化（body class 变化）时更新
+                        const observer = new MutationObserver(updateBanner);
+                        observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+                        // 5) resize 更新（跨断点）
+                        window.addEventListener('resize', updateBanner);
+                    });
+                </script>
+
+            </section>
 
             <section class="position-relative">
 
