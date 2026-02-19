@@ -94,7 +94,7 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
     body.sidebar-close .prod-nav li { overflow: visible; /* 关键：tooltip 才能飞出去 */ }
 
 
-    body.sidebar-close  .sidebar { overflow:visible !important;}
+    body.sidebar-close .sidebar { overflow: visible !important; }
     /* 2) 维持你原本 rail 模式把文字“隐藏”的策略 */
     body.sidebar-close .nav--left a { position: relative; /* tooltip 的定位基准 */ overflow: visible; /* 避免 a 自己裁掉 tooltip */ /* 继续隐藏正常文字（你原本就这样做） */ }
 
@@ -398,7 +398,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 .vendor-rail { display: flex; align-items: center; gap: var(--space-2); }
     .vendor-rail::-webkit-scrollbar { display: none; }
 .filter { margin: 0; padding: 0; display: flex; flex: 0 0 auto; scroll-snap-align: start; white-space: nowrap; }
-.filter-btn { list-style-type: none; padding: calc(var(--space-2) + 1px) var(--space-4); border-radius: var(--radius-pill); cursor: pointer; margin: var(--space-1); color: var(--font-color); }
+.filter-btn { list-style-type: none; padding: calc(var(--space-1) + 1px) var(--space-4); border-radius: var(--radius-pill); cursor: pointer; margin: var(--space-1); color: var(--font-color); }
     .filter-btn:hover { background-color: var(--bg-color); }
     .filter-btn.active { background-color: var(--primary-color); border: var(--border-width) solid var(--accent-color); }
     .filter-btn img { width: 100%; }
@@ -410,7 +410,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 
 .vendor-searchcontainer { position: relative; }
 .input-icon { position: absolute; right: var(--space-2); top: 50%; transform: translateY(-50%); width: var(--icn-w24); height: var(--icn-w24); pointer-events: none; color: var(--white-color); fill: var(--font-color); }
-#vendor-search, .vendor-search { inset: 0; padding: var(--space-2) var(--icn-w30) var(--space-2) var(--space-4); border: 0; outline: 0; background: transparent; color: var(--font-color); }
+#vendor-search, .vendor-search { inset: 0; padding: var(--space-1) var(--icn-w30) var(--space-2) var(--space-4); border: 0; outline: 0; background: transparent; color: var(--font-color); }
 
 @media (min-width:1024px) {
     .vendor-tabs { margin: var(--space-2) var(--space-4); border-radius: var(--radius-pill); border: var(--border-width) solid var(--primary-color); background-color: var(--secondary-color); }
@@ -459,7 +459,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 :root { --item-h: 95px; --item-game-h: 65px; }
 
 @media (min-width:768px) {
-    :root { --item-game-h: 105px; /* 卡片高度锁死 */ --item-min: 150px; --item-w: 8vw; /* 最小宽度 */ --item-max: 180px; }
+    :root { --item-game-h: 175px; /* 卡片高度锁死 */ --item-min: 150px; --item-w: 13vw; /* 最小宽度 */ --item-max: 260px; }
 }
 
 .vendors { margin: var(--space-2); }
@@ -507,6 +507,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 .vendor:hover .vendor-hover:after { opacity: 0.65; }
 
 @media (min-width:866px) {
+    .vendor[data-tag]:after { font-size: var(--text-xs); }
 }
 
 @media (min-width:866px) {
@@ -665,15 +666,15 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 .bigtext { font-size: clamp( var(--text-lg), 1.2vw + var(--text-sm), var(--text-2xl) ); }
 .banner-main { }
 /* dragonbones swiper banner */
-.heroSwiper {  height:auto;}
+.heroSwiper { height: auto; }
     .heroSwiper .swiper-slide { position: relative; }
 
 /* banner 高度你自己定一个就好，别重复写 */
 .dbWrap { position: relative; width: 100%; height: 200px; overflow: hidden; }
-.p2pcontent { position: absolute; z-index: 3;  top: calc(var(--space-3) * 3); left: var(--space-3); }
-.p2p-bg { background-image: url('../image/p2pbannerbg.jpg'); position:absolute; top:10%; bottom:0; left:0; margin:auto; width:80%; background-size:cover;z-index:-1; border-radius:var(--radius-md); border-top:var(--space-1) solid var(--primary-color);}
+.p2pcontent { position: absolute; z-index: 3; top: calc(var(--space-3) * 3); left: var(--space-3); }
+.p2p-bg { background-image: url('../image/p2pbannerbg.jpg'); position: absolute; top: 10%; bottom: 0; left: 0; margin: auto; width: 80%; background-size: cover; z-index: -1; border-radius: var(--radius-md); border-top: var(--space-1) solid var(--primary-color); }
 
-.vendors-square .vendor { height:auto; aspect-ratio:1/1;}
+.vendors-square .vendor { height: auto; aspect-ratio: 1/1; }
 
 .heroTab.is-active { /* 你自己的active样式 */ }
 
@@ -682,10 +683,10 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 }
 
 @media(min-width:1024px) {
-    .dbWrap { height: 500px;  }
+    .dbWrap { height: 500px; }
 
     .vendors-float { position: absolute; bottom: 0; z-index: 4; display: flex; left: var(--space-4); }
-        .vendors-float .vendor-list { display:flex;}
+        .vendors-float .vendor-list { display: flex; }
         .vendors-float .vendor { min-width: var(--item-max); }
     .p2pcontent { top: calc(var(--space-5) * 3); left: var(--space-6); }
 }
