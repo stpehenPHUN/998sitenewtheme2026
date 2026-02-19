@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--<script src="JS/common.js"></script>
+    <script src="JS/jquery.lastest.min.js"></script>
+    <script src="JS/jQuery.base64.js"></script>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title></title>
+    <link href="js/bootstrap-5.3.8/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/bootstrap-5.3.8/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="js/swiper-11.2.10/swiper-bundle.min.css" />
+    <script src="js/swiper-11.2.10/swiper-bundle.min.js"></script>
+    <link href="css/css-afterlogin.css" rel="stylesheet" />
+    <style>
+        :root { --bg-color: #1b2033; --font-color: #fff; --primary-color: #c084fc; --secondary-color: #2b3248; --accent-color: #c084fc; }
+        /*:root { --bg-color: #1A1B26; --font-color: #A9B1D6; --primary-color: #7AA2F7; --secondary-color: #24283B; --accent-color: #F7768E; }*/
+
+    </style>
+</head>
+
+<body style=" ">
+
+    <div id="layout">
+        <section class="sectiondownload">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="download-icon">
+                    <img src="image/icn-testing.png" />
+                </div>
+                <div class="download-content">
+                    Read to play? Download App now.
+                    <br />
+                    Earn daily free reward!
+                </div>
+                <button class="iconBtn" aria-label="Download">
+                    <svg viewBox="0 0 20 20" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                        <path d="M5 20h14v-2H5v2Zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1Z" />
+                    </svg>
+                    Download
+                </button>
+                <div>
+                    <button class="icnX" aria-label="closeDownload">
+                        X
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            //close download
+            document.addEventListener('click', (e) => {
+                const closeBtn = e.target.closest('.icnX[aria-label="closeDownload"]');
+                if (!closeBtn) return;
+
+                const banner = closeBtn.closest('.sectiondownload');
+                if (!banner) return;
+
+                banner.classList.add('is-hidden');
+            });
+        </script>
+        <aside class="sidebar sidebar--main">
+            <!-- rail + main menu -->
+            <div class="sidebar--wrapper">
+                <div class="sidebar--content">
+                    <div class="sidebar-header">
+                        <div class="sidebar-header__top">
+                            <div class="sidebar-header__profile">
+                                <div>
+                                    <span class="pill__iconBtn" aria-label="Player">
+                                        <svg viewBox="-4 0 20 20" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                                            <path d="M12.517 12.834v1.9a1.27 1.27 0 0 1-1.267 1.267h-9.5a1.27 1.27 0 0 1-1.267-1.267v-1.9A3.176 3.176 0 0 1 3.65 9.667h5.7a3.176 3.176 0 0 1 3.167 3.167zM3.264 5.48A3.236 3.236 0 1 1 6.5 8.717a3.236 3.236 0 0 1-3.236-3.236z" />
+                                        </svg>
+                                    </span>
+
+                                </div>
+                                <div class="sidebar-header__profile-body">
+                                    <div class="sidebar-header__profile-top">
+                                        <div class="d-flex align-items-center">
+                                            <span class="pill__text" aria-label="playerName">PLAYER998</span>
+
+                                            <div class="dropdown">
+                                                <button class="badge btn-level dropdown-toggle" id="playerLevel" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-auto-close="outside">
+                                                    <span class="badge__icon">
+                                                        <!-- Generator: Adobe Illustrator 25.0.0, SVG Export Plug-In  -->
+                                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="17.3px"
+                                                             height="15px" viewBox="0 0 17.3 15" style="overflow:visible;enable-background:new 0 0 17.3 15;" xml:space="preserve">
+<defs>
+</defs>
+<g>
+                                                        <path class="st0" d="M3.9,8.7c1.5,0.9,3,1.7,4.5,2.6c0.2,0.1,0.3,0.1,0.5,0c1.5-0.9,3-1.8,4.6-2.6c0.1-0.1,0.2-0.2,0.2-0.4
+		c0-1.8,0-3.5,0-5.3c0-0.2-0.1-0.3-0.2-0.4c-1.5-0.9-3-1.7-4.6-2.6C8.7,0,8.6,0,8.4,0.1C6.9,1,5.4,1.8,3.9,2.7
+		C3.7,2.8,3.7,2.9,3.7,3.1c0,0.9,0,1.8,0,2.7c0,0.9,0,1.7,0,2.6C3.7,8.5,3.7,8.6,3.9,8.7z M5.7,4.7c0-0.1,0.1-0.1,0.2-0.1
+		c0.6-0.1,1.2-0.2,1.7-0.3c0,0,0.1,0,0.1-0.1C8,3.7,8.2,3.2,8.5,2.7c0-0.1,0.1-0.2,0.2-0.2c0,0,0.1,0,0.1,0c0.1,0,0.1,0.1,0.2,0.2
+		c0.2,0.5,0.5,1.1,0.7,1.6c0,0,0,0.1,0.1,0.1c0.6,0.1,1.1,0.2,1.7,0.3c0.1,0,0.2,0.1,0.2,0.1c0,0,0,0.1,0,0.1c0,0-0.1,0.1-0.1,0.1
+		c-0.4,0.4-0.8,0.9-1.2,1.3c0,0,0,0,0,0.1c0.1,0.4,0.1,0.9,0.2,1.3c0,0.2,0.1,0.3,0.1,0.5c0,0.1,0,0.2-0.2,0.2c-0.1,0-0.1,0-0.1,0
+		C9.7,8,9.2,7.7,8.7,7.5c0,0-0.1,0-0.1,0C8.1,7.7,7.6,8,7.1,8.3c-0.1,0-0.2,0.1-0.2,0C6.8,8.3,6.8,8.2,6.8,8.1
+		C6.9,7.5,7,6.9,7.1,6.3c0,0,0-0.1,0-0.1C7,6.1,6.9,6,6.8,5.9c-0.3-0.3-0.6-0.7-1-1C5.7,4.8,5.7,4.8,5.7,4.7z" />
+                                                        <path class="st0" d="M17.3,7.2c0-0.4,0-0.7,0-1.1c0-0.3-0.1-0.4-0.4-0.2c-0.8,0.4-1.6,0.9-2.4,1.3c-0.1,0.1-0.2,0.2-0.2,0.3
+		c0,0.6,0,1.1,0,1.7c0,0.1,0,0.2-0.1,0.3c-1.8,1-3.6,2.1-5.4,3.1c-0.1,0.1-0.2,0.1-0.3,0c-1.8-1.1-3.6-2.1-5.4-3.1
+		C3,9.3,3,9.3,3,9.2c0-0.6,0-1.1,0-1.7c0-0.1,0-0.2-0.2-0.3C2,6.8,1.2,6.3,0.4,5.9C0.1,5.8,0,5.9,0,6.1c0,0.7,0,1.4,0,2.1
+		c0,0.1,0.1,0.2,0.2,0.3c0.2,0.1,0.4,0.2,0.5,0.3c0.1,0,0.1,0.1,0.1,0.2c0,0.4,0,0.9,0,1.3c0,0.1,0,0.2,0.2,0.3
+		c2.5,1.4,5,2.9,7.4,4.3c0.1,0.1,0.2,0.1,0.4,0c2.5-1.4,5-2.9,7.4-4.3c0.1-0.1,0.2-0.2,0.2-0.3c0-0.4,0-0.9,0-1.3
+		c0-0.1,0-0.2,0.1-0.2c0.2-0.1,0.3-0.2,0.5-0.3c0.1-0.1,0.2-0.2,0.2-0.3C17.3,7.9,17.3,7.5,17.3,7.2z" />
+                                                        <path class="st0" d="M14.3,5.6c0,0.3,0.1,0.3,0.4,0.2c0.8-0.4,1.6-0.9,2.4-1.3c0.1-0.1,0.2-0.1,0.2-0.3c0-0.7,0-1.4,0-2.1
+		c0-0.2-0.1-0.3-0.4-0.2c-0.8,0.4-1.6,0.9-2.4,1.3c-0.1,0.1-0.2,0.2-0.2,0.3c0,0.4,0,0.7,0,1.1C14.3,4.9,14.3,5.2,14.3,5.6z" />
+                                                        <path class="st0" d="M0.2,4.5C1,4.9,1.8,5.4,2.6,5.8C2.8,5.9,3,5.9,3,5.6c0-0.4,0-0.7,0-1.1c0-0.4,0-0.7,0-1.1c0-0.1,0-0.2-0.2-0.3
+		C2,2.8,1.2,2.3,0.4,1.9C0.1,1.8,0,1.9,0,2.1c0,0.7,0,1.4,0,2.1C0,4.4,0.1,4.5,0.2,4.5z" />
+</g>
+</svg>
+
+                                                    </span>
+                                                    <span class="badge__text">LV.1</span>
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="playerLevel" aria-hidden="true">
+                                                    <div class="dropdown__inner">
+                                                        <div class="level">
+                                                            <a href="#" class="level__item">
+                                                                <span class="level__left">
+                                                                    <span class="level__dot">
+                                                                        <img src="image/menu-sports.png" />
+                                                                    </span>
+                                                                    <span>Sports</span>
+                                                                </span>
+                                                                <span class="level__right">LV.0</span>
+                                                            </a>
+                                                            <a href="#" class="level__item">
+                                                                <span class="level__left">
+                                                                    <span class="level__dot">
+                                                                        <img src="image/menu-casino.png" />
+                                                                    </span>
+                                                                    <span>casino</span>
+                                                                </span>
+                                                                <span class="level__right">LV.0</span>
+                                                            </a>
+                                                            <a href="#" class="level__item">
+                                                                <span class="level__left">
+                                                                    <span class="level__dot">
+                                                                        <img src="image/menu-slots.png" />
+                                                                    </span>
+                                                                    <span>Games</span>
+                                                                </span>
+                                                                <span class="level__right">LV.0</span>
+                                                            </a>
+                                                            <a href="#" class="level__item">
+                                                                <span class="level__left">
+                                                                    <span class="level__dot">
+                                                                        <img src="image/menu-lottery.png" />
+                                                                    </span>
+                                                                    <span>Lottery</span>
+                                                                </span>
+                                                                <span class="level__right">LV.0</span>
+                                                            </a>
+                                                            <a href="index—_p2p.html" class="level__item">
+                                                                <span class="level__left">
+                                                                    <span class="level__dot">
+                                                                        <img src="image/menu-gaming2.png" />
+                                                                    </span>
+                                                                    <span>P2P</span>
+                                                                </span>
+                                                                <span class="level__right">LV.0</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="sidebar-header__tools">
+
+                                            <div id="togglesettings" class="settings-menu">
+                                                <div class="settings-menu__wrap">
+                                                    <div class="settings-menu__panel">
+                                                        <div class="settings-menu__inner">
+                                                            <button class="iconBtn" data-lang-trigger aria-label="language" type="button">
+                                                                <svg viewBox="2 2 20 20" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                                                                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z" />
+                                                                </svg>
+                                                            </button>
+                                                            <button class="iconBtn" aria-label="Notifications">
+                                                                <svg viewBox="0 0 22 22" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                                                                    <svg viewBox="0 0 16 16" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                                                                        <path d="M7.5 0C4.46243 0 2 2.46243 2 5.5V10H1V11H14V10H13V5.5C13 2.46243 10.5376 0 7.5 0Z" />
+                                                                        <path d="M5 12.5V12H10V12.5C10 13.8807 8.88071 15 7.5 15C6.11929 15 5 13.8807 5 12.5Z" />
+                                                                    </svg>
+                                                                </svg>
+                                                            </button>
+
+                                                            <button class="iconBtn" aria-label="Power">
+                                                                <svg viewBox="0 0 16 16" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                                                                    <path d="M8 0a1 1 0 00-1 1v6a1 1 0 002 0V1a1 1 0 00-1-1z" />
+                                                                    <path d="M12.665 2.781a1 1 0 10-1.333 1.491 5 5 0 11-6.665.001 1 1 0 00-1.333-1.49 7 7 0 109.331-.002z" />
+                                                                </svg>
+                                                            </button>
+
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <button id="btn-settingsbox" class="btn-setting__close" aria-label="Open Settings Box">
+                                                            <svg viewBox="0 0 34 34"><path d="M13,16c0,1.654,1.346,3,3,3s3-1.346,3-3s-1.346-3-3-3S13,14.346,13,16z" id="XMLID_294_" /><path d="M13,26c0,1.654,1.346,3,3,3s3-1.346,3-3s-1.346-3-3-3S13,24.346,13,26z" id="XMLID_295_" /><path d="M13,6c0,1.654,1.346,3,3,3s3-1.346,3-3s-1.346-3-3-3S13,4.346,13,6z" id="XMLID_297_" /></svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="sidebar-header__quick">
+                                        <ul class="d-flex m-0 p-0">
+                                            <li class="list-unstyled">
+                                                <div class="btn btn-2 btn-pill d-flex align-items-center" aria-label="Wallet">
+                                                    <!-- wallet icon -->
+                                                    <svg class="icon" viewBox="-3 -3 24 24">
+                                                        <path d="M14.5 4h-12.12c-0.057 0.012-0.123 0.018-0.19 0.018-0.552 0-1-0.448-1-1 0-0.006 0-0.013 0-0.019l12.81-0.499v-1.19c0.005-0.041 0.008-0.089 0.008-0.138 0-0.652-0.528-1.18-1.18-1.18-0.049 0-0.097 0.003-0.144 0.009l-11.374 1.849c-0.771 0.289-1.31 1.020-1.31 1.877 0 0.011 0 0.023 0 0.034l-0 10.728c-0 0.003-0 0.006-0 0.010 0 0.828 0.672 1.5 1.5 1.5 0 0 0 0 0 0h13c0 0 0 0 0 0 0.828 0 1.5-0.672 1.5-1.5 0-0.004-0-0.007-0-0.011v-8.999c0-0.012 0.001-0.027 0.001-0.041 0-0.801-0.649-1.45-1.45-1.45-0.018 0-0.036 0-0.053 0.001zM13 11c-0.828 0-1.5-0.672-1.5-1.5s0.672-1.5 1.5-1.5c0.828 0 1.5 0.672 1.5 1.5s-0.672 1.5-1.5 1.5z"></path>
+                                                    </svg>
+                                                    <span class="pill__text"><span class="currency">MYR</span> 157.12K</span>                                                    <button class="btn plan btn-pillml-1 mr--2 mr-n2 d-block small">
+                                                        <svg class="pill__iconBtn plan" aria-label="WalletRefresh" viewBox="-1.5 -2.5 24 24"><path d='M17.83 4.194l.42-1.377a1 1 0 1 1 1.913.585l-1.17 3.825a1 1 0 0 1-1.248.664l-3.825-1.17a1 1 0 1 1 .585-1.912l1.672.511A7.381 7.381 0 0 0 3.185 6.584l-.26.633a1 1 0 1 1-1.85-.758l.26-.633A9.381 9.381 0 0 1 17.83 4.194zM2.308 14.807l-.327 1.311a1 1 0 1 1-1.94-.484l.967-3.88a1 1 0 0 1 1.265-.716l3.828.954a1 1 0 0 1-.484 1.941l-1.786-.445a7.384 7.384 0 0 0 13.216-1.792 1 1 0 1 1 1.906.608 9.381 9.381 0 0 1-5.38 5.831 9.386 9.386 0 0 1-11.265-3.328z' /></svg>
+                                                    </button>
+                                                </div>
+
+                                            </li>
+                                            <li class="list-unstyled">
+                                                <button class="btn btn-2 btn-pill" aria-label="Gift">
+                                                    <!-- gift icon -->
+                                                    <svg class="icon" viewBox="-2 -2 20 20">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 0C3.11929 0 2 1.11929 2 2.5V2.78571C2 3.23408 2.13327 3.65133 2.36235 4H1.5C0.671573 4 0 4.67157 0 5.5V6.5C0 7.32843 0.671573 8 1.5 8H7V4H8V8H13.5C14.3284 8 15 7.32843 15 6.5V5.5C15 4.67157 14.3284 4 13.5 4H12.6377C12.8667 3.65133 13 3.23408 13 2.78571V2.5C13 1.11929 11.8807 0 10.5 0C9.22684 0 8.11245 0.679792 7.5 1.69621C6.88755 0.679792 5.77316 0 4.5 0ZM8 4H10.7857C11.4563 4 12 3.45635 12 2.78571V2.5C12 1.67157 11.3284 1 10.5 1C9.11929 1 8 2.11929 8 3.5V4ZM7 4H4.21429C3.54365 4 3 3.45635 3 2.78571V2.5C3 1.67157 3.67157 1 4.5 1C5.88071 1 7 2.11929 7 3.5V4Z" />
+                                                        <path d="M7 9H1V12.5C1 13.8807 2.11929 15 3.5 15H7V9Z" />
+                                                        <path d="M8 15H11.5C12.8807 15 14 13.8807 14 12.5V9H8V15Z" />
+                                                    </svg>
+                                                    <span class="pill__text">9,000,000</span>
+                                                </button>
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sidebar-header__actions">
+                            <a herf="#" class="btn-deposit btn btn-1 btn-pill btnh btn--hover">Deposit</a>
+                            <a herf="#" class="btn-withdraw btn btn-1 btn-pill btnh btn--hover">Withdraw</a>
+                            <a herf="#" class="btn-bet btn btn-1 btn-pill btnh btn--hover btn-pn1">
+                                <svg class="icon icon16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="M9,12H7a1,1,0,0,0,0,2H9a1,1,0,0,0,0-2ZM8,10h4a1,1,0,0,0,0-2H8a1,1,0,0,0,0,2Zm1,6H7a1,1,0,0,0,0,2H9a1,1,0,0,0,0-2Zm12-4H18V3a1,1,0,0,0-.5-.87,1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0A1,1,0,0,0,2,3V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V13A1,1,0,0,0,21,12ZM5,20a1,1,0,0,1-1-1V4.73L6,5.87a1.08,1.08,0,0,0,1,0l3-1.72,3,1.72a1.08,1.08,0,0,0,1,0l2-1.14V19a3,3,0,0,0,.18,1Zm15-1a1,1,0,0,1-2,0V14h2Zm-6.44-2.83a.76.76,0,0,0-.18-.09.6.6,0,0,0-.19-.06,1,1,0,0,0-.9.27A1.05,1.05,0,0,0,12,17a1,1,0,0,0,.07.38,1.19,1.19,0,0,0,.22.33,1.15,1.15,0,0,0,.33.21.94.94,0,0,0,.76,0,1.15,1.15,0,0,0,.33-.21A1,1,0,0,0,14,17a1.05,1.05,0,0,0-.29-.71A1.58,1.58,0,0,0,13.56,16.17Zm.14-3.88a1,1,0,0,0-1.62.33A1,1,0,0,0,13,14a1,1,0,0,0,1-1,1,1,0,0,0-.08-.38A.91.91,0,0,0,13.7,12.29Z" /></svg>
+                            </a>
+                            <button data-action="toggle-app" class="d-md-none btn btn-1 btn-pill btn-pn1">
+                                <svg class="icon16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10,13H3a1,1,0,0,0-1,1v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V14A1,1,0,0,0,10,13ZM9,20H4V15H9ZM21,2H14a1,1,0,0,0-1,1v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V3A1,1,0,0,0,21,2ZM20,9H15V4h5Zm1,4H14a1,1,0,0,0-1,1v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V14A1,1,0,0,0,21,13Zm-1,7H15V15h5ZM10,2H3A1,1,0,0,0,2,3v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V3A1,1,0,0,0,10,2ZM9,9H4V4H9Z" /></svg>
+                            </button>
+                            <button data-action="toggle-sidebar" class="btn btn-2 btn-pill btnh btn--hover">
+                                <svg width="20px" height="20px" viewBox="0 0 1024 1024" class="icon"><path d="M364.8 106.666667L298.666667 172.8 637.866667 512 298.666667 851.2l66.133333 66.133333L768 512z" /></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <section class="panels" data-panel="APPS">
+                        <div class="panel-promo">
+                            <h4 class="section-title">
+                                <img src="image/menu-speaker.png" />
+                                Promo
+                            </h4>
+                            <div class="promo-banner">
+                                <div class="banner swiper swiper-single">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide banner-slide">
+                                            <img src="image/banner-testing_h140.png" />
+                                        </div>
+                                        <div class="swiper-slide banner-slide">
+                                            <img src="image/banner-testing_h140.png" />
+                                        </div>
+                                    </div>
+                                    <div class="swiper-button-prev swiper-promo-prev"></div>
+                                    <div class="swiper-button-next swiper-promo-next"></div>
+                                </div>
+                            </div>
+                            <div class="apps promo-list">
+                                <ul class="app-list">
+                                    <li class="app">
+                                        <a href="#" class="app-badge">
+                                            <div class="single-icon">
+                                                <img src="image/icn-testing.png" />
+                                            </div>
+                                            <span class="game-name">GameNameGameName</span>
+                                        </a>
+                                    </li>
+                                    <li class="app">
+                                        <a href="#" class="app-badge">
+                                            <div class="single-icon">
+                                                <img src="image/icn-testing.png" />
+                                            </div>
+                                            <span class="game-name">GameName</span>
+                                        </a>
+                                    </li>
+                                    <li class="app">
+                                        <a href="#" class="app-badge">
+                                            <div class="single-icon">
+                                                <img src="image/icn-testing.png" />
+                                            </div>
+                                            <span class="game-name">Name</span>
+                                        </a>
+                                    </li>
+                                    <li class="app">
+                                        <a href="#" class="app-badge">
+                                            <div class="mini-icons">
+                                                <img src="image/icn-testing.png" />
+                                                <img src="image/icn-testing.png" />
+                                                <img src="image/icn-testing.png" />
+                                                <img src="image/icn-testing.png" />
+                                            </div>
+                                            <span class="game-name">More</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- promo script -->
+                            <script>
+                                const swiperpromo = new Swiper('.swiper-single', {
+                                    speed: 400,
+                                    spaceBetween: 100,
+                                    autoplay: {
+                                        delay: 5000,
+                                    },
+                                    navigation: {
+                                        nextEl: '.swiper-promo-next',
+                                        prevEl: '.swiper-promo-prev',
+                                    },
+                                    rewind: true,
+                                });
+                            </script>
+
+                        </div>
+                    </section>
+                    <nav class="sidebar-nav sidebar-nav--product" aria-label="prod navigation">
+                        <ul class="prod-nav nav--left border-top-1">
+                            <li>
+                                <a href="#">
+                                    <span class="nav-icon"><img src="image/menu-daily.png" /></span><span class="span-toggle">Daily</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="nav-icon"><img src="image/menu-friend.png" /></span><span class="span-toggle">Friend</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="nav-icon"><img src="image/menu-pk.png" /></span><span class="span-toggle">PK</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="nav-icon"><img src="image/menu-tressure.png" /></span><span class="span-toggle">Treasure</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="nav-icon"><img src="image/menu-luckydraw.png" /></span><span class="span-toggle">Lucky Draw</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="nav-icon"><img src="image/menu-redeem.png" /></span><span class="span-toggle">Redeem</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="nav-icon"><img src="image/menu-download.png" /></span><span class="span-toggle">Downloads</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <nav aria-label="main navigation" class="sidebar-nav sidebar-nav--main">
+                        <ul class="menu-nav nav--left border-top-1">
+                            <li>
+                                <a href="#">
+                                    <img src="image/menu-home.png" /><span class="span-toggle">Home</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="image/menu-slots.png" /><span class="span-toggle">Slots</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="image/menu-casino.png" /><span class="span-toggle">Live Casino</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="image/menu-sports.png" /><span class="span-toggle">SportsBook</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index-p2p.html">
+                                    <img src="image/menu-gaming2.png" /><span class="span-toggle">P2P</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="image/menu-fishing.png" /><span class="span-toggle">Battle</span>
+                                </a>
+                            </li>
+                            <li> 
+                                <a href="#" aria-current="page">
+                                    <img src="image/menu-lottery.png" /><span class="span-toggle">Lottery</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="image/menu-promo.png" /><span class="span-toggle">Promotions</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="image/menu-vip.png" /><span class="span-toggle">VIP</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="image/menu-support.png" /><span class="span-toggle">Live Support</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div>
+
+            </div>
+        </aside>
+
+        <div class="overlay" data-action="close-all" aria-hidden="true"></div>
+        <!-- Main -->
+        <main id="main" class="main">
+            <!-- mobile 你还可以放一个按钮来开 promo（右侧） -->
+            <!-- main content -->
+            <header class="header">
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div class="toplogo">
+                        <button data-action="toggle-sidebar" class="btn btn-2 btn-pill d-md-none">
+                            <svg width="20px" height="20px" viewBox="0 0 1024 1024" class="icon"><path d="M364.8 106.666667L298.666667 172.8 637.866667 512 298.666667 851.2l66.133333 66.133333L768 512z" /></svg>
+                        </button>
+                        <img src="image/logo-testing.png" class="logo-img" />
+                    </div>
+                    <div class="topbar">
+                        <div class="topbar__left">
+                            <div class="btn btn-1 btn-pill btn-with-icon btn--no-active btn--no-hover p_p1" id="dompet">
+                                <span class="pill__iconBtn btn--no-active" aria-label="Wallet">
+                                    <!-- wallet icon -->
+                                    <svg class="icon" viewBox="-3 -3 24 24">
+                                        <path d="M14.5 4h-12.12c-0.057 0.012-0.123 0.018-0.19 0.018-0.552 0-1-0.448-1-1 0-0.006 0-0.013 0-0.019l12.81-0.499v-1.19c0.005-0.041 0.008-0.089 0.008-0.138 0-0.652-0.528-1.18-1.18-1.18-0.049 0-0.097 0.003-0.144 0.009l-11.374 1.849c-0.771 0.289-1.31 1.020-1.31 1.877 0 0.011 0 0.023 0 0.034l-0 10.728c-0 0.003-0 0.006-0 0.010 0 0.828 0.672 1.5 1.5 1.5 0 0 0 0 0 0h13c0 0 0 0 0 0 0.828 0 1.5-0.672 1.5-1.5 0-0.004-0-0.007-0-0.011v-8.999c0-0.012 0.001-0.027 0.001-0.041 0-0.801-0.649-1.45-1.45-1.45-0.018 0-0.036 0-0.053 0.001zM13 11c-0.828 0-1.5-0.672-1.5-1.5s0.672-1.5 1.5-1.5c0.828 0 1.5 0.672 1.5 1.5s-0.672 1.5-1.5 1.5z"></path>
+                                    </svg>
+                                </span>
+                                <span class="pill__text"><span class="currency">MYR</span> 157.12K</span>
+                                <button class="btn plan btn-pillml-1 mr--2 mr-n2 d-block small">
+                                    <svg class="pill__iconBtn plan" aria-label="WalletRefresh" viewBox="-1.5 -2.5 24 24"><path d='M17.83 4.194l.42-1.377a1 1 0 1 1 1.913.585l-1.17 3.825a1 1 0 0 1-1.248.664l-3.825-1.17a1 1 0 1 1 .585-1.912l1.672.511A7.381 7.381 0 0 0 3.185 6.584l-.26.633a1 1 0 1 1-1.85-.758l.26-.633A9.381 9.381 0 0 1 17.83 4.194zM2.308 14.807l-.327 1.311a1 1 0 1 1-1.94-.484l.967-3.88a1 1 0 0 1 1.265-.716l3.828.954a1 1 0 0 1-.484 1.941l-1.786-.445a7.384 7.384 0 0 0 13.216-1.792 1 1 0 1 1 1.906.608 9.381 9.381 0 0 1-5.38 5.831 9.386 9.386 0 0 1-11.265-3.328z' /></svg>
+                                </button>
+                            </div>
+
+                            <div class="btn btn-1 btn-pill btn-with-icon btn--no-active btn--no-hover icon-right">
+                                <button class="pill__iconBtn btn--no-active" aria-label="Gift">
+                                    <!-- gift icon -->
+                                    <svg class="icon" viewBox="-2 -2 20 20">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 0C3.11929 0 2 1.11929 2 2.5V2.78571C2 3.23408 2.13327 3.65133 2.36235 4H1.5C0.671573 4 0 4.67157 0 5.5V6.5C0 7.32843 0.671573 8 1.5 8H7V4H8V8H13.5C14.3284 8 15 7.32843 15 6.5V5.5C15 4.67157 14.3284 4 13.5 4H12.6377C12.8667 3.65133 13 3.23408 13 2.78571V2.5C13 1.11929 11.8807 0 10.5 0C9.22684 0 8.11245 0.679792 7.5 1.69621C6.88755 0.679792 5.77316 0 4.5 0ZM8 4H10.7857C11.4563 4 12 3.45635 12 2.78571V2.5C12 1.67157 11.3284 1 10.5 1C9.11929 1 8 2.11929 8 3.5V4ZM7 4H4.21429C3.54365 4 3 3.45635 3 2.78571V2.5C3 1.67157 3.67157 1 4.5 1C5.88071 1 7 2.11929 7 3.5V4Z" />
+                                        <path d="M7 9H1V12.5C1 13.8807 2.11929 15 3.5 15H7V9Z" />
+                                        <path d="M8 15H11.5C12.8807 15 14 13.8807 14 12.5V9H8V15Z" />
+                                    </svg>
+                                </button>
+                                <span class="pill__text">9,000,000</span>
+                            </div>
+
+                            <a href="#" class="btn btn-1 btn-pill btn-with-icon btn--no-active btn--no-hover" id="playerBtn" type="button">
+                                <span class="pill__iconBtn btn--no-active" aria-label="Player">
+                                    <svg class="icon" viewBox="-3 -1 20 20"><path d="M12.517 12.834v1.9a1.27 1.27 0 0 1-1.267 1.267h-9.5a1.27 1.27 0 0 1-1.267-1.267v-1.9A3.176 3.176 0 0 1 3.65 9.667h5.7a3.176 3.176 0 0 1 3.167 3.167zM3.264 5.48A3.236 3.236 0 1 1 6.5 8.717a3.236 3.236 0 0 1-3.236-3.236z" /></svg>
+
+                                </span>
+                                <span class="pill__text" aria-label="playerName">PLAYER998</span>
+                                <!-- user icon -->
+                            </a>
+                            <div class="dropdown">
+                                <button class="badge btn-level dropdown-toggle" id="playerLevel" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-auto-close="outside">
+                                    <span class="badge__icon">
+                                        <!-- Generator: Adobe Illustrator 25.0.0, SVG Export Plug-In  -->
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="17.3px"
+                                             height="15px" viewBox="0 0 17.3 15" style="overflow:visible;enable-background:new 0 0 17.3 15;" xml:space="preserve">
+<defs>
+</defs>
+<g>
+                                        <path class="st0" d="M3.9,8.7c1.5,0.9,3,1.7,4.5,2.6c0.2,0.1,0.3,0.1,0.5,0c1.5-0.9,3-1.8,4.6-2.6c0.1-0.1,0.2-0.2,0.2-0.4
+		c0-1.8,0-3.5,0-5.3c0-0.2-0.1-0.3-0.2-0.4c-1.5-0.9-3-1.7-4.6-2.6C8.7,0,8.6,0,8.4,0.1C6.9,1,5.4,1.8,3.9,2.7
+		C3.7,2.8,3.7,2.9,3.7,3.1c0,0.9,0,1.8,0,2.7c0,0.9,0,1.7,0,2.6C3.7,8.5,3.7,8.6,3.9,8.7z M5.7,4.7c0-0.1,0.1-0.1,0.2-0.1
+		c0.6-0.1,1.2-0.2,1.7-0.3c0,0,0.1,0,0.1-0.1C8,3.7,8.2,3.2,8.5,2.7c0-0.1,0.1-0.2,0.2-0.2c0,0,0.1,0,0.1,0c0.1,0,0.1,0.1,0.2,0.2
+		c0.2,0.5,0.5,1.1,0.7,1.6c0,0,0,0.1,0.1,0.1c0.6,0.1,1.1,0.2,1.7,0.3c0.1,0,0.2,0.1,0.2,0.1c0,0,0,0.1,0,0.1c0,0-0.1,0.1-0.1,0.1
+		c-0.4,0.4-0.8,0.9-1.2,1.3c0,0,0,0,0,0.1c0.1,0.4,0.1,0.9,0.2,1.3c0,0.2,0.1,0.3,0.1,0.5c0,0.1,0,0.2-0.2,0.2c-0.1,0-0.1,0-0.1,0
+		C9.7,8,9.2,7.7,8.7,7.5c0,0-0.1,0-0.1,0C8.1,7.7,7.6,8,7.1,8.3c-0.1,0-0.2,0.1-0.2,0C6.8,8.3,6.8,8.2,6.8,8.1
+		C6.9,7.5,7,6.9,7.1,6.3c0,0,0-0.1,0-0.1C7,6.1,6.9,6,6.8,5.9c-0.3-0.3-0.6-0.7-1-1C5.7,4.8,5.7,4.8,5.7,4.7z" />
+                                        <path class="st0" d="M17.3,7.2c0-0.4,0-0.7,0-1.1c0-0.3-0.1-0.4-0.4-0.2c-0.8,0.4-1.6,0.9-2.4,1.3c-0.1,0.1-0.2,0.2-0.2,0.3
+		c0,0.6,0,1.1,0,1.7c0,0.1,0,0.2-0.1,0.3c-1.8,1-3.6,2.1-5.4,3.1c-0.1,0.1-0.2,0.1-0.3,0c-1.8-1.1-3.6-2.1-5.4-3.1
+		C3,9.3,3,9.3,3,9.2c0-0.6,0-1.1,0-1.7c0-0.1,0-0.2-0.2-0.3C2,6.8,1.2,6.3,0.4,5.9C0.1,5.8,0,5.9,0,6.1c0,0.7,0,1.4,0,2.1
+		c0,0.1,0.1,0.2,0.2,0.3c0.2,0.1,0.4,0.2,0.5,0.3c0.1,0,0.1,0.1,0.1,0.2c0,0.4,0,0.9,0,1.3c0,0.1,0,0.2,0.2,0.3
+		c2.5,1.4,5,2.9,7.4,4.3c0.1,0.1,0.2,0.1,0.4,0c2.5-1.4,5-2.9,7.4-4.3c0.1-0.1,0.2-0.2,0.2-0.3c0-0.4,0-0.9,0-1.3
+		c0-0.1,0-0.2,0.1-0.2c0.2-0.1,0.3-0.2,0.5-0.3c0.1-0.1,0.2-0.2,0.2-0.3C17.3,7.9,17.3,7.5,17.3,7.2z" />
+                                        <path class="st0" d="M14.3,5.6c0,0.3,0.1,0.3,0.4,0.2c0.8-0.4,1.6-0.9,2.4-1.3c0.1-0.1,0.2-0.1,0.2-0.3c0-0.7,0-1.4,0-2.1
+		c0-0.2-0.1-0.3-0.4-0.2c-0.8,0.4-1.6,0.9-2.4,1.3c-0.1,0.1-0.2,0.2-0.2,0.3c0,0.4,0,0.7,0,1.1C14.3,4.9,14.3,5.2,14.3,5.6z" />
+                                        <path class="st0" d="M0.2,4.5C1,4.9,1.8,5.4,2.6,5.8C2.8,5.9,3,5.9,3,5.6c0-0.4,0-0.7,0-1.1c0-0.4,0-0.7,0-1.1c0-0.1,0-0.2-0.2-0.3
+		C2,2.8,1.2,2.3,0.4,1.9C0.1,1.8,0,1.9,0,2.1c0,0.7,0,1.4,0,2.1C0,4.4,0.1,4.5,0.2,4.5z" />
+</g>
+</svg>
+
+                                    </span>
+                                    <span class="badge__text">LV.1</span>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="playerLevel" aria-hidden="true">
+                                    <div class="dropdown__inner">
+                                        <div class="level">
+                                            <a href="#" class="level__item">
+                                                <span class="level__left">
+                                                    <span class="level__dot">
+                                                        <img src="image/menu-sports.png" />
+                                                    </span>
+                                                    <span>Sports</span>
+                                                </span>
+                                                <span class="level__right">LV.0</span>
+                                            </a>
+                                            <a href="#" class="level__item">
+                                                <span class="level__left">
+                                                    <span class="level__dot">
+                                                        <img src="image/menu-casino.png" />
+                                                    </span>
+                                                    <span>casino</span>
+                                                </span>
+                                                <span class="level__right">LV.0</span>
+                                            </a>
+                                            <a href="#" class="level__item">
+                                                <span class="level__left">
+                                                    <span class="level__dot">
+                                                        <img src="image/menu-slots.png" />
+                                                    </span>
+                                                    <span>Games</span>
+                                                </span>
+                                                <span class="level__right">LV.0</span>
+                                            </a>
+                                            <a href="#" class="level__item">
+                                                <span class="level__left">
+                                                    <span class="level__dot">
+                                                        <img src="image/menu-lottery.png" />
+                                                    </span>
+                                                    <span>Lottery</span>
+                                                </span>
+                                                <span class="level__right">LV.0</span>
+                                            </a>
+                                            <a href="#" class="level__item">
+                                                <span class="level__left">
+                                                    <span class="level__dot">
+                                                        <img src="image/menu-gaming2.png" />
+                                                    </span>
+                                                    <span>P2P</span>
+                                                </span>
+                                                <span class="level__right">LV.0</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="topbar__right">
+
+                            <button class="iconBtn btn-pill" aria-label="Download">
+                                <svg viewBox="0 0 14 14" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                                    <path d='M8 6.641l1.121-1.12a1 1 0 0 1 1.415 1.413L7.707 9.763a.997.997 0 0 1-1.414 0L3.464 6.934A1 1 0 1 1 4.88 5.52L6 6.641V1a1 1 0 1 1 2 0v5.641zM1 12h12a1 1 0 0 1 0 2H1a1 1 0 0 1 0-2z' />
+                                </svg>
+                            </button>
+                            <div class="languagebox">
+                                <button class="iconBtn btn-pill" data-lang-trigger aria-label="language" type="button">
+                                    <svg viewBox="2 2 20 20" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z" />
+                                    </svg>
+                                </button>
+
+                                <div class="langSheet" aria-hidden="true">
+                                    <div class="langSheet__backdrop" data-close></div>
+
+                                    <div class="langSheet__panel">
+                                        <div class="langSheet__header">
+                                            <button class="langSheet__textBtn" data-close>Close</button>
+                                            <div class="langSheet__title">Language</div>
+                                            <button class="langSheet__textBtn langSheet__primary" data-lang-done>
+                                                Done
+                                            </button>
+                                        </div>
+
+                                        <div class="wheel" tabindex="0">
+                                            <div class="wheel__fade"></div>
+                                            <div class="wheel__window"></div>
+
+                                            <div class="wheel__scroller">
+                                                <div class="wheel__spacer"></div>
+
+                                                <div class="wheel__item" data-value="en">
+                                                    <img src="image/flag-en.png" />English
+                                                </div>
+                                                <div class="wheel__item" data-value="zh">
+                                                    <img src="image/flag-cn.png" />简体中文
+                                                </div>
+                                                <div class="wheel__item" data-value="ms">
+                                                    <img src="image/flag-my.png" />Bahasa Melayu
+                                                </div>
+
+                                                <div class="wheel__spacer"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <button class="iconBtn btn-pill" aria-label="Notifications">
+                                <svg viewBox="0 0 16 16" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                                    <path d="M7.5 0C4.46243 0 2 2.46243 2 5.5V10H1V11H14V10H13V5.5C13 2.46243 10.5376 0 7.5 0Z" />
+                                    <path d="M5 12.5V12H10V12.5C10 13.8807 8.88071 15 7.5 15C6.11929 15 5 13.8807 5 12.5Z" />
+                                </svg>
+                            </button>
+
+                            <button class="iconBtn btn-pill" aria-label="Power">
+                                <svg viewBox="0 0 16 16" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                                    <path d="M8 0a1 1 0 00-1 1v6a1 1 0 002 0V1a1 1 0 00-1-1z" />
+                                    <path d="M12.665 2.781a1 1 0 10-1.333 1.491 5 5 0 11-6.665.001 1 1 0 00-1.333-1.49 7 7 0 109.331-.002z" />
+                                </svg>
+                            </button>
+
+                            <!-- dropdown -->
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <section class="banner">
+                <style>
+                    .swiper-slide img { width: 100%; }
+
+                    .banner-main { }
+                        .banner-main .swiper-wrapper,
+                        .banner-main .swiper-slide { height: 100%; }
+                        .banner-main .banner-slide { background-position: center; background-size: cover; background-repeat: no-repeat; }
+                </style>
+                <div class="banner swiper banner-main js-banner">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing3.png"></div>
+                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing2.png"></div>
+                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing3.png"></div>
+                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing2.png"></div>
+                        <div class="swiper-slide banner-slide" data-bg="image/banner-testing3.png"></div>
+                    </div>
+
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        if (typeof Swiper === 'undefined') return;
+
+                        /* ========= 可调参数区 ========= */
+                        const BP_MOBILE_MAX = 767;
+                        const BP_TABLET_MAX = 1024;
+
+                        // >1024 视为 desktop 的基准张数
+                        const DESKTOP_OPEN_COUNT = 2;     // sidebar 展开（nav slide 出来）
+                        const DESKTOP_CLOSED_COUNT = 3;   // sidebar 收起（rail）
+
+                        // 768~1024：比 desktop 少几张（想少2就改 2）
+                        const TABLET_DELTA = 1;
+
+                        const SPACE_BETWEEN = 16;
+                        const SPEED = 400;
+                        /* ============================ */
+
+                        const bannerEl = document.querySelector('.js-banner');
+                        if (!bannerEl) return;
+
+                        // 1) data-bg -> background-image（一次性）
+                        bannerEl.querySelectorAll('.swiper-slide[data-bg]').forEach(slide => {
+                            const url = slide.dataset.bg;
+                            if (!url) return;
+                            slide.style.backgroundImage = `url("${url}")`;
+                            slide.style.backgroundPosition = 'center';
+                            slide.style.backgroundSize = 'cover';
+                            slide.style.backgroundRepeat = 'no-repeat';
+                        });
+
+                        // 2) 初始化 Swiper（轮播本体）
+                        const swiper = new Swiper(bannerEl, {
+                            slidesPerView: 1,
+                            spaceBetween: SPACE_BETWEEN,
+                            speed: SPEED,
+                            loop: false,
+                            pagination: {
+                                el: bannerEl.querySelector('.swiper-pagination'),
+                                clickable: true,
+                            },
+                            navigation: {
+                                nextEl: bannerEl.querySelector('.swiper-button-next'),
+                                prevEl: bannerEl.querySelector('.swiper-button-prev'),
+                            },
+                            autoplay: {
+                                delay: 5000,
+                            },
+                            rewind: true,
+                        });
+
+                        const isSidebarClosed = () => document.body.classList.contains('sidebar-close');
+
+                        function clamp(n, min, max) {
+                            return Math.max(min, Math.min(max, n));
+                        }
+
+                        function getSlidesPerView() {
+                            const w = window.innerWidth;
+
+                            // mobile：永远 1
+                            if (w <= BP_MOBILE_MAX) return 1;
+
+                            const desktopBase = isSidebarClosed() ? DESKTOP_CLOSED_COUNT : DESKTOP_OPEN_COUNT;
+
+                            // tablet：比 desktop 少 TABLET_DELTA（至少 1）
+                            if (w <= BP_TABLET_MAX) {
+                                return clamp(desktopBase - TABLET_DELTA, 1, desktopBase);
+                            }
+
+                            // desktop
+                            return desktopBase;
+                        }
+
+                        function updateBanner() {
+                            const target = getSlidesPerView();
+                            if (swiper.params.slidesPerView === target) return;
+
+                            swiper.params.slidesPerView = target;
+                            swiper.update();
+                        }
+
+                        // 3) 首次应用
+                        updateBanner();
+
+                        // 4) sidebar 状态变化（body class 变化）时更新
+                        const observer = new MutationObserver(updateBanner);
+                        observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+                        // 5) resize 更新（跨断点）
+                        window.addEventListener('resize', updateBanner);
+                    });
+                </script>
+
+            </section>
+            <section class="mt-3">
+                <div class="vendor-tabs">
+                    <div class="vendor-rail" data-vendor-rail>
+                        <div class="vendor-filter">
+                            <ul class="filter">
+                                <li class="filter-btn active" data-filter="all">
+                                    <span>
+                                        <svg viewBox="8 8 80 80" enable-background="new 0 0 100 100" xml:space="preserve">
+<path d="M57,44.5c-1.5,0-2.7-1.2-2.7-2.7V24.5c0-1.5,1.2-2.7,2.7-2.7h17.6c1.5,0,2.7,1.2,2.7,2.7v17.3
+	c0,1.5-1.2,2.7-2.7,2.7H57z" />
+<path d="M64.6,54.7L54.3,65.8c-0.6,0.6-0.6,1.7,0,2.3l10.3,11.1c0.7,0.7,1.8,0.7,2.5,0l10.3-11.1
+	c0.6-0.6,0.6-1.7,0-2.3L67.1,54.7C66.4,54,65.2,54,64.6,54.7z" />
+<circle cx="33.8" cy="66.6" r="11.6" />
+<path d="M23.6,25.7l8.9-5.1c0.8-0.5,1.8-0.5,2.7,0l8.9,5.1c0.8,0.5,1.3,1.4,1.3,2.3v10.2c0,0.9-0.5,1.8-1.3,2.3
+	l-8.9,5.1c-0.8,0.5-1.8,0.5-2.7,0l-8.9-5.1c-0.8-0.5-1.4-1.4-1.4-2.3V28C22.2,27,22.8,26.1,23.6,25.7z" />
+</svg>
+                                    </span>All
+                                </li>
+                                <li class="filter-btn" data-filter="hot">
+                                    <span>
+                                        <svg viewBox="-3 -2 24 24"><path d="M10 0s8 7.58 8 12a8 8 0 1 1-16 0c0-1.5.91-3.35 2.12-5.15A3 3 0 0 0 10 6V0zM8 0a3 3 0 1 0 0 6V0z" /></svg>
+                                    </span>Hot
+                                </li>
+                                <li class="filter-btn" data-filter="recommend">
+                                    <span>
+                                        <svg viewBox="0 2 50 50" preserveAspectRatio="xMinYMin" class="jam jam-crown">
+                                            <path d="M10.5,21h-5C4.7,21,4,21.7,4,22.5v23C4,46.3,4.7,47,5.5,47H8c2.2,0,4-1.8,4-4V22.5C12,21.7,11.3,21,10.5,21
+		z"></path>
+                                            <path d="M44,22h-6c-2.2,0-4-1.8-4-4V8c0-2.2-1.8-4-4-4h-2.5C26.7,4,26,4.7,26,5.5v6c0,5.3-3.7,10.5-8.5,10.5
+		c-0.8,0-1.5,0.7-1.5,1.5v20c0,0.8,0.6,1.5,1.4,1.5c6.8,0.3,9.1,3,16.2,3c7.5,0,14.4-0.8,14.4-9.5v-5V26C48,23.8,46.2,22,44,22z"></path>
+                                        </svg>
+                                    </span>Recommend
+                                </li>
+                                <li class="filter-btn" data-filter="fav">
+                                    <span>
+                                        <svg class="heart" viewBox="-2 -2 19 19" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
+                                    </span>Favorites
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="vendor-searchcontainer" data-search>
+
+                            <div class="search-wrapper">
+                                <input class="vendor-search" type="search" placeholder="Search" autocomplete="off" name="search" / id="vendor-search">
+                                <button class="vendor-searchbtn" type="button" aria-label="Search" data-action="toggle-search">
+                                    <svg class="input-icon" viewBox="0 0 22 22" aria-hidden="true">
+                                        <path d="M17.545 15.467l-3.779-3.779a6.15 6.15 0 0 0 .898-3.21c0-3.417-2.961-6.377-6.378-6.377A6.185 6.185 0 0 0 2.1 8.287c0 3.416 2.961 6.377 6.377 6.377a6.15 6.15 0 0 0 3.115-.844l3.799 3.801a.953.953 0 0 0 1.346 0l.943-.943c.371-.371.236-.84-.135-1.211zM4.004 8.287a4.282 4.282 0 0 1 4.282-4.283c2.366 0 4.474 2.107 4.474 4.474a4.284 4.284 0 0 1-4.283 4.283c-2.366-.001-4.473-2.109-4.473-4.474z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="vendors">
+                    <ul class="vendor-list">
+                        <li class="vendor" data-tag="new" data-vendor-name="pt gaming">
+                            <div class="vendor-img" data-image="image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-tag="promo" data-vendor-name="pragmatic play">
+                            <div class="vendor-img" data-image="image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-tag="hot" data-vendor-name="live22">
+                            <div class="vendor-img" data-image="image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-vendor-name="fastspin">
+                            <div class="vendor-img" data-image="image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-tag="new" data-vendor-name="advant play">
+                            <div class="vendor-img" data-image="image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-tag="promo" data-vendor-name="crowd play">
+                            <div class="vendor-img" data-image="image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="vendor" data-tag="hot" data-vendor-name="fa chai">
+                            <div class="vendor-img" data-image="image/img-testing.png">
+
+                            </div>
+                            <div class="vendor-hover">
+                                <a href="#" class="btn-play btn btn-white btn-round">
+                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
+                                </a>
+                                <button class="btn-fav btn btn-white btn-round">
+                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
+                                </button>
+                            </div>
+                        </li>
+ 
+
+                    </ul>
+                </div>
+                <script>
+                    //render background image form data
+                    document.querySelectorAll('.vendor-img').forEach(el => {
+                        const src = el.dataset.image;
+                        if (src) {
+                            el.style.backgroundImage = `url("${src}")`;
+                        }
+                    });
+                </script>
+                <style>
+                    .vendor.hidden { display: none; }
+                    .vendor-empty { }
+                </style>
+                <script>
+                    //filter and search
+                    // Vendor filter + search + empty states (JS-generated)
+                    // Rules:
+                    // 1) If search has query and 0 results -> show "no results"
+                    // 2) Else if filter === 'fav' and 0 results -> show "fav empty"
+                    // 3) Else if filter === 'all' and 0 results -> show "all empty"
+                    // 4) Else (other filters with 0 results) -> show nothing
+
+                    const filterBtns = document.querySelectorAll('.filter-btn');
+                    const searchInput = document.getElementById('vendor-search');
+
+                    let emptyNode = null; // only one empty node at a time
+                    let currentFilter = 'all';
+                    let currentQuery = '';
+
+                    /** ===== NEW: state classes (you can rename these) ===== */
+                    const LIST_FILTERING_CLASS = 'is-filtering';   // filtering in progress
+                    const LIST_EMPTY_CLASS = 'is-empty';           // 0 visible vendors after filter
+
+                    function normalize(str) {
+                        return (str || '').trim().toLowerCase().replace(/\s+/g, ' ');
+                    }
+
+                    function removeEmptyNode() {
+                        if (emptyNode) {
+                            emptyNode.remove();
+                            emptyNode = null;
+                        }
+                    }
+
+                    function ensureEmptyNode(vendorList, type, text) {
+                        // Same type -> update text only
+                        if (emptyNode && emptyNode.dataset.emptyType === type) {
+                            emptyNode.textContent = text;
+                            return;
+                        }
+
+                        // Different type -> recreate
+                        removeEmptyNode();
+
+                        emptyNode = document.createElement('p');
+                        emptyNode.className = `vendor-empty vendor-empty--${type}`;
+                        emptyNode.dataset.emptyType = type;
+                        emptyNode.textContent = text;
+
+                        vendorList.appendChild(emptyNode);
+                    }
+
+                    function applyFilters() {
+                        const vendors = document.querySelectorAll('.vendor');
+                        const vendorList = document.querySelector('.vendor-list') || document.body;
+
+                        /** ===== NEW: mark as "filtering" while we compute/show/hide ===== */
+                        vendorList.classList.add(LIST_FILTERING_CLASS);
+
+                        const q = normalize(currentQuery);
+                        let visibleCount = 0;
+
+                        vendors.forEach(vendor => {
+                            const tag = vendor.dataset.tag || '';
+                            const isFav = vendor.dataset.fav === 'true'; // missing -> false
+                            const name = normalize(vendor.dataset.vendorName);
+
+                            // filter pass
+                            let passFilter = false;
+                            switch (currentFilter) {
+                                case 'all':
+                                    passFilter = true;
+                                    break;
+                                case 'fav':
+                                    passFilter = isFav;
+                                    break;
+                                default:
+                                    passFilter = tag === currentFilter; // hot/new/future
+                                    break;
+                            }
+
+                            // search pass
+                            const passSearch = q === '' ? true : name.includes(q);
+
+                            const shouldShow = passFilter && passSearch;
+                            vendor.classList.toggle('hidden', !shouldShow);
+
+                            if (shouldShow) visibleCount++;
+                        });
+
+                        /** ===== NEW: list empty state class ===== */
+                        vendorList.classList.toggle(LIST_EMPTY_CLASS, visibleCount === 0);
+
+                        // ===== empty states =====
+                        if (visibleCount > 0) {
+                            removeEmptyNode();
+                            vendorList.classList.remove(LIST_FILTERING_CLASS); // done
+                            return;
+                        }
+
+                        // 1) search no result
+                        if (q !== '') {
+                            const raw = currentQuery.trim();
+                            ensureEmptyNode(vendorList, 'noresult', `No results found for “${raw}”.`);
+                            vendorList.classList.remove(LIST_FILTERING_CLASS); // done
+                            return;
+                        }
+
+                        // 2) fav empty
+                        if (currentFilter === 'fav') {
+                            ensureEmptyNode(
+                                vendorList,
+                                'fav',
+                                'You don’t have any favorites yet. Start exploring and save the ones you like.'
+                            );
+                            vendorList.classList.remove(LIST_FILTERING_CLASS); // done
+                            return;
+                        }
+
+                        // 3) all empty
+                        if (currentFilter === 'all') {
+                            ensureEmptyNode(vendorList, 'all', 'No vendors available.');
+                            vendorList.classList.remove(LIST_FILTERING_CLASS); // done
+                            return;
+                        }
+
+                        // 4) other filters empty
+                        ensureEmptyNode(vendorList, 'soon', 'Coming soon.');
+                        vendorList.classList.remove(LIST_FILTERING_CLASS); // done
+                    }
+
+                    // filter click
+                    filterBtns.forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            currentFilter = btn.dataset.filter || 'all';
+
+                            filterBtns.forEach(b => b.classList.remove('active'));
+                            btn.classList.add('active');
+
+                            applyFilters();
+                        });
+                    });
+
+                    // search input
+                    if (searchInput) {
+                        searchInput.addEventListener('input', () => {
+                            currentQuery = searchInput.value || '';
+                            applyFilters();
+                        });
+                    }
+
+                    // init
+                    applyFilters();
+
+
+
+                </script>
+            </section>
+        </main>
+    </div>
+    <script>
+        (() => {
+            const BREAKPOINT = 1024;
+
+            const sheet = document.querySelector(".langSheet");
+            const panel = sheet.querySelector(".langSheet__panel");
+            const scroller = sheet.querySelector(".wheel__scroller");
+            const wheel = sheet.querySelector(".wheel");
+            const doneBtn = sheet.querySelector("[data-lang-done]");
+
+            const ITEM_H = 44; // mobile wheel 用
+            let currentValue = localStorage.getItem("lang") || "en";
+
+            let activeTrigger = null;
+
+            // desktop dropdown 状态
+            let pinned = false; // click toggle “锁定打开”
+            let hoveringTrigger = false;
+            let hoveringPanel = false;
+            let suppressHoverUntilLeave = false;
+
+            const isDesktop = () => window.innerWidth >= BREAKPOINT;
+            const isOpen = () => sheet.classList.contains("isOpen");
+            const isHovering = () => hoveringTrigger || hoveringPanel;
+
+            /* =========================
+               Open / Close
+            ========================= */
+
+            function openMobileSheet(triggerBtn) {
+                activeTrigger = triggerBtn;
+                sheet.classList.add("isOpen");
+                sheet.setAttribute("aria-hidden", "false");
+                document.body.style.overflow = "hidden";
+
+                setTimeout(() => wheel.focus(), 50);
+                scrollToValue(currentValue, false);
+                updateVisual();
+            }
+
+            function openDesktopDropdown(triggerBtn) {
+                activeTrigger = triggerBtn;
+                sheet.classList.add("isOpen");
+                sheet.setAttribute("aria-hidden", "false");
+                document.body.style.overflow = ""; // desktop 不锁滚动
+
+                // 定位到按钮下方
+                const r = triggerBtn.getBoundingClientRect();
+                sheet.style.left = `${r.left + window.scrollX}px`;
+                sheet.style.top = `${r.bottom + window.scrollY + 8}px`;
+
+                // 简单防溢出（右侧）
+                requestAnimationFrame(() => {
+                    const rect = panel.getBoundingClientRect();
+                    const overflowX = rect.right - window.innerWidth;
+                    if (overflowX > 0) {
+                        sheet.style.left = `${(r.left + window.scrollX) - overflowX - 8}px`;
+                    }
+                });
+            }
+
+            function closeAll() {
+                sheet.classList.remove("isOpen");
+                sheet.setAttribute("aria-hidden", "true");
+                document.body.style.overflow = "";
+            }
+
+            /* =========================
+               Triggers: click + hover (desktop)
+            ========================= */
+
+            const triggers = document.querySelectorAll("[data-lang-trigger]");
+
+            triggers.forEach(btn => {
+                // click toggle
+                btn.addEventListener("click", (e) => {
+                    activeTrigger = btn;
+
+                    if (!isDesktop()) {
+                        // mobile：直接打开 sheet（你原逻辑）
+                        openMobileSheet(btn);
+                        return;
+                    }
+
+                    // desktop：click toggle（pin/unpin）
+                    if (!isOpen()) {
+                        // 目前关着：打开并锁定
+                        pinned = true;
+                        suppressHoverUntilLeave = false;
+                        openDesktopDropdown(btn);
+                        return;
+                    }
+
+                    // 目前开着：
+                    if (!pinned) {
+                        // 仅 hover 打开状态 → 点击 = pin（锁定打开）
+                        pinned = true;
+                        suppressHoverUntilLeave = false;
+                        openDesktopDropdown(btn); // 重新定位（如果有多个按钮）
+                    } else {
+                        // pinned 打开 → 点击 = 关闭并解除 pin
+                        pinned = false;
+                        closeAll();
+
+                        // 如果此刻还在 hover 区域：抑制 hover，直到鼠标离开
+                        if (isHovering()) suppressHoverUntilLeave = true;
+                    }
+                });
+
+                // hover open（desktop）
+                btn.addEventListener("mouseenter", () => {
+                    if (!isDesktop()) return;
+                    hoveringTrigger = true;
+                    activeTrigger = btn;
+
+                    if (pinned) {
+                        // 已锁定：只需要确保定位到当前按钮
+                        openDesktopDropdown(btn);
+                        return;
+                    }
+                    if (suppressHoverUntilLeave) return;
+
+                    openDesktopDropdown(btn);
+                });
+
+                btn.addEventListener("mouseleave", () => {
+                    if (!isDesktop()) return;
+                    hoveringTrigger = false;
+
+                    // 离开 hover 区域（trigger + panel 都不在）时重置 suppress
+                    if (!isHovering()) suppressHoverUntilLeave = false;
+
+                    // 非 pinned 时，hover 离开就关闭（但如果鼠标正进入 panel，会由 panel 的 enter 保持）
+                    if (!pinned && !isHovering()) closeAll();
+                });
+            });
+
+            // panel hover：允许从 trigger 移到 dropdown 仍保持打开
+            panel.addEventListener("mouseenter", () => {
+                if (!isDesktop()) return;
+                hoveringPanel = true;
+                if (!pinned && suppressHoverUntilLeave) return; // 关闭后还没离开，不要复活
+                if (activeTrigger) openDesktopDropdown(activeTrigger);
+            });
+
+            panel.addEventListener("mouseleave", () => {
+                if (!isDesktop()) return;
+                hoveringPanel = false;
+
+                if (!isHovering()) suppressHoverUntilLeave = false;
+                if (!pinned && !isHovering()) closeAll();
+            });
+
+            // 点击关闭（mobile 的 data-close）
+            sheet.addEventListener("click", (e) => {
+                if (!e.target.closest("[data-close]")) return;
+
+                closeAll();
+                pinned = false;
+
+                // 如果桌面还在 hover 范围内，抑制 hover 直到离开
+                if (isDesktop() && isHovering()) suppressHoverUntilLeave = true;
+            });
+
+            // 点击外部关闭（desktop）
+            document.addEventListener("click", (e) => {
+                if (!isDesktop()) return;
+                if (!isOpen()) return;
+
+                const insideSheet = sheet.contains(e.target);
+                const onTrigger = activeTrigger && activeTrigger.contains(e.target);
+
+                if (!insideSheet && !onTrigger) {
+                    closeAll();
+                    pinned = false;
+                    // 外部点击一般已经离开 hover，但保险：如果还 hover，就抑制
+                    if (isHovering()) suppressHoverUntilLeave = true;
+                }
+            });
+
+            // Esc 关闭
+            window.addEventListener("keydown", (e) => {
+                if (e.key !== "Escape") return;
+                if (!isOpen()) return;
+
+                closeAll();
+                pinned = false;
+                if (isDesktop() && isHovering()) suppressHoverUntilLeave = true;
+            });
+
+            /* =========================
+               Select behavior
+            ========================= */
+
+            // Desktop：点击 item 直接选中并关闭
+            // Mobile：点击 item 滚到中间
+            scroller.addEventListener("click", (e) => {
+                const item = e.target.closest(".wheel__item");
+                if (!item) return;
+
+                if (isDesktop()) {
+                    selectLang(item.dataset.value);
+                    closeAll();
+                    pinned = false;
+                    // 点击项之后一般鼠标还在 panel，上面会立刻 hover 复活，所以也抑制到离开
+                    suppressHoverUntilLeave = true;
+                    return;
+                }
+
+                scrollToValue(item.dataset.value, true);
+            });
+
+            // Mobile Done
+            doneBtn.addEventListener("click", () => {
+                if (isDesktop()) return;
+                localStorage.setItem("lang", currentValue);
+                closeAll();
+            });
+
+            function selectLang(value) {
+                currentValue = value;
+                localStorage.setItem("lang", value);
+                // TODO: 在这里接你的 i18n 切换逻辑
+            }
+
+            /* =========================
+               Mobile wheel snap (only mobile)
+            ========================= */
+
+            function getItems() { return [...sheet.querySelectorAll(".wheel__item")]; }
+
+            function scrollToValue(value, smooth = true) {
+                const target = getItems().find(i => i.dataset.value === value);
+                if (!target) return;
+
+                const top = target.offsetTop - (scroller.clientHeight / 2 - target.offsetHeight / 2);
+                scroller.scrollTo({ top, behavior: smooth ? "smooth" : "auto" });
+            }
+
+            function updateVisual() {
+                if (isDesktop()) return;
+
+                const center = scroller.scrollTop + scroller.clientHeight / 2;
+                let best = null, bestDist = Infinity;
+
+                getItems().forEach(el => {
+                    const elCenter = el.offsetTop + el.offsetHeight / 2;
+                    const d = Math.abs(elCenter - center);
+                    if (d < bestDist) { bestDist = d; best = el; }
+
+                    const t = Math.min(d / (ITEM_H * 2), 1);
+                    el.style.opacity = String(0.42 + (1 - t) * 0.58);
+                    el.style.transform = `scale(${0.92 + (1 - t) * 0.08})`;
+                });
+
+                if (best) currentValue = best.dataset.value;
+            }
+
+            let snapTimer = null;
+            scroller.addEventListener("scroll", () => {
+                if (isDesktop()) return;
+                updateVisual();
+                clearTimeout(snapTimer);
+                snapTimer = setTimeout(() => scrollToValue(currentValue, true), 120);
+            });
+
+            /* =========================
+               Resize: 形态切换时收起 + 重置状态
+            ========================= */
+
+            window.addEventListener("resize", () => {
+                closeAll();
+                pinned = false;
+                hoveringTrigger = false;
+                hoveringPanel = false;
+                suppressHoverUntilLeave = false;
+            });
+
+        })();
+
+
+
+    </script>
+    <script>
+        //side menu
+        document.addEventListener('DOMContentLoaded', () => {
+            const BP_MOBILE_MAX = 767;
+            const body = document.body;
+
+            const isMobile = () => window.innerWidth <= BP_MOBILE_MAX;
+
+            const setDesktopClosed = (closed) => {
+                body.classList.toggle('sidebar-close', !!closed);
+            };
+            const isDesktopClosed = () => body.classList.contains('sidebar-close');
+
+            const setMobileOpen = (open) => {
+                body.classList.toggle('sidebar-open', !!open);
+            };
+            const isMobileOpen = () => body.classList.contains('sidebar-open');
+
+            // ===== 动画包装：加 sidebar-animating，等 transitionend 清掉 =====
+            const withSidebarAnimation = (mutateClasses) => {
+                body.classList.add('sidebar-animating');
+
+                // 触发一次 reflow，确保 animating class 生效后再切状态（避免某些浏览器不动画）
+                void body.offsetWidth;
+
+                mutateClasses();
+
+                const sidebar = document.querySelector('.sidebar--main'); // 你的 aside.sidebar.sidebar--main
+                if (!sidebar) {
+                    body.classList.remove('sidebar-animating');
+                    return;
+                }
+
+                const cleanup = () => body.classList.remove('sidebar-animating');
+
+                let done = false;
+                const onEnd = (e) => {
+                    // 只接 sidebar 自己的宽度/transform 动画结束（你可按实际改 property）
+                    if (e.target !== sidebar) return;
+                    if (!['width', 'transform', 'max-width'].includes(e.propertyName)) return;
+
+                    if (done) return;
+                    done = true;
+                    sidebar.removeEventListener('transitionend', onEnd);
+                    cleanup();
+                };
+
+                sidebar.addEventListener('transitionend', onEnd);
+
+                // 兜底：如果某次没触发 transitionend（比如没变化），也能自动清掉
+                window.setTimeout(() => {
+                    if (done) return;
+                    done = true;
+                    sidebar.removeEventListener('transitionend', onEnd);
+                    cleanup();
+                }, 320); // 跟你 CSS duration 对齐（例如 250ms~300ms）
+            };
+
+            /* ===== Breakpoint 切换时的默认状态 ===== */
+            let lastMode = null;
+            function applyDefaults(force = false) {
+                const mode = isMobile() ? 'mobile' : 'desktop';
+                if (!force && mode === lastMode) return;
+                lastMode = mode;
+
+                // 切 breakpoint 默认不需要动画的话，就不要包 withSidebarAnimation
+                if (mode === 'mobile') {
+                    setDesktopClosed(false);
+                    setMobileOpen(false);
+                } else {
+                    setMobileOpen(false);
+                    setDesktopClosed(false);
+                }
+            }
+
+            /* ===== Click handling ===== */
+            document.addEventListener('click', (e) => {
+                const btn = e.target.closest?.('[data-action="toggle-sidebar"]');
+                if (!btn) return;
+
+                e.preventDefault();
+
+                withSidebarAnimation(() => {
+                    if (isMobile()) {
+                        setMobileOpen(!isMobileOpen());
+                    } else {
+                        setDesktopClosed(!isDesktopClosed());
+                    }
+                });
+            });
+
+            document.querySelector('main')?.addEventListener('click', () => {
+                if (isMobile() && isMobileOpen()) {
+                    withSidebarAnimation(() => setMobileOpen(false));
+                }
+            });
+
+            applyDefaults(true);
+            window.addEventListener('resize', () => applyDefaults(false));
+        });
+
+    </script>
+    <script>
+        // fav button
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('.btn-fav');
+            if (!btn) return;
+
+            e.preventDefault();
+
+            const item = btn.closest('.vendor');
+            if (!item) return;
+
+            const isFav = item.dataset.fav === 'true';
+
+            if (isFav) {
+                // 取消收藏
+                item.removeAttribute('data-fav');
+                btn.classList.remove('active');
+                btn.setAttribute('aria-pressed', 'false');
+            } else {
+                // 加收藏
+                item.dataset.fav = 'true';
+                btn.classList.add('active');
+                btn.setAttribute('aria-pressed', 'true');
+            }
+        });
+
+    </script>
+    <script>
+        const btn = document.querySelector('[data-action="toggle-app"]');
+        const nav = document.querySelector('.sidebar-nav.sidebar-nav--product');
+        const panel = nav?.querySelector('.prod-nav');
+        const body = document.body;
+
+        if (!btn || !nav || !panel) {
+            console.warn('toggle-app / sidebar-nav--product / .prod-nav not found');
+        }
+
+        const ANIM_CLASS = 'nav-animating';
+        const DURATION = 260; // 跟你的 CSS transition 对齐（200~300 都行）
+        let scheduled = 0;
+        let blockPanelUntil = 0;
+
+        function setAnimating(on) {
+            nav.classList.toggle(ANIM_CLASS, !!on);
+        }
+
+        function openNav() {
+            nav.classList.add('active');
+            body.classList.add('no-scroll');
+
+            blockPanelUntil = performance.now() + 300;
+
+            panel.style.pointerEvents = 'none';
+            requestAnimationFrame(() => {
+                panel.style.pointerEvents = '';
+            });
+        }
+
+
+        function closeNav() {
+            nav.classList.remove('active');
+            body.classList.remove('no-scroll');
+
+            setAnimating(true);
+            window.setTimeout(() => setAnimating(false), DURATION + 40);
+        }
+
+        function toggleNav() {
+            nav.classList.contains('active') ? closeNav() : openNav();
+        }
+
+        /* A：按钮点击时，下一帧才切换（避免同一次 click 命中新元素） */
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (scheduled) cancelAnimationFrame(scheduled);
+            scheduled = requestAnimationFrame(() => {
+                scheduled = 0;
+                toggleNav();
+            });
+        });
+
+        /* 点击遮罩关掉 */
+        nav.addEventListener('click', () => {
+            if (nav.classList.contains('active')) closeNav();
+        });
+
+        /* panel：不要冒泡关掉 + B：刚打开时吞掉第一次误点 */
+        panel.addEventListener(
+            'click',
+            (e) => {
+                if (performance.now() < blockPanelUntil) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return;
+                }
+                e.stopPropagation();
+            },
+            true // capture：更早拦截，保险
+        );
+
+        /* ESC 关闭 */
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && nav.classList.contains('active')) closeNav();
+        });
+
+
+    </script>
+    <script>
+        //search
+        document.addEventListener('DOMContentLoaded', () => {
+            const BP_MOBILE_MAX = 1024;
+
+            const isMobile = () => window.innerWidth <= BP_MOBILE_MAX;
+
+            const rails = document.querySelectorAll('[data-vendor-rail]');
+
+            const openSearch = (rail) => {
+                rail.classList.add('is-search-open');
+                const input = rail.querySelector('.vendor-search');
+                if (input) {
+                    // 等动画开始后再focus，体验更顺
+                    requestAnimationFrame(() => input.focus());
+                }
+            };
+
+            const closeSearch = (rail) => {
+                rail.classList.remove('is-search-open');
+                const input = rail.querySelector('.vendor-search');
+                if (input) input.blur();
+            };
+
+            const toggleSearch = (rail) => {
+                rail.classList.toggle('is-search-open');
+                if (rail.classList.contains('is-search-open')) {
+                    const input = rail.querySelector('.vendor-search');
+                    if (input) requestAnimationFrame(() => input.focus());
+                } else {
+                    const input = rail.querySelector('.vendor-search');
+                    if (input) input.blur();
+                }
+            };
+
+            // 点按钮展开/收起（用事件委托，不用id）
+            document.addEventListener('click', (e) => {
+                const btn = e.target.closest('[data-action="toggle-search"]');
+                if (!btn) return;
+
+                const rail = btn.closest('[data-vendor-rail]');
+                if (!rail) return;
+
+                if (!isMobile()) return;
+                e.preventDefault();
+                toggleSearch(rail);
+            });
+
+            // 点外面收起
+            document.addEventListener('click', (e) => {
+                if (!isMobile()) return;
+
+                rails.forEach((rail) => {
+                    if (!rail.classList.contains('is-search-open')) return;
+
+                    const searchBox = rail.querySelector('[data-search]');
+                    const clickedInside = searchBox && searchBox.contains(e.target);
+                    if (clickedInside) return;
+
+                    // 如果你希望“input有字就不收起”，把下面这段打开：
+                    // const input = rail.querySelector('.vendor-search');
+                    // if (input && input.value.trim()) return;
+
+                    closeSearch(rail);
+                });
+            });
+
+            // ESC 收起
+            document.addEventListener('keydown', (e) => {
+                if (e.key !== 'Escape') return;
+                if (!isMobile()) return;
+
+                rails.forEach((rail) => {
+                    if (rail.classList.contains('is-search-open')) closeSearch(rail);
+                });
+            });
+
+            // 从 mobile 切回 desktop：把状态清掉，避免卡住布局
+            window.addEventListener('resize', () => {
+                if (isMobile()) return;
+                rails.forEach((rail) => closeSearch(rail));
+            });
+        });
+
+    </script>
+    <script>
+        document.addEventListener("click", (e) => {
+            const btn = document.querySelector("#btn-settingsbox");
+            const box = document.querySelector("#togglesettings");
+            if (!btn || !box) return;
+
+            const clickedBtn = e.target.closest("#btn-settingsbox");
+            const clickedInsideBox = e.target.closest("#togglesettings");
+
+            const isOpen = box.classList.contains("open");
+
+            // 1) 点按钮：toggle
+            if (clickedBtn) {
+                const nextState = !isOpen;
+
+                box.classList.toggle("open", nextState);
+                btn.classList.toggle("btn-setting__open", nextState);
+                btn.classList.toggle("btn-setting__close", !nextState);
+                btn.setAttribute("aria-expanded", String(nextState));
+                return;
+            }
+
+            // 2) 点 box 内：不关
+            if (clickedInsideBox) return;
+
+            // 3) 点其他地方：如果开着就关
+            if (isOpen) {
+                box.classList.remove("open");
+                btn.classList.remove("btn-setting__open");
+                btn.classList.add("btn-setting__close");
+                btn.setAttribute("aria-expanded", "false");
+            }
+        });
+
+
+
+
+    </script>
+</body>
+</html>
