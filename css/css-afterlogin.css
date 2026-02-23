@@ -466,9 +466,12 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 .vendor-list { margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); justify-content: flex-start; justify-content: start; /* 左对齐，不拉伸 */ align-content: start; }
     .vendor-list.is-empty { display: block; margin: var(--space-4) var(--space-2); }
 .vendor-empty { text-align: center; }
-.vendor { list-style-type: none; position: relative; overflow: hidden; border-radius: var(--radius-md); border-top: var(--border-width) solid var(--primary-color); aspect-ratio: 1/1; }
-.vendor-img { transition: transform var(--duration-normal) var(--ease-interact); height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; }
-    .vendor-img img { }
+.vendor { list-style-type: none; position: relative; overflow: hidden; aspect-ratio: 1/1; border-radius: var(--radius-md); }
+.vendor-img { transition: transform var(--duration-normal) var(--ease-interact); height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: var(--radius-md); border-top: var(--border-width) solid var(--primary-color); }
+    .vendor-img img { height: 100%; }
+.vendor-bg { background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: var(--radius-md); border-top: var(--border-width) solid var(--primary-color); position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: -1; margin-top: var(--space-6); }
+.vendor-logo{position:absolute; bottom:var(--space-4);left:var(--space-4);}
+
 .btn-play.btn-round, .btn-fav.btn-round { line-height: 0; }
 .btn-play svg { width: var(--icn-w24); height: var(--icn-w24); fill: var(--white-color); }
 .btn-play img { width: var(--icn-w18); height: var(--icn-w18); }
@@ -672,7 +675,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 /* banner 高度你自己定一个就好，别重复写 */
 .dbWrap { position: relative; width: 100%; height: 200px; overflow: hidden; }
 .p2pcontent { position: absolute; z-index: 3; top: calc(var(--space-3) * 3); left: var(--space-3); }
-.p2p-bg { background-image: url('../image/p2pbannerbg.jpg'); position: absolute; top: 10%; bottom: 0; left: 0; margin: auto; width: 80%; background-size: cover; z-index: -1; border-radius: var(--radius-md); border-top: var(--space-1) solid var(--primary-color); }
+.p2p-bg { position: absolute; top: 10%; bottom: 0; left: 0; margin: auto; width: 80%; background-size: cover; z-index: -1; border-radius: var(--radius-md); border-top: var(--space-1) solid var(--primary-color); }
 
 .vendors-square .vendor { height: auto; aspect-ratio: 1/1; }
 
@@ -689,4 +692,30 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
         .vendors-float .vendor-list { display: flex; }
         .vendors-float .vendor { min-width: var(--item-max); }
     .p2pcontent { top: calc(var(--space-5) * 3); left: var(--space-6); }
+}
+
+.vendors.p2p .vendor { }
+.vendors.list3 { }
+    .vendors.list3 .vendor-list { }
+    .vendors.list3 .vendor { }
+
+.vendor-stage { height: 100%; }
+.vendor-char { height: 100%; }
+.vendors.list3 .vendor-list { grid-template-columns: repeat(1, 1fr); }
+.vendors.list3 .vendor { aspect-ratio: auto; height: calc(var(--item-game-h) * 3); }
+
+@media (min-width:768px) { .vendors.list3 .vendor-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .vendors.list3 .vendor { max-width: calc(var(--item-max) * 3); min-width: calc( var(--item-min)); height: calc(var(--item-game-h) * 1.5); }
+
+}
+
+@media (min-width:1024px) and (max-width:1123.89px) {
+    .vendors.list3 .vendor-list { grid-template-columns: repeat(2, 1fr); }
+
+    .sidebar-close .vendors.list3 .vendor-list { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width:768px) and (max-width:1023.89px) {
+    .vendors.list3 .vendor-list { grid-template-columns: repeat(1, 1fr); }
+
+    .sidebar-close .vendors.list3 .vendor-list { grid-template-columns: repeat(2, 1fr); }
 }
