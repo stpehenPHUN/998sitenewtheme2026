@@ -945,6 +945,6 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 }
 
 .rail__rows { display: flex; flex-direction: column; gap: var(--space-3); }
-.rail__row { display: flex; flex-wrap: nowrap; gap: var(--card-gap); align-items: stretch; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; scroll-behavior: smooth; }
+.rail__row { display: flex; flex-wrap: nowrap; gap: var(--card-gap); align-items: stretch; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; scroll-behavior: smooth; padding-bottom:var(--space-3)}
     .rail__row > .playcard { flex: 0 0 var(--card-w); width: var(--card-w); }
 ard { flex: 0 0 var(--card-w); width: var(--card-w); }
