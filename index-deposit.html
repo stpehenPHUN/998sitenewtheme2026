@@ -1279,7 +1279,11 @@
                                 rebuildRail(rail, "all", "init");
                                 watchRailResize(rail);
                             });
-
+                            if (!document.querySelector("[data-rail]")) {
+                                document.querySelectorAll(".playcard__body")
+                                    .forEach(hydratePlaycardBody);
+                                initBadges();
+                            }
                             bindFilter();
                             bindRailWheel();
                         }
