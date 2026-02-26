@@ -868,28 +868,28 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 
 .playcard__methods { margin-bottom: auto; display: flex; flex-direction: column; gap: var(--space-1); font-size: var(--text-xs); background: var(--secondary-color); padding: var(--space-1); border-radius: var(--radius-sm); }
 
-.methodBtn { appearance: none; border: 0 solid rgba(255,255,255,.12); background: var(--secondary-color); color: var(--font-color); border-radius: var(--radius-sm); display: flex; align-items: center; gap: var(--space-1); cursor: pointer; }
+.p--methodBtn { appearance: none; border: 0 solid rgba(255,255,255,.12); background: var(--secondary-color); color: var(--font-color); border-radius: var(--radius-sm); display: flex; align-items: center; gap: var(--space-1); cursor: pointer; }
 
-    .methodBtn:hover { }
+    .p--methodBtn:hover { }
 
-.methodBtn__ico { width: var(--icn-w24); height: var(--icn-w24); display: inline-flex; align-items: center; justify-content: center; overflow: hidden; flex: 0 0 auto; }
+.p--methodBtn__ico { width: var(--icn-w24); height: var(--icn-w24); display: inline-flex; align-items: center; justify-content: center; overflow: hidden; flex: 0 0 auto; }
 
-    .methodBtn__ico img { width: 100%; height: 100%; display: block; object-fit: contain; }
+    .p--methodBtn__ico img { width: 100%; height: 100%; display: block; object-fit: contain; }
 
-.methodBtn__txt { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
-
-
-.methodBtn__ico { width: var(--icn-w24); height: var(--icn-w24); display: inline-block; border-radius: 999px; background-color: currentColor; -webkit-mask: var(--ico) no-repeat center / 70% 70%; mask: var(--ico) no-repeat center / 70% 70%; box-shadow: 0 0 0 1px rgba(255,255,255,.10) inset; }
+.p--methodBtn__txt { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 
 
-.methodBtn { color: var(--primary-color); }
-.methodBtn__txt { color: var(--font-color); }
+.p--methodBtn__ico { width: var(--icn-w24); height: var(--icn-w24); display: inline-block; border-radius: 999px; background-color: currentColor; -webkit-mask: var(--ico) no-repeat center / 70% 70%; mask: var(--ico) no-repeat center / 70% 70%; box-shadow: 0 0 0 1px rgba(255,255,255,.10) inset; }
 
 
-.methodBtn__ico[data-ico="bank"] { --ico: url('../assets/icon/pay/bank.svg'); }
-.methodBtn__ico[data-ico="crypto"] { --ico: url('../assets/icon/pay/bitcoin.svg'); }
-.methodBtn__ico[data-ico="gateway"] { --ico: url('../assets/icon/pay/wallet.svg'); }
-.methodBtn__ico[data-ico="master"] { --ico: url('../assets/icon/pay/mastercard.svg'); }
+.p--methodBtn { color: var(--primary-color); }
+.p--methodBtn__txt { color: var(--font-color); }
+
+
+.p--methodBtn__ico[data-ico="bank"] { --ico: url('../assets/icon/pay/bank.svg'); }
+.p--methodBtn__ico[data-ico="crypto"] { --ico: url('../assets/icon/pay/bitcoin.svg'); }
+.p--methodBtn__ico[data-ico="gateway"] { --ico: url('../assets/icon/pay/wallet.svg'); }
+.p--methodBtn__ico[data-ico="master"] { --ico: url('../assets/icon/pay/mastercard.svg'); }
 /* -------- cats row -------- */
 .playcard__cats { display: flex; flex-wrap: wrap; gap: var(--space-1); justify-content: center; margin-top: auto; /* height: 100%; */ }
 .catBtn { appearance: none; border: var(--border-width) solid rgba(255,255,255,0); background: rgba(255,255,255,.03); color: var(--font-color); border-radius: var(--radius-sm); display: inline-flex; align-items: center; justify-content: center; /* gap: var(--space-2); */ padding: var(--space-1) var(--space-2); cursor: pointer; border-radius: 999px; }
@@ -949,3 +949,4 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 .rail__row { display: flex; flex-wrap: nowrap; gap: var(--space-3); align-items: stretch; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; scroll-behavior: smooth; padding-bottom: var(--space-2); align-items: stretch; }
     .rail__row > .playcard { flex: 0 0 var(--card-w); width: var(--card-w); padding: var(--space-1);display: flex; }
 ard { flex: 0 0 var(--card-w); width: var(--card-w); }
+
