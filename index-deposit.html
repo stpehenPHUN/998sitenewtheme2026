@@ -997,11 +997,11 @@
                                     const def = PAY_DICT[key] || { label: key };
                                     const btn = document.createElement("button");
                                     btn.type = "button";
-                                    btn.className = "methodBtn";
+                                    btn.className = "p--methodBtn";
                                     btn.dataset.method = key;
                                     btn.innerHTML = `
-                          <span class="methodBtn__ico" aria-hidden="true" data-ico="${key}"></span>
-                          <span class="methodBtn__txt">${def.label || key}</span>
+                          <span class="p--methodBtn__ico" aria-hidden="true" data-ico="${key}"></span>
+                          <span class="p--methodBtn__txt">${def.label || key}</span>
                         `;
                                     methodsMount.appendChild(btn);
                                 });
@@ -1298,7 +1298,7 @@
 
                         // click-to-navigate
                         document.addEventListener("click", (e) => {
-                            if (e.target.closest(".methodBtn, .catBtn, [data-no-nav], a, button")) return;
+                            if (e.target.closest(".p--methodBtn, .catBtn, [data-no-nav], a, button")) return;
                             const card = e.target.closest(".playcard");
                             if (!card) return;
                             const url = card.dataset.href;
