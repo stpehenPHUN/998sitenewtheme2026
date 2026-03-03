@@ -1782,23 +1782,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
 (function () {
     const BP_DESKTOP = 1024;
+    const ITEM_H = 44; // 对齐你 CSS :root --item-h: 44px
 
     const sheet = document.getElementById("selectSheet");
     if (!sheet) return;
 
     const titleEl = sheet.querySelector("[data-sheet-title]");
-    const listEl = sheet.querySelector("[data-sheet-list]");
+    const scroller = sheet.querySelector("[data-sheet-list]"); // 现在是 wheel__scroller
+    const wheel = sheet.querySelector("[data-sheet-wheel]") || sheet.querySelector(".wheel");
     const closeBtns = sheet.querySelectorAll("[data-sheet-close]");
     const doneBtn = sheet.querySelector("[data-sheet-done]");
 
-    let active = null; // { select, trigger, onPicked }
+    let active = null; // { select, trigger, title }
+    let pendingValue = null; // 当前滚轮指向的 value（Done 才写回 select）
+    let snapTimer = null;
 
     const isDesktop = () => window.innerWidth >= BP_DESKTOP;
+    const isOpen = () => sheet.classList.contains("isOpen");
 
     function openSheet() {
         sheet.classList.add("isOpen");
         sheet.setAttribute("aria-hidden", "false");
-        document.body.classList.add("no-scroll"); // 你 mobile sidebar 也用这个（避免背景滚）
+        document.body.classList.add("no-scroll");
+        // 让滚轮可 focus（更像 iOS picker）
+        setTimeout(() => wheel?.focus?.(), 50);
     }
 
     function closeSheet() {
@@ -1806,53 +1813,147 @@ document.addEventListener("DOMContentLoaded", () => {
         sheet.setAttribute("aria-hidden", "true");
         document.body.classList.remove("no-scroll");
         active = null;
+        pendingValue = null;
     }
 
-    closeBtns.forEach(btn => btn.addEventListener("click", closeSheet));
-    doneBtn?.addEventListener("click", closeSheet);
+    closeBtns.forEach((btn) => btn.addEventListener("click", closeSheet));
+
+    function getItems() {
+        return Array.from(scroller.querySelectorAll(".wheel__item"));
+    }
+
+    function scrollToValue(value, smooth) {
+        const items = getItems();
+        const idx = items.findIndex((el) => el.dataset.value === String(value));
+        if (idx < 0) return;
+
+        // 有 top spacer，所以第一个 item offsetTop 不是 0，直接用 offsetTop 最稳
+        const target = items[idx].offsetTop + items[idx].offsetHeight / 2 - scroller.clientHeight / 2;
+        scroller.scrollTo({ top: target, behavior: smooth ? "smooth" : "auto" });
+    }
+
+    // 参照你 language 的 updateVisual（用 inline style 做渐变/缩放）
+    function updateVisualAndPending() {
+        if (isDesktop()) return;
+
+        const center = scroller.scrollTop + scroller.clientHeight / 2;
+        let best = null;
+        let bestDist = Infinity;
+
+        getItems().forEach((el) => {
+            const elCenter = el.offsetTop + el.offsetHeight / 2;
+            const d = Math.abs(elCenter - center);
+
+            if (d < bestDist) {
+                bestDist = d;
+                best = el;
+            }
+
+            // disabled 的就弱化一点
+            const disabled = el.getAttribute("aria-disabled") === "true";
+            const t = Math.min(d / (ITEM_H * 2), 1);
+            const baseOpacity = disabled ? 0.18 : 0.42;
+            el.style.opacity = String(baseOpacity + (1 - t) * 0.58);
+            el.style.transform = `scale(${0.92 + (1 - t) * 0.08})`;
+        });
+
+        if (best) pendingValue = best.dataset.value;
+    }
 
     function renderOptions(select, { title }) {
         titleEl.textContent = title || "Select";
-        listEl.innerHTML = "";
+        scroller.innerHTML = "";
 
-        const currentVal = select.value;
+        const currentVal = String(select.value ?? "");
+        pendingValue = currentVal;
 
-        [...select.options].forEach((opt) => {
-            const btn = document.createElement("button");
-            btn.type = "button";
-            btn.className = "sheetItem";
-            btn.textContent = opt.textContent;
+        // top spacer
+        const topSpacer = document.createElement("div");
+        topSpacer.className = "wheel__spacer";
+        scroller.appendChild(topSpacer);
 
-            const disabled = opt.disabled;
-            if (disabled) btn.setAttribute("aria-disabled", "true");
-            if (opt.value === currentVal) btn.classList.add("is-active");
+        // items
+        Array.from(select.options).forEach((opt) => {
+            const item = document.createElement("div");
+            item.className = "wheel__item";
+            item.dataset.value = opt.value;
+            item.textContent = opt.textContent;
 
-            btn.addEventListener("click", () => {
+            const disabled = !!opt.disabled;
+            if (disabled) item.setAttribute("aria-disabled", "true");
+
+            // 点击某一项：滚过去；如果正好是当前项，再点一次就直接 Done 体验更像 iOS
+            item.addEventListener("click", () => {
                 if (disabled) return;
 
-                // set value + trigger native change
-                select.value = opt.value;
-                select.dispatchEvent(new Event("change", { bubbles: true }));
+                const wasPending = String(pendingValue) === String(opt.value);
+                scrollToValue(opt.value, true);
 
-                // update trigger text
-                if (active?.trigger) {
-                    active.trigger.querySelector("[data-trigger-text]").textContent = opt.textContent;
-                }
-
-                // keep it simple: close immediately (or you can keep open until Done)
-                closeSheet();
+                // 让滚动结束后 pendingValue 一定对齐
+                setTimeout(() => {
+                    updateVisualAndPending();
+                    if (wasPending) commitSelection(); // 二次点击 = 快速确认
+                }, 0);
             });
 
-            listEl.appendChild(btn);
+            scroller.appendChild(item);
+        });
+
+        // bottom spacer
+        const bottomSpacer = document.createElement("div");
+        bottomSpacer.className = "wheel__spacer";
+        scroller.appendChild(bottomSpacer);
+
+        // 打开时把当前值滚到中间
+        requestAnimationFrame(() => {
+            scrollToValue(currentVal, false);
+            updateVisualAndPending();
         });
     }
 
-    // Main API
+    function commitSelection() {
+        if (!active?.select) return;
+
+        // 找到 pending 对应的 option（避免落在 disabled 上）
+        const select = active.select;
+        const opts = Array.from(select.options);
+        const pickedOpt = opts.find((o) => String(o.value) === String(pendingValue) && !o.disabled);
+
+        // 如果滚到了 disabled（极少数），fallback 到当前 select.value
+        const finalOpt = pickedOpt || select.selectedOptions?.[0] || null;
+        if (!finalOpt) return;
+
+        // set value + trigger change
+        select.value = finalOpt.value;
+        select.dispatchEvent(new Event("change", { bubbles: true }));
+
+        // update trigger text
+        if (active?.trigger) {
+            const t = active.trigger.querySelector("[data-trigger-text]");
+            if (t) t.textContent = finalOpt.textContent;
+        }
+
+        closeSheet();
+    }
+
+    doneBtn?.addEventListener("click", commitSelection);
+
+    // 滚动：实时更新 pendingValue，并在停止后 snap 到最近的值（像 iOS）
+    scroller.addEventListener("scroll", () => {
+        if (isDesktop()) return;
+        updateVisualAndPending();
+        clearTimeout(snapTimer);
+        snapTimer = setTimeout(() => {
+            if (pendingValue != null) scrollToValue(pendingValue, true);
+        }, 120);
+    });
+
+    // Main API（你原本就有调用：pkgOpt / payFromSelect）
     window.enhanceSelectToSheet = function enhanceSelectToSheet(select, opts = {}) {
         if (!select || select.dataset.sheetBound === "1") return;
         select.dataset.sheetBound = "1";
 
-        // desktop: keep native select (no need sheet)
+        // desktop 保持原生 select
         if (isDesktop()) return;
 
         // create trigger
@@ -1861,32 +1962,24 @@ document.addEventListener("DOMContentLoaded", () => {
         trigger.className = "sheetSelectTrigger";
         trigger.innerHTML = `
       <span data-trigger-text>${select.selectedOptions?.[0]?.textContent || "Select"}</span>
-      <span class="sheetSelectTrigger__hint">▼</span>
+      <span class="sheetSelectTrigger__hint">Tap to choose</span>
     `;
 
-        // hide native select but keep it in DOM for value/change logic
+        // hide native select on mobile
         select.classList.add("is-sheet-native");
 
-        // insert trigger right before select
-        select.parentNode.insertBefore(trigger, select);
+        // insert trigger right after select
+        select.insertAdjacentElement("afterend", trigger);
 
-        trigger.addEventListener("click", (e) => {
-            e.preventDefault();
-            active = { select, trigger };
-            renderOptions(select, opts);
+        trigger.addEventListener("click", () => {
+            active = { select, trigger, title: opts.title || "Select" };
+            renderOptions(select, { title: active.title });
             openSheet();
-        });
-
-        // If code updates select.value programmatically, keep trigger text in sync
-        select.addEventListener("change", () => {
-            const txt = select.selectedOptions?.[0]?.textContent || "Select";
-            const t = trigger.querySelector("[data-trigger-text]");
-            if (t) t.textContent = txt;
         });
     };
 
-    // if user rotates/resizes into desktop, close to avoid weird stuck overlay
+    // 旋转屏/resize：保险起见关掉 sheet（避免样式残留）
     window.addEventListener("resize", () => {
-        if (isDesktop()) closeSheet();
+        if (isOpen()) closeSheet();
     });
 })();
