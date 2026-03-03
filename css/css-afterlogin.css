@@ -1157,6 +1157,6 @@ ard { flex: 0 0 var(--card-w); width: var(--card-w); }
 
 
 [data-key],
-[data-key] * { touch-action: manipulation; /* stop double-tap zoom in most browsers */ -webkit-tap-highlight-color: transparent; }
+[data-key] * { touch-action: none; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
 
-[data-key] { -webkit-user-select: none; user-select: none; }
+[data-key] { touch-action: none; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
