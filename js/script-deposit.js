@@ -1,4 +1,4 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     /* =========================================================
        0) CONFIG
     ========================================================= */
@@ -1585,6 +1585,9 @@
             if (!tab) return;
             if (tab.classList.contains("is-disabled")) return;
 
+
+            if (tab.classList.contains("is-active")) return;
+
             setTabActive(tab);
             state.methodType = tab.dataset.method;
             renderChannels(state.methodType);
@@ -1593,6 +1596,8 @@
         methodGrid.addEventListener("click", (e) => {
             const btn = e.target.closest(".methodBtn[data-channel-id]");
             if (!btn) return;
+
+            if (String(state.channelId) === String(nextId)) return;
 
             methodGrid.querySelectorAll(".methodBtn").forEach((b) => b.classList.remove("is-active"));
             btn.classList.add("is-active");
@@ -1605,6 +1610,8 @@
         payFromGrid.addEventListener("click", (e) => {
             const btn = e.target.closest(".payFromBtn[data-pay-from-id]");
             if (!btn) return;
+
+            if (String(state.payFromId) === String(nextId)) return;
 
             payFromGrid.querySelectorAll(".payFromBtn").forEach((b) => b.classList.remove("is-active"));
             btn.classList.add("is-active");
