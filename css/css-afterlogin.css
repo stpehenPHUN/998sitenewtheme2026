@@ -1160,3 +1160,24 @@ ard { flex: 0 0 var(--card-w); width: var(--card-w); }
 [data-key] * { touch-action: none; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
 
 [data-key] { touch-action: none; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+
+/* ===== Generic Select Sheet ===== */
+.sheetList { margin: var(--space-3); display: grid; gap: var(--space-2); max-height: min(70vh, 520px); overflow: auto; -webkit-overflow-scrolling: touch; }
+
+.sheetItem { width: 100%; text-align: left; border: var(--border-width) solid rgba(255,255,255,.10); background: var(--secondary-color); color: var(--font-color); border-radius: var(--radius-md); padding: var(--space-3); cursor: pointer; }
+
+    .sheetItem[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
+
+    .sheetItem.is-active { border-color: var(--primary-color); box-shadow: 0 0 0 2px rgba(49,130,206,.18) inset; }
+
+/* ===== Hide native select on mobile when enhanced ===== */
+@media (max-width: 1023.98px) {
+    select.is-sheet-native { position: absolute !important; opacity: 0 !important; pointer-events: none !important; width: 1px !important; height: 1px !important; }
+}
+
+/* Trigger button that looks like your select */
+.sheetSelectTrigger { width: 100%; background: var(--secondary-color); color: var(--font-color); border-radius: var(--radius-md); padding: var(--space-2) var(--space-3); border: 0; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+
+    .sheetSelectTrigger:active { transform: translateY(1px); }
+
+.sheetSelectTrigger__hint { opacity: .75; font-size: var(--text-xs); }
