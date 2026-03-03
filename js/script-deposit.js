@@ -1560,7 +1560,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 else if (key === "clear") clearAll();
                 else if (/^\d$/.test(key)) appendDigit(key);
 
-                input.focus({ preventScroll: true });
             });
         }
 
@@ -1642,21 +1641,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // ===== amount input events =====
         const amountInput = document.getElementById("amount");
-
         if (amountInput) {
+            // ✅ 防止手机/电话版弹原生键盘
+            amountInput.setAttribute("readonly", "");
+            amountInput.setAttribute("inputmode", "none");
 
-            amountInput.addEventListener("input", (e) => {
-                const raw = unformatThousands(e.target.value);
-                e.target.value = formatThousands(raw, ","); // or change to " " (space)
-                recalcSummary();
-            });
-            amountInput.addEventListener("keydown", (e) => {
-                if (e.key === "Enter") {
-                    recalcSummary();
-                }
+            // iOS 有时 readonly 仍会给你光标/放大页面，所以我们直接拦截
+            const blockNativeKb = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                // 立刻取消 focus，避免弹键盘/页面跳
+                amountInput.blur();
+                // 你自家 keypad 还需要写值，不受影响
+            };
+
+            // pointerdown 比 click 更早，能更稳定阻止键盘
+            amountInput.addEventListener("pointerdown", blockNativeKb, { passive: false });
+            amountInput.addEventListener("mousedown", blockNativeKb, { passive: false });
+            amountInput.addEventListener("touchstart", blockNativeKb, { passive: false });
+
+            // 某些机型会通过 focus 触发键盘，这里兜底
+            amountInput.addEventListener("focus", () => {
+                amountInput.blur();
             });
 
-            amountInput.addEventListener("change", recalcSummary);
+            // ✅ 你之前绑定的 input/change/keydown 可以删掉或保留
+            // 但在 readonly 情况下用户不会手打了，基本不会触发
         }
 
     }
