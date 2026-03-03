@@ -1317,6 +1317,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 payFromGrid.appendChild(select);
+
+                // ★ add this:
+                window.enhanceSelectToSheet?.(select, { title: "Paying From" });
+
                 recalcSummary();
                 return;
             }
@@ -1768,10 +1772,126 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const pkgOpt = document.getElementById("pkgOpt");
+    if (pkgOpt) {
+        // mobile: enhance to bottom sheet
+        window.enhanceSelectToSheet?.(pkgOpt, { title: "Promotion" });
 
-    pkgOpt.addEventListener("change", function () {
-        const url = this.value;
-        if (!url) return;
-        window.location.href = url;
-    });
+        pkgOpt.addEventListener("change", function () {
+            // desktop & mobile最终都走这里：mobile 是 sheet 点选后触发 change
+            const url = this.value;
+            if (!url) return;
+            window.location.href = url;
+        });
+    }
 });
+
+(function () {
+    const BP_DESKTOP = 1024;
+
+    const sheet = document.getElementById("selectSheet");
+    if (!sheet) return;
+
+    const titleEl = sheet.querySelector("[data-sheet-title]");
+    const listEl = sheet.querySelector("[data-sheet-list]");
+    const closeBtns = sheet.querySelectorAll("[data-sheet-close]");
+    const doneBtn = sheet.querySelector("[data-sheet-done]");
+
+    let active = null; // { select, trigger, onPicked }
+
+    const isDesktop = () => window.innerWidth >= BP_DESKTOP;
+
+    function openSheet() {
+        sheet.classList.add("isOpen");
+        sheet.setAttribute("aria-hidden", "false");
+        document.body.classList.add("no-scroll"); // 你 mobile sidebar 也用这个（避免背景滚）
+    }
+
+    function closeSheet() {
+        sheet.classList.remove("isOpen");
+        sheet.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("no-scroll");
+        active = null;
+    }
+
+    closeBtns.forEach(btn => btn.addEventListener("click", closeSheet));
+    doneBtn?.addEventListener("click", closeSheet);
+
+    function renderOptions(select, { title }) {
+        titleEl.textContent = title || "Select";
+        listEl.innerHTML = "";
+
+        const currentVal = select.value;
+
+        [...select.options].forEach((opt) => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "sheetItem";
+            btn.textContent = opt.textContent;
+
+            const disabled = opt.disabled;
+            if (disabled) btn.setAttribute("aria-disabled", "true");
+            if (opt.value === currentVal) btn.classList.add("is-active");
+
+            btn.addEventListener("click", () => {
+                if (disabled) return;
+
+                // set value + trigger native change
+                select.value = opt.value;
+                select.dispatchEvent(new Event("change", { bubbles: true }));
+
+                // update trigger text
+                if (active?.trigger) {
+                    active.trigger.querySelector("[data-trigger-text]").textContent = opt.textContent;
+                }
+
+                // keep it simple: close immediately (or you can keep open until Done)
+                closeSheet();
+            });
+
+            listEl.appendChild(btn);
+        });
+    }
+
+    // Main API
+    window.enhanceSelectToSheet = function enhanceSelectToSheet(select, opts = {}) {
+        if (!select || select.dataset.sheetBound === "1") return;
+        select.dataset.sheetBound = "1";
+
+        // desktop: keep native select (no need sheet)
+        if (isDesktop()) return;
+
+        // create trigger
+        const trigger = document.createElement("button");
+        trigger.type = "button";
+        trigger.className = "sheetSelectTrigger";
+        trigger.innerHTML = `
+      <span data-trigger-text>${select.selectedOptions?.[0]?.textContent || "Select"}</span>
+      <span class="sheetSelectTrigger__hint">▼</span>
+    `;
+
+        // hide native select but keep it in DOM for value/change logic
+        select.classList.add("is-sheet-native");
+
+        // insert trigger right before select
+        select.parentNode.insertBefore(trigger, select);
+
+        trigger.addEventListener("click", (e) => {
+            e.preventDefault();
+            active = { select, trigger };
+            renderOptions(select, opts);
+            openSheet();
+        });
+
+        // If code updates select.value programmatically, keep trigger text in sync
+        select.addEventListener("change", () => {
+            const txt = select.selectedOptions?.[0]?.textContent || "Select";
+            const t = trigger.querySelector("[data-trigger-text]");
+            if (t) t.textContent = txt;
+        });
+    };
+
+    // if user rotates/resizes into desktop, close to avoid weird stuck overlay
+    window.addEventListener("resize", () => {
+        if (isDesktop()) closeSheet();
+    });
+})();
