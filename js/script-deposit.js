@@ -1515,6 +1515,17 @@ document.addEventListener("DOMContentLoaded", () => {
             const input = document.getElementById("amount");
             if (!keypad || !input) return;
 
+            let lastTouchEnd = 0;
+
+            // ✅ iOS double-tap zoom guard
+            keypad.addEventListener("touchend", (e) => {
+                const now = Date.now();
+                if (now - lastTouchEnd <= 350) {
+                    e.preventDefault(); // prevent double-tap zoom
+                }
+                lastTouchEnd = now;
+            }, { passive: false });
+
             function setValue(v) {
                 v = unformatThousands(v);
 
