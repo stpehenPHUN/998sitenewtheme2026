@@ -1154,3 +1154,9 @@ ard { flex: 0 0 var(--card-w); width: var(--card-w); }
 [data-scroll-x] { cursor: grab !important; user-select: none; }
     [data-scroll-x].is-dragging { cursor: grabbing; }
         [data-scroll-x].is-dragging img { pointer-events: none; }
+
+
+[data-key],
+[data-key] * { touch-action: manipulation; /* stop double-tap zoom in most browsers */ -webkit-tap-highlight-color: transparent; }
+
+[data-key] { -webkit-user-select: none; user-select: none; }
