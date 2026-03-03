@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <!--<script src="JS/common.js"></script>
@@ -881,6 +881,20 @@
                     </section>
                 </div>
             </section>
+            <div class="langSheet" id="selectSheet" aria-hidden="true">
+                <div class="langSheet__backdrop" data-sheet-close></div>
+
+                <div class="langSheet__panel">
+                    <div class="langSheet__header">
+                        <button class="langSheet__textBtn" type="button" data-sheet-close>Close</button>
+                        <div class="langSheet__title" data-sheet-title>Select</div>
+                        <button class="langSheet__textBtn langSheet__primary" type="button" data-sheet-done>Done</button>
+                    </div>
+
+                    <div class="sheetList" data-sheet-list></div>
+                </div>
+            </div>
+
         </main>
     </div>
     <script>
