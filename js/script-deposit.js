@@ -1522,13 +1522,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let lastTouchEnd = 0;
 
             // ✅ iOS double-tap zoom guard
-            keypad.addEventListener("touchend", (e) => {
-                const now = Date.now();
-                if (now - lastTouchEnd <= 350) {
-                    e.preventDefault(); // prevent double-tap zoom
-                }
-                lastTouchEnd = now;
-            }, { passive: false });
+
 
             function setValue(v) {
                 v = unformatThousands(v);
@@ -1565,17 +1559,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 setValue("0");
             }
 
-            keypad.addEventListener("click", (e) => {
+            keypad.addEventListener("pointerdown", (e) => {
                 const btn = e.target.closest("button[data-key]");
                 if (!btn) return;
 
-                const key = btn.dataset.key;
+                // 关键：阻止 iOS 把快速点击当成 zoom 手势
+                e.preventDefault();
 
+                const key = btn.dataset.key;
                 if (key === "del") delOne();
                 else if (key === "clear") clearAll();
                 else if (/^\d$/.test(key)) appendDigit(key);
-
-            });
+            }, { passive: false });
         }
 
         initKeypad();
