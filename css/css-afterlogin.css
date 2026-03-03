@@ -1156,12 +1156,13 @@ ard { flex: 0 0 var(--card-w); width: var(--card-w); }
         [data-scroll-x].is-dragging img { pointer-events: none; }
 
 
-[data-key],
-[data-key] * { touch-action: none; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+[data-keypad] { touch-action: manipulation; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
 
-[data-key] { touch-action: none; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
-
-/* ===== Generic Select Sheet ===== */
+    /* keys 本身不需要 touch-action:none */
+    [data-keypad] button[data-key] { -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+    
+    
+    /* ===== Generic Select Sheet ===== */
 .sheetList { margin: var(--space-3); display: grid; gap: var(--space-2); max-height: min(70vh, 520px); overflow: auto; -webkit-overflow-scrolling: touch; }
 
 .sheetItem { width: 100%; text-align: left; border: var(--border-width) solid rgba(255,255,255,.10); background: var(--secondary-color); color: var(--font-color); border-radius: var(--radius-md); padding: var(--space-3); cursor: pointer; }
