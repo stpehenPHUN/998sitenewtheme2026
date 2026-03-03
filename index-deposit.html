@@ -17,6 +17,7 @@
         /*:root { --bg-color: #1A1B26; --font-color: #A9B1D6; --primary-color: #7AA2F7; --secondary-color: #24283B; --accent-color: #F7768E; }*/
 
     </style>
+    <script src="js/script-deposit.js"></script>
 </head>
 
 <body style=" ">
@@ -705,7 +706,7 @@
                         <button class="pkgFilter" type="button" data-filter="sport" role="tab" aria-selected="false">Sport</button>
                         <button class="pkgFilter" type="button" data-filter="casino" role="tab" aria-selected="false">Live Casino</button>
                         <button class="pkgFilter" type="button" data-filter="lottery" role="tab" aria-selected="false">Lottery</button>
-                        <button class="pkgFilter" type="button" data-filter="games" role="tab" aria-selected="false">Games</button>
+                        <button class="pkgFilter" type="button" data-filter="slots" role="tab" aria-selected="false">Games</button>
                         <button class="pkgFilter" type="button" data-filter="p2p" role="tab" aria-selected="false">P2P</button>
                         <button class="pkgFilter" type="button" data-filter="financial" role="tab" aria-selected="false">Financial</button>
                     </div>
@@ -716,8 +717,20 @@
                         <div class="rail__rows"></div>
 
                         <!-- 你可以不写 pool，直接把卡放 rail 里也行 -->
-                        <article class="playcard" data-href="index-deposit-banner1.html" data-badge="hot">
-                            <div class="playcard__body" data-title="20260224 Testing Bonus" data-image="image/img-deposit-testing.png" data-type="deposit" data-cats="lottery" data-stats='[{"k":"Bonus","v":"0%"},{"k":"Rollover","v":"10MYR"},{"k":"Max Bonus","v":"10MYR"}]' data-methods="bank,crypto,gateway">
+                        <article class="playcard" data-href="index-deposit-banner1.html">
+                            <div class="playcard__body"
+                                 data-title="Testing Package 1"
+                                 data-image="image/img-deposit-testing.png"
+                                 data-type="deposit"
+                                 data-cats="sport, casino, slots, lottery, p2p, financial"
+                                 data-methods="bank, online,  crypto"
+                                 data-bonus-pct="10"
+                                 data-rollover="1"
+                                 data-rollover-unit="x"
+                                 data-maxbonus-amt="355"
+                                 data-maxbonus-cur="MYR"
+                                 data-mindeposit-amt="20"
+                                 data-mindeposit-cur="MYR">
                                 <div class="playcard__media" data-media-mount></div>
                                 <div class="playcard-content">
                                     <div class="playcard__header" data-title-mount></div>
@@ -728,8 +741,20 @@
                             </div>
                         </article>
 
-                        <article class="playcard" data-href="index-deposit-banner1.html" data-badge="new">
-                            <div class="playcard__body" data-title="9 Turnover Package (Testing)" data-image="image/img-deposit-testing.png" data-type="deposit" data-cats="sport,casino,lottery,games,p2p,financial" data-stats='[{"k":"Bonus","v":"0%"},{"k":"လောင်းကြေး:","v":"X1"}]' data-methods="bank,gateway">
+                        <article class="playcard" data-href="index-deposit-banner2.html">
+                            <div class="playcard__body"
+                                 data-title="Testing Package 2"
+                                 data-image="image/img-deposit-testing.png"
+                                 data-type="deposit"
+                                 data-cats="sport"
+                                 data-methods="crypto"
+                                 data-bonus-pct="10"
+                                 data-rollover="1"
+                                 data-rollover-unit="x"
+                                 data-maxbonus-amt="100"
+                                 data-maxbonus-cur="MYR"
+                                 data-mindeposit-amt="30"
+                                 data-mindeposit-cur="MYR">
                                 <div class="playcard__media" data-media-mount></div>
                                 <div class="playcard-content">
                                     <div class="playcard__header" data-title-mount></div>
@@ -739,10 +764,21 @@
                                 </div>
                             </div>
                         </article>
-
 
                         <article class="playcard" data-href="index-deposit-banner1.html">
-                            <div class="playcard__body" data-title="Testing Deposit" data-image="image/img-deposit-testing.png" data-type="deposit" data-cats="sport" data-stats='[{"k":"Bonus","v":"1%"},{"k":"Rollover","v":"x1"},{"k":"Min Deposit","v":"20MYR"}]' data-methods="crypto">
+                            <div class="playcard__body"
+                                 data-title="Testing Package 1"
+                                 data-image="image/img-deposit-testing.png"
+                                 data-type="deposit"
+                                 data-cats="sport, casino, slots, lottery, p2p, financial"
+                                 data-methods="bank, online, qr, ewallet,  crypto"
+                                 data-bonus-pct="10"
+                                 data-rollover="1"
+                                 data-rollover-unit="x"
+                                 data-maxbonus-amt="355"
+                                 data-maxbonus-cur="MYR"
+                                 data-mindeposit-amt="20"
+                                 data-mindeposit-cur="MYR">
                                 <div class="playcard__media" data-media-mount></div>
                                 <div class="playcard-content">
                                     <div class="playcard__header" data-title-mount></div>
@@ -753,8 +789,20 @@
                             </div>
                         </article>
 
-                        <article class="playcard" data-href="index-deposit-banner1.html" data-badge="promo">
-                            <div class="playcard__body" data-title="Monthly Package" data-image="image/img-deposit-testing.png" data-type="deposit" data-cats="games,p2p,financial" data-stats='[{"k":"Bonus","v":"0%"},{"k":"Rollover","v":"10MYR"},{"k":"Max Bonus","v":"10MYR"}]' data-methods="bank,crypto,gateway">
+                        <article class="playcard" data-href="index-deposit-banner2.html">
+                            <div class="playcard__body"
+                                 data-title="Testing Package 2"
+                                 data-image="image/img-deposit-testing.png"
+                                 data-type="deposit"
+                                 data-cats="p2p, financial"
+                                 data-methods="bank, online, qr, ewallet,  crypto"
+                                 data-bonus-pct="10"
+                                 data-rollover="1"
+                                 data-rollover-unit="x"
+                                 data-maxbonus-amt="100"
+                                 data-maxbonus-cur="MYR"
+                                 data-mindeposit-amt="30"
+                                 data-mindeposit-cur="MYR">
                                 <div class="playcard__media" data-media-mount></div>
                                 <div class="playcard-content">
                                     <div class="playcard__header" data-title-mount></div>
@@ -764,34 +812,21 @@
                                 </div>
                             </div>
                         </article>
-
-                        <article class="playcard" data-href="index-deposit-banner1.html" data-badge="hot">
-                            <div class="playcard__body" data-title="20260224 Testing Bonus" data-image="image/img-deposit-testing.png" data-type="deposit" data-cats="sport,games" data-stats='[{"k":"Bonus","v":"0%"},{"k":"Rollover","v":"10MYR"},{"k":"Max Bonus","v":"10MYR"}]' data-methods="bank,crypto,gateway">
-                                <div class="playcard__media" data-media-mount></div>
-                                <div class="playcard-content">
-                                    <div class="playcard__header" data-title-mount></div>
-                                    <div class="playcard__stats" data-stats-mount></div>
-                                    <div class="playcard__methods" data-methods-mount></div>
-                                    <div class="playcard__cats" data-cats-mount aria-label="Categories"></div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="playcard" data-href="index-deposit-banner1.html" data-badge="new">
-                            <div class="playcard__body" data-title="9 Turnover Package (Testing)" data-image="image/img-deposit-testing.png" data-type="deposit" data-cats="sport" data-stats='[{"k":"Bonus","v":"0%"},{"k":"Rollover","v":"10MYR"},{"k":"Max Bonus","v":"10MYR"}]' data-methods="bank,gateway">
-                                <div class="playcard__media" data-media-mount></div>
-                                <div class="playcard-content">
-                                    <div class="playcard__header" data-title-mount></div>
-                                    <div class="playcard__stats" data-stats-mount></div>
-                                    <div class="playcard__methods" data-methods-mount></div>
-                                    <div class="playcard__cats" data-cats-mount aria-label="Categories"></div>
-                                </div>
-                            </div>
-                        </article>
-
 
                         <article class="playcard" data-href="index-deposit-banner1.html">
-                            <div class="playcard__body" data-title="Testing Deposit" data-image="image/img-deposit-testing.png" data-type="deposit" data-cats="financial" data-stats='[{"k":"Bonus","v":"1%"},{"k":"Rollover","v":"x1"},{"k":"Min Deposit","v":"20MYR"}]' data-methods="crypto">
+                            <div class="playcard__body"
+                                 data-title="Testing Package 1"
+                                 data-image="image/img-deposit-testing.png"
+                                 data-type="deposit"
+                                 data-cats="casino, slots"
+                                 data-methods="bank, online, qr, ewallet,  crypto"
+                                 data-bonus-pct="10"
+                                 data-rollover="1"
+                                 data-rollover-unit="x"
+                                 data-maxbonus-amt="355"
+                                 data-maxbonus-cur="MYR"
+                                 data-mindeposit-amt="20"
+                                 data-mindeposit-cur="MYR">
                                 <div class="playcard__media" data-media-mount></div>
                                 <div class="playcard-content">
                                     <div class="playcard__header" data-title-mount></div>
@@ -802,8 +837,20 @@
                             </div>
                         </article>
 
-                        <article class="playcard" data-href="index-deposit-banner1.html" data-badge="promo">
-                            <div class="playcard__body" data-title="Monthly Package" data-image="image/img-deposit-testing.png" data-type="deposit" data-cats="sport,casino,games,p2p,financial" data-stats='[{"k":"Bonus","v":"0%"},{"k":"Rollover","v":"10MYR"},{"k":"Max Bonus","v":"10MYR"}]' data-methods="bank,crypto,gateway">
+                        <article class="playcard" data-href="index-deposit-banner2.html">
+                            <div class="playcard__body"
+                                 data-title="Testing Package 2"
+                                 data-image="image/img-deposit-testing.png"
+                                 data-type="deposit"
+                                 data-cats="lottery, financial"
+                                 data-methods="bank, online, qr, ewallet,  crypto"
+                                 data-bonus-pct="10"
+                                 data-rollover="1"
+                                 data-rollover-unit="x"
+                                 data-maxbonus-amt="100"
+                                 data-maxbonus-cur="MYR"
+                                 data-mindeposit-amt="30"
+                                 data-mindeposit-cur="MYR">
                                 <div class="playcard__media" data-media-mount></div>
                                 <div class="playcard-content">
                                     <div class="playcard__header" data-title-mount></div>
@@ -813,34 +860,21 @@
                                 </div>
                             </div>
                         </article>
-
-                        <article class="playcard" data-href="index-deposit-banner1.html" data-badge="hot">
-                            <div class="playcard__body" data-title="20260224 Testing Bonus" data-image="image/img-deposit-testing.png" data-type="deposit" data-cats="casino,games" data-stats='[{"k":"Bonus","v":"0%"},{"k":"Rollover","v":"10MYR"},{"k":"Max Bonus","v":"10MYR"}]' data-methods="bank,crypto,gateway">
-                                <div class="playcard__media" data-media-mount></div>
-                                <div class="playcard-content">
-                                    <div class="playcard__header" data-title-mount></div>
-                                    <div class="playcard__stats" data-stats-mount></div>
-                                    <div class="playcard__methods" data-methods-mount></div>
-                                    <div class="playcard__cats" data-cats-mount aria-label="Categories"></div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="playcard" data-href="index-deposit-banner1.html" data-badge="new">
-                            <div class="playcard__body" data-title="9 Turnover Package (Testing)" data-image="image/img-deposit-testing.png" data-type="deposit" data-cats="games,p2p,financial" data-stats='[{"k":"Bonus","v":"0%"},{"k":"Rollover","v":"10MYR"},{"k":"Max Bonus","v":"10MYR"}]' data-methods="bank,gateway">
-                                <div class="playcard__media" data-media-mount></div>
-                                <div class="playcard-content">
-                                    <div class="playcard__header" data-title-mount></div>
-                                    <div class="playcard__stats" data-stats-mount></div>
-                                    <div class="playcard__methods" data-methods-mount></div>
-                                    <div class="playcard__cats" data-cats-mount aria-label="Categories"></div>
-                                </div>
-                            </div>
-                        </article>
-
 
                         <article class="playcard" data-href="index-deposit-banner1.html">
-                            <div class="playcard__body" data-title="Testing Deposit" data-image="image/img-deposit-testing.png" data-type="deposit" data-cats="casino" data-stats='[{"k":"Bonus","v":"1%"},{"k":"Rollover","v":"x1"},{"k":"Min Deposit","v":"20MYR"}]' data-methods="crypto">
+                            <div class="playcard__body"
+                                 data-title="Testing Package 1"
+                                 data-image="image/img-deposit-testing.png"
+                                 data-type="deposit"
+                                 data-cats="sport, casino, slots, lottery, p2p, financial"
+                                 data-methods="bank, online, qr, ewallet,  crypto"
+                                 data-bonus-pct="10"
+                                 data-rollover="1"
+                                 data-rollover-unit="x"
+                                 data-maxbonus-amt="355"
+                                 data-maxbonus-cur="MYR"
+                                 data-mindeposit-amt="20"
+                                 data-mindeposit-cur="MYR">
                                 <div class="playcard__media" data-media-mount></div>
                                 <div class="playcard-content">
                                     <div class="playcard__header" data-title-mount></div>
@@ -851,8 +885,20 @@
                             </div>
                         </article>
 
-                        <article class="playcard" data-href="index-deposit-banner1.html" data-badge="promo">
-                            <div class="playcard__body" data-title="Monthly Package" data-image="image/img-deposit-testing.png" data-type="deposit" data-cats="sport,casino,lottery,games,p2p,financial" data-stats='[{"k":"Bonus","v":"0%"},{"k":"Rollover","v":"10MYR"},{"k":"Max Bonus","v":"10MYR"}]' data-methods="bank,crypto,gateway">
+                        <article class="playcard" data-href="index-deposit-banner2.html">
+                            <div class="playcard__body"
+                                 data-title="Testing Package 2"
+                                 data-image="image/img-deposit-testing.png"
+                                 data-type="deposit"
+                                 data-cats="casino, slots"
+                                 data-methods="bank, online, qr, ewallet,  crypto"
+                                 data-bonus-pct="10"
+                                 data-rollover="1"
+                                 data-rollover-unit="x"
+                                 data-maxbonus-amt="100"
+                                 data-maxbonus-cur="MYR"
+                                 data-mindeposit-amt="30"
+                                 data-mindeposit-cur="MYR">
                                 <div class="playcard__media" data-media-mount></div>
                                 <div class="playcard-content">
                                     <div class="playcard__header" data-title-mount></div>
@@ -862,23 +908,21 @@
                                 </div>
                             </div>
                         </article>
-
-
-                        <article class="playcard" data-href="index-deposit-banner1.html" data-badge="promo">
-                            <div class="playcard__body" data-title="Monthly Package" data-image="image/img-deposit-testing.png" data-type="deposit" data-cats="sport,casino,games,p2p,financial" data-stats='[{"k":"Bonus","v":"0%"},{"k":"Rollover","v":"10MYR"},{"k":"Max Bonus","v":"10MYR"}]' data-methods="bank,crypto,gateway">
-                                <div class="playcard__media" data-media-mount></div>
-                                <div class="playcard-content">
-                                    <div class="playcard__header" data-title-mount></div>
-                                    <div class="playcard__stats" data-stats-mount></div>
-                                    <div class="playcard__methods" data-methods-mount></div>
-                                    <div class="playcard__cats" data-cats-mount aria-label="Categories"></div>
-                                </div>
-                            </div>
-                        </article>
-
 
                         <article class="playcard" data-href="index-deposit-banner1.html">
-                            <div class="playcard__body" data-title="Testing Deposit" data-image="image/img-deposit-testing.png" data-type="deposit" data-cats="casino" data-stats='[{"k":"Bonus","v":"1%"},{"k":"Rollover","v":"x1"},{"k":"Min Deposit","v":"20MYR"}]' data-methods="crypto">
+                            <div class="playcard__body"
+                                 data-title="Testing Package 1"
+                                 data-image="image/img-deposit-testing.png"
+                                 data-type="deposit"
+                                 data-cats="sport, casino, slots"
+                                 data-methods="bank, online, qr, ewallet,  crypto"
+                                 data-bonus-pct="10"
+                                 data-rollover="1"
+                                 data-rollover-unit="x"
+                                 data-maxbonus-amt="355"
+                                 data-maxbonus-cur="MYR"
+                                 data-mindeposit-amt="20"
+                                 data-mindeposit-cur="MYR">
                                 <div class="playcard__media" data-media-mount></div>
                                 <div class="playcard-content">
                                     <div class="playcard__header" data-title-mount></div>
@@ -888,424 +932,162 @@
                                 </div>
                             </div>
                         </article>
+
+                        <article class="playcard" data-href="index-deposit-banner2.html">
+                            <div class="playcard__body"
+                                 data-title="Testing Package 2"
+                                 data-image="image/img-deposit-testing.png"
+                                 data-type="deposit"
+                                 data-cats="sport, casino, slots, lottery, p2p, financial"
+                                 data-methods="bank, online, qr, ewallet,  crypto"
+                                 data-bonus-pct="10"
+                                 data-rollover="1"
+                                 data-rollover-unit="x"
+                                 data-maxbonus-amt="100"
+                                 data-maxbonus-cur="MYR"
+                                 data-mindeposit-amt="30"
+                                 data-mindeposit-cur="MYR">
+                                <div class="playcard__media" data-media-mount></div>
+                                <div class="playcard-content">
+                                    <div class="playcard__header" data-title-mount></div>
+                                    <div class="playcard__stats" data-stats-mount></div>
+                                    <div class="playcard__methods" data-methods-mount></div>
+                                    <div class="playcard__cats" data-cats-mount aria-label="Categories"></div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="playcard" data-href="index-deposit-banner1.html">
+                            <div class="playcard__body"
+                                 data-title="Testing Package 1"
+                                 data-image="image/img-deposit-testing.png"
+                                 data-type="deposit"
+                                 data-cats="sport, casino, slots, lottery, p2p, financial"
+                                 data-methods="bank, online, qr, ewallet,  crypto"
+                                 data-bonus-pct="10"
+                                 data-rollover="1"
+                                 data-rollover-unit="x"
+                                 data-maxbonus-amt="355"
+                                 data-maxbonus-cur="MYR"
+                                 data-mindeposit-amt="20"
+                                 data-mindeposit-cur="MYR">
+                                <div class="playcard__media" data-media-mount></div>
+                                <div class="playcard-content">
+                                    <div class="playcard__header" data-title-mount></div>
+                                    <div class="playcard__stats" data-stats-mount></div>
+                                    <div class="playcard__methods" data-methods-mount></div>
+                                    <div class="playcard__cats" data-cats-mount aria-label="Categories"></div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="playcard" data-href="index-deposit-banner2.html">
+                            <div class="playcard__body"
+                                 data-title="Testing Package 2"
+                                 data-image="image/img-deposit-testing.png"
+                                 data-type="deposit"
+                                 data-cats="sport"
+                                 data-methods="bank, online, qr, ewallet,  crypto"
+                                 data-bonus-pct="10"
+                                 data-rollover="1"
+                                 data-rollover-unit="x"
+                                 data-maxbonus-amt="100"
+                                 data-maxbonus-cur="MYR"
+                                 data-mindeposit-amt="30"
+                                 data-mindeposit-cur="MYR">
+                                <div class="playcard__media" data-media-mount></div>
+                                <div class="playcard-content">
+                                    <div class="playcard__header" data-title-mount></div>
+                                    <div class="playcard__stats" data-stats-mount></div>
+                                    <div class="playcard__methods" data-methods-mount></div>
+                                    <div class="playcard__cats" data-cats-mount aria-label="Categories"></div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="playcard" data-href="index-deposit-banner1.html">
+                            <div class="playcard__body"
+                                 data-title="Testing Package 1"
+                                 data-image="image/img-deposit-testing.png"
+                                 data-type="deposit"
+                                 data-cats="financial"
+                                 data-methods="bank, online, qr, ewallet,  crypto"
+                                 data-bonus-pct="10"
+                                 data-rollover="1"
+                                 data-rollover-unit="x"
+                                 data-maxbonus-amt="355"
+                                 data-maxbonus-cur="MYR"
+                                 data-mindeposit-amt="20"
+                                 data-mindeposit-cur="MYR">
+                                <div class="playcard__media" data-media-mount></div>
+                                <div class="playcard-content">
+                                    <div class="playcard__header" data-title-mount></div>
+                                    <div class="playcard__stats" data-stats-mount></div>
+                                    <div class="playcard__methods" data-methods-mount></div>
+                                    <div class="playcard__cats" data-cats-mount aria-label="Categories"></div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="playcard" data-href="index-deposit-banner2.html">
+                            <div class="playcard__body"
+                                 data-title="Testing Package 2"
+                                 data-image="image/img-deposit-testing.png"
+                                 data-type="deposit"
+                                 data-cats="slots, p2p"
+                                 data-methods="crypto"
+                                 data-bonus-pct="10"
+                                 data-rollover="1"
+                                 data-rollover-unit="x"
+                                 data-maxbonus-amt="100"
+                                 data-maxbonus-cur="MYR"
+                                 data-mindeposit-amt="30"
+                                 data-mindeposit-cur="MYR">
+                                <div class="playcard__media" data-media-mount></div>
+                                <div class="playcard-content">
+                                    <div class="playcard__header" data-title-mount></div>
+                                    <div class="playcard__stats" data-stats-mount></div>
+                                    <div class="playcard__methods" data-methods-mount></div>
+                                    <div class="playcard__cats" data-cats-mount aria-label="Categories"></div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="playcard" data-href="index-deposit-banner1.html">
+                            <div class="playcard__body"
+                                 data-title="Testing Package 1"
+                                 data-image="image/img-deposit-testing.png"
+                                 data-type="deposit"
+                                 data-cats="sport, casino, slots, lottery, p2p, financial"
+                                 data-methods="qr"
+                                 data-bonus-pct="10"
+                                 data-rollover="1"
+                                 data-rollover-unit="x"
+                                 data-maxbonus-amt="355"
+                                 data-maxbonus-cur="MYR"
+                                 data-mindeposit-amt="20"
+                                 data-mindeposit-cur="MYR">
+                                <div class="playcard__media" data-media-mount></div>
+                                <div class="playcard-content">
+                                    <div class="playcard__header" data-title-mount></div>
+                                    <div class="playcard__stats" data-stats-mount></div>
+                                    <div class="playcard__methods" data-methods-mount></div>
+                                    <div class="playcard__cats" data-cats-mount aria-label="Categories"></div>
+                                </div>
+                            </div>
+                        </article>
+
+
+
+
+
+
 
                     </div>
 
                 </div>
 
 
-                <script>
-                    (function () {
-                        const PAY_DICT = {
-                            bank: { label: "Bank-in Transfer" },
-                            crypto: { label: "Crypto" },
-                            gateway: { label: "Payment Gateway" },
-                            ewallet: { label: "eWallet" },
-                            visa: { label: "VISA" },
-                            master: { label: "Mastercard" },
-                        };
-
-                        const CAT_DICT = [
-                            { key: "sport", label: "Soccer", src: "image/menu-sports.png" },
-                            { key: "casino", label: "Live Casino", src: "image/menu-casino.png" },
-                            { key: "lottery", label: "Lottery", src: "image/menu-lottery.png" },
-                            { key: "slots", label: "Slots", src: "image/menu-slots.png" },
-                            { key: "p2p", label: "P2P", src: "image/menu-gaming2.png" },
-                            { key: "financial", label: "Financial", src: "image/menu-deposit.png" },
-                        ];
-
-                        // ===== BADGE =====
-                        const BADGE_DICT = { hot: "HOT", new: "NEW", promo: "PROMO", vip: "VIP" };
-
-                        function ensureBadge(card) {
-                            if (!card) return;
-                            const key = (card.getAttribute("data-badge") || "").trim().toLowerCase();
-                            if (!key) return;
-
-                            const media = card.querySelector(".playcard__media");
-                            if (!media) return;
-                            if (media.querySelector("[data-badge-el]")) return;
-
-                            const text = BADGE_DICT[key] || key.toUpperCase();
-                            const el = document.createElement("span");
-                            el.setAttribute("data-badge-el", "");
-                            el.className = "playcard__badge";
-                            el.dataset.badge = key;
-                            el.textContent = text;
-                            media.appendChild(el);
-                        }
-
-                        function initBadges(scope = document) {
-                            scope.querySelectorAll(".playcard[data-badge]").forEach(ensureBadge);
-                        }
-
-                        // ===== rail state =====
-                        const RAIL_STATE = new WeakMap();
-
-                        function parseMulti(str) {
-                            return (str || "")
-                                .toLowerCase()
-                                .split(/[\s,]+/g)
-                                .map((s) => s.trim())
-                                .filter(Boolean);
-                        }
-
-                        function parseJSONAttr(el, attr) {
-                            const raw = el.getAttribute(attr);
-                            if (!raw) return [];
-                            try { return JSON.parse(raw); } catch { return []; }
-                        }
-
-                        function hydratePlaycardBody(body) {
-                            if (!body || body.dataset.hydrated === "1") return;
-                            body.dataset.hydrated = "1";
-
-                            // media (optional)
-                            const mediaMount = body.querySelector("[data-media-mount]");
-                            const imageSrc = body.getAttribute("data-image");
-                            if (mediaMount && imageSrc) {
-                                mediaMount.innerHTML = `<img src="${imageSrc}" alt="" loading="lazy">`;
-                            }
-
-                            // title (optional)
-                            const titleMount = body.querySelector("[data-title-mount]");
-                            const titleText = body.getAttribute("data-title");
-                            if (titleMount && titleText) titleMount.textContent = titleText;
-
-                            // stats
-                            const statsMount = body.querySelector("[data-stats-mount]");
-                            const stats = parseJSONAttr(body, "data-stats");
-                            if (statsMount) {
-                                statsMount.innerHTML = "";
-                                stats.slice(0, 3).forEach((item) => {
-                                    const stat = document.createElement("div");
-                                    stat.className = "stat";
-                                    stat.innerHTML = `
-                          <div class="stat__k">${item.k ?? ""}</div>
-                          <div class="stat__v">${item.v ?? ""}</div>
-                        `;
-                                    statsMount.appendChild(stat);
-                                });
-                            }
-
-                            // methods
-                            const methodsMount = body.querySelector("[data-methods-mount]");
-                            const methodKeys = parseMulti(body.getAttribute("data-methods"));
-                            if (methodsMount) {
-                                methodsMount.innerHTML = "";
-                                methodKeys.forEach((key) => {
-                                    const def = PAY_DICT[key] || { label: key };
-                                    const btn = document.createElement("button");
-                                    btn.type = "button";
-                                    btn.className = "p--methodBtn";
-                                    btn.dataset.method = key;
-                                    btn.innerHTML = `
-                          <span class="p--methodBtn__ico" aria-hidden="true" data-ico="${key}"></span>
-                          <span class="p--methodBtn__txt">${def.label || key}</span>
-                        `;
-                                    methodsMount.appendChild(btn);
-                                });
-                            }
-
-                            // cats
-                            const catsMount = body.querySelector("[data-cats-mount]");
-                            const catKeys = parseMulti(body.getAttribute("data-cats"));
-                            if (catsMount) {
-                                catsMount.style.display = "";
-                                catsMount.innerHTML = "";
-
-                                if (!catKeys.length) {
-                                    catsMount.style.display = "none";
-                                } else {
-                                    catKeys.forEach((key) => {
-                                        const def = CAT_DICT.find((c) => c.key === key);
-                                        if (!def) return;
-
-                                        const btn = document.createElement("button");
-                                        btn.type = "button";
-                                        btn.className = "catBtn is-active";
-                                        btn.dataset.cat = key;
-
-                                        const ico = document.createElement("span");
-                                        ico.className = "catBtn__ico" + (def.src ? "" : " is-placeholder");
-
-                                        const img = document.createElement("img");
-                                        img.alt = def.label;
-                                        img.loading = "lazy";
-                                        img.src = def.src || "";
-                                        ico.appendChild(img);
-
-                                        const txt = document.createElement("span");
-                                        txt.className = "catBtn__txt";
-                                        txt.textContent = def.label;
-
-                                        btn.appendChild(ico);
-                                        btn.appendChild(txt);
-                                        catsMount.appendChild(btn);
-                                    });
-                                }
-                            }
-                        }
-
-                        function hydrateRail(railEl) {
-                            railEl.querySelectorAll(".playcard__body").forEach(hydratePlaycardBody);
-                        }
-
-                        function getRailState(railEl) {
-                            let state = RAIL_STATE.get(railEl);
-                            if (state) return state;
-
-                            const rowsWrap = railEl.querySelector(".rail__rows") || railEl;
-                            const cards = Array.from(railEl.querySelectorAll(".playcard"));
-                            state = { rowsWrap, cards, rows: [] };
-                            RAIL_STATE.set(railEl, state);
-                            return state;
-                        }
-
-                        function ensureRows(railEl, wantedOverride) {
-                            const state = getRailState(railEl);
-                            const wanted = Math.max(1, Number(wantedOverride ?? railEl.getAttribute("data-rows") ?? 2));
-
-                            let rows = Array.from(state.rowsWrap.querySelectorAll(".rail__row"));
-
-                            if (rows.length !== wanted) {
-                                state.rowsWrap.innerHTML = "";
-                                rows = [];
-                                for (let i = 0; i < wanted; i++) {
-                                    const row = document.createElement("div");
-                                    row.className = "rail__row";
-                                    row.dataset.row = String(i);
-                                    state.rowsWrap.appendChild(row);
-                                    rows.push(row);
-                                }
-                            }
-
-                            state.rows = rows;
-                            return rows;
-                        }
-
-                        // limit = ceil(container/cards), min 3 (responsive)
-                        function getRowLimit(railEl) {
-                            const w = railEl.getBoundingClientRect().width || window.innerWidth;
-                            const cardW = parseFloat(getComputedStyle(railEl).getPropertyValue("--card-w")) || 300;
-                            const gap = parseFloat(getComputedStyle(railEl).getPropertyValue("--card-gap")) || 0;
-                            const safe = 8;
-
-                            const unit = Math.max(1, cardW + gap);
-                            const limit = Math.ceil((w - safe) / unit);
-
-                            return Math.max(3, limit);
-                        }
-
-                        // force overflow when too few cards (so mousewheel horizontal works)
-                        function ensureRailSpacer(row, on) {
-                            let sp = row.querySelector("[data-rail-spacer]");
-                            if (!on) {
-                                if (sp) sp.remove();
-                                return;
-                            }
-                            if (!sp) {
-                                sp = document.createElement("div");
-                                sp.setAttribute("data-rail-spacer", "");
-                                sp.style.flex = "0 0 calc(var(--card-w) + var(--card-gap))";
-                                sp.style.width = "calc(var(--card-w) + var(--card-gap))";
-                                sp.style.pointerEvents = "none";
-                                sp.style.opacity = "0";
-                                row.appendChild(sp);
-                            }
-                        }
-
-                        function rebuildRail(railEl, filterKey = "all", mode = "init") {
-                            const state = getRailState(railEl);
-                            const key = (filterKey || "all").toLowerCase();
-
-                            const visible = [];
-                            state.cards.forEach((card) => {
-                                const body = card.querySelector(".playcard__body");
-                                const cats = parseMulti(body?.getAttribute("data-cats"));
-                                const show = key === "all" || cats.includes(key);
-                                if (show) visible.push(card);
-                            });
-
-                            const baseRows = Math.max(1, Number(railEl.getAttribute("data-rows") || 2));
-
-                            // init: keep your default layout (2 rows, balanced)
-                            if (mode !== "filter") {
-                                const rows = ensureRows(railEl, baseRows);
-                                rows.forEach(r => r.innerHTML = "");
-
-                                const total = visible.length;
-                                const perRow = Math.ceil(total / rows.length);
-
-                                visible.forEach((card, i) => {
-                                    const rowIndex = Math.floor(i / perRow);
-                                    if (rows[rowIndex]) {
-                                        rows[rowIndex].appendChild(card);
-                                    } else {
-                                        rows[rows.length - 1].appendChild(card);
-                                    }
-                                });                                // no spacer on init
-                                rows.forEach((r) => ensureRailSpacer(r, false));
-
-                                hydrateRail(railEl);
-                                initBadges(railEl);
-                                bindRailWheel(railEl);
-                                return;
-                            }
-
-                            // filter: responsive cap (limit + extra), min3, ceil
-                            const limit = getRowLimit(railEl);
-
-                            console.log("=== RAIL DEBUG ===");
-
-                            const rowEl = railEl.querySelector(".rail__row");
-                            const rowWidth = railEl.getBoundingClientRect().width;
-                            const cardW = parseFloat(getComputedStyle(railEl).getPropertyValue("--card-w")) || 0;
-                            const gap = parseFloat(getComputedStyle(railEl).getPropertyValue("--card-gap")) || 0;
-
-                            console.log("rail width:", rowWidth);
-                            console.log("card width:", cardW);
-                            console.log("gap:", gap);
-
-                            console.log("limit (ceil container/cards):", limit);
-
-                            const extra = Math.max(0, Number(railEl.getAttribute("data-overflow") || 0));
-                            const cap = limit + extra;
-
-                            console.log("extra:", extra);
-                            console.log("cap (limit+extra):", cap);
-                            console.log("visible count:", visible.length);
-
-                            if (rowEl) {
-                                console.log("row clientWidth:", rowEl.clientWidth);
-                                console.log("row scrollWidth:", rowEl.scrollWidth);
-                                console.log("overflow delta:", rowEl.scrollWidth - rowEl.clientWidth);
-                            }
-
-                            if (visible.length <= cap) {
-                                // few: 1 row scroll
-                                const rows = ensureRows(railEl, 1);
-                                rows[0].innerHTML = "";
-                                visible.forEach((card) => rows[0].appendChild(card));
-
-                                // if too few to overflow naturally, add spacer to force scroll affordance
-                                ensureRailSpacer(rows[0], visible.length <= limit - 2);
-                            } else {
-                                // enough: 2 rows, top-first (cap), then bottom; if bottom > top, balance
-                                const rows = ensureRows(railEl, 2);
-                                rows.forEach((r) => (r.innerHTML = ""));
-                                visible.forEach((card, i) => (i < cap ? rows[0] : rows[1]).appendChild(card));
-
-                                if (rows[1].children.length > rows[0].children.length) {
-                                    rows.forEach((r) => (r.innerHTML = ""));
-                                    visible.forEach((card, i) => rows[i % 2].appendChild(card));
-                                }
-
-                                ensureRailSpacer(rows[0], false);
-                                ensureRailSpacer(rows[1], false);
-                            }
-
-                            hydrateRail(railEl);
-                            initBadges(railEl);
-                            bindRailWheel(railEl);
-                        }
-
-                        // ===== wheel -> horizontal scroll for each rail row =====
-                        function bindRailWheel(scope = document) {
-                            scope.querySelectorAll(".rail__row").forEach((row) => {
-                                if (row.dataset.wheelBound === "1") return;
-                                row.dataset.wheelBound = "1";
-
-                                row.addEventListener("wheel", (e) => {
-                                    const isMostlyHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
-                                    if (isMostlyHorizontal) return;
-
-                                    const max = row.scrollWidth - row.clientWidth;
-                                    if (max <= 0) return;
-
-                                    const goingRight = e.deltaY > 0;
-                                    const atStart = row.scrollLeft <= 0;
-                                    const atEnd = row.scrollLeft >= max - 1;
-
-                                    if ((goingRight && !atEnd) || (!goingRight && !atStart)) {
-                                        e.preventDefault();
-                                        row.scrollLeft += e.deltaY * 2;
-                                    }
-                                }, { passive: false });
-                            });
-                        }
-
-                        function bindFilter() {
-                            const filterBar = document.querySelector(".pkgFilters");
-                            if (!filterBar || filterBar.dataset.bound === "1") return;
-                            filterBar.dataset.bound = "1";
-
-                            filterBar.addEventListener("click", (e) => {
-                                const btn = e.target.closest("[data-filter]");
-                                if (!btn) return;
-
-                                const key = (btn.dataset.filter || "all").toLowerCase();
-
-                                filterBar.querySelectorAll("[data-filter]").forEach((b) => {
-                                    b.classList.toggle("is-active", b === btn);
-                                    b.setAttribute("aria-selected", b === btn ? "true" : "false");
-                                });
-
-                                document.querySelectorAll("[data-rail]").forEach((rail) => {
-                                    rail.setAttribute("data-active-filter", key);
-                                    rebuildRail(rail, key, "filter");
-                                });
-                            });
-                        }
-
-                        const RAIL_RESIZE_OBS = new WeakMap();
-                        function watchRailResize(railEl) {
-                            if (RAIL_RESIZE_OBS.has(railEl)) return;
-
-                            let _raf = 0;
-                            const ro = new ResizeObserver(() => {
-                                cancelAnimationFrame(_raf);
-                                _raf = requestAnimationFrame(() => {
-                                    const active = railEl.getAttribute("data-active-filter") || "all";
-                                    const mode = active === "all" ? "init" : "filter";
-                                    rebuildRail(railEl, active, mode);
-                                });
-                            });
-                        }
-
-                        function start() {
-                            document.querySelectorAll("[data-rail]").forEach((rail) => {
-                                rail.setAttribute("data-active-filter", "all");
-                                rebuildRail(rail, "all", "init");
-                                watchRailResize(rail);
-                            });
-                            if (!document.querySelector("[data-rail]")) {
-                                document.querySelectorAll(".playcard__body")
-                                    .forEach(hydratePlaycardBody);
-                                initBadges();
-                            }
-                            bindFilter();
-                            bindRailWheel();
-                        }
-
-                        if (window.HTMLIncludes?.loadPartials) {
-                            window.HTMLIncludes.loadPartials({ execScripts: true }).then(start);
-                        } else if (document.readyState === "loading") {
-                            document.addEventListener("DOMContentLoaded", start, { once: true });
-                        } else {
-                            start();
-                        }
-
-                        // click-to-navigate
-                        document.addEventListener("click", (e) => {
-                            if (e.target.closest(".p--methodBtn, .catBtn, [data-no-nav], a, button")) return;
-                            const card = e.target.closest(".playcard");
-                            if (!card) return;
-                            const url = card.dataset.href;
-                            if (url) window.location.href = url;
-                        });
-                    })();
-                </script>
             </section>
 
         </main>
