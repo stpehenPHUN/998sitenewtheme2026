@@ -1473,21 +1473,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 nameSpan.textContent = ch.name || ch.id;
                 btn.appendChild(nameSpan);
 
-                // Click: switch channel
-                btn.addEventListener("click", () => {
-                    if (ch.maintenance) return;
-
-                    methodGrid.querySelectorAll(".methodBtn").forEach(b => b.classList.remove("is-active"));
-                    btn.classList.add("is-active");
-
-                    state.channelId = ch.id;
-                    state.payFromId = null;
-
-                    renderPayFrom(ch); // handles fallback (no payFrom => channel)
-                    recalcSummary();
-                });
-
-                methodGrid.appendChild(btn);
+                                methodGrid.appendChild(btn);
             });
 
             // 3) Select defaultChannel (if any)
@@ -1596,21 +1582,29 @@ document.addEventListener("DOMContentLoaded", () => {
         methodGrid.addEventListener("click", (e) => {
             const btn = e.target.closest(".methodBtn[data-channel-id]");
             if (!btn) return;
+            if (btn.classList.contains("is-maintenance") || btn.disabled) return;
 
+            const nextId = btn.dataset.channelId;
+
+            // ✅ already active => do nothing
             if (String(state.channelId) === String(nextId)) return;
 
             methodGrid.querySelectorAll(".methodBtn").forEach((b) => b.classList.remove("is-active"));
             btn.classList.add("is-active");
-            state.channelId = btn.dataset.channelId;
 
-            const ch = (METHOD_CHANNELS[state.methodType] || []).find((x) => String(x.id) === String(state.channelId));
+            state.channelId = nextId;
+            state.payFromId = null;
+
+            const ch = (METHOD_CHANNELS[state.methodType] || []).find((x) => String(x.id) === String(nextId)) || null;
             renderPayFrom(ch);
+            recalcSummary();
         });
 
         payFromGrid.addEventListener("click", (e) => {
             const btn = e.target.closest(".payFromBtn[data-pay-from-id]");
             if (!btn) return;
 
+            const nextId = btn.dataset.payFromId;
             if (String(state.payFromId) === String(nextId)) return;
 
             payFromGrid.querySelectorAll(".payFromBtn").forEach((b) => b.classList.remove("is-active"));
