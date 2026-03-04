@@ -651,7 +651,6 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 .wheel__fade { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to bottom, var(--bg-color), transparent,transparent, var(--bg-color)); z-index: 1; opacity: 0.8; }
 
 /* 无障碍：聚焦轮盘时给一点提示 */
-.wheel:focus { box-shadow: 0 0 0 3px rgba(120,220,255,.25); }
 
 @media (min-width:1024px) {
     .appSheet { pointer-events: none; max-height: 0; overflow: hidden; margin-top: 4px; }
