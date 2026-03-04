@@ -710,21 +710,34 @@
                                     <span class="icn-information"></span>
                                 </button>
                             </div>
-                            <div class="selectBox">
+
+                            <div class="pkgSelect" id="pkgSelect">
+                                <!-- 真数据源：保留 value 作为跳转页 -->
                                 <select id="pkgOpt">
-                                    <option selected value="index-deposit-banner1.html">Testing Promotion 1</option>
-                                    <option value="index-deposit-banner2.html">Testing Promotion 2</option>
                                     <option value="index-deposit-banner1.html">Testing Promotion 1</option>
-                                    <option value="index-deposit-banner2.html">Testing Promotion 2</option>
+                                    <option selected value="index-deposit-banner2.html">Testing Promotion 2</option>
+                                    <option value="#emptytesting3">Empty link Promotion 3</option>
+                                    <option value="#emptytesting4">Empty link Promotion 4</option>
                                 </select>
+
+                                <!-- 触发按钮（桌面像select，手机打开wheel） -->
+                                <button type="button" class="pkgSelect__btn" data-pkg-trigger>
+                                    <span data-pkg-text></span>
+                                    <span aria-hidden="true">▾</span>
+                                </button>
+
+                                <!-- desktop dropdown menu -->
+                                <div class="pkgSelect__menu" data-pkg-menu hidden></div>
+
                             </div>
+
                             <article class="playcard" data-href="index-deposit-banner1.html">
                                 <div class="playcard__body"
                                      data-title="Testing Package 1"
                                      data-image="image/img-deposit-testing.png"
                                      data-type="deposit"
                                      data-cats="sport, casino, slots, lottery,p2p,financial"
-                                     data-methods="bank, online,  crypto"
+                                     data-methods="crypto, bank, online, qr, ewallet"
                                      data-bonus-pct="10"
                                      data-rollover="1"
                                      data-rollover-unit="x"
