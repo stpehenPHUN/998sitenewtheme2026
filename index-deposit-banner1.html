@@ -714,8 +714,8 @@
                             <div class="pkgSelect" id="pkgSelect">
                                 <!-- 真数据源：保留 value 作为跳转页 -->
                                 <select id="pkgOpt">
-                                    <option selected value="index-deposit-banner1.html">Testing Promotion 1</option>
-                                    <option  value="index-deposit-banner2.html">Testing Promotion 2</option>
+                                    <option value="index-deposit-banner1.html">Testing Promotion 1</option>
+                                    <option selected value="index-deposit-banner2.html">Testing Promotion 2</option>
                                     <option value="#emptytesting3">Empty link Promotion 3</option>
                                     <option value="#emptytesting4">Empty link Promotion 4</option>
                                 </select>
@@ -736,8 +736,8 @@
                                      data-title="Testing Package 1"
                                      data-image="image/img-deposit-testing.png"
                                      data-type="deposit"
-                                     data-cats="sport, casino, slots, lottery,p2p,financial"
-                                     data-methods="crypto, bank, online, qr, ewallet"
+                                     data-cats="sport, casino, slots, lottery, p2p, financial"
+                                     data-methods="bank, online,  crypto"
                                      data-bonus-pct="10"
                                      data-rollover="1"
                                      data-rollover-unit="x"
@@ -814,6 +814,7 @@
                                         <div class="depositHead__hint muted" id="maxHint"></div>
                                     </div>
                                 </div>
+
                                 <div class="amountRow">
                                     <span class="curHint"></span>
                                     <input id="amount" type="text" inputmode="numeric" autocomplete="off" />
@@ -831,6 +832,8 @@
 
                             <!-- right column -->
                             <aside class="payment--card">
+
+
                                 <div class="summaryHeader">
                                     <h5 class="summaryHeader__title">Deposit Summary</h5>
 
@@ -878,23 +881,29 @@
                                         <span class="summaryContent" id="sumRolloverFormula"></span>
                                     </div>
                                     <div class="summary__total">
-                                        <span>Total<span class="small">Pay this amount</span></span>
+                                        <span>Total<div class="small">Pay this amount</div></span>
                                         <span id="sumTotal"></span>
                                     </div>
                                 </div>
-                            </aside>                                <div class="bottomBar">
+
+
+                            </aside>
+                            <div class="bottomBar">
                                 <div class="upload">
                                     <span>Upload Receipt (Optional)</span>
                                     <input type="file" />
                                 </div>
                             </div>
-
                             <button class="submit" type="button">Submit</button>
+
                         </div>
+
                     </section>
                 </div>
             </section>
-            <div class="appSheet" id="selectSheet" aria-hidden="true">
+            <!-- Generic Select Bottom Sheet (reusable) -->
+            <!-- Generic Select Bottom Sheet (reusable) -->
+            <div id="pkgSheet" class="appSheet" aria-hidden="true">
                 <div class="appSheet__backdrop" data-sheet-close></div>
 
                 <div class="appSheet__panel">
@@ -904,7 +913,11 @@
                         <button class="appSheet__textBtn appSheet__primary" type="button" data-sheet-done>Done</button>
                     </div>
 
-                    <div class="sheetList" data-sheet-list></div>
+                    <div class="wheel" data-sheet-wheel tabindex="0" aria-label="Picker">
+                        <div class="wheel__scroller" data-sheet-list></div>
+                        <div class="wheel__fade"></div>
+                        <div class="wheel__window"></div>
+                    </div>
                 </div>
             </div>
 
