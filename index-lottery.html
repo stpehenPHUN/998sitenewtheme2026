@@ -579,14 +579,14 @@
                                     </svg>
                                 </button>
 
-                                <div class="langSheet" aria-hidden="true">
-                                    <div class="langSheet__backdrop" data-close></div>
+                                <div id="langSheet" class="appSheet" aria-hidden="true">
+                                    <div class="appSheet__backdrop" data-close></div>
 
-                                    <div class="langSheet__panel">
-                                        <div class="langSheet__header">
-                                            <button class="langSheet__textBtn" data-close>Close</button>
-                                            <div class="langSheet__title">Language</div>
-                                            <button class="langSheet__textBtn langSheet__primary" data-lang-done>
+                                    <div class="appSheet__panel">
+                                        <div class="appSheet__header">
+                                            <button class="appSheet__textBtn" data-close>Close</button>
+                                            <div class="appSheet__title">Language</div>
+                                            <button class="appSheet__textBtn appSheet__primary" data-lang-done>
                                                 Done
                                             </button>
                                         </div>
@@ -1077,8 +1077,8 @@
         (() => {
             const BREAKPOINT = 1024;
 
-            const sheet = document.querySelector(".langSheet");
-            const panel = sheet.querySelector(".langSheet__panel");
+            const sheet = document.querySelector(".appSheet");
+            const panel = sheet.querySelector(".appSheet__panel");
             const scroller = sheet.querySelector(".wheel__scroller");
             const wheel = sheet.querySelector(".wheel");
             const doneBtn = sheet.querySelector("[data-lang-done]");
