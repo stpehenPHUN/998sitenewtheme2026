@@ -1129,7 +1129,9 @@ ard { flex: 0 0 var(--card-w); width: var(--card-w); }
 .card h4 { color: var(--font-color); font-size: var(--text-base); }
 .muted { color: var(--accent-color); font-size: var(--text-xs) }
 .depositHead { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); }
-.depositHead__meta { }
+.depositHead__heading { display: flex; align-items: center; }
+    .depositHead__heading span { background: var(--primary-color) }
+    .depositHead__meta { }
 
 .amountRow { display: flex; align-items: center; gap: var(--space-2); background: var(--bg-color); border-radius: var(--radius-md); padding: var(--space-2); }
     .amountRow .curHint { font-size: var(--text-sm); padding: var(--space-1) var(--space-3); }
