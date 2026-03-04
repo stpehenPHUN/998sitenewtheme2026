@@ -343,12 +343,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (!isTouchUI()) return;
 
                 const t = e.target.closest("[data-ttip]");
-                e.preventDefault();
-                e.stopPropagation();
                 if (!t) {
                     hide(); // tap outside => hide
                     return;
                 }
+
+                // ✅ only block default when tapping tooltip target (avoid flicker)
+                e.preventDefault();
+                e.stopPropagation();
 
                 // tap same target => toggle
                 if (activeTarget === t) {
@@ -1671,6 +1673,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // iOS 有时 readonly 仍会给你光标/放大页面，所以我们直接拦截
             const blockNativeKb = (e) => {
+                // ✅ only block when user directly taps the input itself
+                if (e.target !== amountInput) return;
+
                 e.preventDefault();
                 e.stopPropagation();
                 // 立刻取消 focus，避免弹键盘/页面跳
@@ -1823,6 +1828,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let items = [];            // [{value,label,disabled}]
         let value = "";
+        let confirmedValue = "";
         let onDone = null;
         let triggerEl = null;
 
@@ -1832,7 +1838,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (isMobile()) {
                 document.body.classList.add("no-scroll");
-                // mobile 不用管定位
+                // align to current value
+                requestAnimationFrame(() => scrollToValue(value, false));
+                setTimeout(() => wheel?.focus(), 30);
                 return;
             }
 
@@ -1857,6 +1865,11 @@ document.addEventListener("DOMContentLoaded", () => {
             sheet.classList.remove("isOpen");
             sheet.setAttribute("aria-hidden", "true");
             document.body.classList.remove("no-scroll");
+
+            // ✅ closing via outside/close button should NOT change selection
+            value = String(confirmedValue ?? value);
+            setActiveInList(value);
+            syncDoneState();
         }
 
         function render() {
@@ -1933,6 +1946,7 @@ document.addEventListener("DOMContentLoaded", () => {
             triggerEl = opts?.triggerEl || null;
             items = Array.isArray(opts?.items) ? opts.items : [];
             value = String(opts?.value ?? items.find(x => !x.disabled)?.value ?? items[0]?.value ?? "");
+            confirmedValue = value; // ✅ only Done / desktop click will update this
             onDone = typeof opts?.onDone === "function" ? opts.onDone : null;
 
             if (titleEl) titleEl.textContent = String(opts?.title || "Select");
@@ -1956,6 +1970,7 @@ document.addEventListener("DOMContentLoaded", () => {
             syncDoneState();
 
             if (!isMobile()) {
+                confirmedValue = v;
                 onDone?.(v);
                 close();
             } else {
@@ -1982,6 +1997,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const meta = items.find(x => String(x.value) === String(value));
             if (meta?.disabled) return; // button should already be disabled, but keep safe
 
+            confirmedValue = String(value);
             onDone?.(value);
             close();
         });
