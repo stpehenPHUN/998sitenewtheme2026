@@ -1832,9 +1832,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (isMobile()) {
                 document.body.classList.add("no-scroll");
-                // align to current value
-                requestAnimationFrame(() => scrollToValue(value, false));
-                setTimeout(() => wheel?.focus(), 30);
+                // mobile 不用管定位
                 return;
             }
 
