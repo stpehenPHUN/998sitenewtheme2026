@@ -343,6 +343,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (!isTouchUI()) return;
 
                 const t = e.target.closest("[data-ttip]");
+                e.preventDefault();
+                e.stopPropagation();
                 if (!t) {
                     hide(); // tap outside => hide
                     return;
@@ -358,7 +360,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // auto-hide after 1.5s (optional but recommended on mobile)
                 clearTimeout(window.__ttipTO);
-                window.__ttipTO = setTimeout(() => hide(), 1500);
+                window.__ttipTO = setTimeout(() => hide(), 2500);
             },
             true // capture: 即使你后面 stopPropagation，也能先抓到
         );
@@ -413,7 +415,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         // if user clicks anywhere, hide (optional)
-        document.addEventListener("click", () => hide(), true);
+        document.addEventListener("click", () => {
+            if (isTouchUI()) return;   // ✅ 触控不走 click-hide
+            hide();
+        }, true);
     }
 
     /* =========================================================
@@ -1277,54 +1282,62 @@ document.addEventListener("DOMContentLoaded", () => {
             if (isMobileUI()) {
                 payFromGrid.classList.add("payFromGrid--select");
 
-                const select = document.createElement("select");
-                select.className = "payFromSelect";
-                select.setAttribute("aria-label", "Paying From");
-
-                // Build options (keep maintenance items disabled)
-                let firstSelectable = null;
-                list.forEach((item) => {
-                    const opt = document.createElement("option");
-                    opt.value = item.id;
-                    opt.textContent = item.name || item.id;
-
-                    if (item.maintenance) {
-                        opt.disabled = true;
-                        opt.textContent = `${opt.textContent} (Maintenance)`;
-                    } else if (!firstSelectable) {
-                        firstSelectable = item;
-                    }
-
-                    select.appendChild(opt);
-                });
-
-                // Pick current if valid, else default to first non-maintenance
+                // pick current if valid, else default to first non-maintenance
+                const firstSelectable = list.find(x => !x.maintenance) || null;
                 const current = list.find(p => p.id === state.payFromId && !p.maintenance) || firstSelectable;
+
                 if (current) {
                     state.payFromId = current.id;
-                    select.value = current.id;
                     if (sumFromEl) sumFromEl.textContent = current.name || current.id;
                 } else {
                     state.payFromId = null;
-                    if (sumFromEl) sumFromEl.textContent = channel.name || channel.id || "-";
+                    if (sumFromEl) sumFromEl.textContent = "-";
                 }
 
-                select.addEventListener("change", () => {
-                    const picked = list.find(p => p.id === select.value) || null;
-                    state.payFromId = picked?.id || null;
-                    if (sumFromEl) sumFromEl.textContent = picked?.name || picked?.id || "-";
-                    recalcSummary();
+                // Render a single button that opens the shared pkgSheet (same CSS as language)
+                const pickBtn = document.createElement("button");
+                pickBtn.type = "button";
+                pickBtn.className = "payFromPickBtn";
+
+                pickBtn.innerHTML = `
+  <span class="pf-label">${current?.name || current?.id || "Select"}</span>
+  <span aria-hidden="true">▾</span>
+`;
+                payFromGrid.appendChild(pickBtn);
+
+                pickBtn.addEventListener("click", () => {
+                    const items = list.map(x => {
+                        const base = x.name || x.id;
+                        return {
+                            value: x.id,
+                            label: x.maintenance ? `${base} (Maintenance)` : base,
+                            disabled: !!x.maintenance
+                        };
+                    });
+
+                    const fallback = firstSelectable?.id || (items.find(x => !x.disabled)?.value) || "";
+                    window.openpkgSheet?.({
+                        title: "Paying From",
+                        items,
+                        value: state.payFromId || fallback,
+                        triggerEl: pickBtn,
+                        onDone: (v) => {
+                            const picked = list.find(x => String(x.id) === String(v) && !x.maintenance) || firstSelectable || null;
+
+                            state.payFromId = picked?.id || null;
+                            if (sumFromEl) sumFromEl.textContent = picked?.name || picked?.id || "-";
+                            const label = pickBtn.querySelector(".pf-label");
+                            if (label) {
+                                label.textContent = picked?.name || picked?.id || "Select";
+                            }
+                            recalcSummary();
+                        }
+                    });
                 });
-
-                payFromGrid.appendChild(select);
-
-                // ★ add this:
-                window.enhanceSelectToSheet?.(select, { title: "Paying From" });
 
                 recalcSummary();
                 return;
             }
-
             // ===== DESKTOP: render as scroll buttons (your current behavior) =====
             payFromGrid.classList.remove("payFromGrid--select");
 
@@ -1398,7 +1411,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 state.payFromId = null;
                 recalcSummary();
             }
-        }        function getMethodMaxDeposit(channel, payFrom) {
+        } function getMethodMaxDeposit(channel, payFrom) {
             // Prefer payFrom maxDeposit (each payFrom can have its own limit)
             const pfMax = payFrom?.maxDeposit;
             const chMax = channel?.maxDeposit;
@@ -1477,7 +1490,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 nameSpan.textContent = ch.name || ch.id;
                 btn.appendChild(nameSpan);
 
-                                methodGrid.appendChild(btn);
+                methodGrid.appendChild(btn);
             });
 
             // 3) Select defaultChannel (if any)
@@ -1768,8 +1781,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const pkgOpt = document.getElementById("pkgOpt");
     if (pkgOpt) {
-        // mobile: enhance to bottom sheet
-        window.enhanceSelectToSheet?.(pkgOpt, { title: "Promotion" });
 
         pkgOpt.addEventListener("change", function () {
             // desktop & mobile最终都走这里：mobile 是 sheet 点选后触发 change
@@ -1780,206 +1791,273 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+
+/* =========================================================
+   6) SHARED SELECT SHEET (re-use language CSS)
+   - Uses existing HTML: #pkgSheet (class appSheet)
+   - Desktop: popover under trigger (click item => pick & close)
+   - Mobile: wheel + Done
+========================================================= */
 (function () {
-    const BP_DESKTOP = 1024;
-    const ITEM_H = 44; // 对齐你 CSS :root --item-h: 44px
-
-    const sheet = document.getElementById("selectSheet");
-    if (!sheet) return;
-
-    const titleEl = sheet.querySelector("[data-sheet-title]");
-    const scroller = sheet.querySelector("[data-sheet-list]"); // 现在是 wheel__scroller
-    const wheel = sheet.querySelector("[data-sheet-wheel]") || sheet.querySelector(".wheel");
-    const closeBtns = sheet.querySelectorAll("[data-sheet-close]");
-    const doneBtn = sheet.querySelector("[data-sheet-done]");
-
-    let active = null; // { select, trigger, title }
-    let pendingValue = null; // 当前滚轮指向的 value（Done 才写回 select）
-    let snapTimer = null;
-
-    const isDesktop = () => window.innerWidth >= BP_DESKTOP;
-    const isOpen = () => sheet.classList.contains("isOpen");
-
-    function openSheet() {
-        sheet.classList.add("isOpen");
-        sheet.setAttribute("aria-hidden", "false");
-        document.body.classList.add("no-scroll");
-        // 让滚轮可 focus（更像 iOS picker）
-        setTimeout(() => wheel?.focus?.(), 50);
+    function onReady(fn) {
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", fn, { once: true });
+        } else {
+            fn();
+        }
     }
 
-    function closeSheet() {
-        sheet.classList.remove("isOpen");
-        sheet.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("no-scroll");
-        active = null;
-        pendingValue = null;
-    }
+    onReady(() => {
+        const sheet = document.getElementById("pkgSheet");
+        if (!sheet) return;
 
-    closeBtns.forEach((btn) => btn.addEventListener("click", closeSheet));
+        const panel = sheet.querySelector(".appSheet__panel");
+        const titleEl = sheet.querySelector("[data-sheet-title]");
+        const listEl = sheet.querySelector("[data-sheet-list]");
+        const doneBtn = sheet.querySelector("[data-sheet-done]");
+        const closeBtns = sheet.querySelectorAll("[data-sheet-close]");
+        const wheel = sheet.querySelector("[data-sheet-wheel]");
 
-    function getItems() {
-        return Array.from(scroller.querySelectorAll(".wheel__item"));
-    }
+        const MQ_MOBILE = window.matchMedia("(max-width: 1023.98px)");
+        const isMobile = () => MQ_MOBILE.matches;
 
-    function scrollToValue(value, smooth) {
-        const items = getItems();
-        const idx = items.findIndex((el) => el.dataset.value === String(value));
-        if (idx < 0) return;
+        let items = [];            // [{value,label,disabled}]
+        let value = "";
+        let onDone = null;
+        let triggerEl = null;
 
-        // 有 top spacer，所以第一个 item offsetTop 不是 0，直接用 offsetTop 最稳
-        const target = items[idx].offsetTop + items[idx].offsetHeight / 2 - scroller.clientHeight / 2;
-        scroller.scrollTo({ top: target, behavior: smooth ? "smooth" : "auto" });
-    }
+        function open() {
+            sheet.classList.add("isOpen");
+            sheet.setAttribute("aria-hidden", "false");
 
-    // 参照你 language 的 updateVisual（用 inline style 做渐变/缩放）
-    function updateVisualAndPending() {
-        if (isDesktop()) return;
-
-        const center = scroller.scrollTop + scroller.clientHeight / 2;
-        let best = null;
-        let bestDist = Infinity;
-
-        getItems().forEach((el) => {
-            const elCenter = el.offsetTop + el.offsetHeight / 2;
-            const d = Math.abs(elCenter - center);
-
-            if (d < bestDist) {
-                bestDist = d;
-                best = el;
+            if (isMobile()) {
+                document.body.classList.add("no-scroll");
+                // align to current value
+                requestAnimationFrame(() => scrollToValue(value, false));
+                setTimeout(() => wheel?.focus(), 30);
+                return;
             }
 
-            // disabled 的就弱化一点
-            const disabled = el.getAttribute("aria-disabled") === "true";
-            const t = Math.min(d / (ITEM_H * 2), 1);
-            const baseOpacity = disabled ? 0.18 : 0.42;
-            el.style.opacity = String(baseOpacity + (1 - t) * 0.58);
-            el.style.transform = `scale(${0.92 + (1 - t) * 0.08})`;
-        });
+            // desktop popover position under trigger
+            document.body.classList.remove("no-scroll");
+            if (triggerEl) {
+                const r = triggerEl.getBoundingClientRect();
+                sheet.style.left = `${r.left + window.scrollX}px`;
+                sheet.style.top = `${r.bottom + window.scrollY + 8}px`;
 
-        if (best) pendingValue = best.dataset.value;
-    }
-
-    function renderOptions(select, { title }) {
-        titleEl.textContent = title || "Select";
-        scroller.innerHTML = "";
-
-        const currentVal = String(select.value ?? "");
-        pendingValue = currentVal;
-
-        // top spacer
-        const topSpacer = document.createElement("div");
-        topSpacer.className = "wheel__spacer";
-        scroller.appendChild(topSpacer);
-
-        // items
-        Array.from(select.options).forEach((opt) => {
-            const item = document.createElement("div");
-            item.className = "wheel__item";
-            item.dataset.value = opt.value;
-            item.textContent = opt.textContent;
-
-            const disabled = !!opt.disabled;
-            if (disabled) item.setAttribute("aria-disabled", "true");
-
-            // 点击某一项：滚过去；如果正好是当前项，再点一次就直接 Done 体验更像 iOS
-            item.addEventListener("click", () => {
-                if (disabled) return;
-
-                const wasPending = String(pendingValue) === String(opt.value);
-                scrollToValue(opt.value, true);
-
-                // 让滚动结束后 pendingValue 一定对齐
-                setTimeout(() => {
-                    updateVisualAndPending();
-                    if (wasPending) commitSelection(); // 二次点击 = 快速确认
-                }, 0);
-            });
-
-            scroller.appendChild(item);
-        });
-
-        // bottom spacer
-        const bottomSpacer = document.createElement("div");
-        bottomSpacer.className = "wheel__spacer";
-        scroller.appendChild(bottomSpacer);
-
-        // 打开时把当前值滚到中间
-        requestAnimationFrame(() => {
-            scrollToValue(currentVal, false);
-            updateVisualAndPending();
-        });
-    }
-
-    function commitSelection() {
-        if (!active?.select) return;
-
-        // 找到 pending 对应的 option（避免落在 disabled 上）
-        const select = active.select;
-        const opts = Array.from(select.options);
-        const pickedOpt = opts.find((o) => String(o.value) === String(pendingValue) && !o.disabled);
-
-        // 如果滚到了 disabled（极少数），fallback 到当前 select.value
-        const finalOpt = pickedOpt || select.selectedOptions?.[0] || null;
-        if (!finalOpt) return;
-
-        // set value + trigger change
-        select.value = finalOpt.value;
-        select.dispatchEvent(new Event("change", { bubbles: true }));
-
-        // update trigger text
-        if (active?.trigger) {
-            const t = active.trigger.querySelector("[data-trigger-text]");
-            if (t) t.textContent = finalOpt.textContent;
+                requestAnimationFrame(() => {
+                    const rect = panel?.getBoundingClientRect?.() || sheet.getBoundingClientRect();
+                    const overflowX = rect.right - window.innerWidth;
+                    if (overflowX > 0) {
+                        sheet.style.left = `${(r.left + window.scrollX) - overflowX - 8}px`;
+                    }
+                });
+            }
         }
 
-        closeSheet();
-    }
+        function close() {
+            sheet.classList.remove("isOpen");
+            sheet.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("no-scroll");
+        }
 
-    doneBtn?.addEventListener("click", commitSelection);
+        function render() {
+            if (!listEl) return;
+            listEl.innerHTML = "";
 
-    // 滚动：实时更新 pendingValue，并在停止后 snap 到最近的值（像 iOS）
-    scroller.addEventListener("scroll", () => {
-        if (isDesktop()) return;
-        updateVisualAndPending();
-        clearTimeout(snapTimer);
-        snapTimer = setTimeout(() => {
-            if (pendingValue != null) scrollToValue(pendingValue, true);
-        }, 120);
-    });
+            const top = document.createElement("div");
+            top.className = "wheel__spacer";
+            listEl.appendChild(top);
 
-    // Main API（你原本就有调用：pkgOpt / payFromSelect）
-    window.enhanceSelectToSheet = function enhanceSelectToSheet(select, opts = {}) {
-        if (!select || select.dataset.sheetBound === "1") return;
-        select.dataset.sheetBound = "1";
+            items.forEach((it) => {
+                const div = document.createElement("div");
+                div.className = "wheel__item";
+                div.dataset.value = String(it.value);
+                div.textContent = String(it.label ?? it.value);
 
-        // desktop 保持原生 select
-        if (isDesktop()) return;
+                if (it.disabled) div.classList.add("is-disabled");
+                if (String(it.value) === String(value)) div.classList.add("isActive");
 
-        // create trigger
-        const trigger = document.createElement("button");
-        trigger.type = "button";
-        trigger.className = "sheetSelectTrigger";
-        trigger.innerHTML = `
-      <span data-trigger-text>${select.selectedOptions?.[0]?.textContent || "Select"}</span>
-      <span class="sheetSelectTrigger__hint">Tap to choose</span>
-    `;
+                listEl.appendChild(div);
+            });
 
-        // hide native select on mobile
-        select.classList.add("is-sheet-native");
+            const bot = document.createElement("div");
+            bot.className = "wheel__spacer";
+            listEl.appendChild(bot);
+        }
 
-        // insert trigger right after select
-        select.insertAdjacentElement("afterend", trigger);
+        function setActiveInList(v) {
+            value = String(v ?? "");
+            listEl?.querySelectorAll?.(".wheel__item").forEach((el) => {
+                el.classList.toggle("isActive", String(el.dataset.value) === value);
+            });
+        }
 
-        trigger.addEventListener("click", () => {
-            active = { select, trigger, title: opts.title || "Select" };
-            renderOptions(select, { title: active.title });
-            openSheet();
+        function scrollToValue(v, smooth = true) {
+            if (!listEl) return;
+            const el = listEl.querySelector(`.wheel__item[data-value="${CSS.escape(String(v))}"]`);
+            if (!el) return;
+
+            const top = el.offsetTop - (listEl.clientHeight / 2 - el.offsetHeight / 2);
+            listEl.scrollTo({ top, behavior: smooth ? "smooth" : "auto" });
+        }
+
+        function nearestValueFromScroll() {
+            if (!listEl) return value;
+
+            const center = listEl.scrollTop + listEl.clientHeight / 2;
+            let best = null;
+            let bestDist = Infinity;
+
+            listEl.querySelectorAll(".wheel__item").forEach((el) => {
+                const elCenter = el.offsetTop + el.offsetHeight / 2;
+                const d = Math.abs(elCenter - center);
+                if (d < bestDist) {
+                    bestDist = d;
+                    best = el;
+                }
+            });
+
+            return best?.dataset?.value ?? value;
+        }
+
+
+        function syncDoneState() {
+            if (!doneBtn) return;
+            const meta = items.find(x => String(x.value) === String(value));
+            const disabled = !!meta?.disabled;
+            doneBtn.disabled = disabled;
+            doneBtn.setAttribute("aria-disabled", disabled ? "true" : "false");
+        }
+
+        // public API
+        window.openpkgSheet = function (opts) {
+            triggerEl = opts?.triggerEl || null;
+            items = Array.isArray(opts?.items) ? opts.items : [];
+            value = String(opts?.value ?? items.find(x => !x.disabled)?.value ?? items[0]?.value ?? "");
+            onDone = typeof opts?.onDone === "function" ? opts.onDone : null;
+
+            if (titleEl) titleEl.textContent = String(opts?.title || "Select");
+            render();
+            setActiveInList(value);
+            syncDoneState();
+
+            open();
+        };
+
+        // click item
+        listEl?.addEventListener("click", (e) => {
+            const itemEl = e.target.closest(".wheel__item");
+            if (!itemEl) return;
+
+            const v = String(itemEl.dataset.value || "");
+            const meta = items.find(x => String(x.value) === v);
+            if (meta?.disabled) return;
+
+            setActiveInList(v);
+            syncDoneState();
+
+            if (!isMobile()) {
+                onDone?.(v);
+                close();
+            } else {
+                scrollToValue(v, true);
+            }
         });
-    };
 
-    // 旋转屏/resize：保险起见关掉 sheet（避免样式残留）
-    window.addEventListener("resize", () => {
-        if (isOpen()) closeSheet();
+        // mobile scroll snap
+        let snapTO = 0;
+        listEl?.addEventListener("scroll", () => {
+            if (!isMobile()) return;
+            clearTimeout(snapTO);
+            snapTO = setTimeout(() => {
+                const v = nearestValueFromScroll();
+                setActiveInList(v);
+                syncDoneState();
+                scrollToValue(v, true);
+            }, 120);
+        });
+
+        doneBtn?.addEventListener("click", () => {
+            if (!isMobile()) return;
+
+            const meta = items.find(x => String(x.value) === String(value));
+            if (meta?.disabled) return; // button should already be disabled, but keep safe
+
+            onDone?.(value);
+            close();
+        });
+
+        closeBtns?.forEach(btn => btn.addEventListener("click", close));
+
+        // click outside close (desktop)
+        document.addEventListener("click", (e) => {
+            if (isMobile()) return;
+            if (!sheet.classList.contains("isOpen")) return;
+            const inside = sheet.contains(e.target);
+            const onTrigger = triggerEl && triggerEl.contains(e.target);
+            if (!inside && !onTrigger) close();
+        }, true);
+
+        window.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && sheet.classList.contains("isOpen")) close();
+        });
+
+        MQ_MOBILE.addEventListener?.("change", () => close());
+
+        /* =========================================================
+           7) PACKAGE -> pkgSheet (same look as language)
+        ========================================================= */
+        (function wirePkg() {
+            const root = document.getElementById("pkgSelect");
+            if (!root) return;
+
+            const select = root.querySelector("#pkgOpt");
+            const btn = root.querySelector("[data-pkg-trigger]");
+            const txt = root.querySelector("[data-pkg-text]");
+            if (!select || !btn || !txt) return;
+
+            function syncBtnText() {
+                txt.textContent = select.selectedOptions?.[0]?.textContent || "Select";
+            }
+            syncBtnText();
+
+            btn.addEventListener("click", () => {
+                if (!isMobile()) {
+                    // 方案 A1：用原生 select（如果你的 CSS 没把它 display:none）
+                    // select.focus();
+                    // select.click();
+
+                    // 方案 A2：用你原本的 desktop menu（你 HTML 里本来就有）
+                    const menu = root.querySelector("[data-pkg-menu]");
+                    if (menu) {
+                        menu.hidden ? openMenuFromSelect(select, menu) : (menu.hidden = true);
+                    }
+                    return;
+                }
+
+                // mobile 才打开 wheel sheet
+                const items = Array.from(select.options).map(o => ({
+                    value: o.value,
+                    label: o.textContent || o.value,
+                    disabled: !!o.disabled
+                }));
+
+                window.openpkgSheet?.({
+                    title: "Promotion",
+                    items,
+                    value: select.value,
+                    triggerEl: btn,
+                    onDone: (v) => {
+                        select.value = v;
+                        select.dispatchEvent(new Event("change", { bubbles: true }));
+                        syncBtnText();
+                    }
+                });
+            });
+            // keep text synced when external code changes #pkgOpt
+            select.addEventListener("change", syncBtnText);
+        })();
     });
 })();
+
