@@ -350,54 +350,37 @@ document.addEventListener("DOMContentLoaded", () => {
             }, { passive: true });
         });
 
-        let touchStart = null;
+        const SHOW_MS = 1500;
+        const RECENT_SCROLL_MS = 220;
 
-        const TAP_MOVE = 8;
-        const SHOW_MS = 2000;
+        // 任何滚动都算“正在拖动/滑动过”
+        function markScrolled() {
+            lastScrollAt = Date.now();
+            if (isTouchUI()) hide(); // 滚动中直接隐藏（避免边滚边抖）
+        }
 
+        // track horizontal scroll containers (tabs)
+        document.querySelectorAll(".topTabs").forEach((el) => {
+            el.addEventListener("scroll", markScrolled, { passive: true });
+        });
+
+        // window scroll
+        window.addEventListener("scroll", markScrolled, true);
+
+        // ✅ Mobile: only click triggers tooltip
         document.addEventListener(
-            "pointerdown",
+            "click",
             (e) => {
                 if (!isTouchUI()) return;
-                if (e.pointerType !== "touch") return;
 
-                touchStart = {
-                    x: e.clientX,
-                    y: e.clientY,
-                    t: Date.now(),
-                    target: e.target.closest("[data-ttip]"),
-                };
-            },
-            true
-        );
+                // 刚滚动过 => 忽略这次 click（防止滚动结束的误触 click）
+                if (Date.now() - lastScrollAt < RECENT_SCROLL_MS) return;
 
-        document.addEventListener(
-            "pointerup",
-            (e) => {
-                if (!isTouchUI()) return;
-                if (e.pointerType !== "touch") return;
-                if (!touchStart) return;
+                const t = e.target.closest("[data-ttip]");
+                if (!t) return;
 
-                const dx = Math.abs(e.clientX - touchStart.x);
-                const dy = Math.abs(e.clientY - touchStart.y);
-
-                const target = touchStart.target;
-                touchStart = null;
-
-                // drag / scroll
-                if (dx > TAP_MOVE || dy > TAP_MOVE) return;
-
-                // ✅ 刚滚动过就不弹（惯性/滑动误触）
-                if (Date.now() - lastScrollAt < 180) return;
-
-                if (!target) return;
-
-                // ✅ 阻止合成 click/focus 导致的二次 show/hide 闪烁
-                e.preventDefault();
-                e.stopPropagation();
-
-                show(target);
-
+                // 强制显示 0.5s
+                show(t);
                 clearTimeout(window.__ttipTimer);
                 window.__ttipTimer = setTimeout(() => hide(), SHOW_MS);
             },
