@@ -387,7 +387,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 // drag / scroll
                 if (dx > TAP_MOVE || dy > TAP_MOVE) return;
 
+                // ✅ 刚滚动过就不弹（惯性/滑动误触）
+                if (Date.now() - lastScrollAt < 180) return;
+
                 if (!target) return;
+
+                // ✅ 阻止合成 click/focus 导致的二次 show/hide 闪烁
+                e.preventDefault();
+                e.stopPropagation();
 
                 show(target);
 
@@ -396,6 +403,7 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             true
         );
+
         function show(target) {
             if (!target?.dataset?.ttip) return;
             activeTarget = target;
@@ -431,12 +439,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         document.addEventListener("focusin", (e) => {
+            if (isTouchUI()) return;   // ✅ 新增
             const t = e.target.closest("[data-ttip]");
             if (!t) return;
             show(t);
         });
 
         document.addEventListener("focusout", (e) => {
+            if (isTouchUI()) return;   // ✅ 新增
             const t = e.target.closest("[data-ttip]");
             if (!t) return;
             hide();
