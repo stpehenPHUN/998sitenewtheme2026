@@ -279,6 +279,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let bubble = null;
         let activeTarget = null;
 
+
+        let lastScrollAt = 0;
         function ensureBubble() {
             if (bubble) return bubble;
             bubble = document.createElement("span");
@@ -337,35 +339,64 @@ document.addEventListener("DOMContentLoaded", () => {
         }// --- Mobile / touch: tap to toggle tooltip ---
         const isTouchUI = () => window.matchMedia("(hover: none)").matches;
 
-        document.addEventListener(
-            "pointerdown",
-            (e) => {
-                if (!isTouchUI()) return;
 
-                const t = e.target.closest("[data-ttip]");
-                if (!t) {
-                    hide(); // tap outside => hide
-                    return;
-                }
 
-                // ✅ only block default when tapping tooltip target (avoid flicker)
-                e.preventDefault();
-                e.stopPropagation();
+        // track horizontal scroll containers (e.g., tabs) on mobile
+        document.querySelectorAll(".topTabs").forEach((el) => {
+            el.addEventListener("scroll", () => {
+                lastScrollAt = Date.now();
+                if (isTouchUI()) hide();
+            }, { passive: true });
+        });
+        // --- Mobile / touch: tap (pointerup) to show tooltip; NO tooltip during scroll/drag ---
+        let downX = 0, downY = 0, downTarget = null;
+        const TAP_MOVE_PX = 8;
+        const RECENT_SCROLL_MS = 180;
 
-                // tap same target => toggle
-                if (activeTarget === t) {
-                    hide();
-                    return;
-                }
+        document.addEventListener("pointerdown", (e) => {
+            if (!isTouchUI()) return;
+            downX = e.clientX;
+            downY = e.clientY;
+            downTarget = e.target.closest("[data-ttip]") || null;
+        }, true);
 
-                show(t);
+        document.addEventListener("pointerup", (e) => {
+            if (!isTouchUI()) return;
 
-                // auto-hide after 1.5s (optional but recommended on mobile)
-                clearTimeout(window.__ttipTO);
-                window.__ttipTO = setTimeout(() => hide(), 2500);
-            },
-            true // capture: 即使你后面 stopPropagation，也能先抓到
-        );
+            // If just scrolled/dragged, do NOT show tooltip
+            if (Date.now() - lastScrollAt < RECENT_SCROLL_MS) return;
+
+            const upTarget = e.target.closest("[data-ttip]") || null;
+
+            // tap outside => hide
+            if (!upTarget) {
+                hide();
+                return;
+            }
+
+            // must be same target from down -> up
+            if (downTarget !== upTarget) return;
+
+            // moved too far => considered drag/scroll
+            const dx = Math.abs(e.clientX - downX);
+            const dy = Math.abs(e.clientY - downY);
+            if (dx > TAP_MOVE_PX || dy > TAP_MOVE_PX) return;
+
+            // tap same target => toggle
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (activeTarget === upTarget) {
+                hide();
+                return;
+            }
+
+            show(upTarget);
+
+            // auto-hide after 2s on mobile
+            clearTimeout(window.__ttipTO);
+            window.__ttipTO = setTimeout(() => hide(), 2000);
+        }, true);
 
         function show(target) {
             if (!target?.dataset?.ttip) return;
@@ -409,9 +440,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // reposition on scroll/resize (tabs 会横向滚动)
         window.addEventListener("scroll", () => {
+            lastScrollAt = Date.now();
+            if (isTouchUI()) {
+                hide();
+                return;
+            }
             if (activeTarget) positionBubble(activeTarget);
         }, true);
-
         window.addEventListener("resize", () => {
             if (activeTarget) positionBubble(activeTarget);
         });
@@ -658,9 +693,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             hydrateRail(railEl);
             initBadges(railEl);
-            bindRailWheel(railEl);
+            // bindRailWheel(railEl);
             railEl.querySelectorAll("[data-scroll-x]").forEach(el => {
-                enableHorizontalWheelScroll(el);
+                // enableHorizontalWheelScroll(el);
                 enableDragScroll(el);
             });
             return;
@@ -691,7 +726,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         hydrateRail(railEl);
         initBadges(railEl);
-        bindRailWheel(railEl);
+        // bindRailWheel(railEl);
     }
 
     function bindRailWheel(scope = document) {
@@ -1715,14 +1750,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         bindFilter();
-        bindRailWheel();
+        // bindRailWheel();
 
         // IMPORTANT: init payment UI after partials are in DOM
         initPaymentUI();
         initTooltipPortal();
 
         document.querySelectorAll("[data-scroll-x]").forEach(el => {
-            enableHorizontalWheelScroll(el);
+            // enableHorizontalWheelScroll(el);
             enableDragScroll(el);
         });
 
