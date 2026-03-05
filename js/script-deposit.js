@@ -353,7 +353,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let touchStart = null;
 
         const TAP_MOVE = 8;
-        const SHOW_MS = 500;
+        const SHOW_MS = 2000;
 
         document.addEventListener(
             "pointerdown",
