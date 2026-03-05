@@ -281,6 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         let lastScrollAt = 0;
+        let lastShowAt = 0; 
         function ensureBubble() {
             if (bubble) return bubble;
             bubble = document.createElement("span");
@@ -420,10 +421,10 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             true
         );
-
         function show(target) {
             if (!target?.dataset?.ttip) return;
             activeTarget = target;
+            lastShowAt = Date.now();
             positionBubble(target);
         }
 
@@ -469,15 +470,15 @@ document.addEventListener("DOMContentLoaded", () => {
             hide();
         });
 
-        // reposition on scroll/resize (tabs 会横向滚动)
-        window.addEventListener("scroll", () => {
+        function markScrolled() {
             lastScrollAt = Date.now();
+
             if (isTouchUI()) {
+                // ✅ 刚点出来的一瞬间，别立刻被惯性滚动干掉
+                if (Date.now() - lastShowAt < 300) return;
                 hide();
-                return;
             }
-            if (activeTarget) positionBubble(activeTarget);
-        }, true);
+        }
         window.addEventListener("resize", () => {
             if (activeTarget) positionBubble(activeTarget);
         });
