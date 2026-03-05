@@ -337,52 +337,86 @@ document.addEventListener("DOMContentLoaded", () => {
             b.style.visibility = "visible";
             b.style.transform = "translate3d(0, 0, 0)";
         }
-        // --- Mobile / touch: tap to toggle tooltip ---
+        // --- Mobile / touch: tap to show tooltip (ignore drag) ---
         const isTouchUI = () => window.matchMedia("(hover: none)").matches;
 
-
-
-        // track horizontal scroll containers (e.g., tabs) on mobile
-        document.querySelectorAll(".topTabs").forEach((el) => {
-            el.addEventListener("scroll", () => {
-                lastScrollAt = Date.now();
-                if (isTouchUI()) hide();
-            }, { passive: true });
-        });
-
         const SHOW_MS = 1500;
-        const RECENT_SCROLL_MS = 220;
+        const TAP_MOVE_PX = 8;
 
-        // 任何滚动都算“正在拖动/滑动过”
-        function markScrolled() {
-            lastScrollAt = Date.now();
-            if (isTouchUI()) hide(); // 滚动中直接隐藏（避免边滚边抖）
+        let down = null; // {x,y,target, moved}
+
+        function clearTimer() {
+            clearTimeout(window.__ttipTimer);
+            window.__ttipTimer = null;
         }
 
-        // track horizontal scroll containers (tabs)
-        document.querySelectorAll(".topTabs").forEach((el) => {
-            el.addEventListener("scroll", markScrolled, { passive: true });
-        });
+        function armAutoHide() {
+            clearTimer();
+            window.__ttipTimer = setTimeout(() => hide(), SHOW_MS);
+        }
 
-        // window scroll
-        window.addEventListener("scroll", markScrolled, true);
-
-        // ✅ Mobile: only click triggers tooltip
+        // 用 pointer 系列来判断“点”还是“拖”
         document.addEventListener(
-            "click",
+            "pointerdown",
             (e) => {
                 if (!isTouchUI()) return;
 
-                // 刚滚动过 => 忽略这次 click（防止滚动结束的误触 click）
-                if (Date.now() - lastScrollAt < RECENT_SCROLL_MS) return;
-
                 const t = e.target.closest("[data-ttip]");
-                if (!t) return;
+                if (!t) {
+                    // 点到别处就关（可选）
+                    hide();
+                    return;
+                }
 
-                // 强制显示 0.5s
+                down = { x: e.clientX, y: e.clientY, target: t, moved: false };
+            },
+            true
+        );
+
+        document.addEventListener(
+            "pointermove",
+            (e) => {
+                if (!isTouchUI()) return;
+                if (!down) return;
+
+                const dx = e.clientX - down.x;
+                const dy = e.clientY - down.y;
+                if (Math.hypot(dx, dy) > TAP_MOVE_PX) down.moved = true;
+            },
+            true
+        );
+
+        document.addEventListener(
+            "pointerup",
+            (e) => {
+                if (!isTouchUI()) return;
+                if (!down) return;
+
+                const t = down.target;
+                const wasDrag = down.moved;
+                down = null;
+
+                if (wasDrag) return; // 拖动/滑动，不弹 tooltip
+
+                // toggle：点同一个目标就关
+                if (activeTarget === t) {
+                    hide();
+                    clearTimer();
+                    return;
+                }
+
                 show(t);
-                clearTimeout(window.__ttipTimer);
-                window.__ttipTimer = setTimeout(() => hide(), SHOW_MS);
+                armAutoHide();
+            },
+            true
+        );
+
+        // 如果你仍想“滚动就隐藏”（防止工具提示飘着），保留 window scroll hide 即可
+        window.addEventListener(
+            "scroll",
+            () => {
+                if (isTouchUI()) hide();
+                else if (activeTarget) positionBubble(activeTarget);
             },
             true
         );
