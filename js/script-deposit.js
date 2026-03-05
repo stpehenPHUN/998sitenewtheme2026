@@ -412,12 +412,16 @@ document.addEventListener("DOMContentLoaded", () => {
             true
         );
 
-        // 如果你仍想“滚动就隐藏”（防止工具提示飘着），保留 window scroll hide 即可
         window.addEventListener(
             "scroll",
             () => {
-                if (isTouchUI()) hide();
-                else if (activeTarget) positionBubble(activeTarget);
+                if (isTouchUI()) {
+                    // ✅ 刚 show 的 450ms 内不隐藏（iOS 惯性更强，300 有时不够）
+                    if (Date.now() - lastShowAt < 450) return;
+                    hide();
+                    return;
+                }
+                if (activeTarget) positionBubble(activeTarget);
             },
             true
         );
