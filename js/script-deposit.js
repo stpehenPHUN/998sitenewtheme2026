@@ -336,7 +336,8 @@ document.addEventListener("DOMContentLoaded", () => {
             b.style.opacity = "1";
             b.style.visibility = "visible";
             b.style.transform = "translate3d(0, 0, 0)";
-        }// --- Mobile / touch: tap to toggle tooltip ---
+        }
+        // --- Mobile / touch: tap to toggle tooltip ---
         const isTouchUI = () => window.matchMedia("(hover: none)").matches;
 
 
@@ -348,56 +349,53 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (isTouchUI()) hide();
             }, { passive: true });
         });
-        // --- Mobile / touch: tap (pointerup) to show tooltip; NO tooltip during scroll/drag ---
-        let downX = 0, downY = 0, downTarget = null;
-        const TAP_MOVE_PX = 8;
-        const RECENT_SCROLL_MS = 180;
 
-        document.addEventListener("pointerdown", (e) => {
-            if (!isTouchUI()) return;
-            downX = e.clientX;
-            downY = e.clientY;
-            downTarget = e.target.closest("[data-ttip]") || null;
-        }, true);
+        let touchStart = null;
 
-        document.addEventListener("pointerup", (e) => {
-            if (!isTouchUI()) return;
+        const TAP_MOVE = 8;
+        const SHOW_MS = 500;
 
-            // If just scrolled/dragged, do NOT show tooltip
-            if (Date.now() - lastScrollAt < RECENT_SCROLL_MS) return;
+        document.addEventListener(
+            "pointerdown",
+            (e) => {
+                if (!isTouchUI()) return;
+                if (e.pointerType !== "touch") return;
 
-            const upTarget = e.target.closest("[data-ttip]") || null;
+                touchStart = {
+                    x: e.clientX,
+                    y: e.clientY,
+                    t: Date.now(),
+                    target: e.target.closest("[data-ttip]"),
+                };
+            },
+            true
+        );
 
-            // tap outside => hide
-            if (!upTarget) {
-                hide();
-                return;
-            }
+        document.addEventListener(
+            "pointerup",
+            (e) => {
+                if (!isTouchUI()) return;
+                if (e.pointerType !== "touch") return;
+                if (!touchStart) return;
 
-            // must be same target from down -> up
-            if (downTarget !== upTarget) return;
+                const dx = Math.abs(e.clientX - touchStart.x);
+                const dy = Math.abs(e.clientY - touchStart.y);
 
-            // moved too far => considered drag/scroll
-            const dx = Math.abs(e.clientX - downX);
-            const dy = Math.abs(e.clientY - downY);
-            if (dx > TAP_MOVE_PX || dy > TAP_MOVE_PX) return;
+                const target = touchStart.target;
+                touchStart = null;
 
-            // tap same target => toggle
-            e.preventDefault();
-            e.stopPropagation();
+                // drag / scroll
+                if (dx > TAP_MOVE || dy > TAP_MOVE) return;
 
-            if (activeTarget === upTarget) {
-                hide();
-                return;
-            }
+                if (!target) return;
 
-            show(upTarget);
+                show(target);
 
-            // auto-hide after 2s on mobile
-            clearTimeout(window.__ttipTO);
-            window.__ttipTO = setTimeout(() => hide(), 2000);
-        }, true);
-
+                clearTimeout(window.__ttipTimer);
+                window.__ttipTimer = setTimeout(() => hide(), SHOW_MS);
+            },
+            true
+        );
         function show(target) {
             if (!target?.dataset?.ttip) return;
             activeTarget = target;
@@ -412,12 +410,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // hover + keyboard focus
-        document.addEventListener("pointerover", (e) => {
-            if (isTouchUI()) return;
-            const t = e.target.closest("[data-ttip]");
-            if (!t) return;
-            show(t);
-        });
+        document.addEventListener(
+            "click",
+            (e) => {
+                if (isTouchUI()) return;
+
+                const t = e.target.closest("[data-ttip]");
+                if (!t) return;
+
+                show(t);
+            },
+            true
+        );
 
         document.addEventListener("pointerout", (e) => {
             if (isTouchUI()) return;
@@ -452,10 +456,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         // if user clicks anywhere, hide (optional)
-        document.addEventListener("click", () => {
-            if (isTouchUI()) return;   // ✅ 触控不走 click-hide
-            hide();
-        }, true);
+        document.addEventListener("pointerover", (e) => {
+            if (isTouchUI()) return;
+            const t = e.target.closest("[data-ttip]");
+            if (!t) return;
+            show(t);
+        });
     }
 
     /* =========================================================
