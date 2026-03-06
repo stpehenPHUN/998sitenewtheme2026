@@ -506,7 +506,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
     .vendor-list.is-empty { display: block; margin: var(--space-4) var(--space-2); }
 .vendor-empty { text-align: center; }
 .vendor { list-style-type: none; position: relative; overflow: hidden; aspect-ratio: 1/1; border-radius: var(--radius-md); }
-.vendor-img { transition: transform var(--duration-normal) var(--ease-interact); height: 100%; background-size: auto 80%; background-position: center; background-repeat: no-repeat; border-radius: var(--radius-md); border-top: var(--border-width) solid var(--primary-color); background-position:center bottom;}
+.vendor-img { transition: transform var(--duration-normal) var(--ease-interact); height: 100%; background-size: auto 100%; background-position: center; background-repeat: no-repeat; border-radius: var(--radius-md); border-top: var(--border-width) solid var(--primary-color); background-position:center bottom;}
     .vendor-img img { height: 100%; }
 .vendor-bg { background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: var(--radius-md); border-top: var(--border-width) solid var(--primary-color); position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: -1; margin-top: var(--space-6); }
 .vendor-logo { position: absolute; bottom: var(--space-4); left: var(--space-4); }
