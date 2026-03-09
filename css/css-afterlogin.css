@@ -982,8 +982,8 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
     .playcard[data-no-nav] .playcard__header { margin-left: calc(var(--space-2) * -1); margin-right: calc(var(--space-2) * -1); font-size: var(--text-sm); flex: 1 1 100%;}
     .playcard__media { display: none; }
     .playcard[data-no-nav] .playcard__stats { flex:1 1 100%;}
-    .playcard[data-no-nav] .playcard__methods { flex: 1 1 100%; }
-    .playcard[data-no-nav] .playcard__cats{flex: 1 1 100%;}
+    .playcard[data-no-nav] .playcard__methods { flex: 1 1 50%; }
+    .playcard[data-no-nav] .playcard__cats{flex: 1 1 40%;}
 
     .playcard-content { }
 
