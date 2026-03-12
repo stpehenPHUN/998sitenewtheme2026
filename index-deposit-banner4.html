@@ -696,6 +696,13 @@
 
 
             <section class="pkgSection panel" data-section="package">
+                <div class="panel-inner noteBox__1">
+                    <!-- mobile 用：打开 bottom sheet；桌面可以隐藏 -->
+                    <button class="noteBox__btn" type="button" data-action="open-note" aria-controls="noteBox" aria-expanded="false">
+                        Important Note
+                        <span class="icn-information"></span>
+                    </button>
+                </div>
                 <div class="pkgSection__top">
                     <div class="pkgSection__title">Package</div>
                 </div>
@@ -703,13 +710,6 @@
                     <!-- promotion -->
                     <div class="leftStack">
                         <div class="context-detail">
-                            <div class="noteBox__1">
-                                <!-- mobile 用：打开 bottom sheet；桌面可以隐藏 -->
-                                <button class="noteBox__btn" type="button" data-action="open-note" aria-controls="noteBox" aria-expanded="false">
-                                    Important Note
-                                    <span class="icn-information"></span>
-                                </button>
-                            </div>
 
                             <div class="pkgSelect" id="pkgSelect">
                                 <!-- 真数据源：保留 value 作为跳转页 -->
@@ -790,7 +790,7 @@
 
                             <div class="methodSection">
                                 <div class="methodSubHead" id="methodSubHead" hidden>
-                                    <span class="methodSubHead__title" id="methodSubHeadTitle">Pay To</span>
+                                    <span class="methodSubHead__title" id="methodSubHeadTitle"></span>
                                 </div>
                                 <div class="methodWrap" data-scroll-x>
                                     <div class="methodGrid" aria-label="Methods"></div>
@@ -798,178 +798,201 @@
                             </div>
 
                         </div>
-                        <div class="payFromSection">
-                            <div class="payFromSection__head">
-                                <span class="payFromSection__title">Pay To</span>
-                            </div>
-                            <div class="payFromSection__body">
-                                <div class="payFromWrap" data-scroll-x>
-                                    <div class="payFromGrid" aria-label="Paying From"></div>
-                                </div>
-                            </div>
-
-                        </div>
                         <div class="payment--main">
                             <!-- left column -->
-                            <div class="payment--card payToInfoCard" id="payToInfoCard" hidden>
-                                <div class="paytoHead">
-                                    <h5>Pay To</h5>
-                                </div>
-                                <div class="paytobody">
-                                <div class="payToInfoCard__media">
-                                    <div class="payToCard__qr"></div>
-                                </div>
-                                <div class="payToInfoCard__body">
-                                    <div class="payToInfoCard__row">
-                                        <span class="k">Bank</span>
-                                        <div class="payToCard__bank"></div>
-                                    </div>
-
-                                    <div class="payToInfoCard__row">
-                                        <span class="k">Account Name</span>
-                                        <div class="payToCard__name"></div>
-                                    </div>
-
-                                    <div class="payToInfoCard__row">
-                                        <span class="k">Account Number</span>
-                                        <div class="payToCard__number"></div>
-                                    </div>
-                                </div>
-                                </div>
-
-
-                            </div>
-                            <div class="payment--card payDepositAmount">
-                                <div class="depositHead">
-                                    <div class="depositHead__title">
-                                        <h5 class="depositHead__heading">Deposit Amount<span class="icn-information"></span></h5>
-                                    </div>
-                                    <div class="depositHead__meta">
-                                        <div class="depositHead__hint muted" id="minHint"></div>
-                                        <div class="depositHead__hint muted" id="maxHint"></div>
-                                    </div>
-                                </div>
-
-                                <div class="depositpPad">
-                                    <div class="amountRow">
-                                        <span class="curHint"></span>
-                                        <input id="amount" type="text" inputmode="numeric"
-                                               readonly
-                                               autocomplete="off"
-                                               autocapitalize="off"
-                                               spellcheck="false" />
-                                    </div>
-
-                                    <div class="amountEntrySheet" id="amountEntrySheet" aria-hidden="true">
-                                        <button class="amountEntrySheet__backdrop" type="button" data-amount-sheet-close aria-label="Close amount keypad"></button>
-
-                                        <div class="amountEntrySheet__panel">
-                                            <div class="quick" aria-label="Quick Amount" style="grid-template-columns: repeat(4, 1fr)">
-                                                <button class="qBtn" type="button" data-add="20">+20</button>
-                                                <button class="qBtn" type="button" data-add="50">+50</button>
-                                                <button class="qBtn" type="button" data-add="100">+100</button>
-                                                <button class="qBtn" type="button" data-add="200">+200</button>
+                            <div class="payment-left">
+                                <div class="payment--card" id="selectBanking">
+                                    <div class="payFromSection">
+                                        <div class="payFromSection__head">
+                                            <span class="payFromSection__title">Pay To</span>
+                                        </div>
+                                        <div class="payFromSection__body">
+                                            <div class="payFromWrap">
+                                                <div class="payFromGrid" aria-label="Paying From"></div>
                                             </div>
+                                        </div>
 
-                                            <div class="keypad" aria-label="Keypad" data-keypad>
-                                                <button class="keypad__btn" type="button" data-key="1">1</button>
-                                                <button class="keypad__btn" type="button" data-key="2">2</button>
-                                                <button class="keypad__btn" type="button" data-key="3">3</button>
+                                    </div>
 
-                                                <button class="keypad__btn" type="button" data-key="4">4</button>
-                                                <button class="keypad__btn" type="button" data-key="5">5</button>
-                                                <button class="keypad__btn" type="button" data-key="6">6</button>
-
-                                                <button class="keypad__btn" type="button" data-key="7">7</button>
-                                                <button class="keypad__btn" type="button" data-key="8">8</button>
-                                                <button class="keypad__btn" type="button" data-key="9">9</button>
-
-                                                <button class="keypad__btn keypad__btn--ghost" type="button" data-key="clear">C</button>
-                                                <button class="keypad__btn" type="button" data-key="0">0</button>
-                                                <button class="keypad__btn keypad__btn--ghost" type="button" data-key="del" aria-label="Delete">⌫</button>
+                                    <div class="payToInfoCard" id="payToInfoCard" hidden>
+                                        <div class="paytoHead">
+                                            <h5>Pay To</h5>
+                                        </div>
+                                        <div class="paytobody">
+                                            <div class="payToCard__qrWrap" id="payToCardQrWrap" hidden>
+                                                <div class="payToCard__qr" id="payToCardQr"></div>
                                             </div>
+                                            <div class="payToInfoCard__body">
+                                                <div class="payToInfoCard__row">
+                                                    <span class="k">Bank</span>
+                                                    <div class="payToCard__bank"></div>
+                                                </div>
+
+                                                <div class="payToInfoCard__row">
+                                                    <span class="k">Account Name</span>
+                                                    <div class="payToCard__name"></div>
+                                                </div>
+
+                                                <div class="payToInfoCard__row">
+                                                    <span class="k">Account Number</span>
+                                                    <div class="payToCard__number"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="cryptoInfoCard" id="cryptoInfoCard" hidden>
+                                        <div class="cryptoInfoCard__head">
+                                            <span class="cryptoInfoCard__network" id="cryptoNetwork"></span>
+                                        </div>
+
+                                        <div class="cryptoInfoCard__label" id="cryptoAddressLabel">Or send to this address</div>
+
+                                        <div class="cryptoInfoCard__box">
+                                            <span class="cryptoInfoCard__value" id="cryptoAddressValue"></span>
+                                            <button type="button" class="cryptoInfoCard__copy" id="cryptoCopyBtn" aria-label="Copy address">
+                                                ⧉
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
 
+                                <div class="payment--card payDepositAmount">
+                                    <div class="depositHead">
+                                        <div class="depositHead__title">
+                                            <h5 class="depositHead__heading">Deposit Amount<span class="icn-information"></span></h5>
+                                        </div>
+                                        <div class="depositHead__meta">
+                                            <div class="depositHead__hint muted" id="minHint"></div>
+                                            <div class="depositHead__hint muted" id="maxHint"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="depositpPad">
+                                        <div class="amountRow">
+                                            <span class="curHint"></span>
+                                            <input id="amount" type="text" inputmode="numeric"
+                                                   autocomplete="off"
+                                                   autocapitalize="off"
+                                                   spellcheck="false" />
+                                        </div>
+                                        <div class="amountEntrySheet" id="amountEntrySheet" aria-hidden="true">
+
+                                            <div class="amountEntrySheet__panel">
+                                                <div class="quick" aria-label="Quick Amount" style="grid-template-columns: repeat(4, 1fr)">
+                                                    <button class="qBtn" type="button" data-add="20">+20</button>
+                                                    <button class="qBtn" type="button" data-add="50">+50</button>
+                                                    <button class="qBtn" type="button" data-add="100">+100</button>
+                                                    <button class="qBtn" type="button" data-add="200">+200</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                </div>
+                                <div class="bottomBar payment--card"">
+                                    <div class="upload">
+                                        <span>Upload Receipt (Optional)</span>
+                                        <input type="file" />
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- bank 专用资料卡 -->
                             <!-- right column / summary -->
-                            <aside class="payment--card payment--summary">
-                                <div class="summaryHeader">
-                                    <h5 class="summaryHeader__title">Deposit Summary</h5>
+                            <div class="payment-right">
+                                <aside class="payment--card payment--summary">
+                                    <div class="summaryHeader">
+                                        <h5 class="summaryHeader__title">Deposit Summary</h5>
 
-                                    <div class="summaryFx muted" id="fxRow" hidden data-fx>
-                                        <div class="summaryFx__label" data-lang="DEPOSITWITHDRAW.CurrentExchangeRate">
-                                            Current exchange rate
+
+                                    </div>
+
+                                    <div class="summaryList">
+                                        <div class="summary__item" data-summary-row="method">
+                                            <span class="k">Payment Method</span>
+                                            <span id="sumMethod">-</span>
                                         </div>
 
-                                        <div class="fxRow__value">
-                                            <span class="fxRow__quote">-</span>
-                                            <span class="fxRow__sep">:</span>
-                                            <span class="fxRow__base">-</span>
-                                            <span class="fxRow__rate" id="fxText">-</span>
+
+                                        <div class="summary__item" data-summary-row="network" hidden>
+                                            <span class="k">Network</span>
+                                            <span id="sumNetwork">-</span>
+                                        </div>
+
+                                        <div class="summary__item" data-summary-row="pay-from">
+                                            <span class="k">Paying From</span>
+                                            <span id="sumFrom">-</span>
+                                        </div>
+
+                                        <div class="summary__item" data-summary-row="currency" hidden>
+                                            <span class="k">Currency</span>
+                                            <span id="sumCurrency">-</span>
+                                        </div>
+
+                                        <div class="summary__item" data-summary-row="conversion" hidden>
+                                            <span class="k">Currency Conversion</span>
+                                            <span id="sumConversion">-</span>
+                                        </div>
+
+                                        <div class="summary__item" id="fxRow" hidden data-fx>
+                                            <span class="k" data-lang="DEPOSITWITHDRAW.CurrentExchangeRate">
+                                                Current exchange rate
+                                            </span>
+
+                                            <div class="fxRow__value">
+                                                <span class="fxRow__quote">-</span>
+                                                <span class="fxRow__sep">:</span>
+                                                <span class="fxRow__base">-</span>
+                                                <span class="fxRow__rate" id="fxText">-</span>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="summary__item" data-summary-row="deposit">
+                                            <span class="k">Deposit Amount</span>
+                                            <span id="sumDeposit"></span>
+                                        </div>
+
+                                        <div class="summary__item" data-summary-row="bonus">
+                                            <span class="k">Bonus Amount</span>
+                                            <span id="sumBonus"></span>
+                                        </div>
+
+                                        <div class="summary__item" data-summary-row="min-deposit">
+                                            <span class="k">Package Min Deposit</span>
+                                            <span id="sumMinDeposit"></span>
+                                        </div>
+
+                                        <div class="summary__item" data-summary-row="receive">
+                                            <span class="k">You Will Receive</span>
+                                            <span id="sumReceive"></span>
+                                        </div>
+
+                                        <div class="summary__item" data-summary-row="rollover">
+                                            <span class="summaryContent" id="sumRolloverFormula"></span>
+                                        </div>
+
+                                        <div class="summary__total">
+                                            <span>Total<div class="small">Pay this amount</div></span>
+                                            <span id="sumTotal"></span>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="summaryList">
-                                    <div class="summary__item" data-summary-row="method">
-                                        <span class="k">Payment Method</span>
-                                        <span id="sumMethod">Crypto</span>
+                                    <div class="submitContainer">
+                                        <div class="submitWrap ttip" id="submitWrap">
+                                            <button class="submit" id="submitBtn" disabled>
+                                                Submit
+                                            </button>
+                                        </div>
                                     </div>
 
-                                    <div class="summary__item" data-summary-row="pay-from">
-                                        <span class="k">Paying From</span>
-                                        <span id="sumFrom">-</span>
-                                    </div>
+                                </aside>
 
-                                    <div class="summary__item" data-summary-row="deposit">
-                                        <span class="k">Deposit Amount</span>
-                                        <span id="sumDeposit"></span>
-                                    </div>
-
-                                    <div class="summary__item" data-summary-row="bonus">
-                                        <span class="k">Bonus Amount</span>
-                                        <span id="sumBonus"></span>
-                                    </div>
-
-                                    <div class="summary__item" data-summary-row="min-deposit">
-                                        <span class="k">Package Min Deposit</span>
-                                        <span id="sumMinDeposit"></span>
-                                    </div>
-
-                                    <div class="summary__item" data-summary-row="receive">
-                                        <span class="k">You Will Receive</span>
-                                        <span id="sumReceive"></span>
-                                    </div>
-
-                                    <div class="summary__item" data-summary-row="rollover">
-                                        <span class="summaryContent" id="sumRolloverFormula"></span>
-                                    </div>
-
-                                    <div class="summary__total">
-                                        <span>Total<div class="small">Pay this amount</div></span>
-                                        <span id="sumTotal"></span>
-                                    </div>
-                                </div>
-                            </aside>
-
-                            <div class="bottomBar">
-                                <div class="upload">
-                                    <span>Upload Receipt (Optional)</span>
-                                    <input type="file" />
-                                </div>
                             </div>
 
-                            <div class="submitContainer">
-                                <div class="submitWrap ttip" id="submitWrap">
-                                    <button class="submit" id="submitBtn" disabled>
-                                        Submit
-                                    </button>
-                                </div>
-                            </div>
                         </div>
                     </section>
                 </div>
