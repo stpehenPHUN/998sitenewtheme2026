@@ -69,7 +69,7 @@ a { color: var(--font-color); text-decoration: none; }
 
 /* tooltips */
 /* ===== Tooltip base ===== */
-@media (min-width:1024px){
+@media (min-width:1024px) {
     .ttip { position: relative; overflow: visible; }
 
     .ttip__bubble { position: absolute; z-index: 50; padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); background: var(--primary-color); border: var(--border-width) solid var(--primary-color); color: var(--white-color); white-space: nowrap; line-height: 1; opacity: 0; visibility: hidden; pointer-events: none; transform: translate3d(0, 4px, 0); transition: opacity var(--duration-fast) var(--ease-interact), transform var(--duration-fast) var(--ease-interact), visibility var(--duration-fast) var(--ease-interact); font-size: var(--text-xs); box-shadow: var(--main-text-shadow); }
@@ -92,9 +92,9 @@ a { color: var(--font-color); text-decoration: none; }
     /* ===== Tooltip portal (escape overflow clipping) ===== */
     .ttipPortal { position: fixed; z-index: 9999; left: 0; top: 0; max-width: min(90vw, 360px); }
         .ttipPortal[data-pos="top"]::after { content: ""; position: absolute; width: var(--icn-w8); height: var(--icn-w8); background: var(--primary-color); transform: rotate(45deg); left: 50%; top: calc(100% - 2px); transform: translateX(-50%) rotate(45deg); }
-
 }
-@media (max-width:1023.98px){
+
+@media (max-width:1023.98px) {
     .ttip__bubble { display: none; }
 }
 
@@ -786,7 +786,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 .pagebar__back { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 10px; color: var(--primary-color); text-decoration: none; }
     .pagebar__back svg { width: 20px; height: 20px; }
 
-.pagebar__title { font-size: var(--text-xl); color: var(--primary-color); letter-spacing: .2px; white-space: nowrap; }
+.pagebar__title { font-size: var(--text-xl); color: var(--primary-color); letter-spacing: .2px; white-space: nowrap; display: flex; align-items: center; gap: var(--space-2); }
 
 .pagebar__right { flex: 1; display: flex; justify-content: flex-end; min-width: 0; /* important for ellipsis */ }
 
@@ -1027,10 +1027,12 @@ ard { flex: 0 0 var(--card-w); width: var(--card-w); }
 
 @media(min-width:1200px) {
     .pkg--context { display: grid; grid-template-columns: clamp(180px, 30%, 450px) 1fr; gap: var(--space-3); align-items: start; }
+
+    .pkgSection[data-section="withdraw"] .pkg--context { grid-template-columns: 1fr clamp(180px, 30%, 450px); }
 }
 /* ===== LEFT ===== */
 .leftStack { }
-.context-detail { display: flex; flex-direction: column; gap: var(--space-3); }
+.context-detail { display: flex; flex-direction: column; gap: var(--space-3); height: 100%; }
 
 
 .selectBox { }
@@ -1070,7 +1072,7 @@ ard { flex: 0 0 var(--card-w); width: var(--card-w); }
     .pkg--context .leftStack .playcard { order: 1; }
     .pkg--context .leftStack .pkgSelect { order: 2; }
     .pkg--context .leftStack .noteBox { order: 3; }
-    .noteBox { display: block; }
+    .noteBox { display: block; height: 100%; }
 }
 
 @media (max-width: 1199.98px) { /* ===== Bottom Sheet: Note ===== */
@@ -1106,7 +1108,7 @@ ard { flex: 0 0 var(--card-w); width: var(--card-w); }
 }
 
 /* ===== RIGHT ===== */
-.rightPanel { min-width: 0; gap: var(--space-3); display: flex; flex-direction: column; }
+.rightPanel { min-width: 0; gap: var(--space-3); display: flex; flex-direction: column; height: 100%; }
 
 .topTabs { display: flex; gap: var(--space-1); overflow-x: auto; white-space: nowrap; }
 .tab { border-top-left-radius: var(--radius-md); border-top-right-radius: var(--radius-md); cursor: pointer; padding: var(--space-2) var(--space-4); display: flex; align-items: center; gap: var(--space-1); }
@@ -1201,12 +1203,12 @@ ard { flex: 0 0 var(--card-w); width: var(--card-w); }
 
 @media (min-width:1024px) {
     .payFromSection__head { display: block; }
-    .payFromGrid { /*min-width: max-content;*/ /*padding: var(--space-5);*//*gap: var(--space-3);*/ }
+    .payFromGrid { /*min-width: max-content;*/ /*padding: var(--space-5);*/ /*gap: var(--space-3);*/ }
 
     .payment--main { grid-template-columns: clamp(180px, 40%, 420px) 1fr; }
     .payment-left { display: flex; flex-direction: column; align-items: stretch; }
     .payment--card { padding: var(--space-3); }
-    .bottomBar {  margin-top:auto; }
+    .bottomBar { margin-top: auto; }
 }
 
 @media (max-width: 1199.98px) {
@@ -1262,14 +1264,15 @@ ard { flex: 0 0 var(--card-w); width: var(--card-w); }
 
 /* ===== PayFrom mobile wheel overlay (独立，不占用 appSheet) ===== */
 @media (max-width:1023px) {
-    .payFromPickBtn { width: 100%; padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); background: var(--secondary-color); display: flex; justify-content: space-between; align-items: center; border: 0; color: var(--font-color); background: var(--bg-color); border-radius: var(--radius-sm); padding: var(--space-2) var(--space-3); color: var(--font-color); border: 0; } }
+    .payFromPickBtn { width: 100%; padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); background: var(--secondary-color); display: flex; justify-content: space-between; align-items: center; border: 0; color: var(--font-color); background: var(--bg-color); border-radius: var(--radius-sm); padding: var(--space-2) var(--space-3); color: var(--font-color); border: 0; }
+}
 
-    .pfWheel { position: fixed; inset: 0; z-index: 99999; display: grid; grid-template-rows: 1fr auto; background: rgba(0,0,0,55); }
-        .pfWheel[hidden] { display: none; }
-    .pfWheel__header { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; background: var(--secondary-color, #151515); border-radius: 16px 16px 0 0; }
-    .pfWheel .wheel { background: var(--secondary-color, #151515); border-radius: 16px 16px 0 0; padding-bottom: 12px; }
-    .wheel__item.isActive { opacity: 1; }
-    .wheel__item.is-disabled { opacity: .25; }
+.pfWheel { position: fixed; inset: 0; z-index: 99999; display: grid; grid-template-rows: 1fr auto; background: rgba(0,0,0,55); }
+    .pfWheel[hidden] { display: none; }
+.pfWheel__header { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; background: var(--secondary-color, #151515); border-radius: 16px 16px 0 0; }
+.pfWheel .wheel { background: var(--secondary-color, #151515); border-radius: 16px 16px 0 0; padding-bottom: 12px; }
+.wheel__item.isActive { opacity: 1; }
+.wheel__item.is-disabled { opacity: .25; }
 }
 
 .alert-value { border-color: var(--color-alert); }
@@ -1280,7 +1283,7 @@ ard { flex: 0 0 var(--card-w); width: var(--card-w); }
 
         .depositHead__hint.is-alert .hint-label::after { content: ""; }
 
-.payFromSection{display:flex; flex-direction:column; gap:var(--space-2);}
+.payFromSection { display: flex; flex-direction: column; gap: var(--space-2); }
 .payFromSection__head { }
 .payOpt { display: flex; align-items: center; gap: var(--space-2); }
 
@@ -1295,19 +1298,18 @@ ard { flex: 0 0 var(--card-w); width: var(--card-w); }
     .payment--main[data-layout="bank-transfer"] .payDepositAmount { order: 2; }
     .payment--main[data-layout="bank-transfer"] .payment--summary { order: 4; }
     .payment--main[data-layout="bank-transfer"] .bottomBar { order: 3; }
-
 }
 
 @media (min-width:1024px) {
 
-    .payment-left{}
-    .payment-right{}
+    .payment-left { }
+    .payment-right { }
 
 
     .desktopDropdown__menu { display: flex; flex-direction: column; max-height: 300px; overflow: auto; position: absolute; }
 
-    .desktopDropdown { position: relative; width: 100%; z-index:999;}
-    .desktopDropdown__menu { width: 100%; box-shadow: var(--main-text-shadow); background: var(--bg-color); padding:var(--space-2);}
+    .desktopDropdown { position: relative; width: 100%; z-index: 999; }
+    .desktopDropdown__menu { width: 100%; box-shadow: var(--main-text-shadow); background: var(--bg-color); padding: var(--space-2); }
 
     .desktopDropdown__label { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
     .desktopDropdown__item { padding: var(--space-2) var(--space-3); color: var(--font-color); border: 0; background: var(--bg-color); overflow-y: hidden; white-space: nowrap; text-overflow: ellipsis; }
@@ -1315,26 +1317,27 @@ ard { flex: 0 0 var(--card-w); width: var(--card-w); }
     .payOpt__main { text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 
     .payment--main[data-layout="bank-transfer"] { margin-top: calc(var(--space-3) * -1); }
-    .cryptoInfoCard__label{font-size:var(--text-sm); margin-bottom:var(--space-2);}
+    .cryptoInfoCard__label { font-size: var(--text-sm); margin-bottom: var(--space-2); }
     .cryptoInfoCard__box { display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); background: var(--bg-color); border-radius: var(--radius-sm); padding: var(--space-2) var(--space-3); color: var(--font-color); }
     .cryptoInfoCard__copy { color: var(--font-color); background: var(--bg-color); border: 0; border-radius: var(--radius-sm); }
         .cryptoInfoCard__copy:hover { background: var(--secondary-color); }
 }
 
 
-.paytobody { background: var(--bg-color); border-radius: var(--radius-md); padding: var(--space-4); gap: var(--space-2); flex-direction: row; display: flex;gap: var(--space-4); }
+.paytobody { background: var(--bg-color); border-radius: var(--radius-md); padding: var(--space-4); gap: var(--space-2); flex-direction: row; display: flex; gap: var(--space-4); }
 .payToCard__qrWrap { display: flex; justify-content: center; align-items: center; overflow: hidden; aspect-ratio: 1/1; border-radius: var(--radius-sm); }
-.payToCard__qr{width:var(--icn-w86);}
+.payToCard__qr { width: var(--icn-w86); }
 .payToCard__qrImg { width: 100%; }
 .payToCard__bankWrap { display: flex; gap: var(--space-2); }
     .payToCard__bankWrap img { width: var(--icn-w24); border-radius: var(--radius-pill); }
-.payToInfoCard__body { display: flex; flex-direction: column; gap: var(--space-2); width:100%;font-size:var(--text-sm);}
+.payToInfoCard__body { display: flex; flex-direction: column; gap: var(--space-2); width: 100%; font-size: var(--text-sm); }
 .payToInfoCard__row { display: flex; justify-content: space-between; align-items: center; }
     .payToInfoCard__row span.k { margin-right: var(--space-3); }
-    .payToCard__qrImg.is-static { cursor: default; pointer-events: none; }
-.payToCard__name{text-align:right;}
+.payToCard__qrImg.is-static { cursor: default; pointer-events: none; }
+.payToCard__name { text-align: right; }
 
-@media (max-width:1023.98px) { .payToInfoCard__row { font-size: var(--text-sm); }
+@media (max-width:1023.98px) {
+    .payToInfoCard__row { font-size: var(--text-sm); }
 }
 /*===== QR View =====*/
 .qrViewer[hidden] { display: none !important; }
@@ -1366,3 +1369,56 @@ ard { flex: 0 0 var(--card-w); width: var(--card-w); }
 .qrViewer__actionText { font-size: 12px; color: rgba(255,255,255,0.85); }
 
 body.qrViewer-open { overflow: hidden; }
+
+
+/*----------------------------------WITHDRAWAL*/
+[data-section="withdraw"] { }
+
+.withdrawTopTabs { border-radius: var(--radius-pill); background: var(--bg-color); display: flex; align-items: center; gap: var(--space-2); margin: calc(var(--space-2) * -1) calc(var(--space-3) * -1); }
+    .withdrawTopTabs .tab { color: var(--font-color); border-radius: var(--radius-pill); border: 0; background: var(--bg-color); padding-left: var(--space-5); padding-right: var(--space-5); }
+        .withdrawTopTabs .tab.is-active { background: var(--primary-color); }
+
+.leftPanel { display: flex; flex-direction: column; gap: var(--space-3); }
+
+.sectionHead div{ display: flex; align-items: center; gap: var(--space-2); }
+
+.savedBankList { display: grid; gap: var(--space-3); padding: var(--space-3) }
+.withdrawCard { position: relative; }
+.withdrawCard__main, .withdrawCard--add, .withdrawCard--empty { background: var(--bg-color); border-radius: var(--radius-sm); color: var(--font-color); border: var(--border-width) solid transparent; display: flex; gap: var(--space-3); padding: var(--space-3); width: 100%; align-items: center; }
+.withdrawCard__icon { width: var(--icn-w24);  }
+.withdrawCard.is-active .withdrawCard__main, .withdrawCard.is-active .withdrawCard--add, .withdrawCard.is-active .withdrawCard--empty { border-color: var(--primary-color); }
+.withdrawCard__icon img { width: 100%; border-radius:var(--radius-pill);}
+.withdrawCard__body { }
+    .withdrawCard__body span { display: block; text-align: left; }
+
+
+.withdrawCard__tool { position: absolute; width: var(--icn-w24); height: var(--icn-w24); border-radius: var(--radius-pill); top: calc(var(--space-2) * -1); border:0;}
+    .withdrawCard__tool .icon { width: var(--icn-w12); height: var(--icn-w12); }
+.withdrawCard__tool--delete { background-color: var(--bs-red); right: calc(var(--space-3) + var(--icn-w24) ); }
+.withdrawCard__tool--edit {  background-color: var(--primary-color); right: var(--space-2); }
+
+.appBankSlot { display: grid; gap: var(--space-3); padding: var(--space-3); }
+.ewalletList { display: grid; gap: var(--space-3); padding: var(--space-3); }
+.cryptoList { display: grid; gap: var(--space-3); padding: var(--space-3); }
+
+.withdrawEditor__desc { font-size: var(--text-sm); }
+.withdrawSection { border-radius: var(--radius-sm); background: var(--secondary-color); display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-3); }
+.withdrawEditor { border-radius: var(--radius-sm); background: var(--bg-color); padding: var(--space-3); }
+.withdrawFormGrid { display: grid; gap: var(--space-3) }
+    .withdrawFormGrid .field { display: flex; flex-direction: column; color: var(--font-color); border-radius: var(--radius-sm); border: 0; background: var(--secondary-color); padding: var(--space-3); }
+        .withdrawFormGrid .field span { font-size: var(--text-xs); opacity: 0.65; }
+        .withdrawFormGrid .field input { background: transparent; border: 0; color: var(--font-color); }
+            .withdrawFormGrid .field input::placeholder { color: var(--font-color); }
+
+.formActions { display: flex; justify-content: center; align-items: center; gap: var(--space-3); padding: var(--space-3); }
+    .formActions button { color: var(--font-color); border-radius: var(--radius-pill); border: 0; background: var(--primary-color); padding: var(--space-2) var(--space-4); align-items: center; gap: var(--space-1); display: flex; }
+
+#sumWithdrawBankImg { width: var(--icn-w24); }
+#sumWithdrawBankImgimg { width: 100%; border-radius: var(--radius-pill); }
+
+@media (min-width:1024px) { .withdrawFormGrid { grid-template-columns: repeat(2, 1fr); }
+    .savedBankList { grid-template-columns: repeat(3, 1fr); }
+    .appBankSlot { grid-template-columns: repeat(3, 1fr); }
+    .ewalletList { grid-template-columns: repeat(4, 1fr); }
+    .cryptoList { grid-template-columns: repeat(4, 1fr); }
+}
