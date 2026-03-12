@@ -1310,7 +1310,7 @@ ard { flex: 0 0 var(--card-w); width: var(--card-w); }
     .desktopDropdown__menu { width: 100%; box-shadow: var(--main-text-shadow); background: var(--bg-color); padding:var(--space-2);}
 
     .desktopDropdown__label { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-    .desktopDropdown__item { padding: var(--space-2) var(--space-3); color: var(--font-color); border: 0; background: var(--bg-color); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .desktopDropdown__item { padding: var(--space-2) var(--space-3); color: var(--font-color); border: 0; background: var(--bg-color); overflow-y: hidden; white-space: nowrap; text-overflow: ellipsis; }
         .desktopDropdown__item:hover { background: var(--secondary-color); }
     .payOpt__main { text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 
