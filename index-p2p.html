@@ -46,7 +46,8 @@
             </div>
         </section>
 
-        <script>//close download
+        <script>
+    //close download
             document.addEventListener('click', (e) => {
                 const closeBtn = e.target.closest('.icnX[aria-label="closeDownload"]');
                 if (!closeBtn) return;
@@ -238,7 +239,7 @@
                         </div>
                         <div class="sidebar-header__actions">
                             <a href="index-deposit.html" class="btn-deposit btn btn-1 btn-pill btnh btn--hover">Deposit</a>
-                            <a href="#" class="btn-withdraw btn btn-1 btn-pill btnh btn--hover">Withdraw</a>
+                            <a href="index-withdraw.html" class="btn-withdraw btn btn-1 btn-pill btnh btn--hover">Withdraw</a>
                             <a href="#" class="btn-bet btn btn-1 btn-pill btnh btn--hover btn-pn1">
                                 <svg class="icon icon16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="M9,12H7a1,1,0,0,0,0,2H9a1,1,0,0,0,0-2ZM8,10h4a1,1,0,0,0,0-2H8a1,1,0,0,0,0,2Zm1,6H7a1,1,0,0,0,0,2H9a1,1,0,0,0,0-2Zm12-4H18V3a1,1,0,0,0-.5-.87,1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0A1,1,0,0,0,2,3V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V13A1,1,0,0,0,21,12ZM5,20a1,1,0,0,1-1-1V4.73L6,5.87a1.08,1.08,0,0,0,1,0l3-1.72,3,1.72a1.08,1.08,0,0,0,1,0l2-1.14V19a3,3,0,0,0,.18,1Zm15-1a1,1,0,0,1-2,0V14h2Zm-6.44-2.83a.76.76,0,0,0-.18-.09.6.6,0,0,0-.19-.06,1,1,0,0,0-.9.27A1.05,1.05,0,0,0,12,17a1,1,0,0,0,.07.38,1.19,1.19,0,0,0,.22.33,1.15,1.15,0,0,0,.33.21.94.94,0,0,0,.76,0,1.15,1.15,0,0,0,.33-.21A1,1,0,0,0,14,17a1.05,1.05,0,0,0-.29-.71A1.58,1.58,0,0,0,13.56,16.17Zm.14-3.88a1,1,0,0,0-1.62.33A1,1,0,0,0,13,14a1,1,0,0,0,1-1,1,1,0,0,0-.08-.38A.91.91,0,0,0,13.7,12.29Z" /></svg>
                             </a>
@@ -310,7 +311,8 @@
                                 </ul>
                             </div>
                             <!-- promo script -->
-                            <script>const swiperpromo = new Swiper('.swiper-single', {
+                            <script>
+    const swiperpromo = new Swiper('.swiper-single', {
                                     speed: 400,
                                     spaceBetween: 100,
                                     autoplay: {
@@ -652,7 +654,8 @@
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
                 </div>
-                <script>document.addEventListener('DOMContentLoaded', () => {
+                <script>
+    document.addEventListener('DOMContentLoaded', () => {
                         if (typeof Swiper === 'undefined') return;
 
                         /* ========= 可调参数区 ========= */
@@ -844,7 +847,8 @@
                 <script src="js/pixi.min.js"></script>
                 <script src="js/dragonBones.min.js"></script>
 
-                <script>document.addEventListener("DOMContentLoaded", () => {
+                <script>
+    document.addEventListener("DOMContentLoaded", () => {
 
                         const MAX_ACTIVE = 12;
                         const VIEW_MARGIN = 200;
@@ -1033,7 +1037,8 @@
 
         </main>
     </div>
-    <script>(() => {
+    <script>
+    (() => {
             const BREAKPOINT = 1024;
 
             const sheet = document.querySelector(".appSheet");
@@ -1311,7 +1316,8 @@
             });
 
         })();</script>
-    <script>//side menu
+    <script>
+    //side menu
         document.addEventListener('DOMContentLoaded', () => {
             const BP_MOBILE_MAX = 767;
             const body = document.body;
@@ -1410,7 +1416,8 @@
             applyDefaults(true);
             window.addEventListener('resize', () => applyDefaults(false));
         });</script>
-    <script>// fav button
+    <script>
+    // fav button
         document.addEventListener('click', (e) => {
             const btn = e.target.closest('.btn-fav');
             if (!btn) return;
@@ -1434,7 +1441,8 @@
                 btn.setAttribute('aria-pressed', 'true');
             }
         });</script>
-    <script>const btn = document.querySelector('[data-action="toggle-app"]');
+    <script>
+    const btn = document.querySelector('[data-action="toggle-app"]');
         const nav = document.querySelector('.sidebar-nav.sidebar-nav--product');
         const panel = nav?.querySelector('.prod-nav');
         const body = document.body;
@@ -1512,7 +1520,8 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && nav.classList.contains('active')) closeNav();
         });</script>
-    <script>//search
+    <script>
+    //search
         document.addEventListener('DOMContentLoaded', () => {
             const BP_MOBILE_MAX = 1024;
 
@@ -1594,7 +1603,8 @@
                 rails.forEach((rail) => closeSearch(rail));
             });
         });</script>
-    <script>document.addEventListener("click", (e) => {
+    <script>
+    document.addEventListener("click", (e) => {
             const btn = e.target.closest("#btn-settingsbox");
             if (!btn) return;
 
@@ -1610,7 +1620,8 @@
             // 无障碍：告诉读屏当前状态
             btn.setAttribute("aria-expanded", String(!isOpen));
         });</script>
-    <script>//render background image form data
+    <script>
+    //render background image form data
         document.querySelectorAll('.vendor-img').forEach(el => {
             const src = el.dataset.image;
             if (src) {
