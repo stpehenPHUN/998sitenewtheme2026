@@ -1,4 +1,4 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     /* =========================================================
        0) CONFIG
     ========================================================= */
@@ -61,16 +61,19 @@
         shopee: { id: "shopee", name: "ShopeePay eWallet", icon: "shopee.png", maintenance: false, currency: "MYR", minDeposit: 20, maxDeposit: 10000 },
 
         // ===== CRYPTO (default USDT) =====
-        erc20: { id: "erc20", name: "ERC20-USDT", icon: "erc20.png", maintenance: false, currency: "USDT", minDeposit: 10, maxDeposit: 10000 },
-        trc20: { id: "trc20", name: "TRC20-USDT", icon: "trc20.png", maintenance: false, currency: "USDT", minDeposit: 10, maxDeposit: null },
+        erc20: {
+            id: "erc20", name: "ERC20-USDT", icon: "erc20.png", maintenance: false, currency: "USDT", minDeposit: 10, maxDeposit: 10000, addressLabel: "Wallet Address", address: "TQX9abc123exampleERC20walletAddress"
+},
+        trc20: {
+            id: "trc20", name: "TRC20-USDT", icon: "trc20.png", maintenance: false, currency: "USDT", minDeposit: 10, maxDeposit: null,addressLabel: "Wallet Address", address: "tesing trc20"
+},
     };
-    const DEFAULT_QR_IMAGE = "image/qr-default.png";
     const BANK_PAYTO_ACCOUNTS = [
         {
             id: "maybank_acc_1",
             bank: "Maybank",
             image: "payment/maybank.png",
-            accountName: "ABC SDN BHD",
+            accountName: "ABCDEFG HIJKLMN  SDN BHD",
             accountNumber: "1234 5678 9012",
             maintenance: false,
             minDeposit: 20,
@@ -92,7 +95,7 @@
             id: "ocbc",
             bank: "OBC Bank",
             image: "payment/ocbc.png",
-            accountName: "ABC SDN BHD",
+            accountName: "ABCDEFG HIJKLMN OPQRSTU SDN BHD",
             accountNumber: "8888 1111 2222",
             maintenance: false,
             minDeposit: 50,
@@ -239,7 +242,11 @@
                     PAYFROM_CATALOG.trc20
                 ],
             },
-            { id: "bitcoin", name: "Bitcoin", icon: "bitcoin.png", minDeposit: 1, currency: "BTC", convert: true, maintenance: false, },
+            {
+                id: "bitcoin", name: "Bitcoin", icon: "bitcoin.png", minDeposit: 10, currency: "BTC", convert: true, maintenance: false,
+                addressLabel: "Wallet Address",
+                address: "testing bitcoin",
+},
             { id: "ethereum", name: "Ethereum", icon: "ethereum.png", minDeposit: 500, maxDeposit: 100000, currency: "USDT", convert: true, maintenance: false, },
             { id: "usdterc20", name: "USDT (ERC20)", icon: "erc20.png", minDeposit: 90, maxDeposit: 10000, currency: "USDT", convert: true, maintenance: false, },
         ],
@@ -1046,6 +1053,14 @@
 
             return channel.payFrom.find(p => p.id === state.payFromId) || null;
         }
+        function getActiveCryptoSource() {
+            if (state.methodType !== "crypto") return null;
+
+            const channel = getActiveChannel();
+            const payFrom = getActivePayFrom();
+
+            return payFrom || channel || null;
+        }
         function fmtMoney(n) {
             const num = Number(n);
             if (!Number.isFinite(num)) return "0.00";
@@ -1265,13 +1280,42 @@
             }
             return out;
         }
+        function setSummaryText(id, text) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.textContent = text ?? "-";
+        }
+
+        function setSummaryRowVisible(key, show) {
+            const row = document.querySelector(`[data-summary-row="${key}"]`);
+            if (!row) return;
+            row.hidden = !show;
+        }
+        function syncSelectBankingVisibility() {
+            const wrap = document.getElementById("selectBanking");
+            if (!wrap) return;
+
+            const payFromSection = wrap.querySelector(".payFromSection");
+            const payToInfoCard = document.getElementById("payToInfoCard");
+            const cryptoInfoCard = document.getElementById("cryptoInfoCard");
+
+            const hasVisibleChild =
+                (payFromSection && !payFromSection.hidden) ||
+                (payToInfoCard && !payToInfoCard.hidden) ||
+                (cryptoInfoCard && !cryptoInfoCard.hidden);
+
+            wrap.hidden = !hasVisibleChild;
+        }
         function recalcSummary() {
             const pkgEl = getActivePackage();
             const channel = getActiveChannel();
             const payFrom = getActivePayFrom();
             const payTo = getActivePayTo();
 
-            const activeSource = state.methodType === "bank" ? payTo : payFrom;
+            const activeSource =
+                state.methodType === "bank"
+                    ? payTo
+                    : (state.methodType === "crypto" ? (payFrom || channel) : payFrom);
 
             const input = document.getElementById("amount");
             if (!pkgEl || !input) return;
@@ -1289,7 +1333,50 @@
             // rate: 1 payCur = rate pkgCur
             const rate = allowConvert ? getRateByPair(payCur, pkgCur) : null;
             const convertMode = allowConvert && rate != null && payCur !== pkgCur;
+            // ---- Extended summary details ----
+            const isBank = state.methodType === "bank";
+            const isCrypto = state.methodType === "crypto";
 
+            const channelName = channel?.name || channel?.id || "-";
+            const networkName = payFrom?.name || payFrom?.id || "-";
+            const walletAddress =
+                (isCrypto ? (payFrom?.address || channel?.address || "") : "").trim() || "-";
+
+            setSummaryText("sumMethod", METHOD_META[state.methodType]?.label || "-");
+            setSummaryText("sumFrom", activeSource?.name || activeSource?.bank || activeSource?.id || "-");
+            setSummaryText("sumChannel", channelName);
+            setSummaryText("sumNetwork", networkName);
+            setSummaryText("sumWalletAddress", walletAddress);
+            setSummaryText("sumCurrency", payCur);
+            setSummaryText(
+                "sumConversion",
+                convertMode ? `${fmtMoneySep(rate, 8)} ${payCur}` : "-"
+            );
+
+            // row visibility
+            //setSummaryRowVisible("channel", !isBank && !!channel);
+            setSummaryRowVisible("network", isCrypto && !!payFrom);
+            setSummaryRowVisible("currency", !isBank);
+            setSummaryRowVisible("conversion", convertMode);
+
+            const sumFromLabel = document.getElementById("sumFromLabel");
+            if (state.methodType === "crypto") {
+                const hasAddress = !!String(walletAddress || "").trim() && walletAddress !== "-";
+
+                if (hasAddress) {
+                    if (sumFromLabel) sumFromLabel.textContent = "Or send to this address";
+                    setSummaryText("sumFrom", walletAddress);
+                } else {
+                    if (sumFromLabel) sumFromLabel.textContent = "Paying From";
+                    setSummaryText("sumFrom", channel?.name || activeSource?.name || activeSource?.id || "-");
+                }
+            } else if (state.methodType === "bank") {
+                if (sumFromLabel) sumFromLabel.textContent = "Pay To";
+                setSummaryText("sumFrom", activeSource?.bank || activeSource?.id || "-");
+            } else {
+                if (sumFromLabel) sumFromLabel.textContent = "Paying From";
+                setSummaryText("sumFrom", activeSource?.name || activeSource?.id || "-");
+            }
             // FX row render
             renderFxRow({
                 show: convertMode,
@@ -1303,6 +1390,16 @@
                 input.value = "";
                 state.lastConvertMode = convertMode;
             }
+
+            const rawVal = Number(unformatThousands(input.value || "0")) || 0;
+            const depositInCurrency = convertMode && rate ? (rawVal / rate) : rawVal;
+
+            setSummaryText(
+                "sumDepositInCurrency",
+                convertMode ? `${fmtMoneySep(depositInCurrency, 8)} ${payCur}` : "-"
+            );
+
+            setSummaryRowVisible("deposit-in-currency", convertMode);
 
             // ---- Min Deposit display ----
             const minHint = document.getElementById("minHint");
@@ -1478,12 +1575,7 @@
         mqMobile.addEventListener?.("change", () => {
             const ch = getActiveChannel();
             if (!ch) return;
-
-            if (state.methodType === "bank") {
-                renderBankPayToInMethodGrid(ch);
-            } else {
-                renderPayFrom(ch);
-            }
+            renderPayFrom(ch);
         });
 
         function clearPayFrom() {
@@ -1493,7 +1585,9 @@
             state.payToId = null;
             state.payToMeta = null;
             renderPayToCard();
+            renderCryptoInfoCard();
             syncBankSummaryVisibility();
+            syncSelectBankingVisibility();
         }
         function getActivePayTo() {
             const channel = getActiveChannel();
@@ -1503,12 +1597,20 @@
 
         function syncBankSummaryVisibility() {
             const payToInfoCard = document.getElementById("payToInfoCard");
+            const cryptoInfoCard = document.getElementById("cryptoInfoCard");
             const payFromRow = document.querySelector('[data-summary-row="pay-from"]');
 
             const isBank = state.methodType === "bank";
+            const isCrypto = state.methodType === "crypto";
 
             if (payToInfoCard) {
                 payToInfoCard.hidden = !isBank;
+            }
+
+            if (cryptoInfoCard) {
+                const source = getActiveCryptoSource();
+                const hasAddress = !!String(source?.address || "").trim();
+                cryptoInfoCard.hidden = !isCrypto || !hasAddress;
             }
 
             if (payFromRow) {
@@ -1693,19 +1795,21 @@
 
             const src = String(meta?.qrimage || "").trim();
 
-            // 没有 QR：显示 default，而且不能点
+            const qrWrap = document.getElementById("payToCardQrWrap");
+
             if (!src) {
-                renderQrImg(qrEl, DEFAULT_QR_IMAGE, {
-                    clickable: false,
-                    alt: "QR unavailable"
-                });
+                if (qrWrap) qrWrap.hidden = true;
+                qrEl.innerHTML = "";
+                qrEl.hidden = true;
                 return;
             }
 
+            qrEl.hidden = false;
             qrEl.innerHTML = `<div class="payToCard__qrLoading">Loading QR.</div>`;
 
             if (meta.qrCrop) {
                 renderQrImg(qrEl, meta.qrCrop, { clickable: true, alt: "QR Code" });
+                qrEl.hidden = false;
                 return;
             }
 
@@ -1713,6 +1817,7 @@
                 const cached = qrCropCache.get(src);
                 meta.qrCrop = cached;
                 renderQrImg(qrEl, cached, { clickable: true, alt: "QR Code" });
+                qrEl.hidden = false;
                 return;
             }
 
@@ -1730,21 +1835,25 @@
                 } else {
                     renderQrImg(qrEl, src, { clickable: true, alt: "QR Code" });
                 }
+
+                qrEl.hidden = false;
             } catch (err) {
                 console.error("QR detect failed:", err);
 
                 if (jobId !== qrRenderJobId) return;
+
                 renderQrImg(qrEl, src, { clickable: true, alt: "QR Code" });
+                qrEl.hidden = false;
             }
         }
-
         function renderPayToCard() {
             const payToInfoCard = document.getElementById("payToInfoCard");
 
             const bankEl = document.querySelector(".payToCard__bank");
             const nameEl = document.querySelector(".payToCard__name");
             const numberEl = document.querySelector(".payToCard__number");
-            const qrEl = document.querySelector(".payToCard__qr");
+            const qrWrap = document.getElementById("payToCardQrWrap");
+            const qrEl = document.getElementById("payToCardQr");
 
             const activePayTo = getActivePayTo();
             const meta = state.payToMeta || activePayTo || null;
@@ -1787,8 +1896,58 @@
             }
 
             // qr
+            const hasQr = !!String(meta?.qrimage || "").trim();
+
+            if (qrWrap) qrWrap.hidden = !hasQr;
+
             if (qrEl) {
-                renderAutoCroppedQr(qrEl, meta);
+                if (hasQr) {
+                    qrEl.hidden = false;
+                    renderAutoCroppedQr(qrEl, meta);
+                } else {
+                    qrEl.innerHTML = "";
+                    qrEl.hidden = true;
+                }
+            }
+        }
+        function renderCryptoInfoCard() {
+            const card = document.getElementById("cryptoInfoCard");
+            //const networkEl = document.getElementById("cryptoNetwork");
+            const valueEl = document.getElementById("cryptoAddressValue");
+            const copyBtn = document.getElementById("cryptoCopyBtn");
+
+            if (!card) return;
+
+            const isCrypto = state.methodType === "crypto";
+            const source = getActiveCryptoSource();
+
+            const address = String(source?.address || "").trim();
+            const network = String(source?.name || source?.id || "").trim();
+
+            if (!isCrypto || !address) {
+                card.hidden = true;
+
+                //if (networkEl) networkEl.textContent = "";
+                if (valueEl) valueEl.textContent = "";
+                if (copyBtn) copyBtn.disabled = true;
+
+                return;
+            }
+
+            card.hidden = false;
+
+            //if (networkEl) networkEl.textContent = network;
+            if (valueEl) valueEl.textContent = address;
+
+            if (copyBtn) {
+                copyBtn.disabled = false;
+                copyBtn.onclick = async () => {
+                    try {
+                        await navigator.clipboard.writeText(address);
+                    } catch (err) {
+                        console.error("Copy failed:", err);
+                    }
+                };
             }
         }
         function renderPayFrom(channel) {
@@ -1801,7 +1960,9 @@
 
             const titleEl = payFromSection?.querySelector(".payFromSection__title");
             if (titleEl) {
-                titleEl.textContent = isBankTransfer ? "Pay To" : "Paying From";
+                titleEl.textContent = isBankTransfer
+                    ? "Select a Bank"
+                    : (state.methodType === "crypto" ? "Select Network" : "Paying From");
             }
 
             payFromGrid.innerHTML = "";
@@ -1809,22 +1970,24 @@
             const hasList = list.length > 0;
 
             if (!hasList) {
-                payFromSection.style.display = "none";
+                if (payFromSection) payFromSection.hidden = true;;
                 state.payFromId = null;
                 state.payToId = null;
                 state.payToMeta = null;
                 if (sumFromEl) sumFromEl.textContent = "-";
+                renderPayToCard();
+                renderCryptoInfoCard();
+                syncBankSummaryVisibility();
+                syncSelectBankingVisibility();
                 recalcSummary();
                 return;
             }
 
-            payFromSection.style.display = "";
+            if (payFromSection) payFromSection.hidden = false;;
 
-            // ===== MOBILE: render as <select> =====
             if (isMobileUI()) {
                 payFromGrid.classList.add("payFromGrid--select");
 
-                // pick current if valid, else default to first non-maintenance
                 const firstSelectable = list.find(x => !x.maintenance) || null;
                 const currentId = isBankTransfer ? state.payToId : state.payFromId;
                 const current = list.find(p => p.id === currentId && !p.maintenance) || firstSelectable;
@@ -1838,12 +2001,15 @@
                             accountName: current.accountName,
                             accountNumber: current.accountNumber,
                             qrimage: current.qrimage,
-                            qrCrop: current.qrCrop || null
+                            qrCrop: current.qrCrop || null,
+                            minDeposit: current.minDeposit,
+                            maxDeposit: current.maxDeposit,
+                            currency: current.currency
                         };
-                        if (sumFromEl) sumFromEl.textContent = current.bank || current.id;
+                        if (sumFromEl) sumFromEl.textContent = current.bank || current.id || "-";
                     } else {
                         state.payFromId = current.id;
-                        if (sumFromEl) sumFromEl.textContent = current.name || current.id;
+                        if (sumFromEl) sumFromEl.textContent = current.name || current.id || "-";
                     }
                 } else {
                     if (isBankTransfer) {
@@ -1854,16 +2020,19 @@
                     }
                     if (sumFromEl) sumFromEl.textContent = "-";
                 }
-                renderPayToCard();
 
-                // Render a single button that opens the shared pkgSheet (same CSS as language)
+                renderPayToCard();
+                
+                syncSelectBankingVisibility();
+
                 const pickBtn = document.createElement("button");
                 pickBtn.type = "button";
                 pickBtn.className = "payFromPickBtn";
-
                 pickBtn.innerHTML = `
-            <span class="pf-label">${getListItemLabel(current, isBankTransfer) || "Select"}</span>
-            <span aria-hidden="true">▾</span>
+    <span class="pf-label">
+        ${current ? getPayItemHTML(current, isBankTransfer, channel) : `<span class="payOpt__title">Select</span>`}
+    </span>
+    <span aria-hidden="true">▾</span>
 `;
                 payFromGrid.appendChild(pickBtn);
 
@@ -1873,15 +2042,19 @@
                         return {
                             value: x.id,
                             label: x.maintenance ? `${base} (Maintenance)` : base,
+                            html: getPayItemHTML(x, isBankTransfer, channel),
                             disabled: !!x.maintenance
                         };
                     });
 
                     const fallback = firstSelectable?.id || (items.find(x => !x.disabled)?.value) || "";
+
                     window.openpkgSheet?.({
-                        title: "Paying From",
+                        title: isBankTransfer
+                            ? "Select a Bank"
+                            : (state.methodType === "crypto" ? "Select Network" : "Paying From"),
                         items,
-                        value: state.payFromId || fallback,
+                        value: isBankTransfer ? (state.payToId || fallback) : (state.payFromId || fallback),
                         triggerEl: pickBtn,
                         onDone: (v) => {
                             const picked = list.find(x => String(x.id) === String(v) && !x.maintenance) || firstSelectable || null;
@@ -1908,11 +2081,15 @@
 
                             const label = pickBtn.querySelector(".pf-label");
                             if (label) {
-                                label.textContent = getListItemLabel(picked, isBankTransfer) || "Select";
+                                label.innerHTML = picked
+                                    ? getPayItemHTML(picked, isBankTransfer, channel)
+                                    : `<span class="payOpt__title">Select</span>`;
                             }
 
                             renderPayToCard();
+                            renderCryptoInfoCard();
                             syncBankSummaryVisibility();
+                            syncSelectBankingVisibility();
                             recalcSummary();
                         }
                     });
@@ -1921,140 +2098,280 @@
                 recalcSummary();
                 return;
             }
-            // ===== DESKTOP: render as scroll buttons (your current behavior) =====
+
             payFromGrid.classList.remove("payFromGrid--select");
 
-            let firstSelectableBtn = null;
-            let firstSelectableItem = null;
-
-            list.forEach((item) => {
-                const btn = document.createElement("button");
-                btn.type = "button";
-                btn.className = "payFromBtn";
-                btn.dataset.payFromId = item.id;
-
-                const isMaint = !!item.maintenance;
-                if (isMaint) {
-                    btn.classList.add("is-maintenance");
-                    btn.disabled = true;
-                } else if (!firstSelectableBtn) {
-                    firstSelectableBtn = btn;
-                    firstSelectableItem = item;
-                }
-
-                const iconFile = isBankTransfer ? item.image : (item.icon || channel.icon);
-
-                const iconSpan = document.createElement("span");
-                iconSpan.className = "payFromIcon";
-                if (iconFile) {
-                    const img = document.createElement("img");
-                    img.loading = "lazy";
-                    img.alt = getListItemLabel(item, isBankTransfer);
-                    //img.src = iconFile ? `image/${iconFile}` : `image/payment/icon-vaderpay-m.png`;
-                    img.src = `image/payment/icon-vaderpay-m.png`;
-                    iconSpan.appendChild(img);
-                }
-
-                const nameSpan = document.createElement("span");
-                nameSpan.className = "payFromName";
-                nameSpan.textContent = getListItemLabel(item, isBankTransfer);
-
-                btn.appendChild(iconSpan);
-                btn.appendChild(nameSpan);
-
-                btn.addEventListener("click", () => {
-                    payFromGrid.querySelectorAll(".payFromBtn").forEach(b => b.classList.remove("is-active"));
-                    btn.classList.add("is-active");
-
+            const selected = renderDesktopDropdown({
+                mount: payFromGrid,
+                list,
+                currentId: isBankTransfer ? state.payToId : state.payFromId,
+                placeholder: isBankTransfer
+                    ? "Select a Bank"
+                    : (state.methodType === "crypto" ? "Select Network" : "Select Paying From"),
+                getValue: (item) => item.id,
+                getLabel: (item) => getListItemLabel(item, isBankTransfer),
+                getLabelHTML: (item) => getPayItemHTML(item, isBankTransfer, channel),
+                isDisabled: (item) => !!item.maintenance,
+                onPick: (item) => {
                     if (isBankTransfer) {
                         state.payToId = item.id;
                         state.payToMeta = {
                             bank: item.bank,
                             image: item.image,
-                            qrimage: item.qrimage,
-                            qrCrop: item.qrCrop || null,
                             accountName: item.accountName,
                             accountNumber: item.accountNumber,
-                            qrimage: item.qrimage
+                            qrimage: item.qrimage,
+                            qrCrop: item.qrCrop || null,
+                            minDeposit: item.minDeposit,
+                            maxDeposit: item.maxDeposit,
+                            currency: item.currency
                         };
-                        if (sumFromEl) sumFromEl.textContent = item.bank || item.id;
+                        if (sumFromEl) sumFromEl.textContent = item.bank || item.id || "-";
                         renderPayToCard();
+                    } else {
+                        state.payFromId = item.id;
+                        if (sumFromEl) sumFromEl.textContent = item.name || item.id || "-";
                     }
+                    renderCryptoInfoCard();
+                    syncBankSummaryVisibility();
+                    syncSelectBankingVisibility();
                     recalcSummary();
-                });
-
-
-                payFromGrid.appendChild(btn);
+                }
             });
 
-            // default selection
-            const currentId = isBankTransfer ? state.payToId : state.payFromId;
-            const current = list.find(p => p.id === currentId && !p.maintenance) || null;
-            if (current) {
-                const btn = payFromGrid.querySelector(`.payFromBtn[data-pay-from-id="${CSS.escape(current.id)}"]`);
-                if (btn) btn.classList.add("is-active");
-
+            if (selected) {
                 if (isBankTransfer) {
-                    state.payToId = current.id;
+                    state.payToId = selected.id;
                     state.payToMeta = {
-                        bank: current.bank,
-                        image: current.image,
-                        accountName: current.accountName,
-                        accountNumber: current.accountNumber,
-                        qrimage: current.qrimage
+                        bank: selected.bank,
+                        image: selected.image,
+                        accountName: selected.accountName,
+                        accountNumber: selected.accountNumber,
+                        qrimage: selected.qrimage,
+                        qrCrop: selected.qrCrop || null,
+                        minDeposit: selected.minDeposit,
+                        maxDeposit: selected.maxDeposit,
+                        currency: selected.currency
                     };
-                    if (sumFromEl) sumFromEl.textContent = current.bank || current.id;
+                    if (sumFromEl) sumFromEl.textContent = selected.bank || selected.id || "-";
+                    renderPayToCard();
                 } else {
-                    state.payFromId = current.id;
-                    if (sumFromEl) sumFromEl.textContent = current.name || current.id;
+                    state.payFromId = selected.id;
+                    if (sumFromEl) sumFromEl.textContent = selected.name || selected.id || "-";
                 }
-
-                renderPayToCard();
-                recalcSummary();
-                return;
-            }
-
-            if (firstSelectableBtn) {
-                firstSelectableBtn.classList.add("is-active");
-
-                if (isBankTransfer) {
-                    state.payToId = firstSelectableItem.id;
-                    state.payToMeta = {
-                        bank: firstSelectableItem.bank,
-                        image: firstSelectableItem.image,
-                        accountName: firstSelectableItem.accountName,
-                        accountNumber: firstSelectableItem.accountNumber,
-                        qrimage: firstSelectableItem.qrimage
-                    };
-                    if (sumFromEl) sumFromEl.textContent = firstSelectableItem.bank || firstSelectableItem.id;
-                } else {
-                    state.payFromId = firstSelectableItem.id;
-                    if (sumFromEl) sumFromEl.textContent = firstSelectableItem.name || firstSelectableItem.id;
-                }
-
-                renderPayToCard();
-                recalcSummary();
             } else {
-                // all maintenance
-                if (sumFromEl) sumFromEl.textContent = channel.name || channel.id || "-";
-                state.payFromId = null;
-                recalcSummary();
+                if (isBankTransfer) {
+                    state.payToId = null;
+                    state.payToMeta = null;
+                } else {
+                    state.payFromId = null;
+                }
+                if (sumFromEl) sumFromEl.textContent = "-";
+                renderPayToCard();
             }
+
+
+            renderCryptoInfoCard();
+            syncBankSummaryVisibility();
+            syncSelectBankingVisibility();
+            recalcSummary();
         }
-        function getListItemLabel(item, isBankTransfer) {
-            if (!item) return "-";
+        function escapeHtml(str) {
+            return String(str ?? "").replace(/[&<>"']/g, (m) => ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;"
+            }[m]));
+        }
+
+        function getPayItemIcon(item, isBankTransfer, channel) {
+            const raw = isBankTransfer
+                ? (item?.image || item?.icon || "")
+                : (item?.icon || channel?.icon || "");
+
+            const file = String(raw || "").trim();
+            if (!file) return "";
+
+            if (/^(https?:|data:|\/)/i.test(file)) return file;
+            if (file.startsWith("image/")) return file;
+            if (file.startsWith("payment/")) return `image/${file}`;
+
+            //return `image/payment/${file}`;
+            return `image/payment/maybank.png`;
+        }
+
+        function getPayItemText(item, isBankTransfer) {
+            if (!item) {
+                return {
+                    title: "Select",
+                    subtitle: ""
+                };
+            }
 
             if (isBankTransfer) {
-                const bank = (item.bank || item.id || "").trim();
-                const accountName = (item.accountName || "").trim();
-
-                if (bank && accountName) return `${bank} - ${accountName}`;
-                return bank || accountName || "-";
+                return {
+                    title: (item.bank || item.id || "").trim() || "-",
+                    subtitle: (item.accountName || "").trim()
+                };
             }
 
-            return item.name || item.id || "-";
+            return {
+                title: (item.name || item.id || "").trim() || "-",
+                subtitle: ""
+            };
         }
-        
+
+        function getListItemLabel(item, isBankTransfer) {
+            const t = getPayItemText(item, isBankTransfer);
+            return t.subtitle ? `${t.title} - ${t.subtitle}` : t.title;
+        }
+
+        function getPayItemHTML(item, isBankTransfer, channel, opts = {}) {
+            const icon = getPayItemIcon(item, isBankTransfer, channel);
+            const { title, subtitle } = getPayItemText(item, isBankTransfer);
+
+            const iconHtml = icon
+                ? `<span class="payOpt__icon"><img src="${escapeHtml(icon)}" alt=""></span>`
+                : "";
+
+            if (isBankTransfer) {
+                return `
+            <span class="payOpt">
+                ${iconHtml}
+                <span class="payOpt__main">
+                    <span class="payOpt__title">${escapeHtml(title)}</span>
+                    <span>-</span>
+                    <span class="payOpt__sub">${escapeHtml(subtitle || "")}</span>
+                </span>
+            </span>
+        `;
+            }
+
+            return `
+        <span class="payOpt">
+            ${iconHtml}
+            <span class="payOpt__main">
+                <span class="payOpt__title">${escapeHtml(title)}</span>
+            </span>
+        </span>
+    `;
+        }
+        function renderDesktopDropdown({
+            mount,
+            list = [],
+            currentId = null,
+            placeholder = "Select",
+            getValue,
+            getLabel,
+            getLabelHTML,
+            isDisabled,
+            onPick,
+        }) {
+            if (!mount) return null;
+
+            const firstSelectable = list.find(item => !isDisabled(item)) || null;
+            const current =
+                list.find(item => String(getValue(item)) === String(currentId) && !isDisabled(item)) ||
+                firstSelectable ||
+                null;
+
+            mount.innerHTML = "";
+
+            const root = document.createElement("div");
+            root.className = "desktopDropdown";
+
+            const trigger = document.createElement("button");
+            trigger.type = "button";
+            trigger.className = "desktopDropdown__trigger";
+
+            const triggerLabel = document.createElement("span");
+            triggerLabel.className = "desktopDropdown__label";
+            if (current) {
+                triggerLabel.innerHTML = getLabelHTML ? getLabelHTML(current) : escapeHtml(getLabel(current));
+            } else {
+                triggerLabel.textContent = placeholder;
+            }
+
+            const triggerArrow = document.createElement("span");
+            triggerArrow.className = "desktopDropdown__arrow";
+            triggerArrow.setAttribute("aria-hidden", "true");
+            triggerArrow.textContent = "▾";
+
+            trigger.appendChild(triggerLabel);
+            trigger.appendChild(triggerArrow);
+
+            const menu = document.createElement("div");
+            menu.className = "desktopDropdown__menu";
+            menu.hidden = true;
+
+            list.forEach((item) => {
+                const value = String(getValue(item));
+                const disabled = !!isDisabled(item);
+
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "desktopDropdown__item";
+                btn.dataset.value = value;
+
+                if (getLabelHTML) {
+                    btn.innerHTML = getLabelHTML(item);
+                } else {
+                    btn.textContent = getLabel(item);
+                }
+
+                if (disabled) {
+                    btn.disabled = true;
+                    btn.classList.add("is-disabled");
+                }
+
+                if (current && String(getValue(current)) === value) {
+                    btn.classList.add("is-active");
+                }
+
+                btn.addEventListener("click", () => {
+                    if (disabled) return;
+
+                    root.querySelectorAll(".desktopDropdown__item").forEach(el => {
+                        el.classList.toggle("is-active", el === btn);
+                    });
+
+                    if (getLabelHTML) {
+                        triggerLabel.innerHTML = getLabelHTML(item);
+                    } else {
+                        triggerLabel.textContent = getLabel(item);
+                    }
+
+                    menu.hidden = true;
+                    root.classList.remove("is-open");
+
+                    onPick?.(item);
+                });
+
+                menu.appendChild(btn);
+            });
+
+            trigger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const willOpen = menu.hidden;
+
+                document.querySelectorAll(".desktopDropdown.is-open").forEach(el => {
+                    el.classList.remove("is-open");
+                    const m = el.querySelector(".desktopDropdown__menu");
+                    if (m) m.hidden = true;
+                });
+
+                root.classList.toggle("is-open", willOpen);
+                menu.hidden = !willOpen;
+            });
+
+            root.appendChild(trigger);
+            root.appendChild(menu);
+            mount.appendChild(root);
+
+            return current;
+        }
         function getMethodMaxDeposit(channel, payFrom) {
             // Prefer payFrom maxDeposit (each payFrom can have its own limit)
             const pfMax = payFrom?.maxDeposit;
@@ -2092,6 +2409,7 @@
             methodGrid.innerHTML = "";
 
             const list = METHOD_CHANNELS[methodKey] || [];
+            const isBank = methodKey === "bank";
 
             if (!list.length) {
                 methodGrid.innerHTML = "<div class='muted'>No channels</div>";
@@ -2102,41 +2420,33 @@
                 state.payToMeta = null;
                 syncSummaryFrom("-");
                 syncBankSummaryVisibility();
-                syncMethodSubHead();
+                //syncMethodSubHead();
                 return;
             }
 
-            // ===== BANK: payTo goes into methodGrid =====
-            if (methodKey === "bank") {
-                const defaultChannel = list.find(ch => !ch?.maintenance) || list[0] || null;
+            const defaultChannel = list.find(ch => !ch?.maintenance) || list[0] || null;
+
+            // bank transfer: hide method section entirely
+            if (isBank) {
+                const methodSection = methodGrid.closest(".methodSection");
+                if (methodSection) methodSection.style.display = "none";
 
                 state.channelId = defaultChannel?.id || null;
                 state.payFromId = null;
                 state.payToId = null;
                 state.payToMeta = null;
 
-                // bank does not use the lower payFrom section
-                if (payFromSection) payFromSection.style.display = "none";
-
-                methodGrid.innerHTML = "";
-
-                if (defaultChannel) {
-                    renderBankPayToInMethodGrid(defaultChannel);
-                } else {
-                    methodGrid.innerHTML = "<div class='muted'>No bank account</div>";
-                    renderPayToCard();
-                    recalcSummary();
-                }
-
+                renderPayFrom(defaultChannel);
                 syncBankSummaryVisibility();
-                syncMethodSubHead();
+                //syncMethodSubHead();
                 return;
             }
 
-            // ===== NON-BANK =====
-            if (payFromSection) payFromSection.style.display = "";
+            // non-bank: show method section
+            const methodSection = methodGrid.closest(".methodSection");
+            if (methodSection) methodSection.style.display = "";
 
-            const defaultChannel = list.find(ch => !ch?.maintenance) || null;
+            if (payFromSection) payFromSection.style.display = "";
 
             list.forEach((ch) => {
                 const btn = document.createElement("button");
@@ -2155,10 +2465,7 @@
                 const img = document.createElement("img");
                 img.loading = "lazy";
                 img.alt = ch.name || ch.id || "";
-
-                const file = fileForIcon(ch.icon);
-                //img.src = file ? `image/${file}` : `image/payment/icon-vaderpay-m.png`;
-                img.src = `image/payment/icon-vaderpay-m.png`;
+                img.src = "image/payment/icon-vaderpay-m.png";
                 iconSpan.appendChild(img);
                 btn.appendChild(iconSpan);
 
@@ -2190,211 +2497,17 @@
             }
 
             syncBankSummaryVisibility();
-            syncMethodSubHead();
+            //syncMethodSubHead();
         }
         function syncMethodSubHead() {
             const subHead = document.getElementById("methodSubHead");
             const subHeadTitle = document.getElementById("methodSubHeadTitle");
 
             const isBank = state.methodType === "bank";
-            const show = isBank && !isMobileUI();
+            const show = !isMobileUI() && !isBank;
 
             if (subHead) subHead.hidden = !show;
-            if (subHeadTitle) subHeadTitle.textContent = "Pay To";
-        }
-        function renderBankPayToInMethodGrid(channel) {
-            methodGrid.innerHTML = "";
-
-            const list = Array.isArray(channel?.payTo) ? channel.payTo.filter(Boolean) : [];
-
-            if (!list.length) {
-                methodGrid.innerHTML = "<div class='muted'>No bank account</div>";
-                state.payToId = null;
-                state.payToMeta = null;
-                renderPayToCard();
-                recalcSummary();
-                return;
-            }
-
-            // mobile：bank 走 wheel，不铺平
-            if (isMobileUI()) {
-                const firstSelectable = list.find(x => !x.maintenance) || null;
-                const current = list.find(x => x.id === state.payToId && !x.maintenance) || firstSelectable;
-
-                if (current) {
-                    state.payToId = current.id;
-                    state.payToMeta = {
-                        bank: current.bank,
-                        image: current.image,
-                        accountName: current.accountName,
-                        accountNumber: current.accountNumber,
-                        qrimage: current.qrimage,
-                        minDeposit: current.minDeposit,
-                        maxDeposit: current.maxDeposit,
-                        currency: current.currency
-                    };
-                    if (sumFromEl) sumFromEl.textContent = current.bank || current.id;
-                } else {
-                    state.payToId = null;
-                    state.payToMeta = null;
-                    if (sumFromEl) sumFromEl.textContent = "-";
-                }
-
-                const pickBtn = document.createElement("button");
-                pickBtn.type = "button";
-                pickBtn.className = "payFromPickBtn";
-                pickBtn.innerHTML = `
-            <span class="pf-label">${getListItemLabel(current, true) || "Select"}</span>
-            <span aria-hidden="true">▾</span>
-        `;
-
-                pickBtn.addEventListener("click", () => {
-                    const items = list.map(x => {
-                        const base = getListItemLabel(x, true);
-                        return {
-                            value: x.id,
-                            label: x.maintenance ? `${base} (Maintenance)` : base,
-                            disabled: !!x.maintenance
-                        };
-                    });
-
-                    const fallback = firstSelectable?.id || (items.find(x => !x.disabled)?.value) || "";
-
-                    window.openpkgSheet?.({
-                        title: "Pay To",
-                        items,
-                        value: state.payToId || fallback,
-                        triggerEl: pickBtn,
-                        onDone: (v) => {
-                            const picked = list.find(x => String(x.id) === String(v) && !x.maintenance) || firstSelectable || null;
-
-                            state.payToId = picked?.id || null;
-                            state.payToMeta = picked ? {
-                                bank: picked.bank,
-                                image: picked.image,
-                                accountName: picked.accountName,
-                                accountNumber: picked.accountNumber,
-                                qrimage: picked.qrimage,
-                                minDeposit: picked.minDeposit,
-                                maxDeposit: picked.maxDeposit,
-                                currency: picked.currency
-                            } : null;
-
-                            if (sumFromEl) sumFromEl.textContent = picked?.bank || picked?.id || "-";
-
-                            const label = pickBtn.querySelector(".pf-label");
-                            if (label) {
-                                label.textContent = getListItemLabel(picked, true) || "Select";
-                            }
-
-                            renderPayToCard();
-                            syncBankSummaryVisibility();
-                            recalcSummary();
-                        }
-                    });
-                });
-
-                methodGrid.appendChild(pickBtn);
-                renderPayToCard();
-                syncBankSummaryVisibility();
-                recalcSummary();
-                return;
-            }
-
-            // desktop：bank 直接铺在 methodGrid
-            let firstSelectableBtn = null;
-            let firstSelectableItem = null;
-
-            list.forEach((item) => {
-                const btn = document.createElement("button");
-                btn.type = "button";
-                btn.className = "methodBtn";
-                btn.dataset.payToId = item.id;
-
-                if (item.maintenance) {
-                    btn.classList.add("is-maintenance");
-                    btn.disabled = true;
-                } else if (!firstSelectableBtn) {
-                    firstSelectableBtn = btn;
-                    firstSelectableItem = item;
-                }
-
-                const iconSpan = document.createElement("span");
-                iconSpan.className = "methodIcon";
-
-                const iconFile = item.image;
-                if (iconFile) {
-                    const img = document.createElement("img");
-                    img.loading = "lazy";
-                    img.alt = item.bank || item.id || "";
-                    //img.src = `image/${iconFile}`;
-                    img.src = `image/payment/icon-vaderpay-m.png`;
-                    iconSpan.appendChild(img);
-                }
-
-                const nameSpan = document.createElement("span");
-                nameSpan.className = "methodName";
-                nameSpan.textContent = item.bank || item.id || "-";
-
-                btn.appendChild(iconSpan);
-                btn.appendChild(nameSpan);
-
-                btn.addEventListener("click", () => {
-                    if (btn.disabled) return;
-
-                    methodGrid.querySelectorAll(".methodBtn").forEach(b => b.classList.remove("is-active"));
-                    btn.classList.add("is-active");
-
-                    state.payToId = item.id;
-                    state.payToMeta = {
-                        bank: item.bank,
-                        image: item.image,
-                        accountName: item.accountName,
-                        accountNumber: item.accountNumber,
-                        qrimage: item.qrimage,
-                        qrCrop: item.qrCrop || null,
-                        minDeposit: item.minDeposit,
-                        maxDeposit: item.maxDeposit,
-                        currency: item.currency
-                    };
-
-                    if (sumFromEl) sumFromEl.textContent = item.bank || item.id;
-                    renderPayToCard();
-                    syncBankSummaryVisibility();
-                    recalcSummary();
-                });
-
-                methodGrid.appendChild(btn);
-            });
-
-            const current = list.find(x => x.id === state.payToId && !x.maintenance) || firstSelectableItem || null;
-
-            if (current) {
-                const activeBtn = methodGrid.querySelector(`.methodBtn[data-pay-to-id="${CSS.escape(current.id)}"]`);
-                if (activeBtn) activeBtn.classList.add("is-active");
-
-                state.payToId = current.id;
-                state.payToMeta = {
-                    bank: current.bank,
-                    image: current.image,
-                    accountName: current.accountName,
-                    accountNumber: current.accountNumber,
-                    qrimage: current.qrimage,
-                    minDeposit: current.minDeposit,
-                    maxDeposit: current.maxDeposit,
-                    currency: current.currency
-                };
-
-                if (sumFromEl) sumFromEl.textContent = current.bank || current.id;
-            } else {
-                state.payToId = null;
-                state.payToMeta = null;
-                if (sumFromEl) sumFromEl.textContent = "-";
-            }
-
-            renderPayToCard();
-            syncBankSummaryVisibility();
-            recalcSummary();
+            if (subHeadTitle) subHeadTitle.textContent = "Select";
         }
         // ========== Event handlers (delegation) ==========
         document.querySelectorAll(".qBtn").forEach(btn => {
@@ -2416,79 +2529,27 @@
             const keypad = document.querySelector("[data-keypad]");
             const input = document.getElementById("amount");
             const sheet = document.getElementById("amountEntrySheet");
-            const backdrop = sheet?.querySelector(".amountEntrySheet__backdrop");
 
-            if (!keypad || !input || !sheet) return;
+            if (!input) return;
 
             const mqMobile = window.matchMedia("(max-width: 1023.98px)");
             const isMobileUI = () => mqMobile.matches;
 
-            let openTimer = null;
-            function scrollAmountIntoView() {
-                if (!isMobileUI()) return;
-
-                const rect = input.getBoundingClientRect();
-                const viewportH = window.innerHeight || document.documentElement.clientHeight;
-
-                // 预留一点空间，让 input 不要贴顶，也不要太靠近 keypad
-                const topGap = 16;
-                const safeVisibleBottom = viewportH * 0.42;
-                // 0.42 的意思：把 input 尽量推到画面上半部，避免被底部 sheet 挡住
-
-                let targetY = null;
-
-                // input 太靠下，滚上去
-                if (rect.bottom > safeVisibleBottom) {
-                    targetY = window.scrollY + (rect.bottom - safeVisibleBottom) + topGap;
-                }
-                // input 太靠上，也微调一下
-                else if (rect.top < topGap) {
-                    targetY = window.scrollY + (rect.top - topGap);
-                }
-
-                if (targetY != null) {
-                    window.scrollTo({
-                        top: Math.max(0, targetY),
-                        behavior: "smooth"
-                    });
-                }
-            }
-            function openAmountSheet() {
-                if (!isMobileUI()) return;
-
-                clearTimeout(openTimer);
-                openTimer = setTimeout(() => {
-                    scrollAmountIntoView();
-
-                    // 等滚动先开始，再打开底部 keypad
-                    requestAnimationFrame(() => {
-                        requestAnimationFrame(() => {
-                            sheet.classList.add("is-open");
-                            sheet.setAttribute("aria-hidden", "false");
-                            document.body.classList.add("no-scroll");
-                        });
-                    });
-                }, 0);
-            }
-
             function closeAmountSheet() {
-                clearTimeout(openTimer);
+                if (!sheet) return;
                 sheet.classList.remove("is-open");
                 sheet.setAttribute("aria-hidden", "true");
                 document.body.classList.remove("no-scroll");
             }
 
             function syncInputMode() {
-                if (isMobileUI()) {
-                    input.setAttribute("readonly", "readonly");
-                    input.setAttribute("inputmode", "none");
-                    input.setAttribute("autocomplete", "off");
-                } else {
-                    input.removeAttribute("readonly");
-                    input.setAttribute("inputmode", "numeric");
-                    input.setAttribute("pattern", "[0-9]*");
-                    closeAmountSheet();
-                }
+                input.removeAttribute("readonly");
+                input.setAttribute("autocomplete", "off");
+                input.setAttribute("inputmode", "numeric");
+                input.setAttribute("pattern", "[0-9]*");
+
+                // 现在 mobile / desktop 都不再使用 amountEntrySheet
+                closeAmountSheet();
             }
 
             function setValue(v) {
@@ -2523,7 +2584,8 @@
                 setValue("");
             }
 
-            keypad.addEventListener("pointerdown", (e) => {
+            // 还保留 keypad 的话就继续支持 desktop / 现有 data-key
+            keypad?.addEventListener("pointerdown", (e) => {
                 const btn = e.target.closest("button[data-key]");
                 if (!btn) return;
 
@@ -2536,41 +2598,7 @@
                 else if (/^\d$/.test(key)) appendDigit(key);
             }, { passive: false });
 
-            // mobile: click input => open sheet, no native keyboard
-            input.addEventListener("click", (e) => {
-                if (!isMobileUI()) return;
-                e.preventDefault();
-                e.stopPropagation();
-                input.blur();
-                openAmountSheet();
-            });
-
-            input.addEventListener("focus", () => {
-                if (!isMobileUI()) return;
-                input.blur();
-            });
-
-            input.addEventListener("pointerdown", (e) => {
-                if (!isMobileUI()) return;
-                e.preventDefault();
-            }, { passive: false });
-
-            // ONLY backdrop closes
-            backdrop?.addEventListener("click", (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                closeAmountSheet();
-            });
-
-            window.addEventListener("keydown", (e) => {
-                if (e.key === "Escape" && sheet.classList.contains("is-open")) {
-                    closeAmountSheet();
-                }
-            });
-
-            mqMobile.addEventListener?.("change", () => {
-                syncInputMode();
-            });
+            mqMobile.addEventListener?.("change", syncInputMode);
 
             syncInputMode();
         }
@@ -2636,7 +2664,9 @@
 
         syncDepositByPlaycard(state.activePlaycard);
         renderPayToCard();
+        renderCryptoInfoCard();
         syncBankSummaryVisibility();
+        syncSelectBankingVisibility();
         recalcSummary();
 
         // ===== amount input events =====
@@ -2644,25 +2674,18 @@
         const amountInput = document.getElementById("amount");
         if (amountInput) {
             const sanitizeDigits = (s) => String(s || "").replace(/[^\d]/g, "");
-            const mqMobile = window.matchMedia("(max-width: 1023.98px)");
-            const isMobileUI = () => mqMobile.matches;
 
             amountInput.autocomplete = "off";
             amountInput.autocapitalize = "off";
             amountInput.spellcheck = false;
+            amountInput.removeAttribute("readonly");
+            amountInput.setAttribute("inputmode", "numeric");
+            amountInput.setAttribute("pattern", "[0-9]*");
 
             amountInput.addEventListener("input", () => {
-                if (isMobileUI()) return;
-
                 const raw = sanitizeDigits(amountInput.value);
                 amountInput.value = raw ? formatThousands(raw, ",") : "";
                 recalcSummary();
-            });
-
-            amountInput.addEventListener("keydown", (e) => {
-                if (isMobileUI()) {
-                    e.preventDefault();
-                }
             });
 
             amountInput.addEventListener("blur", () => {
@@ -2795,7 +2818,8 @@
             sheet.setAttribute("aria-hidden", "false");
 
             if (isMobile()) {
-                document.body.classList.add("no-scroll");
+                //document.body.classList.add("no-scroll");
+                if (doneBtn) doneBtn.hidden = isMobile();
                 // align to current value
                 requestAnimationFrame(() => {
                     setActiveInList(value);
@@ -2807,7 +2831,8 @@
             }
 
             // desktop popover position under trigger
-            document.body.classList.remove("no-scroll");
+            //document.body.classList.remove("no-scroll");
+            if (doneBtn) doneBtn.hidden = false;
             if (triggerEl) {
                 const r = triggerEl.getBoundingClientRect();
                 sheet.style.left = `${r.left + window.scrollX}px`;
@@ -2842,7 +2867,12 @@
                 const div = document.createElement("div");
                 div.className = "wheel__item";
                 div.dataset.value = String(it.value);
-                div.textContent = String(it.label ?? it.value);
+
+                if (it.html) {
+                    div.innerHTML = it.html;
+                } else {
+                    div.textContent = String(it.label ?? it.value);
+                }
 
                 if (it.disabled) div.classList.add("is-disabled");
                 if (String(it.value) === String(value)) div.classList.add("isActive");
@@ -2927,7 +2957,17 @@
             const v = item.dataset.value;
             setActiveInList(v);
             syncDoneState();
-            scrollToValue(v, true); // 只在超出可视范围时才轻微滚动
+
+            // desktop 维持原本行为
+            if (!isMobile()) {
+                scrollToValue(v, true);
+                return;
+            }
+
+            // mobile: 点了就直接提交，不再等 Done
+            confirmedValue = String(v);
+            onDone?.(v);
+            close();
         });
 
         doneBtn?.addEventListener("click", () => {
