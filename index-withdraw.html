@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <!--<script src="JS/common.js"></script>
@@ -13,7 +13,7 @@
     <script src="js/swiper-11.2.10/swiper-bundle.min.js"></script>
     <link href="css/css-afterlogin.css" rel="stylesheet" />
     <style>
-        :root { --bg-color: #1b2033; --font-color: #fff; --primary-color: #c084fc; --secondary-color: #2b3248; --accent-color: #c084fc; }
+        :root { --bg-color: #1b2033; --font-color: #fff; --primary-color: #c084fc; --secondary-color: #2b3248; --accent-color: #9002ff; }
         /*:root { --bg-color: #1A1B26; --font-color: #A9B1D6; --primary-color: #7AA2F7; --secondary-color: #24283B; --accent-color: #F7768E; }*/
 
     </style>
@@ -650,10 +650,19 @@
                     <div class="pagebar__title">
                         Withdrawal  <span class="icn-information"></span>
                     </div>
+
+
                 </div>
 
             </div>
 
+            <div class="panel-inner noteBox__1">
+                <!-- mobile 用：打开 bottom sheet；桌面可以隐藏 -->
+                <button class="noteBox__btn" type="button" data-action="open-note" aria-controls="noteBox" aria-expanded="false">
+                    Important Note
+                    <span class="icn-information"></span>
+                </button>
+            </div>
 
             <div class="pkgSection panel" data-section="withdraw">
                 <div class="pkgSection__top">
@@ -680,47 +689,7 @@
                                         <div class="banklist">
                                             <div class="savedBankList" id="savedBankList"></div>
                                         </div>
-
-
-                                        <section class="withdrawEditor" id="withdrawEditor" hidden>
-                                            <div class="sectionHead">
-                                                <h5 id="withdrawEditorTitle">Add Bank Account</h5>
-                                            </div>
-
-                                            <p class="withdrawEditor__desc">
-                                                We need your account detail for payment verification and for future withdrawals.
-                                            </p>
-
-                                            <form id="withdrawMethodForm">
-                                                <div class="withdrawFormGrid">
-                                                    <label class="field">
-                                                        <span>Bank Account</span>
-                                                        <input type="text" id="bankAccountName" name="accountName" placeholder="Player998" />
-                                                    </label>
-
-                                                    <label class="field">
-                                                        <span>Bank</span>
-                                                        <input type="text" id="bankName" name="bankName" placeholder="Select Bank" />
-                                                    </label>
-
-                                                    <label class="field">
-                                                        <span>Account Number</span>
-                                                        <input type="text" id="bankAccountNumber" name="accountNumber" placeholder="Account Number" />
-                                                    </label>
-
-                                                    <label class="field">
-                                                        <span>Bank Branch</span>
-                                                        <input type="text" id="bankBranchName" name="branchName" placeholder="Bank Branch" />
-                                                    </label>
-                                                </div>
-
-                                                <div class="formActions">
-                                                    <button type="button" data-action="cancel-editor"><svg class="icon" viewBox="0 0 24 24" version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"><path d="M12 4c-4.411 0-8 3.589-8 8s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zm-5 8c0-.832.224-1.604.584-2.295l6.711 6.711c-.691.36-1.463.584-2.295.584-2.757 0-5-2.243-5-5zm9.416 2.295l-6.711-6.711c.691-.36 1.463-.584 2.295-.584 2.757 0 5 2.243 5 5 0 .832-.224 1.604-.584 2.295z" /></svg>Cancel</button>
-                                                    <button type="submit" data-action="save-method"><svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"><path fill-rule="evenodd" d="M4 3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V8a1 1 0 0 0-.293-.707l-4-4A1 1 0 0 0 16 3H4zm6 11c0-1.6 1.333-2 2-2s2 .4 2 2-1.333 2-2 2-2-.4-2-2zm4-9H8v3h6V5z" clip-rule="evenodd" /></svg>Save</button>
-                                                </div>
-                                            </form>
-                                        </section>
-
+                                        <div class="withdrawEditorMount" id="bankEditorMount" hidden></div>
                                     </div>
                                     <div class="bank_section">
                                         <div class="sectionHead">
@@ -729,41 +698,38 @@
                                             </div>
                                         </div>
                                         <div class="appBankSlot" id="appBankSlot"></div>
-
+                                        <div class="withdrawEditorMount" id="g2pointEditorMount" hidden></div>
                                     </div>
                                 </section>
 
                                 <section class="withdrawSection" data-section="ewallet" hidden>
-                                    <div class="sectionHead">
-                                        <h5>Withdrawal to</h5>
-                                        <div><span class="p--methodBtn__ico" aria-hidden="true" data-ico="ewallet"></span>E-wallet</div>
-                                    </div>
-
-                                    <div class="ewalletList" id="ewalletList"></div>
-                                </section>
-
-                                <section class="withdrawEditor" id="withdrawEditor" hidden>
-                                    <div class="sectionHead">
-                                        <h3 id="withdrawEditorTitle">Manage Withdrawal Method</h3>
-                                    </div>
-
-                                    <form id="withdrawMethodForm">
-                                        <div id="withdrawFormFields"></div>
-
-                                        <div class="formActions">
-                                            <button type="button" data-action="cancel-editor">Cancel</button>
-                                            <button type="submit" data-action="save-method">Save</button>
+                                    <div class="bank_section">
+                                        <div class="sectionHead">
+                                            <h5>Withdrawal to</h5>
+                                            <div>
+                                                <span class="p--methodBtn__ico" aria-hidden="true" data-ico="ewallet"></span>E-wallet
+                                            </div>
                                         </div>
-                                    </form>
-                                </section>
-                                <section class="withdrawSection" data-section="crypto" hidden>
-                                    <div class="sectionHead">
-                                        <h5>Withdrawal to</h5>
-                                        <div><span class="p--methodBtn__ico" aria-hidden="true" data-ico="crypto"></span>Crypto</div>
-                                    </div>
 
-                                    <div class="cryptoList" id="cryptoList"></div>
+                                        <div class="ewalletList" id="ewalletList"></div>
+                                        <div class="withdrawEditorMount" id="ewalletEditorMount" hidden></div>
+                                    </div>
                                 </section>
+
+                                <section class="withdrawSection" data-section="crypto" hidden>
+                                    <div class="bank_section">
+                                        <div class="sectionHead">
+                                            <h5>Withdrawal to</h5>
+                                            <div>
+                                                <span class="p--methodBtn__ico" aria-hidden="true" data-ico="crypto"></span>Crypto
+                                            </div>
+                                        </div>
+
+                                        <div class="cryptoList" id="cryptoList"></div>
+                                        <div class="withdrawEditorMount" id="cryptoEditorMount" hidden></div>
+                                    </div>
+                                </section>
+
 
 
                             </div>
@@ -774,13 +740,12 @@
                         <div class="payment--main">
                             <div>
                                 <div class="payment--card payWithdrawAmount">
-                                    <div class="withdrawHead">
+                                    <div class="withdrawHead titleHead">
                                         <div class="withdrawHead__title">
-                                            <h5 class="withdrawHead__heading ">Withdrawal Amount<span class="icn-information"></span></h5>
+                                            <h5 class="withdrawHead__heading titleHead__heading">Withdrawal Amount<span class="icn-information"></span></h5>
                                         </div>
                                         <div class="withdrawHead__meta">
-                                            <div class="withdrawHead__hint muted" id="minHint"></div>
-                                            <div class="withdrawHead__hint muted" id="maxHint"></div>
+                                            <div class="withdrawHead__hint muted" id="minHint"><span class="hint-label">Min</span><span class="hint-value">50.00 MYR</span></div>
                                         </div>
                                     </div>
 
@@ -892,7 +857,6 @@
                 </div>
             </div>
             <!-- Generic Select Bottom Sheet (reusable) -->
-            <!-- Generic Select Bottom Sheet (reusable) -->
             <div id="pkgSheet" class="appSheet" aria-hidden="true">
                 <div class="appSheet__backdrop" data-sheet-close></div>
 
@@ -908,6 +872,14 @@
                         <div class="wheel__fade"></div>
                         <div class="wheel__window"></div>
                     </div>
+                </div>
+            </div>
+
+            <div class="withdrawSheet appSheet" id="withdrawSheet" hidden>
+                <div class="withdrawSheet__backdrop appSheet__backdrop" data-action="close-sheet"></div>
+                <div class="withdrawSheet__panel appSheet__panel">
+                    <div class="withdrawSheet__handle"></div>
+                    <div class="withdrawSheet__body" id="withdrawSheetBody"></div>
                 </div>
             </div>
             <!-- QR VIEWER -->
@@ -936,6 +908,42 @@
 
                         <button type="button" class="qrViewer__action">
                             <span class="qrViewer__actionIcon">⬇</span>
+                            <span class="qrViewer__actionText">Save</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="g2pModal" id="g2pDownloadModal" hidden>
+                <div class="g2pModal__backdrop" data-action="close-g2p-download"></div>
+
+                <div class="g2pModal__dialog" role="dialog" aria-modal="true" aria-labelledby="g2pModalTitle">
+                    <button type="button" class="g2pModal__close" data-action="close-g2p-download" aria-label="Close">×</button>
+
+                    <div class="g2pModal__brand">
+                        <img class="g2pModal__logo" src="image/logo_icon-g2point.png" alt="G2Point">
+                        <div class="g2pModal__title" id="g2pModalTitle">G2Point</div>
+                    </div>
+
+                    <div class="g2pModal__qrWrap">
+                        <img id="g2pModalQr" class="g2pModal__qr" src="" alt="G2Point download QR">
+                    </div>
+
+                    <div class="g2pModal__hint">Scan here to download</div>
+
+                    <div class="g2pModal__actions">
+                        <button type="button" class="g2pModal__iconBtn">
+                            <span class="qrViewer__actionIcon">
+                                <svg class="icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><title>share</title><path d="M385 464Q357 464 339 445 320 426 320 399 320 390 321 388L171 303Q154 320 129 320 102 320 83 301 64 282 64 255 64 229 83 211 102 192 129 192 154 192 171 209L321 125Q320 122 320 111 320 85 339 67 357 48 384 48 410 48 429 67 447 85 448 111 448 138 429 157 410 176 384 176 361 176 341 159L191 244Q192 246 192 255 192 265 191 268L341 353Q361 336 385 336 415 336 431 355 447 374 447 400 447 426 431 445 415 464 385 464Z" /></svg>
+                            </span>
+                            <span class="qrViewer__actionText">Share</span>
+                        </button>
+                        <button type="button" class="g2pModal__iconBtn">
+                            <span class="qrViewer__actionIcon">
+                                <svg viewBox="0 0 14 14" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                                    <path d="M8 6.641l1.121-1.12a1 1 0 0 1 1.415 1.413L7.707 9.763a.997.997 0 0 1-1.414 0L3.464 6.934A1 1 0 1 1 4.88 5.52L6 6.641V1a1 1 0 1 1 2 0v5.641zM1 12h12a1 1 0 0 1 0 2H1a1 1 0 0 1 0-2z"></path>
+                                </svg>
+                            </span>
                             <span class="qrViewer__actionText">Save</span>
                         </button>
                     </div>
