@@ -1,5 +1,5 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
-    const STORAGE_KEY = 'demo_withdraw_methods_v3';
+document.addEventListener('DOMContentLoaded', () => {
+    const STORAGE_KEY = 'demo_withdraw_methods_v4';
     const SUMMARY_TARGET = 1000;
     const SUMMARY_ROLLOVER = 1530;
 
@@ -17,17 +17,12 @@
         { code: 'app_internal', label: 'App Internal Bank', icon: 'image/payment/maybank.png' }
     ];
 
-    const BANK_ICON_MAP = Object.fromEntries(BANK_OPTIONS.map((b) => [b.code, b.icon]));
-    const BANK_LABEL_MAP = Object.fromEntries(BANK_OPTIONS.map((b) => [b.code, b.label]));
-
     const EWALLET_OPTIONS = [
         { key: 'tng', label: "Touch 'n Go", icon: 'image/payment/maybank.png' },
         { key: 'shopeepay', label: 'Shopee Pay', icon: 'image/payment/maybank.png' },
         { key: 'boost', label: 'Boost', icon: 'image/payment/maybank.png' },
         { key: 'bigpay', label: 'BigPay', icon: 'image/payment/maybank.png' }
     ];
-    const EWALLET_LABEL_MAP = Object.fromEntries(EWALLET_OPTIONS.map((w) => [w.key, w.label]));
-    const EWALLET_ICON_MAP = Object.fromEntries(EWALLET_OPTIONS.map((w) => [w.key, w.icon]));
 
     const CRYPTO_OPTIONS = [
         { key: 'usdt_trc20', label: 'USDT', network: 'TRC20', icon: 'image/payment/maybank.png' },
@@ -35,15 +30,20 @@
         { key: 'btc_btc', label: 'BTC', network: 'BTC', icon: 'image/payment/maybank.png' },
         { key: 'eth_erc20', label: 'ETH', network: 'ERC20', icon: 'image/payment/maybank.png' }
     ];
+
+    const BANK_ICON_MAP = Object.fromEntries(BANK_OPTIONS.map((b) => [b.code, b.icon]));
+    const BANK_LABEL_MAP = Object.fromEntries(BANK_OPTIONS.map((b) => [b.code, b.label]));
+    const EWALLET_LABEL_MAP = Object.fromEntries(EWALLET_OPTIONS.map((w) => [w.key, w.label]));
+    const EWALLET_ICON_MAP = Object.fromEntries(EWALLET_OPTIONS.map((w) => [w.key, w.icon]));
     const CRYPTO_META_MAP = Object.fromEntries(CRYPTO_OPTIONS.map((c) => [c.key, c]));
 
     const DEFAULT_STORE = {
         bankAccounts: [
-            { id: 'bank_001', bankCode: 'maybank', bankName: 'Maybank (MBB)', accountName: 'Player998', accountNumber: '112233445566', branchName: 'KL Main' },
-            { id: 'bank_002', bankCode: 'bsn', bankName: 'Bank Simpanan Nasional', accountName: 'Player998', accountNumber: '223344556699', branchName: 'PJ' }
+            { id: 'bank_001', bankCode: 'maybank', bankName: 'Maybank (MBB)', accountName: 'player Testing', accountNumber: '112233445566', branchName: 'KL Main' },
+            { id: 'bank_002', bankCode: 'bsn', bankName: 'Bank Simpanan Nasional', accountName: 'Player ABC', accountNumber: '223344556699', branchName: 'PJ' }
         ],
         appBankAccount: {
-            id: 'app_bank_001', bankCode: 'app_internal', bankName: 'App Bank Route', accountName: 'Player998', accountNumber: '900123456789', branchName: 'Internal Settlement'
+            id: 'app_bank_001', bankCode: 'app_internal', bankName: 'App Bank Route', accountName: 'Name Lious', accountNumber: '900123456789', branchName: 'Internal Settlement'
         },
         ewalletAccounts: {
             tng: { type: 'tng', label: "Touch 'n Go", accountNumber: '0123456789', icon: EWALLET_ICON_MAP.tng },
@@ -71,10 +71,15 @@
         appBankSlot: document.getElementById('appBankSlot'),
         ewalletList: document.getElementById('ewalletList'),
         cryptoList: document.getElementById('cryptoList'),
-        editor: document.getElementById('withdrawEditor'),
-        editorTitle: document.getElementById('withdrawEditorTitle'),
-        form: document.getElementById('withdrawMethodForm'),
-        formFields: document.getElementById('withdrawFormFields'),
+
+        bankEditorMount: document.getElementById('bankEditorMount'),
+        appBankEditorMount: document.getElementById('appBankEditorMount'),
+        ewalletEditorMount: document.getElementById('ewalletEditorMount'),
+        cryptoEditorMount: document.getElementById('cryptoEditorMount'),
+
+        withdrawSheet: document.getElementById('withdrawSheet'),
+        withdrawSheetBody: document.getElementById('withdrawSheetBody'),
+
         amountInput: document.getElementById('amount'),
         quickButtons: [...document.querySelectorAll('.qBtn[data-add]')],
         submitBtn: document.getElementById('submitBtn'),
@@ -90,14 +95,38 @@
             total: document.getElementById('sumTotal')
         }
     };
-
     const editorState = {
         open: false,
         mode: 'add',
         type: 'bank',
-        editingId: null
+        editingId: null,
+        optionKey: null,
+        mountKey: null,
+        mobile: false
     };
+    const sheetState = {
+        view: null
+    };
+    function isEditorOpenFor(type) {
+        return editorState.open && editorState.mountKey === type && !editorState.mobile;
+    }
 
+    function syncMethodAreaVisibility() {
+        ['bank', 'app_bank', 'ewallet', 'crypto'].forEach((type) => {
+            const list = getListByType(type);
+            const mount = getMountByType(type);
+
+            if (!list || !mount) return;
+
+            const active = isEditorOpenFor(type);
+            list.classList.toggle('withdrawList--hidden', active);
+            mount.hidden = !active;
+
+            if (!active) {
+                mount.innerHTML = '';
+            }
+        });
+    }
     function cloneDefault() {
         return typeof structuredClone === 'function'
             ? structuredClone(DEFAULT_STORE)
@@ -106,7 +135,7 @@
 
     function hydrateStore(parsed) {
         const fallback = cloneDefault();
-        const merged = {
+        return {
             ...fallback,
             ...parsed,
             bankAccounts: Array.isArray(parsed?.bankAccounts) ? parsed.bankAccounts : fallback.bankAccounts,
@@ -118,7 +147,6 @@
                 ...(parsed?.preferences || {})
             }
         };
-        return merged;
     }
 
     function loadStore() {
@@ -142,7 +170,114 @@
     function saveStore() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
     }
+    function isMobileEditorMode() {
+        return window.matchMedia('(max-width: 767.98px)').matches;
+    }
 
+    function buildEditorShell(title, desc, innerHtml) {
+        return `
+        <section class="withdrawEditor withdrawEditor--inline" id="withdrawEditor">
+            <div class="sectionHead">
+             <button type="button" data-action="cancel-editor"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M15.5 19.5 8 12l7.5-7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg></button>
+                <h5 id="withdrawEditorTitle">${esc(title)}</h5>
+            </div>
+
+            <p class="withdrawEditor__desc">${esc(desc)}</p>
+
+            <div id="withdrawEditorHost">
+                ${innerHtml}
+            </div>
+        </section>
+    `;
+    }
+    function getMountByType(type) {
+        if (type === 'bank') return els.bankEditorMount;
+        if (type === 'app_bank') return els.appBankEditorMount;
+        if (type === 'ewallet') return els.ewalletEditorMount;
+        if (type === 'crypto') return els.cryptoEditorMount;
+        return null;
+    }
+
+    function getListByType(type) {
+        if (type === 'bank') return els.savedBankList?.closest('.banklist') || els.savedBankList;
+        if (type === 'app_bank') return els.appBankSlot;
+        if (type === 'ewallet') return els.ewalletList;
+        if (type === 'crypto') return els.cryptoList;
+        return null;
+    }
+
+    function lockMethodArea(type) {
+        editorState.mountKey = type;
+        syncMethodAreaVisibility();
+    }
+
+    function unlockMethodArea(type) {
+        if (editorState.mountKey === type) {
+            editorState.mountKey = null;
+        }
+        syncMethodAreaVisibility();
+    }
+    function openWithdrawSheet(html) {
+        if (!els.withdrawSheet || !els.withdrawSheetBody) return;
+
+        els.withdrawSheetBody.innerHTML = html;
+        els.withdrawSheet.hidden = false;
+
+        requestAnimationFrame(() => {
+            els.withdrawSheet.classList.add('isOpen');
+        });
+
+        document.body.classList.add('is-withdraw-sheet-open');
+    }
+
+    function closeWithdrawSheet() {
+        if (!els.withdrawSheet || !els.withdrawSheetBody) return;
+
+        els.withdrawSheet.classList.remove('isOpen');
+        document.body.classList.remove('is-withdraw-sheet-open');
+
+        const panel = els.withdrawSheet.querySelector('.withdrawSheet__panel');
+        const onDone = () => {
+            els.withdrawSheet.hidden = true;
+            els.withdrawSheetBody.innerHTML = '';
+            panel?.removeEventListener('transitionend', onDone);
+        };
+
+        if (panel) {
+            panel.addEventListener('transitionend', onDone, { once: true });
+        } else {
+            els.withdrawSheet.hidden = true;
+            els.withdrawSheetBody.innerHTML = '';
+        }
+    }
+    function renderEditorIntoPlace({ type, title, desc, formHtml }) {
+        const shell = buildEditorShell(title, desc, formHtml);
+        const mobile = isMobileEditorMode();
+
+        editorState.mobile = mobile;
+
+        if (mobile) {
+            editorState.mountKey = type;
+            openWithdrawSheet(shell);
+            const form = els.withdrawSheetBody?.querySelector('#withdrawDynamicForm');
+            if (form?.dataset.editorType === 'bank') {
+                initWithdrawBankDropdown(form, false);
+            }
+        } else {
+            const mount = getMountByType(type);
+            if (!mount) return;
+
+            lockMethodArea(type);
+            mount.innerHTML = shell;
+            const form = mount.querySelector('#withdrawDynamicForm');
+            if (form?.dataset.editorType === 'bank') {
+                initWithdrawBankDropdown(form, false);
+            }
+            syncMethodAreaVisibility();
+        }
+    }
     function esc(v) {
         return String(v ?? '')
             .replace(/&/g, '&amp;')
@@ -157,7 +292,7 @@
     }
 
     function getBankIconPath(bankCode) {
-        return BANK_ICON_MAP[bankCode] || 'image/bank/default-bank.png';
+        return BANK_ICON_MAP[bankCode] || 'image/payment/maybank.png';
     }
 
     function getBankLabel(bankCode, fallback = '') {
@@ -165,11 +300,11 @@
     }
 
     function getEwalletIconPath(type) {
-        return EWALLET_ICON_MAP[type] || 'image/payment/default-ewallet.png';
+        return EWALLET_ICON_MAP[type] || 'image/payment/maybank.png';
     }
 
     function getCryptoIconPath(key) {
-        return CRYPTO_META_MAP[key]?.icon || 'image/payment/default-crypto.png';
+        return CRYPTO_META_MAP[key]?.icon || 'image/payment/maybank.png';
     }
 
     function maskAccountNumber(value) {
@@ -197,6 +332,174 @@
         els.amountInput.value = safe ? safe.toLocaleString('en-MY') : '';
         renderSummary();
         syncSubmitState();
+    }
+    function getWithdrawBankOptionHTML(opt) {
+        const icon = getBankIconPath(opt.code);
+        const label = opt.label || getBankLabel(opt.code);
+
+        return `
+        <span class="payOpt">
+            <span class="payOpt__icon">
+                <img src="${esc(icon)}" alt="${esc(label)}">
+            </span>
+            <span class="payOpt__main">
+                <span class="payOpt__title">${esc(label)}</span>
+            </span>
+        </span>
+    `;
+    }
+
+    function initWithdrawBankDropdown(form, isAppBank = false, model = null) {
+        if (!form) return;
+
+        const mount = form.querySelector('[data-bank-dropdown]');
+        const hidden = form.querySelector('input[name="bankCode"]');
+        if (!mount || !hidden) return;
+
+        const list = BANK_OPTIONS.filter((opt) =>
+            isAppBank ? opt.code === 'app_internal' : opt.code !== 'app_internal'
+        );
+
+        const selected = renderDesktopDropdown({
+            mount,
+            list,
+            currentId: hidden.value || model?.bankCode || '',
+            placeholder: 'Select Bank',
+            getValue: (item) => item.code,
+            getLabel: (item) => item.label,
+            getLabelHTML: (item) => getWithdrawBankOptionHTML(item),
+            isDisabled: () => false,
+            onPick: (item) => {
+                hidden.value = item.code;
+            }
+        });
+
+        if (selected) {
+            hidden.value = selected.code;
+        }
+    }
+    function renderDesktopDropdown({
+        mount,
+        list = [],
+        currentId = null,
+        placeholder = 'Select',
+        getValue,
+        getLabel,
+        getLabelHTML,
+        isDisabled = () => false,
+        onPick,
+    }) {
+        if (!mount) return null;
+
+        const firstSelectable = list.find((item) => !isDisabled(item)) || null;
+        const current =
+            list.find((item) => String(getValue(item)) === String(currentId) && !isDisabled(item)) ||
+            firstSelectable ||
+            null;
+
+        mount.innerHTML = '';
+
+        const root = document.createElement('div');
+        root.className = 'desktopDropdown';
+
+        const trigger = document.createElement('button');
+        trigger.type = 'button';
+        trigger.className = 'desktopDropdown__trigger';
+        trigger.setAttribute('aria-expanded', 'false');
+
+        const triggerLabel = document.createElement('span');
+        triggerLabel.className = 'desktopDropdown__label';
+        if (current) {
+            triggerLabel.innerHTML = getLabelHTML ? getLabelHTML(current) : esc(getLabel(current));
+        } else {
+            triggerLabel.textContent = placeholder;
+        }
+
+        const triggerArrow = document.createElement('span');
+        triggerArrow.className = 'desktopDropdown__arrow';
+        triggerArrow.setAttribute('aria-hidden', 'true');
+        triggerArrow.textContent = '▾';
+
+        trigger.appendChild(triggerLabel);
+        trigger.appendChild(triggerArrow);
+
+        const menu = document.createElement('div');
+        menu.className = 'desktopDropdown__menu';
+        menu.hidden = true;
+
+        const closeMenu = () => {
+            root.classList.remove('is-open');
+            trigger.setAttribute('aria-expanded', 'false');
+            menu.hidden = true;
+        };
+
+        const openMenu = () => {
+            root.classList.add('is-open');
+            trigger.setAttribute('aria-expanded', 'true');
+            menu.hidden = false;
+        };
+
+        list.forEach((item) => {
+            const value = getValue(item);
+            const disabled = !!isDisabled(item);
+            const option = document.createElement('button');
+            option.type = 'button';
+            option.className = 'desktopDropdown__option';
+            option.dataset.value = String(value);
+            option.innerHTML = getLabelHTML ? getLabelHTML(item) : esc(getLabel(item));
+            option.disabled = disabled;
+
+            if (current && String(getValue(current)) === String(value)) {
+                option.classList.add('is-active');
+            }
+
+            option.addEventListener('click', () => {
+                if (disabled) return;
+                triggerLabel.innerHTML = getLabelHTML ? getLabelHTML(item) : esc(getLabel(item));
+                menu.querySelectorAll('.desktopDropdown__option').forEach((el) => {
+                    el.classList.toggle('is-active', el === option);
+                });
+                onPick?.(item);
+                closeMenu();
+            });
+
+            menu.appendChild(option);
+        });
+
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (menu.hidden) openMenu();
+            else closeMenu();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!root.contains(e.target)) closeMenu();
+        });
+
+        root.appendChild(trigger);
+        root.appendChild(menu);
+        mount.appendChild(root);
+
+        return current;
+    }
+    function updateBankSelectIcon(selectEl) {
+        const iconWrap = document.getElementById('bankSelectIcon');
+        const img = iconWrap?.querySelector('img');
+        if (!iconWrap || !img) return;
+
+        const bankCode = selectEl.value;
+        const icon = getBankIconPath(bankCode);
+
+        if (!bankCode) {
+            iconWrap.hidden = true;
+            img.removeAttribute('src');
+            img.alt = '';
+            return;
+        }
+
+        iconWrap.hidden = false;
+        img.src = icon;
+        img.alt = getBankLabel(bankCode);
     }
 
     function toolIcon(type) {
@@ -238,6 +541,7 @@
         </svg>
     `;
     }
+
     function currentSelection() {
         const p = store.preferences || {};
 
@@ -260,7 +564,7 @@
             return {
                 type: 'app_bank',
                 label: acc.bankName || getBankLabel(acc.bankCode || 'app_internal', 'App Bank Route'),
-                account: maskAccountNumber(acc.accountNumber),
+                account: acc.accountName || '-',
                 icon: getBankIconPath(acc.bankCode || 'app_internal'),
                 network: '',
                 raw: acc
@@ -364,6 +668,313 @@
         renderAll();
     }
 
+    function isMobileWithdrawUI() {
+        return window.matchMedia('(max-width: 767.98px)').matches;
+    }
+
+    function buildMobileMethodEntry({ action, icon, title, meta, extraClass = '' }) {
+        return `
+        <button type="button" class="withdrawCard withdrawCard--picker ${esc(extraClass)}" data-action="${esc(action)}">
+            <span class="withdrawCard__icon"><img src="${esc(icon)}" alt="${esc(title)}"></span>
+            <span class="withdrawCard__body">
+                <span class="withdrawCard__title">${esc(title)}</span>
+                <span class="withdrawCard__meta">${esc(meta)}</span>
+            </span>
+        </button>`;
+    }
+
+    function buildSheetHeader(leftText, title, rightHtml = '') {
+        return `
+        <div class="sectionHead sectionHead--sheet">
+            <button type="button" class="sheetHead__btn" data-action="close-sheet">${esc(leftText)}</button>
+            <h5>${esc(title)}</h5>
+            ${rightHtml || '<span class="sheetHead__spacer"></span>'}
+        </div>`;
+    }
+
+    function getSelectedBankAccount() {
+        return (store.bankAccounts || []).find((item) => item.id === store.preferences.selectedBankId) || store.bankAccounts?.[0] || null;
+    }
+
+    function renderMobileBankEntry() {
+        if (!els.savedBankList) return;
+        const acc = getSelectedBankAccount();
+        const title = acc ? (acc.bankName || getBankLabel(acc.bankCode)) : 'Choose a bank';
+        const meta = acc ? maskAccountNumber(acc.accountNumber) : 'Tap to choose';
+        const icon = acc ? getBankIconPath(acc.bankCode) : getBankIconPath('maybank');
+        els.savedBankList.innerHTML = buildMobileMethodEntry({
+            action: 'open-bank-picker',
+            icon,
+            title,
+            meta
+        });
+    }
+
+    function renderMobileAppBankEntry() {
+        if (!els.appBankSlot) return;
+        const acc = store.appBankAccount;
+        const title = acc?.bankName || APP_BANK_NAME;
+        const meta = acc?.accountName || 'Tap to manage';
+        const icon = getBankIconPath(acc?.bankCode || 'app_internal');
+        els.appBankSlot.innerHTML = buildMobileMethodEntry({
+            action: 'open-app-bank-sheet',
+            icon,
+            title,
+            meta,
+            extraClass: store.preferences.selectedType === 'app_bank' ? 'is-active' : ''
+        });
+    }
+
+    function renderMobileEwalletEntry() {
+        if (!els.ewalletList) return;
+        const key = store.preferences.selectedEwalletType;
+        const acc = key ? store.ewalletAccounts?.[key] : null;
+        const title = acc?.label || EWALLET_LABEL_MAP[key] || 'Choose E-wallet';
+        const meta = acc ? maskAccountNumber(acc.accountNumber) : 'Tap to choose';
+        const icon = acc?.icon || getEwalletIconPath(key || EWALLET_OPTIONS[0]?.key);
+        els.ewalletList.innerHTML = buildMobileMethodEntry({
+            action: 'open-ewallet-picker',
+            icon,
+            title,
+            meta
+        });
+    }
+
+    function renderMobileCryptoEntry() {
+        if (!els.cryptoList) return;
+        const key = store.preferences.selectedCryptoKey;
+        const acc = key ? store.cryptoAccounts?.[key] : null;
+        const title = acc ? `${acc.label || CRYPTO_META_MAP[key]?.label || 'Crypto'} (${acc.network || CRYPTO_META_MAP[key]?.network || ''})` : 'Choose Crypto';
+        const meta = acc ? maskAddress(acc.address) : 'Tap to choose';
+        const icon = acc?.icon || getCryptoIconPath(key || CRYPTO_OPTIONS[0]?.key);
+        els.cryptoList.innerHTML = buildMobileMethodEntry({
+            action: 'open-crypto-picker',
+            icon,
+            title,
+            meta
+        });
+    }
+
+    function buildBankPickerSheet() {
+        return `
+        <section class="withdrawSheetPanel withdrawSheetPanel--picker">
+            ${buildSheetHeader('Close', 'Choose a bank', '')}
+
+            <div class="sheetList">
+                ${(store.bankAccounts || []).map((acc) => {
+            const active = store.preferences.selectedType === 'bank' && store.preferences.selectedBankId === acc.id;
+            const title = acc.bankName || getBankLabel(acc.bankCode);
+            return `
+                        <button type="button" class="withdrawCard ${active ? 'is-active' : ''}" data-action="select-bank-from-sheet" data-id="${esc(acc.id)}">
+                            <span class="withdrawCard__icon"><img src="${esc(getBankIconPath(acc.bankCode))}" alt="${esc(title)}"></span>
+                            <span class="withdrawCard__body">
+                                <span class="withdrawCard__title">${esc(title)}</span>
+                                <span class="withdrawCard__meta">${esc(maskAccountNumber(acc.accountNumber))}</span>
+                            </span>
+                        </button>`;
+        }).join('')}
+
+                ${store.bankAccounts.length < 3 ? `
+                    <button type="button" class="withdrawCard withdrawCard--add" data-action="add-bank">
+                        <span class="withdrawCard__addIcon"></span>
+                        <span class="withdrawCard__body">
+                            <span class="withdrawCard__title">Add Bank Account</span>
+                            <span class="withdrawCard__meta">max 3 bank account only</span>
+                        </span>
+                    </button>` : ''}
+            </div>
+
+            <div class="sheetActions">
+                <button type="button" class="sheetHead__btn" data-action="open-bank-manage">Edit or delete account</button>
+            </div>
+        </section>`;
+    }
+    function buildBankManageSheet() {
+        return `
+        <section class="withdrawSheetPanel withdrawSheetPanel--manage">
+            ${buildSheetHeader('Back', 'Choose a bank')}
+            <div class="sheetList">
+                ${(store.bankAccounts || []).map((acc) => {
+            const title = acc.bankName || getBankLabel(acc.bankCode);
+            return `
+                    <article class="withdrawCard" data-bank-id="${esc(acc.id)}">
+                        <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-bank" data-id="${esc(acc.id)}" aria-label="Delete bank account">${toolIcon('delete')}</button>
+                        <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-bank" data-id="${esc(acc.id)}" aria-label="Edit bank account">${toolIcon('edit')}</button>
+                        <div class="withdrawCard__main">
+                            <span class="withdrawCard__icon"><img src="${esc(getBankIconPath(acc.bankCode))}" alt="${esc(title)}"></span>
+                            <span class="withdrawCard__body">
+                                <span class="withdrawCard__title">${esc(title)}</span>
+                                <span class="withdrawCard__meta">${esc(maskAccountNumber(acc.accountNumber))}</span>
+                            </span>
+                        </div>
+                    </article>`;
+        }).join('')}
+                ${store.bankAccounts.length < 3 ? `
+                    <button type="button" class="withdrawCard withdrawCard--add" data-action="add-bank">
+                        <span class="withdrawCard__addIcon"></span>
+                        <span class="withdrawCard__body">
+                            <span class="withdrawCard__title">Add Bank Account</span>
+                            <span class="withdrawCard__meta">max 3 bank account only</span>
+                        </span>
+                    </button>` : ''}
+                <div class="sheetFootNote">Edit or delete account</div>
+            </div>
+        </section>`;
+    }
+
+    function buildAppBankSheet() {
+        const acc = store.appBankAccount;
+        const active = store.preferences.selectedType === 'app_bank' && store.preferences.selectedAppBankId === acc?.id;
+        return `
+        <section class="withdrawSheetPanel withdrawSheetPanel--picker">
+            ${buildSheetHeader('Close', APP_BANK_NAME, `<button type="button" class="sheetHead__btn" data-action="${acc ? 'edit-app-bank' : 'add-app-bank'}">Edit</button>`)}
+            <div class="sheetList">
+                ${acc ? `
+                    <button type="button" class="withdrawCard ${active ? 'is-active' : ''}" data-action="select-app-bank" data-id="${esc(acc.id)}">
+                        <span class="withdrawCard__icon"><img src="${esc(getBankIconPath(acc.bankCode || 'app_internal'))}" alt="${esc(acc.bankName || APP_BANK_NAME)}"></span>
+                        <span class="withdrawCard__body">
+                            <span class="withdrawCard__title">${esc(acc.bankName || APP_BANK_NAME)}</span>
+                            <span class="withdrawCard__meta">${esc(acc.accountName || '-')}</span>
+                        </span>
+                    </button>
+                    <div class="sheetFootNote">Tap card to select. Use Edit to update username.</div>
+                ` : `
+                    <button type="button" class="withdrawCard withdrawCard--add" data-action="add-app-bank">
+                        <span class="withdrawCard__addIcon"></span>
+                        <span class="withdrawCard__body">
+                            <span class="withdrawCard__title">Add ${esc(APP_BANK_NAME)}</span>
+                            <span class="withdrawCard__meta">Link your username</span>
+                        </span>
+                    </button>`}
+            </div>
+        </section>`;
+    }
+
+    function buildEwalletPickerSheet() {
+        return `
+        <section class="withdrawSheetPanel withdrawSheetPanel--picker">
+            ${buildSheetHeader('Close', 'Choose E-wallet', '<button type="button" class="sheetHead__btn" data-action="open-ewallet-manage">Edit</button>')}
+            <div class="sheetList">
+                ${EWALLET_OPTIONS.map((opt) => {
+            const acc = store.ewalletAccounts?.[opt.key];
+            if (!acc) return '';
+            const active = store.preferences.selectedType === 'ewallet' && store.preferences.selectedEwalletType === opt.key;
+            return `
+                    <button type="button" class="withdrawCard ${active ? 'is-active' : ''}" data-action="select-ewallet-from-sheet" data-id="${esc(opt.key)}">
+                        <span class="withdrawCard__icon"><img src="${esc(acc.icon || opt.icon)}" alt="${esc(acc.label || opt.label)}"></span>
+                        <span class="withdrawCard__body">
+                            <span class="withdrawCard__title">${esc(acc.label || opt.label)}</span>
+                            <span class="withdrawCard__meta">${esc(maskAccountNumber(acc.accountNumber))}</span>
+                        </span>
+                    </button>`;
+        }).join('')}
+            </div>
+        </section>`;
+    }
+
+    function buildEwalletManageSheet() {
+        return `
+        <section class="withdrawSheetPanel withdrawSheetPanel--manage">
+            ${buildSheetHeader('Back', 'Choose E-wallet')}
+            <div class="sheetList">
+                ${EWALLET_OPTIONS.map((opt) => {
+            const acc = store.ewalletAccounts?.[opt.key];
+            if (!acc) {
+                return `
+                        <button type="button" class="withdrawCard withdrawCard--add" data-action="add-ewallet" data-id="${esc(opt.key)}">
+                            <span class="withdrawCard__addIcon"></span>
+                            <span class="withdrawCard__body">
+                                <span class="withdrawCard__title">Add ${esc(opt.label)}</span>
+                                <span class="withdrawCard__meta">Link account</span>
+                            </span>
+                        </button>`;
+            }
+            return `
+                    <article class="withdrawCard" data-ewallet-type="${esc(opt.key)}">
+                        <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-ewallet" data-id="${esc(opt.key)}">${toolIcon('delete')}</button>
+                        <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-ewallet" data-id="${esc(opt.key)}">${toolIcon('edit')}</button>
+                        <div class="withdrawCard__main">
+                            <span class="withdrawCard__icon"><img src="${esc(acc.icon || opt.icon)}" alt="${esc(acc.label || opt.label)}"></span>
+                            <span class="withdrawCard__body">
+                                <span class="withdrawCard__title">${esc(acc.label || opt.label)}</span>
+                                <span class="withdrawCard__meta">${esc(maskAccountNumber(acc.accountNumber))}</span>
+                            </span>
+                        </div>
+                    </article>`;
+                }).join('')}
+                <div class="sheetFootNote">Edit or delete account</div>
+            </div>
+        </section>`;
+    }
+
+    function buildCryptoPickerSheet() {
+        return `
+        <section class="withdrawSheetPanel withdrawSheetPanel--picker">
+            ${buildSheetHeader('Close', 'Choose Crypto', '<button type="button" class="sheetHead__btn" data-action="open-crypto-manage">Edit</button>')}
+            <div class="sheetList">
+                ${CRYPTO_OPTIONS.map((opt) => {
+            const acc = store.cryptoAccounts?.[opt.key];
+            if (!acc) return '';
+            const active = store.preferences.selectedType === 'crypto' && store.preferences.selectedCryptoKey === opt.key;
+            return `
+                    <button type="button" class="withdrawCard ${active ? 'is-active' : ''}" data-action="select-crypto-from-sheet" data-id="${esc(opt.key)}">
+                        <span class="withdrawCard__icon"><img src="${esc(acc.icon || opt.icon)}" alt="${esc(acc.label || opt.label)}"></span>
+                        <span class="withdrawCard__body">
+                            <span class="withdrawCard__title">${esc(acc.label || opt.label)} (${esc(acc.network || opt.network)})</span>
+                            <span class="withdrawCard__meta">${esc(maskAddress(acc.address))}</span>
+                        </span>
+                    </button>`;
+        }).join('')}
+            </div>
+        </section>`;
+    }
+
+    function buildCryptoManageSheet() {
+        return `
+        <section class="withdrawSheetPanel withdrawSheetPanel--manage">
+            ${buildSheetHeader('Back', 'Choose Crypto')}
+            <div class="sheetList">
+                ${CRYPTO_OPTIONS.map((opt) => {
+            const acc = store.cryptoAccounts?.[opt.key];
+            if (!acc) {
+                return `
+                        <button type="button" class="withdrawCard withdrawCard--add" data-action="add-crypto" data-id="${esc(opt.key)}">
+                            <span class="withdrawCard__addIcon"></span>
+                            <span class="withdrawCard__body">
+                                <span class="withdrawCard__title">Add ${esc(opt.label)} (${esc(opt.network)})</span>
+                                <span class="withdrawCard__meta">Link wallet</span>
+                            </span>
+                        </button>`;
+            }
+            return `
+                    <article class="withdrawCard" data-crypto-key="${esc(opt.key)}">
+                        <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-crypto" data-id="${esc(opt.key)}">${toolIcon('delete')}</button>
+                        <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-crypto" data-id="${esc(opt.key)}">${toolIcon('edit')}</button>
+                        <div class="withdrawCard__main">
+                            <span class="withdrawCard__icon"><img src="${esc(acc.icon || opt.icon)}" alt="${esc(acc.label || opt.label)}"></span>
+                            <span class="withdrawCard__body">
+                                <span class="withdrawCard__title">${esc(acc.label || opt.label)} (${esc(acc.network || opt.network)})</span>
+                                <span class="withdrawCard__meta">${esc(maskAddress(acc.address))}</span>
+                            </span>
+                        </div>
+                    </article>`;
+        }).join('')}
+                <div class="sheetFootNote">Edit or delete account</div>
+            </div>
+        </section>`;
+    }
+
+    function openMethodSheet(view) {
+        sheetState.view = view;
+        if (view === 'bank-picker') return openWithdrawSheet(buildBankPickerSheet());
+        if (view === 'bank-manage') return openWithdrawSheet(buildBankManageSheet());
+        if (view === 'app-bank') return openWithdrawSheet(buildAppBankSheet());
+        if (view === 'ewallet-picker') return openWithdrawSheet(buildEwalletPickerSheet());
+        if (view === 'ewallet-manage') return openWithdrawSheet(buildEwalletManageSheet());
+        if (view === 'crypto-picker') return openWithdrawSheet(buildCryptoPickerSheet());
+        if (view === 'crypto-manage') return openWithdrawSheet(buildCryptoManageSheet());
+    }
+
     function renderBankAccounts() {
         if (!els.savedBankList) return;
         const selectedId = store.preferences.selectedType === 'bank' ? store.preferences.selectedBankId : null;
@@ -388,7 +999,7 @@
 
         const addCard = store.bankAccounts.length < 3
             ? `<button type="button" class="withdrawCard withdrawCard--add" data-action="add-bank">
-          <span class="withdrawCard__addIcon">+</span>
+          <span class="withdrawCard__addIcon"></span>
           <span class="withdrawCard__body">
             <span class="withdrawCard__title">Add Bank Account</span>
             <span class="withdrawCard__meta">max 3 bank account only</span>
@@ -403,13 +1014,26 @@
         if (!els.appBankSlot) return;
         const acc = store.appBankAccount;
         if (!acc) {
-            els.appBankSlot.innerHTML = `<button type="button" class="withdrawCard withdrawCard--add" data-action="add-app-bank">
-        <span class="withdrawCard__addIcon">+</span>
-        <span class="withdrawCard__body">
-          <span class="withdrawCard__title">Add App Bank Route</span>
-          <span class="withdrawCard__meta">max 1 internal route only</span>
+            els.appBankSlot.innerHTML = `
+    <article class="withdrawCard withdrawCard--empty withdrawCard--appBankEmpty">
+      <button
+        type="button"        class="withdrawCard__tool withdrawCard__tool--edit"
+        data-action="add-app-bank"
+        aria-label="Add app bank route"
+      >
+        ${toolIcon('edit')}
+      </button>
+
+      <div class="withdrawCard__main" aria-disabled="true">
+        <span class="withdrawCard__icon">
+          <img src="${esc(getBankIconPath('app_internal'))}" alt="App Bank Route">
         </span>
-      </button>`;
+        <span class="withdrawCard__body">
+          <span class="withdrawCard__title">App Bank Route</span>
+          <span class="withdrawCard__meta">Not linked</span>
+        </span>
+      </div>
+    </article>`;
             return;
         }
 
@@ -423,7 +1047,7 @@
           <span class="withdrawCard__icon"><img src="${esc(getBankIconPath(acc.bankCode || 'app_internal'))}" alt="${esc(title)}"></span>
           <span class="withdrawCard__body">
             <span class="withdrawCard__title">${esc(title)}</span>
-            <span class="withdrawCard__meta">${esc(maskAccountNumber(acc.accountNumber))}</span>
+            <span class="withdrawCard__meta">${esc(maskAccountNumber(acc.accountName))}</span>
           </span>
         </button>
       </article>`;
@@ -435,10 +1059,31 @@
             const acc = store.ewalletAccounts?.[opt.key];
             const active = store.preferences.selectedType === 'ewallet' && store.preferences.selectedEwalletType === opt.key;
             if (!acc) {
-                return `<article class="withdrawCard withdrawCard--empty"><span class="withdrawCard__icon"><img src="${esc(opt.icon)}" alt="${esc(opt.label)}"></span><span class="withdrawCard__body"><span class="withdrawCard__title">${esc(opt.label)}</span><span class="withdrawCard__meta">Not linked</span></span></article>`;
+                return `
+    <article class="withdrawCard withdrawCard--empty" data-ewallet-type="${esc(opt.key)}">
+      <button
+        type="button"
+        class="withdrawCard__tool withdrawCard__tool--edit"
+        data-action="add-ewallet"
+        data-id="${esc(opt.key)}"
+        aria-label="Add ${esc(opt.label)} account"
+      >
+        ${toolIcon('edit')}
+      </button>
+
+      <div class="withdrawCard__main" aria-disabled="true">
+        <span class="withdrawCard__icon"><img src="${esc(opt.icon)}" alt="${esc(opt.label)}"></span>
+        <span class="withdrawCard__body">
+          <span class="withdrawCard__title">${esc(opt.label)}</span>
+          <span class="withdrawCard__meta">Not linked</span>
+        </span>
+      </div>
+    </article>`;
             }
             return `
         <article class="withdrawCard ${active ? 'is-active' : ''}" data-ewallet-type="${esc(opt.key)}">
+          <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-ewallet" data-id="${esc(opt.key)}" aria-label="Delete e-wallet account">${toolIcon('delete')}</button>
+          <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-ewallet" data-id="${esc(opt.key)}" aria-label="Edit e-wallet account">${toolIcon('edit')}</button>
           <button type="button" class="withdrawCard__main" data-action="select-ewallet" data-id="${esc(opt.key)}" aria-pressed="${active ? 'true' : 'false'}">
             <span class="withdrawCard__icon"><img src="${esc(acc.icon || opt.icon)}" alt="${esc(acc.label || opt.label)}"></span>
             <span class="withdrawCard__body">
@@ -456,10 +1101,31 @@
             const acc = store.cryptoAccounts?.[opt.key];
             const active = store.preferences.selectedType === 'crypto' && store.preferences.selectedCryptoKey === opt.key;
             if (!acc) {
-                return `<article class="withdrawCard withdrawCard--empty"><span class="withdrawCard__icon"><img src="${esc(opt.icon)}" alt="${esc(opt.label)}"></span><span class="withdrawCard__body"><span class="withdrawCard__title">${esc(opt.label)} (${esc(opt.network)})</span><span class="withdrawCard__meta">Not linked</span></span></article>`;
+                return `
+    <article class="withdrawCard withdrawCard--empty" data-crypto-key="${esc(opt.key)}">
+      <button
+        type="button"
+        class="withdrawCard__tool withdrawCard__tool--edit"
+        data-action="add-crypto"
+        data-id="${esc(opt.key)}"
+        aria-label="Add ${esc(opt.label)} ${esc(opt.network)} wallet"
+      >
+        ${toolIcon('edit')}
+      </button>
+
+      <div class="withdrawCard__main" aria-disabled="true">
+        <span class="withdrawCard__icon"><img src="${esc(opt.icon)}" alt="${esc(opt.label)}"></span>
+        <span class="withdrawCard__body">
+          <span class="withdrawCard__title">${esc(opt.label)} (${esc(opt.network)})</span>
+          <span class="withdrawCard__meta">Not linked</span>
+        </span>
+      </div>
+    </article>`;
             }
             return `
         <article class="withdrawCard ${active ? 'is-active' : ''}" data-crypto-key="${esc(opt.key)}">
+          <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-crypto" data-id="${esc(opt.key)}" aria-label="Delete crypto account">${toolIcon('delete')}</button>
+          <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-crypto" data-id="${esc(opt.key)}" aria-label="Edit crypto account">${toolIcon('edit')}</button>
           <button type="button" class="withdrawCard__main" data-action="select-crypto" data-id="${esc(opt.key)}" aria-pressed="${active ? 'true' : 'false'}">
             <span class="withdrawCard__icon"><img src="${esc(acc.icon || opt.icon)}" alt="${esc(acc.label || opt.label)}"></span>
             <span class="withdrawCard__body">
@@ -471,109 +1137,313 @@
         }).join('');
     }
 
+    function buildBankForm(model = null) {
+        return `
+        <form id="withdrawDynamicForm" data-editor-type="bank">
+            <div class="withdrawFormGrid">
+                <label class="field">
+                    <span>Bank Account</span>
+                    <input type="text" name="accountName" value="${esc(model?.accountName || '')}" placeholder="Account Name" required>
+                </label>
+
+                <label class="field">
+                    <span>Bank</span>
+                    <input type="hidden" name="bankCode" value="${esc(model?.bankCode || '')}" required>
+                    <div data-bank-dropdown></div>
+                </label>
+
+                <label class="field">
+                    <span>Account Number</span>
+                    <input type="text" name="accountNumber" value="${esc(model?.accountNumber || '')}" placeholder="Account Number" required>
+                </label>
+
+                <label class="field">
+                    <span>Bank Branch</span>
+                    <input type="text" name="branchName" value="${esc(model?.branchName || '')}" placeholder="Bank Branch">
+                </label>
+            </div>
+
+            <div class="formActions">
+                <button type="submit" data-action="save-method">Save</button>
+            </div>
+        </form>`;
+    }
+
+    function buildAppBankForm(model = null) {
+        return `
+        <form id="withdrawDynamicForm" data-editor-type="app_bank">
+            <div class="withdrawFormGrid">
+                <label class="field">
+                    <span>App Bank</span>
+                    <input type="text" value="A9Wallet / G2Point" disabled>
+                    <input type="hidden" name="bankCode" value="app_internal">
+                </label>
+
+                <label class="field">
+                    <span>Username</span>
+                    <input type="text" name="accountName" value="${esc(model?.accountName || '')}" placeholder="Account Name" required>
+                </label>
+            </div>
+
+            <div class="formActions">
+                <button type="submit" data-action="save-method">Save</button>
+            </div>
+        </form>`;
+    }
+
+    function buildEwalletForm(optionKey, model = null) {
+        const meta = EWALLET_OPTIONS.find((item) => item.key === optionKey);
+        return `
+        <form id="withdrawDynamicForm" data-editor-type="ewallet" data-option-key="${esc(optionKey)}">
+            <div class="withdrawFormGrid">
+                <label class="field">
+                    <span>E-wallet</span>
+                    <input type="text" value="${esc(meta?.label || model?.label || 'E-wallet')}" disabled>
+                </label>
+
+                <label class="field">
+                    <span>Account Name</span>
+                    <input type="text" name="label" value="${esc(model?.label || meta?.label || '')}" placeholder="Account Name" required>
+                </label>
+
+                <label class="field">
+                    <span>Account Number</span>
+                    <input type="text" name="accountNumber" value="${esc(model?.accountNumber || '')}" placeholder="0123456789" required>
+                </label>
+            </div>
+
+            <div class="formActions">
+                <button type="submit" data-action="save-method">Save</button>
+            </div>
+        </form>`;
+    }
+
+    function buildCryptoForm(optionKey, model = null) {
+        const meta = CRYPTO_OPTIONS.find((item) => item.key === optionKey);
+        return `
+        <form id="withdrawDynamicForm" data-editor-type="crypto" data-option-key="${esc(optionKey)}">
+            <div class="withdrawFormGrid">
+                <label class="field">
+                    <span>Crypto</span>
+                    <input type="text" value="${esc(meta?.label || model?.label || 'Crypto')}" disabled>
+                </label>
+
+                <label class="field">
+                    <span>Network</span>
+                    <input type="text" value="${esc(meta?.network || model?.network || '')}" disabled>
+                </label>
+
+                <label class="field">
+                    <span>Wallet Label</span>
+                    <input type="text" name="label" value="${esc(model?.label || meta?.label || '')}" placeholder="Wallet Label" required>
+                </label>
+
+                <label class="field">
+                    <span>Wallet Address</span>
+                    <input type="text" name="address" value="${esc(model?.address || '')}" placeholder="Wallet Address" required>
+                </label>
+            </div>
+                        <div class="formActions">
+                <button type="submit" data-action="save-method">Save</button>
+            </div>
+        </form>`;
+    }
+
     function openBankEditor(mode, bankId = null, isAppBank = false) {
+        if (editorState.open) return;
+
         editorState.open = true;
         editorState.mode = mode;
         editorState.type = isAppBank ? 'app_bank' : 'bank';
         editorState.editingId = bankId;
+        editorState.optionKey = null;
 
         const title = mode === 'edit'
             ? (isAppBank ? 'Edit App Bank Route' : 'Edit Bank Account')
             : (isAppBank ? 'Add App Bank Route' : 'Add Bank Account');
 
-        if (els.editorTitle) els.editorTitle.textContent = title;
-        if (!els.formFields) return;
-
         const bank = isAppBank
             ? store.appBankAccount
             : (bankId ? store.bankAccounts.find((x) => x.id === bankId) : null);
 
-        els.formFields.innerHTML = `
-      <div class="withdrawFormGrid">
-        <label class="field">
-          <span>Bank Account</span>
-          <input type="text" name="accountName" value="${esc(bank?.accountName || '')}" placeholder="Player998" required>
-        </label>
-
-        <label class="field">
-          <span>Bank</span>
-          <select name="bankCode" required>
-            <option value="">Select Bank</option>
-            ${BANK_OPTIONS
-                .filter((opt) => isAppBank ? opt.code === 'app_internal' : opt.code !== 'app_internal')
-                .map((opt) => `<option value="${esc(opt.code)}" ${bank?.bankCode === opt.code ? 'selected' : ''}>${esc(opt.label)}</option>`)
-                .join('')}
-          </select>
-        </label>
-
-        <label class="field">
-          <span>Account Number</span>
-          <input type="text" name="accountNumber" value="${esc(bank?.accountNumber || '')}" placeholder="Account Number" required>
-        </label>
-
-        <label class="field">
-          <span>Bank Branch</span>
-          <input type="text" name="branchName" value="${esc(bank?.branchName || '')}" placeholder="Bank Branch">
-        </label>
-      </div>`;
-
-        els.editor.hidden = false;
+        renderEditorIntoPlace({
+            type: isAppBank ? 'app_bank' : 'bank',
+            title,
+            desc: 'We need your account detail for payment verification and for future withdrawals.',
+            formHtml: isAppBank ? buildAppBankForm(bank) : buildBankForm(bank)
+        });
     }
 
+    function openEwalletEditor(mode, optionKey) {
+        if (editorState.open) return;
+
+        editorState.open = true;
+        editorState.mode = mode;
+        editorState.type = 'ewallet';
+        editorState.editingId = null;
+        editorState.optionKey = optionKey;
+
+        const meta = EWALLET_OPTIONS.find((item) => item.key === optionKey);
+        const model = store.ewalletAccounts?.[optionKey] || null;
+
+        renderEditorIntoPlace({
+            type: 'ewallet',
+            title: `${mode === 'edit' ? 'Edit' : 'Add'} ${meta?.label || 'E-wallet'}`,
+            desc: 'Each e-wallet keeps its own account detail. Editing one will not affect the others.',
+            formHtml: buildEwalletForm(optionKey, model)
+        });
+    }
+
+    function openCryptoEditor(mode, optionKey) {
+        if (editorState.open) return;
+
+        editorState.open = true;
+        editorState.mode = mode;
+        editorState.type = 'crypto';
+        editorState.editingId = null;
+        editorState.optionKey = optionKey;
+
+        const meta = CRYPTO_OPTIONS.find((item) => item.key === optionKey);
+        const model = store.cryptoAccounts?.[optionKey] || null;
+
+        renderEditorIntoPlace({
+            type: 'crypto',
+            title: `${mode === 'edit' ? 'Edit' : 'Add'} ${meta?.label || 'Crypto'} (${meta?.network || ''})`,
+            desc: 'Each crypto method keeps its own wallet address. Editing one will not affect the others.',
+            formHtml: buildCryptoForm(optionKey, model)
+        });
+    }
+    function canInteractWhileEditing(action) {
+        return action === 'cancel-editor' || action === 'close-sheet';
+    }
     function closeEditor() {
+        if (!editorState.open) return;
+
+        const closingType = editorState.mountKey;
+        const isMobile = editorState.mobile;
+
+        if (isMobile) {
+            closeWithdrawSheet();
+        } else if (closingType) {
+            unlockMethodArea(closingType);
+        }
+
         editorState.open = false;
         editorState.mode = 'add';
         editorState.type = 'bank';
         editorState.editingId = null;
-        if (els.form) els.form.reset();
-        if (els.editor) els.editor.hidden = true;
+        editorState.optionKey = null;
+        editorState.mountKey = null;
+        editorState.mobile = false;
+        sheetState.view = null;
+
+        syncMethodAreaVisibility();
     }
 
     function saveEditorForm(form) {
         const fd = new FormData(form);
-        const bankCode = String(fd.get('bankCode') || '').trim();
-        const accountName = String(fd.get('accountName') || '').trim();
-        const accountNumber = String(fd.get('accountNumber') || '').replace(/\s+/g, '');
-        const branchName = String(fd.get('branchName') || '').trim();
 
-        if (!bankCode || !accountName || !accountNumber) return;
+        if (editorState.type === 'app_bank' || editorState.type === 'bank') {
+            const bankCode = String(fd.get('bankCode') || '').trim();
+            const accountName = String(fd.get('accountName') || '').trim();
+            const accountNumber = String(fd.get('accountNumber') || '').replace(/\s+/g, '');
+            const branchName = String(fd.get('branchName') || '').trim();
 
-        const payload = {
-            bankCode,
-            bankName: getBankLabel(bankCode),
-            accountName,
-            accountNumber,
-            branchName
-        };
+            if (editorState.type === 'app_bank') {
+                if (!accountName) return;
 
-        if (editorState.type === 'app_bank') {
-            store.appBankAccount = {
-                id: store.appBankAccount?.id || `app_bank_${Date.now()}`,
-                ...payload
+                store.appBankAccount = {
+                    id: store.appBankAccount?.id || `app_bank_${Date.now()}`,
+                    bankCode: 'app_internal',
+                    bankName: APP_BANK_NAME,
+                    accountName,
+                    accountNumber: '',
+                    branchName: ''
+                };
+                saveStore();
+                setSelectedMethod('app_bank', store.appBankAccount.id);
+                closeEditor();
+                return;
+            }
+
+            if (!bankCode || !accountName || !accountNumber) return;
+
+            const payload = {
+                bankCode,
+                bankName: getBankLabel(bankCode),
+                accountName,
+                accountNumber,
+                branchName
             };
-            setSelectedMethod('app_bank', store.appBankAccount.id);
-            return;
+
+            if (editorState.mode === 'edit' && editorState.editingId) {
+                const idx = store.bankAccounts.findIndex((x) => x.id === editorState.editingId);
+                if (idx > -1) {
+                    store.bankAccounts[idx] = { ...store.bankAccounts[idx], ...payload };
+                }
+            } else {
+                if (store.bankAccounts.length >= 3) return;
+                const next = { id: `bank_${Date.now()}`, ...payload };
+                store.bankAccounts.push(next);
+                store.preferences.selectedType = 'bank';
+                store.preferences.selectedBankId = next.id;
+                store.preferences.selectedAppBankId = null;
+                store.preferences.selectedEwalletType = null;
+                store.preferences.selectedCryptoKey = null;
+            }
         }
 
-        if (editorState.mode === 'edit' && editorState.editingId) {
-            const idx = store.bankAccounts.findIndex((x) => x.id === editorState.editingId);
-            if (idx > -1) {
-                store.bankAccounts[idx] = { ...store.bankAccounts[idx], ...payload };
-            }
-        } else {
-            if (store.bankAccounts.length >= 3) return;
-            const next = { id: `bank_${Date.now()}`, ...payload };
-            store.bankAccounts.push(next);
-            store.preferences.selectedType = 'bank';
-            store.preferences.selectedBankId = next.id;
+        if (editorState.type === 'ewallet' && editorState.optionKey) {
+            const label = String(fd.get('label') || '').trim();
+            const accountNumber = String(fd.get('accountNumber') || '').replace(/\s+/g, '');
+            if (!label || !accountNumber) return;
+            store.ewalletAccounts[editorState.optionKey] = {
+                type: editorState.optionKey,
+                label,
+                accountNumber,
+                icon: getEwalletIconPath(editorState.optionKey)
+            };
+            store.preferences.selectedType = 'ewallet';
+            store.preferences.selectedEwalletType = editorState.optionKey;
+            store.preferences.selectedBankId = null;
             store.preferences.selectedAppBankId = null;
-            store.preferences.selectedEwalletType = null;
             store.preferences.selectedCryptoKey = null;
         }
 
+        if (editorState.type === 'crypto' && editorState.optionKey) {
+            const label = String(fd.get('label') || '').trim();
+            const address = String(fd.get('address') || '').trim();
+            const meta = CRYPTO_META_MAP[editorState.optionKey];
+            if (!label || !address || !meta) return;
+            store.cryptoAccounts[editorState.optionKey] = {
+                key: editorState.optionKey,
+                label,
+                network: meta.network,
+                address,
+                icon: getCryptoIconPath(editorState.optionKey)
+            };
+            store.preferences.selectedType = 'crypto';
+            store.preferences.selectedCryptoKey = editorState.optionKey;
+            store.preferences.selectedBankId = null;
+            store.preferences.selectedAppBankId = null;
+            store.preferences.selectedEwalletType = null;
+        }
+
+        const reopenView = isMobileWithdrawUI()
+            ? (editorState.type === 'bank' ? 'bank-manage'
+                : editorState.type === 'app_bank' ? 'app-bank'
+                    : editorState.type === 'ewallet' ? 'ewallet-manage'
+                        : editorState.type === 'crypto' ? 'crypto-manage'
+                            : null)
+            : null;
+
         saveStore();
-        renderAll();
         closeEditor();
+        renderAll();
+
+        if (reopenView) {
+            openMethodSheet(reopenView);
+        }
     }
 
     function deleteBankAccount(bankId) {
@@ -590,6 +1460,28 @@
         store.appBankAccount = null;
         if (store.preferences.selectedType === 'app_bank') {
             store.preferences.selectedAppBankId = null;
+        }
+        ensureValidSelection();
+        saveStore();
+        renderAll();
+    }
+
+    function deleteEwalletAccount(key) {
+        if (!key) return;
+        delete store.ewalletAccounts[key];
+        if (store.preferences.selectedType === 'ewallet' && store.preferences.selectedEwalletType === key) {
+            store.preferences.selectedEwalletType = null;
+        }
+        ensureValidSelection();
+        saveStore();
+        renderAll();
+    }
+
+    function deleteCryptoAccount(key) {
+        if (!key) return;
+        delete store.cryptoAccounts[key];
+        if (store.preferences.selectedType === 'crypto' && store.preferences.selectedCryptoKey === key) {
+            store.preferences.selectedCryptoKey = null;
         }
         ensureValidSelection();
         saveStore();
@@ -649,16 +1541,28 @@
     function renderAll() {
         ensureValidSelection();
         renderTabState();
-        renderBankAccounts();
-        renderAppBankRoute();
-        renderEwalletAccounts();
-        renderCryptoAccounts();
+
+        if (isMobileWithdrawUI()) {
+            renderMobileBankEntry();
+            renderMobileAppBankEntry();
+            renderMobileEwalletEntry();
+            renderMobileCryptoEntry();
+        } else {
+            renderBankAccounts();
+            renderAppBankRoute();
+            renderEwalletAccounts();
+            renderCryptoAccounts();
+        }
+
         renderSummary();
         syncSubmitState();
+        syncMethodAreaVisibility();
     }
 
     els.tabs.forEach((tab) => {
         tab.addEventListener('click', () => {
+            if (editorState.open) return;
+
             const type = tab.dataset.wdType || 'bank';
             store.preferences.preferredType = type;
             saveStore();
@@ -667,9 +1571,45 @@
     });
 
     document.addEventListener('click', (e) => {
+        const actionEl = e.target.closest('[data-action]');
+        const action = actionEl?.dataset.action || '';
+
+        // editor 开着时，除了 cancel / close-sheet 之外，其他点击都先挡住
+        if (editorState.open && !canInteractWhileEditing(action)) {
+            return;
+        }
+
         const addBankBtn = e.target.closest('[data-action="add-bank"]');
         if (addBankBtn) {
             openBankEditor('add', null, false);
+            return;
+        }
+        const closeSheetBtn = e.target.closest('[data-action="close-sheet"]');
+        if (closeSheetBtn) {
+            if (editorState.open) {
+                closeEditor();
+            } else {
+                closeWithdrawSheet();
+                sheetState.view = null;
+            }
+            return;
+        }
+
+        const openBankPickerBtn = e.target.closest('[data-action="open-bank-picker"]');
+        if (openBankPickerBtn) {
+            openMethodSheet('bank-picker');
+            return;
+        }
+
+        const openBankManageBtn = e.target.closest('[data-action="open-bank-manage"]');
+        if (openBankManageBtn) {
+            openMethodSheet('bank-manage');
+            return;
+        }
+
+        const openAppBankSheetBtn = e.target.closest('[data-action="open-app-bank-sheet"]');
+        if (openAppBankSheetBtn) {
+            openMethodSheet('app-bank');
             return;
         }
 
@@ -694,6 +1634,17 @@
         const deleteBankBtn = e.target.closest('[data-action="delete-bank"]');
         if (deleteBankBtn) {
             deleteBankAccount(deleteBankBtn.dataset.id);
+            if (!editorState.open && isMobileWithdrawUI() && sheetState.view === 'bank-manage') {
+                openMethodSheet('bank-manage');
+            }
+            return;
+        }
+
+        const selectBankSheetBtn = e.target.closest('[data-action="select-bank-from-sheet"]');
+        if (selectBankSheetBtn) {
+            setSelectedMethod('bank', selectBankSheetBtn.dataset.id);
+            closeWithdrawSheet();
+            sheetState.view = null;
             return;
         }
 
@@ -712,6 +1663,42 @@
         const deleteAppBankBtn = e.target.closest('[data-action="delete-app-bank"]');
         if (deleteAppBankBtn) {
             deleteAppBankAccount();
+            if (!editorState.open && isMobileWithdrawUI()) {
+                openMethodSheet('app-bank');
+            }
+            return;
+        }
+
+        const openEwalletPickerBtn = e.target.closest('[data-action="open-ewallet-picker"]');
+        if (openEwalletPickerBtn) {
+            openMethodSheet('ewallet-picker');
+            return;
+        }
+
+        const openEwalletManageBtn = e.target.closest('[data-action="open-ewallet-manage"]');
+        if (openEwalletManageBtn) {
+            openMethodSheet('ewallet-manage');
+            return;
+        }
+
+        const addEwalletBtn = e.target.closest('[data-action="add-ewallet"]');
+        if (addEwalletBtn) {
+            openEwalletEditor('add', addEwalletBtn.dataset.id);
+            return;
+        }
+
+        const editEwalletBtn = e.target.closest('[data-action="edit-ewallet"]');
+        if (editEwalletBtn) {
+            openEwalletEditor('edit', editEwalletBtn.dataset.id);
+            return;
+        }
+
+        const deleteEwalletBtn = e.target.closest('[data-action="delete-ewallet"]');
+        if (deleteEwalletBtn) {
+            deleteEwalletAccount(deleteEwalletBtn.dataset.id);
+            if (!editorState.open && isMobileWithdrawUI() && sheetState.view === 'ewallet-manage') {
+                openMethodSheet('ewallet-manage');
+            }
             return;
         }
 
@@ -721,9 +1708,58 @@
             return;
         }
 
+        const selectEwalletSheetBtn = e.target.closest('[data-action="select-ewallet-from-sheet"]');
+        if (selectEwalletSheetBtn) {
+            setSelectedMethod('ewallet', selectEwalletSheetBtn.dataset.id);
+            closeWithdrawSheet();
+            sheetState.view = null;
+            return;
+        }
+
+        const openCryptoPickerBtn = e.target.closest('[data-action="open-crypto-picker"]');
+        if (openCryptoPickerBtn) {
+            openMethodSheet('crypto-picker');
+            return;
+        }
+
+        const openCryptoManageBtn = e.target.closest('[data-action="open-crypto-manage"]');
+        if (openCryptoManageBtn) {
+            openMethodSheet('crypto-manage');
+            return;
+        }
+
+        const addCryptoBtn = e.target.closest('[data-action="add-crypto"]');
+        if (addCryptoBtn) {
+            openCryptoEditor('add', addCryptoBtn.dataset.id);
+            return;
+        }
+
+        const editCryptoBtn = e.target.closest('[data-action="edit-crypto"]');
+        if (editCryptoBtn) {
+            openCryptoEditor('edit', editCryptoBtn.dataset.id);
+            return;
+        }
+
+        const deleteCryptoBtn = e.target.closest('[data-action="delete-crypto"]');
+        if (deleteCryptoBtn) {
+            deleteCryptoAccount(deleteCryptoBtn.dataset.id);
+            if (!editorState.open && isMobileWithdrawUI() && sheetState.view === 'crypto-manage') {
+                openMethodSheet('crypto-manage');
+            }
+            return;
+        }
+
         const selectCryptoBtn = e.target.closest('[data-action="select-crypto"]');
         if (selectCryptoBtn) {
             setSelectedMethod('crypto', selectCryptoBtn.dataset.id);
+            return;
+        }
+
+        const selectCryptoSheetBtn = e.target.closest('[data-action="select-crypto-from-sheet"]');
+        if (selectCryptoSheetBtn) {
+            setSelectedMethod('crypto', selectCryptoSheetBtn.dataset.id);
+            closeWithdrawSheet();
+            sheetState.view = null;
             return;
         }
 
@@ -733,9 +1769,11 @@
         }
     });
 
-    els.form?.addEventListener('submit', (e) => {
+    document.addEventListener('submit', (e) => {
+        const form = e.target.closest('#withdrawDynamicForm');
+        if (!form) return;
         e.preventDefault();
-        saveEditorForm(e.currentTarget);
+        saveEditorForm(form);
     });
 
     els.amountInput?.addEventListener('input', () => {
