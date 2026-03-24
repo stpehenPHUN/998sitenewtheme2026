@@ -1428,6 +1428,7 @@ body.qrViewer-open { overflow: hidden; }
     .btnSave__icon svg { }
 .span-field { opacity: 0.65; font-size: var(--text-xs); }
 .desktopDropdown__option { width: 100%; display: flex; align-items: center; justify-content: space-between; background: var(--bg-color); border-radius: var(--radius-sm); padding: var(--space-2) var(--space-3); color: var(--font-color); border: 0; }
+.desktopDropdownSheet__option { width: 100%; display: flex; align-items: center; justify-content: space-between; background: var(--bg-color); border-radius: var(--radius-sm); padding: var(--space-2) var(--space-3); color: var(--font-color); border: 0; }
 
 #sumWithdrawBankImg { width: var(--icn-w24); }
 #sumWithdrawBankImgimg { width: 100%; border-radius: var(--radius-pill); }
