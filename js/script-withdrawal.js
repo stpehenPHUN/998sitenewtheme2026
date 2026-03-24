@@ -1610,10 +1610,32 @@ document.addEventListener('DOMContentLoaded', () => {
             'select-app-bank',
             'select-ewallet',
             'select-crypto',
+
+            'add-bank',
+            'edit-bank',
+            'delete-bank',
+
+            'add-app-bank',
+            'edit-app-bank',
+            'delete-app-bank',
+
+            'add-ewallet',
+            'edit-ewallet',
+            'delete-ewallet',
+
+            'add-crypto',
+            'edit-crypto',
+            'delete-crypto',
+
             'open-bank-picker',
             'open-app-bank-sheet',
             'open-ewallet-picker',
-            'open-crypto-picker'
+            'open-crypto-picker',
+
+            'open-bank-manage',
+            'open-app-bank-manage',
+            'open-ewallet-manage',
+            'open-crypto-manage'
         ]);
 
         if (action && interactionsThatCancel.has(action)) return true;
