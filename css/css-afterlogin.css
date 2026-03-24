@@ -693,7 +693,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 }
 
 @media (max-width: 1023.98px) {
-    .appSheet__panel { max-height: 50vh; display: flex; flex-direction: column; }
+    .appSheet__panel { min-height: 50vh; display: flex; flex-direction: column; }
 
     .wheel { flex: 1 1 auto; min-height: 0; }
 
@@ -1245,7 +1245,7 @@ ard { flex: 0 0 var(--card-w); width: var(--card-w); }
 
 
 /* ===== Generic Select Sheet ===== */
-.sheetList { margin: var(--space-3); display: grid; gap: var(--space-2); max-height: min(70vh, 520px); overflow: auto; -webkit-overflow-scrolling: touch; }
+.sheetList { margin: var(--space-3); display: grid; gap: var(--space-2); max-height: min(70vh, 520px); }
 
 .sheetItem { width: 100%; text-align: left; border: var(--border-width) solid rgba(255,255,255,.10); background: var(--secondary-color); color: var(--font-color); border-radius: var(--radius-md); padding: var(--space-3); cursor: pointer; }
 
@@ -1395,7 +1395,7 @@ body.qrViewer-open { overflow: hidden; }
 
 .savedBankList { display: grid; gap: var(--space-3); padding: var(--space-2); }
 .withdrawCard { position: relative; }
-.withdrawCard__main, .withdrawCard--add { background: var(--bg-color); border-radius: var(--radius-sm); color: var(--font-color); border: var(--border-width) solid transparent; display: flex; gap: var(--space-3); padding: var(--space-3); width: 100%; align-items: center; }
+.withdrawCard-choose, .withdrawCard__main, .withdrawCard--add { background: var(--bg-color); border-radius: var(--radius-sm); color: var(--font-color); border: var(--border-width) solid transparent; display: flex; gap: var(--space-3); padding: var(--space-3); width: 100%; align-items: center; }
 .withdrawCard__icon { width: var(--icn-w24); }
 .withdrawCard.is-active .withdrawCard__main, .withdrawCard.is-active .withdrawCard--add, .withdrawCard.is-active .withdrawCard--empty { border-color: var(--primary-color); }
 .withdrawCard__icon img { width: 100%; border-radius: var(--radius-pill); }
@@ -1426,8 +1426,8 @@ body.qrViewer-open { overflow: hidden; }
 .btnSave { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); padding-left: var(--space-6); padding-right: var(--space-6); }
 .btnSave__icon { }
     .btnSave__icon svg { }
-
-
+.span-field { opacity: 0.65; font-size: var(--text-xs); }
+.desktopDropdown__option { width: 100%; display: flex; align-items: center; justify-content: space-between; background: var(--bg-color); border-radius: var(--radius-sm); padding: var(--space-2) var(--space-3); color: var(--font-color); border: 0; }
 
 #sumWithdrawBankImg { width: var(--icn-w24); }
 #sumWithdrawBankImgimg { width: 100%; border-radius: var(--radius-pill); }
@@ -1435,11 +1435,15 @@ body.qrViewer-open { overflow: hidden; }
 #withdrawDynamicForm { display: flex; flex-direction: column; gap: var(--space-3); }
 .withdrawList--hidden { display: none; }
 
-@media (min-width:1024px) {
-    .withdrawSection { padding: var(--space-5); }
-    .withdrawTopTabs{padding:0;}
+.field--brandApp { display: flex; column; gap: var(--space-3); }
+#withdrawDynamicForm [data-editor-type="app_bank"] { }
+
+@media (min-width:1024px) { .withdrawSection { padding: var(--space-5); }
+    .withdrawTopTabs { padding: 0; }
     .noteBox { padding: var(--space-5); }
 
+    .desktopDropdown__option { padding: var(--space-2) var(--space-3); color: var(--font-color); border: 0; background: var(--bg-color); white-space: nowrap; text-overflow: ellipsis; }
+        .desktopDropdown__option:hover { background: var(--secondary-color); }
     .withdrawEditor { padding: var(--space-5); margin-top: var(--space-3); }
 
     .withdrawFormGrid { grid-template-columns: repeat(2, 1fr); }
@@ -1453,18 +1457,18 @@ body.qrViewer-open { overflow: hidden; }
 .withdrawSection { margin-bottom: 0; }
     .withdrawSection .sectionHead h5 { margin-bottom: var(--space-4); }
 #withdrawEditor .sectionHead { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2); }
-    #withdrawEditor .sectionHead h5 { margin-bottom: 0;  }
+    #withdrawEditor .sectionHead h5 { margin-bottom: 0; }
 .user-select { background: var(--secondary-color); color: var(--font-color); border: 0; outline: 0; }
-#withdrawEditor .desktopDropdown__trigger { background:var(--secondary-color);padding:0;}
+#withdrawEditor .desktopDropdown__trigger { background: var(--secondary-color); padding: 0; }
     #withdrawEditor .desktopDropdown__trigger .payOpt__icon { display: none; }
-    .withdrawlogo__g2point { height: var(--icn-w56); }
+.withdrawlogo__g2point { height: var(--icn-w56); }
 .withdrawFormFlex { display: flex; align-items: center; }
 #g2pointEditorMount .withdrawFormGrid .field { width: 100%; max-width: 420px; }
 .g2p__download { }
 .g2p__downloadList { padding: 0; display: flex; gap: var(--space-3); }
     .g2p__downloadList li { list-style-type: none; }
 .littleHead { margin-bottom: var(--space-1); margin-top: var(--space-5); font-size: var(--text-base); }
-.g2p__downloadBtn { background: var(--bg-color); border: 0; display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2); color: var(--font-color); }
+.g2p__downloadBtn { background: var(--secondary-color); border: 0; display: flex; align-items: center; gap: var(--space-2); padding: var(--space-1) var(--space-2); color: var(--font-color); border-radius: var(--radius-sm); }
 .download-logo { width: var(--icn-w30); background: var(--bs-black); padding: var(--space-1); border-radius: var(--radius-sm); }
 .g2p__website { font-size: var(--text-xs); }
 
@@ -1491,9 +1495,17 @@ body.qrViewer-open { overflow: hidden; }
 
 .g2pModal__iconBtn { background: var(--secondary-color); color: var(--font-color); display: flex; flex-direction: column; justify-content: center; align-items: center; border: 0; }
 
-.withdrawCard--picker { width: 100%; padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); background: var(--bg-color); display: flex;align-items: center; border: 0; color: var(--font-color); gap:var(--space-2);}
-.withdrawCard__icon {  }
+.withdrawCard--picker { width: 100%; padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); background: var(--bg-color); display: flex; align-items: center; border: 0; color: var(--font-color); gap: var(--space-2); }
+.withdrawCard__icon { }
 
-.sheetList .withdrawCard { background: var(--bg-color); display: flex; align-items: center; border: 0; color: var(--font-color); gap: var(--space-2); }
+.sheetList .withdrawCard { background: var(--bg-color); display: flex; align-items: center;  color: var(--font-color); gap: var(--space-2); }
 .sheetHead__btn { background: var(--bg-color); display: flex; align-items: center; color: var(--font-color); }
-.sheetList .withdrawCard__tool {top:auto; }
+.sheetList .withdrawCard__tool { top: auto; }
+
+.sheetActions{text-align:center;display:flex;justify-content:center; align-items:center;}
+.sheetHead__btn { border: 0; padding: var(--space-2); text-align: center; display: block; margin: var(--space-2); }
+.sheetList > *{position:relative;}
+    .sheetList > *:after { content: ''; position: absolute; bottom: calc(var(--space-1) * -1); left: 0; right: 0; width: 100%; height: 1px; background: var(--font-color); opacity: 0.1; pointer-events: none; }
+.withdrawEditorHost{padding:var(--space-4);}
+.withdrawSheetPanel .appBankBrandCard {display:none; }
+.withdrawSheetPanel  .field--brandApp { display:block;}
