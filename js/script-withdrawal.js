@@ -4,31 +4,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const SUMMARY_ROLLOVER = 1530;
     const APP_BANK_NAME = 'A9Wallet / G2Point';
     const BANK_OPTIONS = [
-        { code: 'maybank', label: 'Maybank (MBB)', icon: 'image/payment/maybank.png' },
-        { code: 'cimb', label: 'CIMB Bank', icon: 'image/payment/maybank.png' },
-        { code: 'rhb', label: 'RHB Bank', icon: 'image/payment/maybank.png' },
-        { code: 'public_bank', label: 'Public Bank', icon: 'image/payment/maybank.png' },
-        { code: 'hong_leong', label: 'Hong Leong Bank', icon: 'image/payment/maybank.png' },
-        { code: 'bank_islam', label: 'Bank Islam', icon: 'image/payment/maybank.png' },
-        { code: 'bsn', label: 'Bank Simpanan Nasional', icon: 'image/payment/maybank.png' },
-        { code: 'ambank', label: 'AmBank', icon: 'image/payment/maybank.png' },
-        { code: 'ocbc', label: 'OCBC Bank', icon: 'image/payment/maybank.png' },
-        { code: 'uob', label: 'UOB Bank', icon: 'image/payment/maybank.png' },
-        { code: 'app_internal', label: 'App Internal Bank', icon: 'image/payment/maybank.png' }
+        { code: 'maybank', label: 'Maybank (MBB)', icon: 'image/payment/maybank.png', min: 50, currency: 'MYR' },
+        { code: 'cimb', label: 'CIMB Bank', icon: 'image/payment/maybank.png', min: 50, currency: 'MYR' },
+        { code: 'rhb', label: 'RHB Bank', icon: 'image/payment/maybank.png', min: 50, currency: 'MYR' },
+        { code: 'public_bank', label: 'Public Bank', icon: 'image/payment/maybank.png', min: 50, currency: 'MYR' },
+        { code: 'hong_leong', label: 'Hong Leong Bank', icon: 'image/payment/maybank.png', min: 50, currency: 'MYR' },
+        { code: 'bank_islam', label: 'Bank Islam', icon: 'image/payment/maybank.png', min: 50, currency: 'MYR' },
+        { code: 'bsn', label: 'Bank Simpanan Nasional', icon: 'image/payment/maybank.png', min: 50, currency: 'MYR' },
+        { code: 'ambank', label: 'AmBank', icon: 'image/payment/maybank.png', min: 50, currency: 'MYR' },
+        { code: 'ocbc', label: 'OCBC Bank', icon: 'image/payment/maybank.png', min: 50, currency: 'MYR' },
+        { code: 'uob', label: 'UOB Bank', icon: 'image/payment/maybank.png', min: 50, currency: 'MYR' },
+        { code: 'app_internal', label: 'App Internal Bank', icon: 'image/payment/maybank.png', min: 30, currency: 'MYR' }
     ];
 
     const EWALLET_OPTIONS = [
-        { key: 'tng', label: "Touch 'n Go", icon: 'image/payment/maybank.png' },
-        { key: 'shopeepay', label: 'Shopee Pay', icon: 'image/payment/maybank.png' },
-        { key: 'boost', label: 'Boost', icon: 'image/payment/maybank.png' },
-        { key: 'bigpay', label: 'BigPay', icon: 'image/payment/maybank.png' }
+        { key: 'tng', label: "Touch 'n Go", icon: 'image/payment/maybank.png', min: 20, currency: 'MYR' },
+        { key: 'shopeepay', label: 'Shopee Pay', icon: 'image/payment/maybank.png', min: 20, currency: 'MYR' },
+        { key: 'boost', label: 'Boost', icon: 'image/payment/maybank.png', min: 20, currency: 'MYR' },
+        { key: 'bigpay', label: 'BigPay', icon: 'image/payment/maybank.png', min: 20, currency: 'MYR' }
     ];
 
     const CRYPTO_OPTIONS = [
-        { key: 'usdt_trc20', label: 'USDT', network: 'TRC20', icon: 'image/payment/maybank.png' },
-        { key: 'usdt_erc20', label: 'USDT', network: 'ERC20', icon: 'image/payment/maybank.png' },
-        { key: 'btc_btc', label: 'BTC', network: 'BTC', icon: 'image/payment/maybank.png' },
-        { key: 'eth_erc20', label: 'ETH', network: 'ERC20', icon: 'image/payment/maybank.png' }
+        { key: 'usdt_trc20', label: 'USDT', network: 'TRC20', icon: 'image/payment/maybank.png', min: 10, currency: 'USDT' },
+        { key: 'usdt_erc20', label: 'USDT', network: 'ERC20', icon: 'image/payment/maybank.png', min: 20, currency: 'USDT' },
+        { key: 'btc_btc', label: 'BTC', network: 'BTC', icon: 'image/payment/maybank.png', min: 0.0005, currency: 'BTC' },
+        { key: 'eth_erc20', label: 'ETH', network: 'ERC20', icon: 'image/payment/maybank.png', min: 0.01, currency: 'ETH' }
     ];
 
     const BANK_ICON_MAP = Object.fromEntries(BANK_OPTIONS.map((b) => [b.code, b.icon]));
@@ -47,9 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         ewalletAccounts: {
             tng: { type: 'tng', label: "Touch 'n Go", accountNumber: '0123456789', icon: EWALLET_ICON_MAP.tng },
-            shopeepay: { type: 'shopeepay', label: 'Shopee Pay', accountNumber: '0123555589', icon: EWALLET_ICON_MAP.shopeepay },
             boost: { type: 'boost', label: 'Boost', accountNumber: '0187655589', icon: EWALLET_ICON_MAP.boost },
-            bigpay: { type: 'bigpay', label: 'BigPay', accountNumber: '0192005589', icon: EWALLET_ICON_MAP.bigpay }
         },
         cryptoAccounts: {
             usdt_trc20: { key: 'usdt_trc20', label: 'USDT', network: 'TRC20', address: 'TRX9ExampleWalletAddress123456', icon: CRYPTO_META_MAP.usdt_trc20.icon }
@@ -311,28 +309,51 @@ document.addEventListener('DOMContentLoaded', () => {
     let pkgSheetState = {
         open: false,
         currentValue: null,
-        onPick: null
+        onPick: null,
+        valueMap: null
     };
 
-    function openPkgSheet({ title = 'Select', list = [], currentValue = null, getValue, getLabelHTML, onPick }) {
+
+    function openPkgSheet({
+        title = 'Select',
+        list = [],
+        currentValue = null,
+        getValue,
+        getLabelHTML,
+        isDisabled = () => false,
+        onPick
+    }) {
         if (!els.pkgSheet || !els.pkgSheetList) return;
+
+        const valueMap = new Map();
+        list.forEach((item) => {
+            valueMap.set(String(getValue(item)), item);
+        });
 
         pkgSheetState.open = true;
         pkgSheetState.currentValue = currentValue ?? null;
         pkgSheetState.onPick = onPick || null;
+        pkgSheetState.valueMap = valueMap;
 
         if (els.pkgSheetTitle) {
             els.pkgSheetTitle.textContent = title;
         }
 
+        if (els.pkgSheetDone) {
+            els.pkgSheetDone.hidden = true;
+        }
+
         els.pkgSheetList.innerHTML = list.map((item) => {
             const value = String(getValue(item));
             const active = String(currentValue ?? '') === value;
+            const disabled = !!isDisabled(item);
+
             return `
             <button
                 type="button"
-                class="desktopDropdownSheet__option ${active ? 'is-active' : ''}"
+                class="desktopDropdownSheet__option ${active ? 'is-active' : ''} ${disabled ? 'is-disabled' : ''}"
                 data-pkg-value="${esc(value)}"
+                ${disabled ? 'disabled aria-disabled="true"' : ''}
             >
                 ${getLabelHTML ? getLabelHTML(item) : esc(String(value))}
             </button>
@@ -343,19 +364,22 @@ document.addEventListener('DOMContentLoaded', () => {
         els.pkgSheet.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
     }
-
     function closePkgSheet() {
         if (!els.pkgSheet) return;
 
         pkgSheetState.open = false;
         pkgSheetState.currentValue = null;
         pkgSheetState.onPick = null;
+        pkgSheetState.valueMap = null;
+
+        if (els.pkgSheetDone) {
+            els.pkgSheetDone.hidden = false;
+        }
 
         els.pkgSheet.classList.remove('isOpen');
         els.pkgSheet.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
     }
-
     function syncPkgSheetActive(value) {
         if (!els.pkgSheetList) return;
         els.pkgSheetList.querySelectorAll('[data-pkg-value]').forEach((el) => {
@@ -378,6 +402,18 @@ document.addEventListener('DOMContentLoaded', () => {
             if (form?.dataset.editorType === 'bank') {
                 initWithdrawBankDropdown(form, false);
             }
+            if (form?.dataset.editorType === 'ewallet') {
+                initWithdrawEwalletDropdown(
+                    form,
+                    editorState.optionKey ? (store.ewalletAccounts?.[editorState.optionKey] || null) : null
+                );
+            }
+            if (form?.dataset.editorType === 'crypto') {
+                initWithdrawCryptoDropdown(
+                    form,
+                    editorState.optionKey ? (store.cryptoAccounts?.[editorState.optionKey] || null) : null
+                );
+            }
         } else {
             const mount = getMountByType(type);
             if (!mount) return;
@@ -388,6 +424,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const form = mount.querySelector('#withdrawDynamicForm');
             if (form?.dataset.editorType === 'bank') {
                 initWithdrawBankDropdown(form, false);
+            }
+            if (form?.dataset.editorType === 'ewallet') {
+                initWithdrawEwalletDropdown(
+                    form,
+                    editorState.optionKey ? (store.ewalletAccounts?.[editorState.optionKey] || null) : null
+                );
+            }
+            if (form?.dataset.editorType === 'crypto') {
+                initWithdrawCryptoDropdown(
+                    form,
+                    editorState.optionKey ? (store.cryptoAccounts?.[editorState.optionKey] || null) : null
+                );
             }
 
             syncMethodAreaVisibility();
@@ -435,10 +483,85 @@ document.addEventListener('DOMContentLoaded', () => {
         if (raw.length <= 12) return raw;
         return `${raw.slice(0, 6)}...${raw.slice(-6)}`;
     }
+    function getLinkedEwalletEntries() {
+        return Object.entries(store.ewalletAccounts || {})
+            .map(([key, acc]) => ({
+                key,
+                ...acc,
+                meta: EWALLET_OPTIONS.find((opt) => opt.key === key) || null
+            }))
+            .filter((item) => item.meta);
+    }
 
+    function getLinkedCryptoEntries() {
+        return Object.entries(store.cryptoAccounts || {})
+            .map(([key, acc]) => ({
+                key,
+                ...acc,
+                meta: CRYPTO_OPTIONS.find((opt) => opt.key === key) || null
+            }))
+            .filter((item) => item.meta);
+    }
+
+    function getUnusedEwalletOptions(currentKey = null) {
+        return EWALLET_OPTIONS.filter((opt) => !store.ewalletAccounts?.[opt.key] || opt.key === currentKey);
+    }
+
+    function getUnusedCryptoOptions(currentKey = null) {
+        return CRYPTO_OPTIONS.filter((opt) => !store.cryptoAccounts?.[opt.key] || opt.key === currentKey);
+    }
     function amountValue() {
         const raw = String(els.amountInput?.value || '').replace(/[^\d]/g, '');
         return raw ? parseInt(raw, 10) : 0;
+    }
+    function getCurrentMethodConfig() {
+        const p = store.preferences || {};
+
+        if (p.selectedType === 'bank') {
+            const acc = (store.bankAccounts || []).find((item) => item.id === p.selectedBankId);
+            return BANK_OPTIONS.find((item) => item.code === acc?.bankCode) || null;
+        }
+
+        if (p.selectedType === 'app_bank') {
+            return BANK_OPTIONS.find((item) => item.code === 'app_internal') || null;
+        }
+
+        if (p.selectedType === 'ewallet') {
+            return EWALLET_OPTIONS.find((item) => item.key === p.selectedEwalletType) || null;
+        }
+
+        if (p.selectedType === 'crypto') {
+            return CRYPTO_OPTIONS.find((item) => item.key === p.selectedCryptoKey) || null;
+        }
+
+        return null;
+    }
+    function formatMethodAmount(value, currency = 'MYR') {
+        const n = Number(value || 0);
+
+        if (currency === 'MYR') {
+            return `${n.toFixed(2)} ${currency}`;
+        }
+
+        return `${n.toFixed(8).replace(/\.?0+$/, '')} ${currency}`;
+    }
+
+    function getCurrentMinAmount() {
+        return Number(getCurrentMethodConfig()?.min ?? 0);
+    }
+
+    function getCurrentCurrency() {
+        return getCurrentMethodConfig()?.currency || 'MYR';
+    }
+
+    function updateMinHint() {
+        const hint = document.getElementById('minHint');
+        if (!hint) return;
+
+        const valueEl = hint.querySelector('.hint-value');
+        if (!valueEl) return;
+
+        valueEl.textContent = formatMethodAmount(getCurrentMinAmount(), getCurrentCurrency());
     }
 
     function setAmount(n) {
@@ -463,7 +586,37 @@ document.addEventListener('DOMContentLoaded', () => {
         </span>
     `;
     }
+    function getWithdrawEwalletOptionHTML(opt) {
+        const icon = opt.icon || getEwalletIconPath(opt.key);
+        const label = opt.label || 'E-wallet';
 
+        return `
+        <span class="payOpt">
+            <span class="payOpt__icon">
+                <img src="${esc(icon)}" alt="${esc(label)}">
+            </span>
+            <span class="payOpt__main">
+                <span class="payOpt__title">${esc(label)}</span>
+            </span>
+        </span>
+    `;
+    }
+
+    function getWithdrawCryptoOptionHTML(opt) {
+        const icon = opt.icon || getCryptoIconPath(opt.key);
+        const label = `${opt.label || 'Crypto'}${opt.network ? ` (${opt.network})` : ''}`;
+
+        return `
+        <span class="payOpt">
+            <span class="payOpt__icon">
+                <img src="${esc(icon)}" alt="${esc(label)}">
+            </span>
+            <span class="payOpt__main">
+                <span class="payOpt__title">${esc(label)}</span>
+            </span>
+        </span>
+    `;
+    }
     function initWithdrawBankDropdown(form, isAppBank = false, model = null) {
         if (!form) return;
 
@@ -491,6 +644,59 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (selected) {
             hidden.value = selected.code;
+        }
+    }
+    function initWithdrawEwalletDropdown(form, model = null) {
+        if (!form) return;
+
+        const mount = form.querySelector('[data-ewallet-dropdown]');
+        const hidden = form.querySelector('input[name="channelKey"]');
+        if (!mount || !hidden) return;
+
+        const currentKey = hidden.value || model?.type || '';
+        const selected = renderDesktopDropdown({
+            mount,
+            list: EWALLET_OPTIONS,
+            currentId: currentKey,
+            placeholder: 'Select E-wallet',
+            getValue: (item) => item.key,
+            getLabel: (item) => item.label,
+            getLabelHTML: (item) => getWithdrawEwalletOptionHTML(item),
+            isDisabled: (item) => !!store.ewalletAccounts?.[item.key] && item.key !== currentKey,
+            onPick: (item) => {
+                hidden.value = item.key;
+            }
+        });
+
+        if (selected) {
+            hidden.value = selected.key;
+        }
+    }
+
+    function initWithdrawCryptoDropdown(form, model = null) {
+        if (!form) return;
+
+        const mount = form.querySelector('[data-crypto-dropdown]');
+        const hidden = form.querySelector('input[name="channelKey"]');
+        if (!mount || !hidden) return;
+
+        const currentKey = hidden.value || model?.key || '';
+        const selected = renderDesktopDropdown({
+            mount,
+            list: CRYPTO_OPTIONS,
+            currentId: currentKey,
+            placeholder: 'Select Crypto',
+            getValue: (item) => item.key,
+            getLabel: (item) => `${item.label}${item.network ? ` (${item.network})` : ''}`,
+            getLabelHTML: (item) => getWithdrawCryptoOptionHTML(item),
+            isDisabled: (item) => !!store.cryptoAccounts?.[item.key] && item.key !== currentKey,
+            onPick: (item) => {
+                hidden.value = item.key;
+            }
+        });
+
+        if (selected) {
+            hidden.value = selected.key;
         }
     }
     function renderDesktopDropdown({
@@ -565,11 +771,19 @@ document.addEventListener('DOMContentLoaded', () => {
             option.type = 'button';
             option.className = 'desktopDropdown__option';
             option.dataset.value = String(value);
-            option.innerHTML = getLabelHTML ? getLabelHTML(item) : esc(getLabel(item));
             option.disabled = disabled;
+
+            const baseHtml = getLabelHTML ? getLabelHTML(item) : esc(getLabel(item));
+            option.innerHTML = disabled
+                ? `${baseHtml}<span class="payOpt__hint">Used</span>`
+                : baseHtml;
 
             if (current && String(getValue(current)) === String(value)) {
                 option.classList.add('is-active');
+            }
+
+            if (disabled) {
+                option.classList.add('is-disabled');
             }
 
             option.addEventListener('click', () => {
@@ -591,10 +805,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isMobile()) {
                 openPkgSheet({
                     title: placeholder,
-                    list: list.filter((item) => !isDisabled(item)),
+                    list,
                     currentValue: current ? getValue(current) : null,
                     getValue,
-                    getLabelHTML: (item) => getLabelHTML ? getLabelHTML(item) : esc(getLabel(item)),
+                    getLabelHTML: (item) => {
+                        const disabled = isDisabled(item);
+                        const base = getLabelHTML ? getLabelHTML(item) : esc(getLabel(item));
+                        return disabled ? `${base}<span class="payOpt__hint">Used</span>` : base;
+                    },
+                    isDisabled,
                     onPick: (item) => {
                         triggerLabel.innerHTML = getLabelHTML ? getLabelHTML(item) : esc(getLabel(item));
                         onPick?.(item);
@@ -685,6 +904,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 C149.8-2.7,167.3-2.7,178,8l0,0c10.7,10.7,10.7,28.2,0,38.9L131.9,93l46.1,46.1c10.7,10.7,10.7,28.2,0,38.9l0,0
                 c-10.7,10.7-28.2,10.7-38.9,0L93,131.9L46.9,178c-10.7,10.7-28.2,10.7-38.9,0l0,0C-2.7,167.3-2.7,149.9,8,139.2z"
             />
+        </svg>
+    `;
+    }
+
+    function addCircleIcon() {
+        return `
+        <svg class="icon" viewBox="0 0 1024 1024" aria-hidden="true">
+            <path d="M512 0C229.232 0 0 229.232 0 512c0 282.784 229.232 512 512 512 282.784 0 512-229.216 512-512C1024 229.232 794.784 0 512 0zm0 961.008c-247.024 0-448-201.984-448-449.01 0-247.024 200.976-448 448-448s448 200.977 448 448-200.976 449.01-448 449.01zM736 480H544V288c0-17.664-14.336-32-32-32s-32 14.336-32 32v192H288c-17.664 0-32 14.336-32 32s14.336 32 32 32h192v192c0 17.664 14.336 32 32 32s32-14.336 32-32V544h192c17.664 0 32-14.336 32-32s-14.336-32-32-32z"/>
         </svg>
     `;
     }
@@ -839,15 +1066,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function getSelectedBankAccount() {
-        return (store.bankAccounts || []).find((item) => item.id === store.preferences.selectedBankId) || store.bankAccounts?.[0] || null;
+        return (store.bankAccounts || []).find((item) => item.id === store.preferences.selectedBankId) || null;
     }
-
     function renderMobileBankEntry() {
         if (!els.savedBankList) return;
-        const acc = getSelectedBankAccount();
+
+        const acc = (store.bankAccounts || []).find((item) => item.id === store.preferences.selectedBankId) || null;
         const title = acc ? (acc.bankName || getBankLabel(acc.bankCode)) : 'Choose a bank';
         const meta = acc ? maskAccountNumber(acc.accountNumber) : 'Tap to choose';
         const icon = acc ? getBankIconPath(acc.bankCode) : getBankIconPath('maybank');
+
         els.savedBankList.innerHTML = buildMobileMethodEntry({
             action: 'open-bank-picker',
             icon,
@@ -925,7 +1153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 ${store.bankAccounts.length < 3 ? `
                     <button type="button" class="withdrawCard-choose withdrawCard--add" data-action="add-bank">
-                        <span class="withdrawCard__addIcon"></span>
+                        <span class="withdrawCard__icon withdrawCard__icon--add">${addCircleIcon()}</span>
                         <span class="withdrawCard__body">
                             <span class="withdrawCard__title">Add Bank Account</span>
                             <span class="withdrawCard__meta">max 3 bank account only</span>
@@ -961,7 +1189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join('')}
                 ${store.bankAccounts.length < 3 ? `
                     <button type="button" class="withdrawCard withdrawCard--add" data-action="add-bank">
-                        <span class="withdrawCard__addIcon"></span>
+                        <span class="withdrawCard__icon withdrawCard__icon--add">${addCircleIcon()}</span>
                         <span class="withdrawCard__body">
                             <span class="withdrawCard__title">Add Bank Account</span>
                             <span class="withdrawCard__meta">max 3 bank account only</span>
@@ -997,7 +1225,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </button>
             ` : `
                 <button type="button" class="withdrawCard withdrawCard--add" data-action="add-app-bank">
-                    <span class="withdrawCard__addIcon"></span>
+                    <span class="withdrawCard__icon withdrawCard__icon--add">${addCircleIcon()}</span>
                     <span class="withdrawCard__body">
                         <span class="withdrawCard__title">Add ${esc(APP_BANK_NAME)}</span>
                         <span class="withdrawCard__meta">Link your username</span>
@@ -1051,7 +1279,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </article>
             ` : `
                 <button type="button" class="withdrawCard withdrawCard--add" data-action="add-app-bank">
-                    <span class="withdrawCard__addIcon"></span>
+                    <span class="withdrawCard__icon withdrawCard__icon--add">${addCircleIcon()}</span>
                     <span class="withdrawCard__body">
                         <span class="withdrawCard__title">Add ${esc(APP_BANK_NAME)}</span>
                         <span class="withdrawCard__meta">Link your username</span>
@@ -1062,125 +1290,155 @@ document.addEventListener('DOMContentLoaded', () => {
     </section>`;
     }
     function buildEwalletPickerSheet() {
+        const entries = getLinkedEwalletEntries();
+
         return `
     <section class="withdrawSheetPanel withdrawSheetPanel--picker">
         ${buildSheetHeader('Close', 'Choose E-wallet', '')}
         <div class="sheetList">
-            ${EWALLET_OPTIONS.map((opt) => {
-            const acc = store.ewalletAccounts?.[opt.key];
-            if (!acc) return '';
-            const active = store.preferences.selectedType === 'ewallet' && store.preferences.selectedEwalletType === opt.key;
+            ${entries.map((item) => {
+            const active = store.preferences.selectedType === 'ewallet' && store.preferences.selectedEwalletType === item.key;
+            const title = item.label || item.meta?.label || 'E-wallet';
+            const icon = item.icon || item.meta?.icon;
             return `
-                    <button type="button" class="withdrawCard-choose ${active ? 'is-active' : ''}" data-action="select-ewallet-from-sheet" data-id="${esc(opt.key)}">
-                        <span class="withdrawCard__icon"><img src="${esc(acc.icon || opt.icon)}" alt="${esc(acc.label || opt.label)}"></span>
-                        <span class="withdrawCard__body">
-                            <span class="withdrawCard__title">${esc(acc.label || opt.label)}</span>
-                            <span class="withdrawCard__meta">${esc(maskAccountNumber(acc.accountNumber))}</span>
-                        </span>
-                    </button>`;
+                <button type="button" class="withdrawCard-choose ${active ? 'is-active' : ''}" data-action="select-ewallet-from-sheet" data-id="${esc(item.key)}">
+                    <span class="withdrawCard__icon"><img src="${esc(icon)}" alt="${esc(title)}"></span>
+                    <span class="withdrawCard__body">
+                        <span class="withdrawCard__title">${esc(title)}</span>
+                        <span class="withdrawCard__meta">${esc(maskAccountNumber(item.accountNumber))}</span>
+                    </span>
+                </button>`;
         }).join('')}
         </div>
 
         <div class="sheetActions">
-            <button type="button" class="sheetHead__btn" data-action="open-ewallet-manage">Edit</button>
+            <button type="button" class="sheetHead__btn" data-action="open-ewallet-manage">Edit account</button>
         </div>
     </section>`;
     }
 
     function buildEwalletManageSheet() {
-        return `
-        <section class="withdrawSheetPanel withdrawSheetPanel--manage">
-            ${buildSheetHeader('Back', 'Edit E-wallet')}
-            <div class="sheetList">
-                ${EWALLET_OPTIONS.map((opt) => {
-            const acc = store.ewalletAccounts?.[opt.key];
-            if (!acc) {
-                return `
-                        <button type="button" class="withdrawCard withdrawCard--add" data-action="add-ewallet" data-id="${esc(opt.key)}">
-                            <span class="withdrawCard__addIcon"></span>
-                            <span class="withdrawCard__body">
-                                <span class="withdrawCard__title">Add ${esc(opt.label)}</span>
-                                <span class="withdrawCard__meta">Link account</span>
-                            </span>
-                        </button>`;
-            }
-            return `
-                    <article class="withdrawCard" data-ewallet-type="${esc(opt.key)}">
-                        <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-ewallet" data-id="${esc(opt.key)}">${toolIcon('delete')}</button>
-                        <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-ewallet" data-id="${esc(opt.key)}">${toolIcon('edit')}</button>
-                        <div class="withdrawCard__main">
-                            <span class="withdrawCard__icon"><img src="${esc(acc.icon || opt.icon)}" alt="${esc(acc.label || opt.label)}"></span>
-                            <span class="withdrawCard__body">
-                                <span class="withdrawCard__title">${esc(acc.label || opt.label)}</span>
-                                <span class="withdrawCard__meta">${esc(maskAccountNumber(acc.accountNumber))}</span>
-                            </span>
-                        </div>
-                    </article>`;
-        }).join('')}
-            </div>
-        </section>`;
-    }
+        const entries = getLinkedEwalletEntries();
+        const canAddMore = getUnusedEwalletOptions().length > 0;
 
+        return `
+    <section class="withdrawSheetPanel withdrawSheetPanel--manage">
+        ${buildSheetHeader('Back', 'Edit E-wallet')}
+        <div class="sheetList">
+            ${entries.map((item) => {
+            const title = item.label || item.meta?.label || 'E-wallet';
+            const icon = item.icon || item.meta?.icon;
+            return `
+                <article class="withdrawCard" data-ewallet-type="${esc(item.key)}">
+                    <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-ewallet" data-id="${esc(item.key)}">${toolIcon('delete')}</button>
+                    <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-ewallet" data-id="${esc(item.key)}">${toolIcon('edit')}</button>
+                    <div class="withdrawCard__main">
+                        <span class="withdrawCard__icon"><img src="${esc(icon)}" alt="${esc(title)}"></span>
+                        <span class="withdrawCard__body">
+                            <span class="withdrawCard__title">${esc(title)}</span>
+                            <span class="withdrawCard__meta">${esc(maskAccountNumber(item.accountNumber))}</span>
+                        </span>
+                    </div>
+                </article>`;
+        }).join('')}
+
+            ${canAddMore ? `
+                <button type="button" class="withdrawCard withdrawCard--add" data-action="add-ewallet">
+                    <span class="withdrawCard__icon withdrawCard__icon--add">${addCircleIcon()}</span>
+                    <span class="withdrawCard__body">
+                        <span class="withdrawCard__title">Add E-wallet</span>
+                        <span class="withdrawCard__meta">Choose channel and link account</span>
+                    </span>
+                </button>
+            ` : ''}
+        </div>
+    </section>`;
+    }
     function buildCryptoPickerSheet() {
+        const entries = getLinkedCryptoEntries();
+
         return `
     <section class="withdrawSheetPanel withdrawSheetPanel--picker">
         ${buildSheetHeader('Close', 'Choose Crypto', '')}
         <div class="sheetList">
-            ${CRYPTO_OPTIONS.map((opt) => {
-            const acc = store.cryptoAccounts?.[opt.key];
-            if (!acc) return '';
-            const active = store.preferences.selectedType === 'crypto' && store.preferences.selectedCryptoKey === opt.key;
+            ${entries.map((item) => {
+            const active = store.preferences.selectedType === 'crypto' && store.preferences.selectedCryptoKey === item.key;
+            const title = `${item.label || item.meta?.label || 'Crypto'} (${item.network || item.meta?.network || ''})`;
+            const icon = item.icon || item.meta?.icon;
+
             return `
-                    <button type="button" class="withdrawCard-choose ${active ? 'is-active' : ''}" data-action="select-crypto-from-sheet" data-id="${esc(opt.key)}">
-                        <span class="withdrawCard__icon"><img src="${esc(acc.icon || opt.icon)}" alt="${esc(acc.label || opt.label)}"></span>
-                        <span class="withdrawCard__body">
-                            <span class="withdrawCard__title">${esc(acc.label || opt.label)} (${esc(acc.network || opt.network)})</span>
-                            <span class="withdrawCard__meta">${esc(maskAddress(acc.address))}</span>
-                        </span>
-                    </button>`;
+                <button type="button" class="withdrawCard-choose ${active ? 'is-active' : ''}" data-action="select-crypto-from-sheet" data-id="${esc(item.key)}">
+                    <span class="withdrawCard__icon"><img src="${esc(icon)}" alt="${esc(title)}"></span>
+                    <span class="withdrawCard__body">
+                        <span class="withdrawCard__title">${esc(title)}</span>
+                        <span class="withdrawCard__meta">${esc(maskAddress(item.address))}</span>
+                    </span>
+                </button>`;
         }).join('')}
         </div>
 
         <div class="sheetActions">
-            <button type="button" class="sheetHead__btn" data-action="open-crypto-manage">Edit</button>
+            <button type="button" class="sheetHead__btn" data-action="open-crypto-manage">Edit account</button>
         </div>
     </section>`;
     }
-
     function buildCryptoManageSheet() {
+        const entries = getLinkedCryptoEntries();
+        const canAddMore = getUnusedCryptoOptions().length > 0;
+
         return `
-        <section class="withdrawSheetPanel withdrawSheetPanel--manage">
-            ${buildSheetHeader('Back', 'Edit Crypto')}
-            <div class="sheetList">
-                ${CRYPTO_OPTIONS.map((opt) => {
-            const acc = store.cryptoAccounts?.[opt.key];
-                    if (!acc) {
-                        return `
-            <button type="button" class="withdrawCard withdrawCard--add" data-action="add-crypto" data-id="${esc(opt.key)}">
-                <span class="withdrawCard__icon">
-                    <img src="${esc(opt.icon)}" alt="${esc(opt.label)}">
-                </span>
-                <span class="withdrawCard__body">
-                    <span class="withdrawCard__title">Add ${esc(opt.label)} (${esc(opt.network)})</span>
-                    <span class="withdrawCard__meta">Link wallet</span>
-                </span>
-            </button>`;
-                    }
+    <section class="withdrawSheetPanel withdrawSheetPanel--manage">
+        ${buildSheetHeader('Back', 'Edit Crypto')}
+        <div class="sheetList">
+            ${entries.map((item) => {
+            const title = `${item.label || item.meta?.label || 'Crypto'} (${item.network || item.meta?.network || ''})`;
+            const icon = item.icon || item.meta?.icon;
+
             return `
-                    <article class="withdrawCard" data-crypto-key="${esc(opt.key)}">
-                        <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-crypto" data-id="${esc(opt.key)}">${toolIcon('delete')}</button>
-                        <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-crypto" data-id="${esc(opt.key)}">${toolIcon('edit')}</button>
-                        <div class="withdrawCard__main">
-                            <span class="withdrawCard__icon"><img src="${esc(acc.icon || opt.icon)}" alt="${esc(acc.label || opt.label)}"></span>
-                            <span class="withdrawCard__body">
-                                <span class="withdrawCard__title">${esc(acc.label || opt.label)} (${esc(acc.network || opt.network)})</span>
-                                <span class="withdrawCard__meta">${esc(maskAddress(acc.address))}</span>
-                            </span>
-                        </div>
-                    </article>`;
+                <article class="withdrawCard" data-crypto-key="${esc(item.key)}">
+                    <button
+                        type="button"
+                        class="withdrawCard__tool withdrawCard__tool--delete"
+                        data-action="delete-crypto"
+                        data-id="${esc(item.key)}"
+                        aria-label="Delete crypto wallet"
+                    >
+                        ${toolIcon('delete')}
+                    </button>
+
+                    <button
+                        type="button"
+                        class="withdrawCard__tool withdrawCard__tool--edit"
+                        data-action="edit-crypto"
+                        data-id="${esc(item.key)}"
+                        aria-label="Edit crypto wallet"
+                    >
+                        ${toolIcon('edit')}
+                    </button>
+
+                    <div class="withdrawCard__main">
+                        <span class="withdrawCard__icon">
+                            <img src="${esc(icon)}" alt="${esc(title)}">
+                        </span>
+                        <span class="withdrawCard__body">
+                            <span class="withdrawCard__title">${esc(title)}</span>
+                            <span class="withdrawCard__meta">${esc(maskAddress(item.address))}</span>
+                        </span>
+                    </div>
+                </article>`;
         }).join('')}
-            </div>
-        </section>`;
+
+            ${canAddMore ? `
+                <button type="button" class="withdrawCard withdrawCard--add" data-action="add-crypto">
+                    <span class="withdrawCard__icon withdrawCard__icon--add">${addCircleIcon()}</span>
+                    <span class="withdrawCard__body">
+                        <span class="withdrawCard__title">Add Crypto Wallet</span>
+                        <span class="withdrawCard__meta">Choose channel and link wallet</span>
+                    </span>
+                </button>
+            ` : ''}
+        </div>
+    </section>`;
     }
     function handleSheetBack() {
         if (editorState.open && editorState.mobile) {
@@ -1246,7 +1504,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const addCard = store.bankAccounts.length < 3
             ? `<button type="button" class="withdrawCard withdrawCard--add" data-action="add-bank">
-          <span class="withdrawCard__addIcon"></span>
+          <span class="withdrawCard__icon withdrawCard__icon--add">${addCircleIcon()}</span>
           <span class="withdrawCard__body">
             <span class="withdrawCard__title">Add Bank Account</span>
             <span class="withdrawCard__meta">max 3 bank account only</span>
@@ -1302,88 +1560,88 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderEwalletAccounts() {
         if (!els.ewalletList) return;
-        els.ewalletList.innerHTML = EWALLET_OPTIONS.map((opt) => {
-            const acc = store.ewalletAccounts?.[opt.key];
-            const active = store.preferences.selectedType === 'ewallet' && store.preferences.selectedEwalletType === opt.key;
-            if (!acc) {
-                return `
-    <article class="withdrawCard withdrawCard--empty" data-ewallet-type="${esc(opt.key)}">
-      <button
-        type="button"
-        class="withdrawCard__tool withdrawCard__tool--edit"
-        data-action="add-ewallet"
-        data-id="${esc(opt.key)}"
-        aria-label="Add ${esc(opt.label)} account"
-      >
-        ${toolIcon('edit')}
-      </button>
 
-      <div class="withdrawCard__main" aria-disabled="true">
-        <span class="withdrawCard__icon"><img src="${esc(opt.icon)}" alt="${esc(opt.label)}"></span>
-        <span class="withdrawCard__body">
-          <span class="withdrawCard__title">${esc(opt.label)}</span>
-          <span class="withdrawCard__meta">Not linked</span>
-        </span>
-      </div>
-    </article>`;
-            }
+        const selectedKey = store.preferences.selectedType === 'ewallet'
+            ? store.preferences.selectedEwalletType
+            : null;
+
+        const entries = getLinkedEwalletEntries();
+
+        const html = entries.map((item) => {
+            const active = item.key === selectedKey;
+            const title = item.label || item.meta?.label || 'E-wallet';
+            const icon = item.icon || item.meta?.icon;
+
             return `
-        <article class="withdrawCard ${active ? 'is-active' : ''}" data-ewallet-type="${esc(opt.key)}">
-          <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-ewallet" data-id="${esc(opt.key)}" aria-label="Delete e-wallet account">${toolIcon('delete')}</button>
-          <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-ewallet" data-id="${esc(opt.key)}" aria-label="Edit e-wallet account">${toolIcon('edit')}</button>
-          <button type="button" class="withdrawCard__main" data-action="select-ewallet" data-id="${esc(opt.key)}" aria-pressed="${active ? 'true' : 'false'}">
-            <span class="withdrawCard__icon"><img src="${esc(acc.icon || opt.icon)}" alt="${esc(acc.label || opt.label)}"></span>
-            <span class="withdrawCard__body">
-              <span class="withdrawCard__title">${esc(acc.label || opt.label)}</span>
-              <span class="withdrawCard__meta">${esc(maskAccountNumber(acc.accountNumber))}</span>
-            </span>
-          </button>
+        <article class="withdrawCard ${active ? 'is-active' : ''}" data-ewallet-type="${esc(item.key)}">
+            <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-ewallet" data-id="${esc(item.key)}" aria-label="Delete e-wallet account">${toolIcon('delete')}</button>
+            <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-ewallet" data-id="${esc(item.key)}" aria-label="Edit e-wallet account">${toolIcon('edit')}</button>
+            <button type="button" class="withdrawCard__main" data-action="select-ewallet" data-id="${esc(item.key)}" aria-pressed="${active ? 'true' : 'false'}">
+                <span class="withdrawCard__icon"><img src="${esc(icon)}" alt="${esc(title)}"></span>
+                <span class="withdrawCard__body">
+                    <span class="withdrawCard__title">${esc(title)}</span>
+                    <span class="withdrawCard__meta">${esc(maskAccountNumber(item.accountNumber))}</span>
+                </span>
+            </button>
         </article>`;
         }).join('');
-    }
 
+        const canAddMore = getUnusedEwalletOptions().length > 0;
+        const addCard = canAddMore
+            ? `
+        <button type="button" class="withdrawCard withdrawCard--add" data-action="add-ewallet">
+            <span class="withdrawCard__icon withdrawCard__icon--add">${addCircleIcon()}</span>
+            <span class="withdrawCard__body">
+                <span class="withdrawCard__title">Add E-wallet</span>
+                <span class="withdrawCard__meta">Choose channel and link account</span>
+            </span>
+        </button>`
+            : '';
+
+        els.ewalletList.innerHTML = html + addCard;
+    }
     function renderCryptoAccounts() {
         if (!els.cryptoList) return;
-        els.cryptoList.innerHTML = CRYPTO_OPTIONS.map((opt) => {
-            const acc = store.cryptoAccounts?.[opt.key];
-            const active = store.preferences.selectedType === 'crypto' && store.preferences.selectedCryptoKey === opt.key;
-            if (!acc) {
-                return `
-    <article class="withdrawCard withdrawCard--empty" data-crypto-key="${esc(opt.key)}">
-      <button
-          type="button"
-          class="withdrawCard__tool withdrawCard__tool--add"
-          data-action="add-crypto"
-          data-id="${esc(opt.key)}"
-          aria-label="Add ${esc(opt.label)} ${esc(opt.network)} wallet"
-        >
-          ${toolIcon('add')}
-        </button>
 
-      <div class="withdrawCard__main" aria-disabled="true">
-        <span class="withdrawCard__icon"><img src="${esc(opt.icon)}" alt="${esc(opt.label)}"></span>
-        <span class="withdrawCard__body">
-          <span class="withdrawCard__title">${esc(opt.label)} (${esc(opt.network)})</span>
-          <span class="withdrawCard__meta">Not linked</span>
-        </span>
-      </div>
-    </article>`;
-            }
+        const selectedKey = store.preferences.selectedType === 'crypto'
+            ? store.preferences.selectedCryptoKey
+            : null;
+
+        const entries = getLinkedCryptoEntries();
+
+        const html = entries.map((item) => {
+            const active = item.key === selectedKey;
+            const title = `${item.label || item.meta?.label || 'Crypto'} (${item.network || item.meta?.network || ''})`;
+            const icon = item.icon || item.meta?.icon;
+
             return `
-        <article class="withdrawCard ${active ? 'is-active' : ''}" data-crypto-key="${esc(opt.key)}">
-          <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-crypto" data-id="${esc(opt.key)}" aria-label="Delete crypto account">${toolIcon('delete')}</button>
-          <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-crypto" data-id="${esc(opt.key)}" aria-label="Edit crypto account">${toolIcon('edit')}</button>
-          <button type="button" class="withdrawCard__main" data-action="select-crypto" data-id="${esc(opt.key)}" aria-pressed="${active ? 'true' : 'false'}">
-            <span class="withdrawCard__icon"><img src="${esc(acc.icon || opt.icon)}" alt="${esc(acc.label || opt.label)}"></span>
-            <span class="withdrawCard__body">
-              <span class="withdrawCard__title">${esc(acc.label || opt.label)} (${esc(acc.network || opt.network)})</span>
-              <span class="withdrawCard__meta">${esc(maskAddress(acc.address))}</span>
-            </span>
-          </button>
+        <article class="withdrawCard ${active ? 'is-active' : ''}" data-crypto-key="${esc(item.key)}">
+            <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-crypto" data-id="${esc(item.key)}" aria-label="Delete crypto account">${toolIcon('delete')}</button>
+            <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-crypto" data-id="${esc(item.key)}" aria-label="Edit crypto account">${toolIcon('edit')}</button>
+            <button type="button" class="withdrawCard__main" data-action="select-crypto" data-id="${esc(item.key)}" aria-pressed="${active ? 'true' : 'false'}">
+                <span class="withdrawCard__icon"><img src="${esc(icon)}" alt="${esc(title)}"></span>
+                <span class="withdrawCard__body">
+                    <span class="withdrawCard__title">${esc(title)}</span>
+                    <span class="withdrawCard__meta">${esc(maskAddress(item.address))}</span>
+                </span>
+            </button>
         </article>`;
         }).join('');
-    }
 
+        const canAddMore = getUnusedCryptoOptions().length > 0;
+        const addCard = canAddMore
+            ? `
+        <button type="button" class="withdrawCard withdrawCard--add" data-action="add-crypto">
+            <span class="withdrawCard__icon withdrawCard__icon--add">${addCircleIcon()}</span>
+            <span class="withdrawCard__body">
+                <span class="withdrawCard__title">Add Crypto Wallet</span>
+                <span class="withdrawCard__meta">Choose channel and link wallet</span>
+            </span>
+        </button>`
+            : '';
+
+        els.cryptoList.innerHTML = html + addCard;
+    }
     function buildBankForm(model = null) {
         return `
         <form id="withdrawDynamicForm" data-editor-type="bank">
@@ -1470,61 +1728,77 @@ document.addEventListener('DOMContentLoaded', () => {
         </form>`;
     }
     function buildEwalletForm(optionKey, model = null) {
-        const meta = EWALLET_OPTIONS.find((item) => item.key === optionKey);
+        const isEdit = !!optionKey;
+        const currentKey = optionKey || '';
+        const meta = EWALLET_OPTIONS.find((item) => item.key === currentKey);
+
         return `
-        <form id="withdrawDynamicForm" data-editor-type="ewallet" data-option-key="${esc(optionKey)}">
-            <div class="withdrawFormGrid">
-                <label class="field">
-                    <span class="span-field">E-wallet</span>
-                    <input type="text" value="${esc(meta?.label || model?.label || 'E-wallet')}" disabled>
-                </label>
+    <form id="withdrawDynamicForm" data-editor-type="ewallet" data-option-key="${esc(currentKey)}">
+        <div class="withdrawFormGrid">
+            <label class="field">
+                <span class="span-field">Channel</span>
+                ${isEdit
+                ? `<input type="text" value="${esc(meta?.label || '')}" disabled>`
+                : `
+                        <div data-ewallet-dropdown></div>
+                        <input type="hidden" name="channelKey" value="${esc(currentKey)}" required>
+                    `
+            }
+                ${isEdit ? `<input type="hidden" name="channelKey" value="${esc(currentKey)}">` : ''}
+            </label>
 
-                <label class="field">
-                    <span class="span-field">Account Name</span>
-                    <input type="text" name="label" value="${esc(model?.label || meta?.label || '')}" placeholder="Account Name" required>
-                </label>
+            <label class="field">
+                <span class="span-field">Account Name</span>
+                <input type="text" name="label" value="${esc(model?.label || meta?.label || '')}" placeholder="Account Name" required>
+            </label>
 
-                <label class="field">
-                    <span class="span-field">Account Number</span>
-                    <input type="text" name="accountNumber" value="${esc(model?.accountNumber || '')}" placeholder="0123456789" required>
-                </label>
-            </div>
+            <label class="field">
+                <span class="span-field">Account Number</span>
+                <input type="text" name="accountNumber" value="${esc(model?.accountNumber || '')}" placeholder="0123456789" required>
+            </label>
+        </div>
 
-            <div class="formActions">
-                <button type="submit" data-action="save-method">Save</button>
-            </div>
-        </form>`;
+        <div class="formActions">
+            <button type="submit" data-action="save-method">Save</button>
+        </div>
+    </form>`;
     }
 
     function buildCryptoForm(optionKey, model = null) {
-        const meta = CRYPTO_OPTIONS.find((item) => item.key === optionKey);
+        const isEdit = !!optionKey;
+        const currentKey = optionKey || '';
+        const meta = CRYPTO_OPTIONS.find((item) => item.key === currentKey);
+
         return `
-        <form id="withdrawDynamicForm" data-editor-type="crypto" data-option-key="${esc(optionKey)}">
-            <div class="withdrawFormGrid">
-                <label class="field">
-                    <span class="span-field">Crypto</span>
-                    <input type="text" value="${esc(meta?.label || model?.label || 'Crypto')}" disabled>
-                </label>
+    <form id="withdrawDynamicForm" data-editor-type="crypto" data-option-key="${esc(currentKey)}">
+        <div class="withdrawFormGrid">
+            <label class="field">
+                <span class="span-field">Channel</span>
+                ${isEdit
+                ? `<input type="text" value="${esc(meta ? `${meta.label} (${meta.network})` : '')}" disabled>`
+                : `
+                        <div data-crypto-dropdown></div>
+                        <input type="hidden" name="channelKey" value="${esc(currentKey)}" required>
+                    `
+            }
+                ${isEdit ? `<input type="hidden" name="channelKey" value="${esc(currentKey)}">` : ''}
+            </label>
 
-                <label class="field">
-                    <span class="span-field">Network</span>
-                    <input type="text" value="${esc(meta?.network || model?.network || '')}" disabled>
-                </label>
+            <label class="field">
+                <span class="span-field">Wallet Label</span>
+                <input type="text" name="label" value="${esc(model?.label || meta?.label || '')}" placeholder="Wallet Label" required>
+            </label>
 
-                <label class="field">
-                    <span class="span-field">Wallet Label</span>
-                    <input type="text" name="label" value="${esc(model?.label || meta?.label || '')}" placeholder="Wallet Label" required>
-                </label>
+            <label class="field">
+                <span class="span-field">Wallet Address</span>
+                <input type="text" name="address" value="${esc(model?.address || '')}" placeholder="Wallet Address" required>
+            </label>
+        </div>
 
-                <label class="field">
-                    <span class="span-field">Wallet Address</span>
-                    <input type="text" name="address" value="${esc(model?.address || '')}" placeholder="Wallet Address" required>
-                </label>
-            </div>
-                        <div class="formActions">
-                <button type="submit" data-action="save-method">Save</button>
-            </div>
-        </form>`;
+        <div class="formActions">
+            <button type="submit" data-action="save-method">Save</button>
+        </div>
+    </form>`;
     }
 
     function openBankEditor(mode, bankId = null, isAppBank = false) {
@@ -1552,42 +1826,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function openEwalletEditor(mode, optionKey) {
+    function openEwalletEditor(mode, optionKey = '') {
         if (editorState.open) return;
 
         editorState.open = true;
         editorState.mode = mode;
         editorState.type = 'ewallet';
         editorState.editingId = null;
-        editorState.optionKey = optionKey;
+        editorState.optionKey = optionKey || '';
 
         const meta = EWALLET_OPTIONS.find((item) => item.key === optionKey);
-        const model = store.ewalletAccounts?.[optionKey] || null;
+        const model = optionKey ? (store.ewalletAccounts?.[optionKey] || null) : null;
 
         renderEditorIntoPlace({
             type: 'ewallet',
-            title: `${mode === 'edit' ? 'Edit' : 'Add'} ${meta?.label || 'E-wallet'}`,
-            desc: 'Each e-wallet keeps its own account detail. Editing one will not affect the others.',
+            title: mode === 'edit'
+                ? `Edit ${meta?.label || 'E-wallet'}`
+                : 'Add E-wallet',
+            desc: 'Each e-wallet keeps its own account detail.',
             formHtml: buildEwalletForm(optionKey, model)
         });
     }
 
-    function openCryptoEditor(mode, optionKey) {
+    function openCryptoEditor(mode, optionKey = '') {
         if (editorState.open) return;
 
         editorState.open = true;
         editorState.mode = mode;
         editorState.type = 'crypto';
         editorState.editingId = null;
-        editorState.optionKey = optionKey;
+        editorState.optionKey = optionKey || '';
 
         const meta = CRYPTO_OPTIONS.find((item) => item.key === optionKey);
-        const model = store.cryptoAccounts?.[optionKey] || null;
+        const model = optionKey ? (store.cryptoAccounts?.[optionKey] || null) : null;
 
         renderEditorIntoPlace({
             type: 'crypto',
-            title: `${mode === 'edit' ? 'Edit' : 'Add'} ${meta?.label || 'Crypto'} (${meta?.network || ''})`,
-            desc: 'Each crypto method keeps its own wallet address. Editing one will not affect the others.',
+            title: mode === 'edit'
+                ? `Edit ${meta?.label || 'Crypto'}${meta?.network ? ` (${meta.network})` : ''}`
+                : 'Add Crypto Wallet',
+            desc: 'Each crypto channel keeps its own wallet detail.',
             formHtml: buildCryptoForm(optionKey, model)
         });
     }
@@ -1742,40 +2020,41 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        if (editorState.type === 'ewallet' && editorState.optionKey) {
-            const label = String(fd.get('label') || '').trim();
-            const accountNumber = String(fd.get('accountNumber') || '').replace(/\s+/g, '');
-            if (!label || !accountNumber) return;
-            store.ewalletAccounts[editorState.optionKey] = {
-                type: editorState.optionKey,
-                label,
-                accountNumber,
-                icon: getEwalletIconPath(editorState.optionKey)
+        if (editorState.type === 'ewallet') {
+            const channelKey = String(fd.get('channelKey') || editorState.optionKey || '').trim();
+            if (!channelKey) return;
+
+            const meta = EWALLET_OPTIONS.find((item) => item.key === channelKey);
+            if (!meta) return;
+
+            store.ewalletAccounts[channelKey] = {
+                type: channelKey,
+                label: String(fd.get('label') || meta.label || '').trim(),
+                accountNumber: String(fd.get('accountNumber') || '').trim(),
+                icon: meta.icon
             };
+
             store.preferences.selectedType = 'ewallet';
-            store.preferences.selectedEwalletType = editorState.optionKey;
-            store.preferences.selectedBankId = null;
-            store.preferences.selectedAppBankId = null;
-            store.preferences.selectedCryptoKey = null;
+            store.preferences.selectedEwalletType = channelKey;
         }
 
-        if (editorState.type === 'crypto' && editorState.optionKey) {
-            const label = String(fd.get('label') || '').trim();
-            const address = String(fd.get('address') || '').trim();
-            const meta = CRYPTO_META_MAP[editorState.optionKey];
-            if (!label || !address || !meta) return;
-            store.cryptoAccounts[editorState.optionKey] = {
-                key: editorState.optionKey,
-                label,
+        if (editorState.type === 'crypto') {
+            const channelKey = String(fd.get('channelKey') || editorState.optionKey || '').trim();
+            if (!channelKey) return;
+
+            const meta = CRYPTO_OPTIONS.find((item) => item.key === channelKey);
+            if (!meta) return;
+
+            store.cryptoAccounts[channelKey] = {
+                key: channelKey,
+                label: String(fd.get('label') || meta.label || '').trim(),
                 network: meta.network,
-                address,
-                icon: getCryptoIconPath(editorState.optionKey)
+                address: String(fd.get('address') || '').trim(),
+                icon: meta.icon
             };
+
             store.preferences.selectedType = 'crypto';
-            store.preferences.selectedCryptoKey = editorState.optionKey;
-            store.preferences.selectedBankId = null;
-            store.preferences.selectedAppBankId = null;
-            store.preferences.selectedEwalletType = null;
+            store.preferences.selectedCryptoKey = channelKey;
         }
 
         const reopenView = isMobileWithdrawUI()
@@ -1854,8 +2133,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        updateMinHint();
+
         const amt = amountValue();
-        if (els.summary.amount) els.summary.amount.textContent = money(amt);
+        if (els.summary.amount) {
+            els.summary.amount.textContent = formatMethodAmount(amountValue(), getCurrentCurrency());
+        }
         if (els.summary.target) els.summary.target.textContent = money(SUMMARY_TARGET);
         if (els.summary.rollover) {
             const suffix = selected?.type === 'crypto' && selected.network ? ` (${selected.network})` : '';
@@ -1869,11 +2152,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function syncSubmitState() {
         if (!els.submitBtn) return;
-        const valid = !!currentSelection() && amountValue() > 0;
+
+        const selected = currentSelection();
+        const amt = amountValue();
+        const min = getCurrentMinAmount();
+        const currency = getCurrentCurrency();
+        const valid = !!selected && amt >= min && min > 0;
+
         els.submitBtn.disabled = !valid;
         els.submitBtn.classList.toggle('is-disabled', !valid);
-    }
 
+        const wrap = document.getElementById('submitWrap');
+        if (wrap) {
+            wrap.dataset.ttip = !selected
+                ? 'Please choose withdrawal method'
+                : amt <= 0
+                    ? 'Please enter amount'
+                    : amt < min
+                        ? `Minimum withdrawal is ${formatMethodAmount(min, currency)}`
+                        : '';
+        }
+    }
     function renderTabState() {
         const activeType = store.preferences.preferredType || 'bank';
         els.tabs.forEach((tab) => {
@@ -1933,21 +2232,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const pkgOptionBtn = e.target.closest('#pkgSheet [data-pkg-value]');
         if (pkgOptionBtn) {
-            pkgSheetState.currentValue = pkgOptionBtn.dataset.pkgValue;
-            syncPkgSheetActive(pkgSheetState.currentValue);
-            return;
-        }
-
-        const pkgDoneBtn = e.target.closest('#pkgSheet [data-sheet-done]');
-        if (pkgDoneBtn) {
-            if (!pkgSheetState.currentValue || !pkgSheetState.onPick) {
-                closePkgSheet();
+            if (pkgOptionBtn.disabled || pkgOptionBtn.classList.contains('is-disabled')) {
                 return;
             }
 
-            const bankOpt = BANK_OPTIONS.find((opt) => String(opt.code) === String(pkgSheetState.currentValue));
-            if (bankOpt) {
-                pkgSheetState.onPick(bankOpt);
+            const pickedValue = pkgOptionBtn.dataset.pkgValue;
+            const picked = pkgSheetState.valueMap?.get(String(pickedValue)) || null;
+
+            if (picked && pkgSheetState.onPick) {
+                pkgSheetState.currentValue = pickedValue;
+                pkgSheetState.onPick(picked);
             }
 
             closePkgSheet();
@@ -2091,7 +2385,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const addEwalletBtn = e.target.closest('[data-action="add-ewallet"]');
         if (addEwalletBtn) {
-            openEwalletEditor('add', addEwalletBtn.dataset.id);
+            openEwalletEditor('add');
             return;
         }
 
@@ -2138,7 +2432,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const addCryptoBtn = e.target.closest('[data-action="add-crypto"]');
         if (addCryptoBtn) {
-            openCryptoEditor('add', addCryptoBtn.dataset.id);
+            openCryptoEditor('add');
             return;
         }
 
