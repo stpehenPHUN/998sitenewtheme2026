@@ -67,15 +67,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const G2P_DOWNLOAD_QR = {
         ios: {
             label: 'iOS',
-            qr: 'img-qr-testing3.png'
+            qr: 'image/img-qr-testing3.png'
         },
         android: {
             label: 'Android',
-            qr: 'img-qr-testing3_2.png'
+            qr: 'image/img-qr-testing3_2.png'
         },
         huawei: {
             label: 'Huawei',
-            qr: 'img-qr-testing3_3.png'
+            qr: 'image/img-qr-testing3_3.png'
         }
     };
 
