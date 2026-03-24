@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const STORAGE_KEY = 'demo_withdraw_methods_v4';
     const SUMMARY_TARGET = 1000;
     const SUMMARY_ROLLOVER = 1530;
-
+    const APP_BANK_NAME = 'A9Wallet / G2Point';
     const BANK_OPTIONS = [
         { code: 'maybank', label: 'Maybank (MBB)', icon: 'image/payment/maybank.png' },
         { code: 'cimb', label: 'CIMB Bank', icon: 'image/payment/maybank.png' },
@@ -64,6 +64,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    const G2P_DOWNLOAD_QR = {
+        ios: {
+            label: 'iOS',
+            qr: 'img-qr-testing3.png'
+        },
+        android: {
+            label: 'Android',
+            qr: 'img-qr-testing3_2.png'
+        },
+        huawei: {
+            label: 'Huawei',
+            qr: 'img-qr-testing3_3.png'
+        }
+    };
+
     const els = {
         tabs: [...document.querySelectorAll('[data-wd-type]')],
         sections: [...document.querySelectorAll('.withdrawSection[data-section]')],
@@ -73,12 +88,21 @@ document.addEventListener('DOMContentLoaded', () => {
         cryptoList: document.getElementById('cryptoList'),
 
         bankEditorMount: document.getElementById('bankEditorMount'),
-        appBankEditorMount: document.getElementById('appBankEditorMount'),
+        appBankEditorMount: document.getElementById('appBankEditorMount') || document.getElementById('g2pointEditorMount'),
         ewalletEditorMount: document.getElementById('ewalletEditorMount'),
         cryptoEditorMount: document.getElementById('cryptoEditorMount'),
 
         withdrawSheet: document.getElementById('withdrawSheet'),
         withdrawSheetBody: document.getElementById('withdrawSheetBody'),
+
+        pkgSheet: document.getElementById('pkgSheet'),
+        pkgSheetTitle: document.querySelector('#pkgSheet [data-sheet-title]'),
+        pkgSheetList: document.querySelector('#pkgSheet [data-sheet-list]'),
+        pkgSheetDone: document.querySelector('#pkgSheet [data-sheet-done]'),
+        pkgSheetCloseBtns: [...document.querySelectorAll('#pkgSheet [data-sheet-close]')],
+
+        g2pModal: document.getElementById('g2pDownloadModal'),
+        g2pModalQr: document.getElementById('g2pModalQr'),
 
         amountInput: document.getElementById('amount'),
         quickButtons: [...document.querySelectorAll('.qBtn[data-add]')],
@@ -174,13 +198,15 @@ document.addEventListener('DOMContentLoaded', () => {
         return window.matchMedia('(max-width: 767.98px)').matches;
     }
 
-    function buildEditorShell(title, desc, innerHtml) {
+    function buildDesktopEditorShell(title, desc, innerHtml) {
         return `
         <section class="withdrawEditor withdrawEditor--inline" id="withdrawEditor">
             <div class="sectionHead">
-             <button type="button" data-action="cancel-editor"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M15.5 19.5 8 12l7.5-7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg></button>
+                <button type="button" data-action="cancel-editor">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M15.5 19.5 8 12l7.5-7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </button>
                 <h5 id="withdrawEditorTitle">${esc(title)}</h5>
             </div>
 
@@ -191,6 +217,48 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         </section>
     `;
+    }
+
+    function buildMobileEditorShell(title, desc, innerHtml) {
+        return `
+        <section class="withdrawSheetPanel withdrawSheetPanel--editor" id="withdrawEditor">
+            ${buildSheetHeader('Back', title, '')}
+
+            <div class="withdrawSheetPanel__body withdrawSheetPanel__body--editor">
+                <div id="withdrawEditorHost" class="withdrawEditorHost withdrawEditorHost--sheet">
+                    ${innerHtml}
+                </div>
+            </div>
+        </section>
+    `;
+    }
+    function openG2PDownloadModal(platform) {
+        const modal = els.g2pModal;
+        const qrImg = els.g2pModalQr;
+        const meta = G2P_DOWNLOAD_QR[platform];
+
+        if (!modal || !qrImg || !meta) return;
+
+        qrImg.src = meta.qr;
+        qrImg.alt = `G2Point ${meta.label} download QR`;
+
+        modal.hidden = false;
+        document.documentElement.classList.add('is-g2p-modal-open');
+        document.body.classList.add('is-g2p-modal-open');
+    }
+
+    function closeG2PDownloadModal() {
+        const modal = els.g2pModal;
+        const qrImg = els.g2pModalQr;
+
+        if (!modal || !qrImg) return;
+
+        modal.hidden = true;
+        qrImg.removeAttribute('src');
+        qrImg.alt = '';
+
+        document.documentElement.classList.remove('is-g2p-modal-open');
+        document.body.classList.remove('is-g2p-modal-open');
     }
     function getMountByType(type) {
         if (type === 'bank') return els.bankEditorMount;
@@ -219,48 +287,93 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         syncMethodAreaVisibility();
     }
+    let withdrawSheetMode = 'picker';   // 'picker' | 'edit'
+    let withdrawSheetReturnView = 'bank'; // 先只给 bank 用
+
     function openWithdrawSheet(html) {
         if (!els.withdrawSheet || !els.withdrawSheetBody) return;
-
         els.withdrawSheetBody.innerHTML = html;
         els.withdrawSheet.hidden = false;
-
-        requestAnimationFrame(() => {
-            els.withdrawSheet.classList.add('isOpen');
-        });
-
-        document.body.classList.add('is-withdraw-sheet-open');
+        els.withdrawSheet.classList.add('isOpen');
+        els.withdrawSheet.setAttribute('aria-hidden', 'false');
     }
 
     function closeWithdrawSheet() {
         if (!els.withdrawSheet || !els.withdrawSheetBody) return;
-
+        els.withdrawSheet.hidden = true;
         els.withdrawSheet.classList.remove('isOpen');
-        document.body.classList.remove('is-withdraw-sheet-open');
+        els.withdrawSheet.setAttribute('aria-hidden', 'true');
+        els.withdrawSheetBody.innerHTML = '';
+        withdrawSheetMode = 'picker';
+        withdrawSheetReturnView = 'bank';
+    }
 
-        const panel = els.withdrawSheet.querySelector('.withdrawSheet__panel');
-        const onDone = () => {
-            els.withdrawSheet.hidden = true;
-            els.withdrawSheetBody.innerHTML = '';
-            panel?.removeEventListener('transitionend', onDone);
-        };
+    let pkgSheetState = {
+        open: false,
+        currentValue: null,
+        onPick: null
+    };
 
-        if (panel) {
-            panel.addEventListener('transitionend', onDone, { once: true });
-        } else {
-            els.withdrawSheet.hidden = true;
-            els.withdrawSheetBody.innerHTML = '';
+    function openPkgSheet({ title = 'Select', list = [], currentValue = null, getValue, getLabelHTML, onPick }) {
+        if (!els.pkgSheet || !els.pkgSheetList) return;
+
+        pkgSheetState.open = true;
+        pkgSheetState.currentValue = currentValue ?? null;
+        pkgSheetState.onPick = onPick || null;
+
+        if (els.pkgSheetTitle) {
+            els.pkgSheetTitle.textContent = title;
         }
+
+        els.pkgSheetList.innerHTML = list.map((item) => {
+            const value = String(getValue(item));
+            const active = String(currentValue ?? '') === value;
+            return `
+            <button
+                type="button"
+                class="desktopDropdownSheet__option ${active ? 'is-active' : ''}"
+                data-pkg-value="${esc(value)}"
+            >
+                ${getLabelHTML ? getLabelHTML(item) : esc(String(value))}
+            </button>
+        `;
+        }).join('');
+
+        els.pkgSheet.classList.add('isOpen');
+        els.pkgSheet.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closePkgSheet() {
+        if (!els.pkgSheet) return;
+
+        pkgSheetState.open = false;
+        pkgSheetState.currentValue = null;
+        pkgSheetState.onPick = null;
+
+        els.pkgSheet.classList.remove('isOpen');
+        els.pkgSheet.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    function syncPkgSheetActive(value) {
+        if (!els.pkgSheetList) return;
+        els.pkgSheetList.querySelectorAll('[data-pkg-value]').forEach((el) => {
+            el.classList.toggle('is-active', el.dataset.pkgValue === String(value));
+        });
     }
     function renderEditorIntoPlace({ type, title, desc, formHtml }) {
-        const shell = buildEditorShell(title, desc, formHtml);
         const mobile = isMobileEditorMode();
+        const shell = mobile
+            ? buildMobileEditorShell(title, desc, formHtml)
+            : buildDesktopEditorShell(title, desc, formHtml);
 
         editorState.mobile = mobile;
 
         if (mobile) {
             editorState.mountKey = type;
             openWithdrawSheet(shell);
+
             const form = els.withdrawSheetBody?.querySelector('#withdrawDynamicForm');
             if (form?.dataset.editorType === 'bank') {
                 initWithdrawBankDropdown(form, false);
@@ -271,10 +384,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             lockMethodArea(type);
             mount.innerHTML = shell;
+
             const form = mount.querySelector('#withdrawDynamicForm');
             if (form?.dataset.editorType === 'bank') {
                 initWithdrawBankDropdown(form, false);
             }
+
             syncMethodAreaVisibility();
         }
     }
@@ -391,6 +506,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }) {
         if (!mount) return null;
 
+        const isMobile = () => window.matchMedia('(max-width: 767.98px)').matches;
+
         const firstSelectable = list.find((item) => !isDisabled(item)) || null;
         const current =
             list.find((item) => String(getValue(item)) === String(currentId) && !isDisabled(item)) ||
@@ -422,10 +539,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         trigger.appendChild(triggerLabel);
         trigger.appendChild(triggerArrow);
+        root.appendChild(trigger);
 
         const menu = document.createElement('div');
         menu.className = 'desktopDropdown__menu';
         menu.hidden = true;
+        root.appendChild(menu);
 
         const closeMenu = () => {
             root.classList.remove('is-open');
@@ -468,6 +587,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         trigger.addEventListener('click', (e) => {
             e.stopPropagation();
+
+            if (isMobile()) {
+                openPkgSheet({
+                    title: placeholder,
+                    list: list.filter((item) => !isDisabled(item)),
+                    currentValue: current ? getValue(current) : null,
+                    getValue,
+                    getLabelHTML: (item) => getLabelHTML ? getLabelHTML(item) : esc(getLabel(item)),
+                    onPick: (item) => {
+                        triggerLabel.innerHTML = getLabelHTML ? getLabelHTML(item) : esc(getLabel(item));
+                        onPick?.(item);
+                    }
+                });
+                return;
+            }
+
             if (menu.hidden) openMenu();
             else closeMenu();
         });
@@ -476,10 +611,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!root.contains(e.target)) closeMenu();
         });
 
-        root.appendChild(trigger);
-        root.appendChild(menu);
         mount.appendChild(root);
-
         return current;
     }
     function updateBankSelectIcon(selectEl) {
@@ -530,6 +662,21 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         }
 
+        if (type === 'add') {
+            return `
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    fill="none"
+                    stroke="#FFFFFF"
+                    stroke-width="2.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 5v14M5 12h14"
+                />
+            </svg>
+        `;
+        }
+
         return `
         <svg class="icon" viewBox="0 0 186 186" aria-hidden="true">
             <path
@@ -541,7 +688,6 @@ document.addEventListener('DOMContentLoaded', () => {
         </svg>
     `;
     }
-
     function currentSelection() {
         const p = store.preferences || {};
 
@@ -685,9 +831,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function buildSheetHeader(leftText, title, rightHtml = '') {
         return `
-        <div class="sectionHead sectionHead--sheet">
-            <button type="button" class="sheetHead__btn" data-action="close-sheet">${esc(leftText)}</button>
-            <h5>${esc(title)}</h5>
+        <div class="appSheet__header">
+            <button type="button" class="appSheet__textBtn" data-action="sheet-back">${esc(leftText)}</button>
+            <div class="appSheet__title">${esc(title)}</div>
             ${rightHtml || '<span class="sheetHead__spacer"></span>'}
         </div>`;
     }
@@ -706,7 +852,8 @@ document.addEventListener('DOMContentLoaded', () => {
             action: 'open-bank-picker',
             icon,
             title,
-            meta
+            meta,
+            extraClass: store.preferences.selectedType === 'bank' ? 'is-active' : ''
         });
     }
 
@@ -736,7 +883,8 @@ document.addEventListener('DOMContentLoaded', () => {
             action: 'open-ewallet-picker',
             icon,
             title,
-            meta
+            meta,
+            extraClass: store.preferences.selectedType === 'ewallet' ? 'is-active' : ''
         });
     }
 
@@ -751,7 +899,8 @@ document.addEventListener('DOMContentLoaded', () => {
             action: 'open-crypto-picker',
             icon,
             title,
-            meta
+            meta,
+            extraClass: store.preferences.selectedType === 'crypto' ? 'is-active' : ''
         });
     }
 
@@ -765,7 +914,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const active = store.preferences.selectedType === 'bank' && store.preferences.selectedBankId === acc.id;
             const title = acc.bankName || getBankLabel(acc.bankCode);
             return `
-                        <button type="button" class="withdrawCard ${active ? 'is-active' : ''}" data-action="select-bank-from-sheet" data-id="${esc(acc.id)}">
+                        <button type="button" class="withdrawCard-choose ${active ? 'is-active' : ''}" data-action="select-bank-from-sheet" data-id="${esc(acc.id)}">
                             <span class="withdrawCard__icon"><img src="${esc(getBankIconPath(acc.bankCode))}" alt="${esc(title)}"></span>
                             <span class="withdrawCard__body">
                                 <span class="withdrawCard__title">${esc(title)}</span>
@@ -775,7 +924,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join('')}
 
                 ${store.bankAccounts.length < 3 ? `
-                    <button type="button" class="withdrawCard withdrawCard--add" data-action="add-bank">
+                    <button type="button" class="withdrawCard-choose withdrawCard--add" data-action="add-bank">
                         <span class="withdrawCard__addIcon"></span>
                         <span class="withdrawCard__body">
                             <span class="withdrawCard__title">Add Bank Account</span>
@@ -789,10 +938,11 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         </section>`;
     }
+
     function buildBankManageSheet() {
         return `
         <section class="withdrawSheetPanel withdrawSheetPanel--manage">
-            ${buildSheetHeader('Back', 'Choose a bank')}
+            ${buildSheetHeader('Back', 'Edit bank account')}
             <div class="sheetList">
                 ${(store.bankAccounts || []).map((acc) => {
             const title = acc.bankName || getBankLabel(acc.bankCode);
@@ -817,7 +967,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="withdrawCard__meta">max 3 bank account only</span>
                         </span>
                     </button>` : ''}
-                <div class="sheetFootNote">Edit or delete account</div>
             </div>
         </section>`;
     }
@@ -825,42 +974,104 @@ document.addEventListener('DOMContentLoaded', () => {
     function buildAppBankSheet() {
         const acc = store.appBankAccount;
         const active = store.preferences.selectedType === 'app_bank' && store.preferences.selectedAppBankId === acc?.id;
-        return `
-        <section class="withdrawSheetPanel withdrawSheetPanel--picker">
-            ${buildSheetHeader('Close', APP_BANK_NAME, `<button type="button" class="sheetHead__btn" data-action="${acc ? 'edit-app-bank' : 'add-app-bank'}">Edit</button>`)}
-            <div class="sheetList">
-                ${acc ? `
-                    <button type="button" class="withdrawCard ${active ? 'is-active' : ''}" data-action="select-app-bank" data-id="${esc(acc.id)}">
-                        <span class="withdrawCard__icon"><img src="${esc(getBankIconPath(acc.bankCode || 'app_internal'))}" alt="${esc(acc.bankName || APP_BANK_NAME)}"></span>
-                        <span class="withdrawCard__body">
-                            <span class="withdrawCard__title">${esc(acc.bankName || APP_BANK_NAME)}</span>
-                            <span class="withdrawCard__meta">${esc(acc.accountName || '-')}</span>
-                        </span>
-                    </button>
-                    <div class="sheetFootNote">Tap card to select. Use Edit to update username.</div>
-                ` : `
-                    <button type="button" class="withdrawCard withdrawCard--add" data-action="add-app-bank">
-                        <span class="withdrawCard__addIcon"></span>
-                        <span class="withdrawCard__body">
-                            <span class="withdrawCard__title">Add ${esc(APP_BANK_NAME)}</span>
-                            <span class="withdrawCard__meta">Link your username</span>
-                        </span>
-                    </button>`}
-            </div>
-        </section>`;
-    }
 
+        return `
+    <section class="withdrawSheetPanel withdrawSheetPanel--picker withdrawSheetPanel--appBank">
+        ${buildSheetHeader('Close', `Choose ${APP_BANK_NAME}`, '')}
+
+        <div class="sheetList">
+            ${acc ? `
+                <button
+                    type="button"
+                    class="withdrawCard-choose ${active ? 'is-active' : ''}"
+                    data-action="select-app-bank-from-sheet"
+                    data-id="${esc(acc.id)}"
+                >
+                    <span class="withdrawCard__icon">
+                        <img src="${esc(getBankIconPath(acc.bankCode || 'app_internal'))}" alt="${esc(APP_BANK_NAME)}">
+                    </span>
+                    <span class="withdrawCard__body">
+                        <span class="withdrawCard__title">${esc(APP_BANK_NAME)}</span>
+                        <span class="withdrawCard__meta">Username: ${esc(acc.accountName || '-')}</span>
+                    </span>
+                </button>
+            ` : `
+                <button type="button" class="withdrawCard withdrawCard--add" data-action="add-app-bank">
+                    <span class="withdrawCard__addIcon"></span>
+                    <span class="withdrawCard__body">
+                        <span class="withdrawCard__title">Add ${esc(APP_BANK_NAME)}</span>
+                        <span class="withdrawCard__meta">Link your username</span>
+                    </span>
+                </button>
+            `}
+        </div>
+
+        <div class="sheetActions">
+            <button type="button" class="sheetHead__btn" data-action="open-app-bank-manage">Edit account</button>
+        </div>
+    </section>`;
+    }
+    function buildAppBankManageSheet() {
+        const acc = store.appBankAccount;
+
+        return `
+    <section class="withdrawSheetPanel withdrawSheetPanel--manage withdrawSheetPanel--appBank">
+        ${buildSheetHeader('Back', `Edit ${APP_BANK_NAME}`)}
+
+        <div class="sheetList">
+            ${acc ? `
+                <article class="withdrawCard" data-app-bank-id="${esc(acc.id)}">
+                    <button
+                        type="button"
+                        class="withdrawCard__tool withdrawCard__tool--delete"
+                        data-action="delete-app-bank"
+                        aria-label="Delete ${esc(APP_BANK_NAME)} account"
+                    >
+                        ${toolIcon('delete')}
+                    </button>
+
+                    <button
+                        type="button"
+                        class="withdrawCard__tool withdrawCard__tool--edit"
+                        data-action="edit-app-bank"
+                        aria-label="Edit ${esc(APP_BANK_NAME)} account"
+                    >
+                        ${toolIcon('edit')}
+                    </button>
+
+                    <div class="withdrawCard__main">
+                        <span class="withdrawCard__icon">
+                            <img src="${esc(getBankIconPath(acc.bankCode || 'app_internal'))}" alt="${esc(APP_BANK_NAME)}">
+                        </span>
+                        <span class="withdrawCard__body">
+                            <span class="withdrawCard__title">${esc(APP_BANK_NAME)}</span>
+                            <span class="withdrawCard__meta">Username: ${esc(acc.accountName || '-')}</span>
+                        </span>
+                    </div>
+                </article>
+            ` : `
+                <button type="button" class="withdrawCard withdrawCard--add" data-action="add-app-bank">
+                    <span class="withdrawCard__addIcon"></span>
+                    <span class="withdrawCard__body">
+                        <span class="withdrawCard__title">Add ${esc(APP_BANK_NAME)}</span>
+                        <span class="withdrawCard__meta">Link your username</span>
+                    </span>
+                </button>
+            `}
+        </div>
+    </section>`;
+    }
     function buildEwalletPickerSheet() {
         return `
-        <section class="withdrawSheetPanel withdrawSheetPanel--picker">
-            ${buildSheetHeader('Close', 'Choose E-wallet', '<button type="button" class="sheetHead__btn" data-action="open-ewallet-manage">Edit</button>')}
-            <div class="sheetList">
-                ${EWALLET_OPTIONS.map((opt) => {
+    <section class="withdrawSheetPanel withdrawSheetPanel--picker">
+        ${buildSheetHeader('Close', 'Choose E-wallet', '')}
+        <div class="sheetList">
+            ${EWALLET_OPTIONS.map((opt) => {
             const acc = store.ewalletAccounts?.[opt.key];
             if (!acc) return '';
             const active = store.preferences.selectedType === 'ewallet' && store.preferences.selectedEwalletType === opt.key;
             return `
-                    <button type="button" class="withdrawCard ${active ? 'is-active' : ''}" data-action="select-ewallet-from-sheet" data-id="${esc(opt.key)}">
+                    <button type="button" class="withdrawCard-choose ${active ? 'is-active' : ''}" data-action="select-ewallet-from-sheet" data-id="${esc(opt.key)}">
                         <span class="withdrawCard__icon"><img src="${esc(acc.icon || opt.icon)}" alt="${esc(acc.label || opt.label)}"></span>
                         <span class="withdrawCard__body">
                             <span class="withdrawCard__title">${esc(acc.label || opt.label)}</span>
@@ -868,14 +1079,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         </span>
                     </button>`;
         }).join('')}
-            </div>
-        </section>`;
+        </div>
+
+        <div class="sheetActions">
+            <button type="button" class="sheetHead__btn" data-action="open-ewallet-manage">Edit</button>
+        </div>
+    </section>`;
     }
 
     function buildEwalletManageSheet() {
         return `
         <section class="withdrawSheetPanel withdrawSheetPanel--manage">
-            ${buildSheetHeader('Back', 'Choose E-wallet')}
+            ${buildSheetHeader('Back', 'Edit E-wallet')}
             <div class="sheetList">
                 ${EWALLET_OPTIONS.map((opt) => {
             const acc = store.ewalletAccounts?.[opt.key];
@@ -901,23 +1116,22 @@ document.addEventListener('DOMContentLoaded', () => {
                             </span>
                         </div>
                     </article>`;
-                }).join('')}
-                <div class="sheetFootNote">Edit or delete account</div>
+        }).join('')}
             </div>
         </section>`;
     }
 
     function buildCryptoPickerSheet() {
         return `
-        <section class="withdrawSheetPanel withdrawSheetPanel--picker">
-            ${buildSheetHeader('Close', 'Choose Crypto', '<button type="button" class="sheetHead__btn" data-action="open-crypto-manage">Edit</button>')}
-            <div class="sheetList">
-                ${CRYPTO_OPTIONS.map((opt) => {
+    <section class="withdrawSheetPanel withdrawSheetPanel--picker">
+        ${buildSheetHeader('Close', 'Choose Crypto', '')}
+        <div class="sheetList">
+            ${CRYPTO_OPTIONS.map((opt) => {
             const acc = store.cryptoAccounts?.[opt.key];
             if (!acc) return '';
             const active = store.preferences.selectedType === 'crypto' && store.preferences.selectedCryptoKey === opt.key;
             return `
-                    <button type="button" class="withdrawCard ${active ? 'is-active' : ''}" data-action="select-crypto-from-sheet" data-id="${esc(opt.key)}">
+                    <button type="button" class="withdrawCard-choose ${active ? 'is-active' : ''}" data-action="select-crypto-from-sheet" data-id="${esc(opt.key)}">
                         <span class="withdrawCard__icon"><img src="${esc(acc.icon || opt.icon)}" alt="${esc(acc.label || opt.label)}"></span>
                         <span class="withdrawCard__body">
                             <span class="withdrawCard__title">${esc(acc.label || opt.label)} (${esc(acc.network || opt.network)})</span>
@@ -925,27 +1139,33 @@ document.addEventListener('DOMContentLoaded', () => {
                         </span>
                     </button>`;
         }).join('')}
-            </div>
-        </section>`;
+        </div>
+
+        <div class="sheetActions">
+            <button type="button" class="sheetHead__btn" data-action="open-crypto-manage">Edit</button>
+        </div>
+    </section>`;
     }
 
     function buildCryptoManageSheet() {
         return `
         <section class="withdrawSheetPanel withdrawSheetPanel--manage">
-            ${buildSheetHeader('Back', 'Choose Crypto')}
+            ${buildSheetHeader('Back', 'Edit Crypto')}
             <div class="sheetList">
                 ${CRYPTO_OPTIONS.map((opt) => {
             const acc = store.cryptoAccounts?.[opt.key];
-            if (!acc) {
-                return `
-                        <button type="button" class="withdrawCard withdrawCard--add" data-action="add-crypto" data-id="${esc(opt.key)}">
-                            <span class="withdrawCard__addIcon"></span>
-                            <span class="withdrawCard__body">
-                                <span class="withdrawCard__title">Add ${esc(opt.label)} (${esc(opt.network)})</span>
-                                <span class="withdrawCard__meta">Link wallet</span>
-                            </span>
-                        </button>`;
-            }
+                    if (!acc) {
+                        return `
+            <button type="button" class="withdrawCard withdrawCard--add" data-action="add-crypto" data-id="${esc(opt.key)}">
+                <span class="withdrawCard__icon">
+                    <img src="${esc(opt.icon)}" alt="${esc(opt.label)}">
+                </span>
+                <span class="withdrawCard__body">
+                    <span class="withdrawCard__title">Add ${esc(opt.label)} (${esc(opt.network)})</span>
+                    <span class="withdrawCard__meta">Link wallet</span>
+                </span>
+            </button>`;
+                    }
             return `
                     <article class="withdrawCard" data-crypto-key="${esc(opt.key)}">
                         <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-crypto" data-id="${esc(opt.key)}">${toolIcon('delete')}</button>
@@ -959,16 +1179,43 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </article>`;
         }).join('')}
-                <div class="sheetFootNote">Edit or delete account</div>
             </div>
         </section>`;
     }
+    function handleSheetBack() {
+        if (editorState.open && editorState.mobile) {
+            closeEditor();
+            return;
+        }
 
+        const currentView = sheetState.view || 'bank-picker';
+
+        if (currentView === 'bank-manage') {
+            openMethodSheet('bank-picker');
+            return;
+        }
+        if (currentView === 'app-bank-manage') {
+            openMethodSheet('app-bank');
+            return;
+        }
+        if (currentView === 'ewallet-manage') {
+            openMethodSheet('ewallet-picker');
+            return;
+        }
+        if (currentView === 'crypto-manage') {
+            openMethodSheet('crypto-picker');
+            return;
+        }
+
+        closeWithdrawSheet();
+        sheetState.view = null;
+    }
     function openMethodSheet(view) {
         sheetState.view = view;
         if (view === 'bank-picker') return openWithdrawSheet(buildBankPickerSheet());
         if (view === 'bank-manage') return openWithdrawSheet(buildBankManageSheet());
         if (view === 'app-bank') return openWithdrawSheet(buildAppBankSheet());
+        if (view === 'app-bank-manage') return openWithdrawSheet(buildAppBankManageSheet());
         if (view === 'ewallet-picker') return openWithdrawSheet(buildEwalletPickerSheet());
         if (view === 'ewallet-manage') return openWithdrawSheet(buildEwalletManageSheet());
         if (view === 'crypto-picker') return openWithdrawSheet(buildCryptoPickerSheet());
@@ -1104,14 +1351,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 return `
     <article class="withdrawCard withdrawCard--empty" data-crypto-key="${esc(opt.key)}">
       <button
-        type="button"
-        class="withdrawCard__tool withdrawCard__tool--edit"
-        data-action="add-crypto"
-        data-id="${esc(opt.key)}"
-        aria-label="Add ${esc(opt.label)} ${esc(opt.network)} wallet"
-      >
-        ${toolIcon('edit')}
-      </button>
+          type="button"
+          class="withdrawCard__tool withdrawCard__tool--add"
+          data-action="add-crypto"
+          data-id="${esc(opt.key)}"
+          aria-label="Add ${esc(opt.label)} ${esc(opt.network)} wallet"
+        >
+          ${toolIcon('add')}
+        </button>
 
       <div class="withdrawCard__main" aria-disabled="true">
         <span class="withdrawCard__icon"><img src="${esc(opt.icon)}" alt="${esc(opt.label)}"></span>
@@ -1142,23 +1389,23 @@ document.addEventListener('DOMContentLoaded', () => {
         <form id="withdrawDynamicForm" data-editor-type="bank">
             <div class="withdrawFormGrid">
                 <label class="field">
-                    <span>Bank Account</span>
+                    <span class="span-field">Bank Account</span>
                     <input type="text" name="accountName" value="${esc(model?.accountName || '')}" placeholder="Account Name" required>
                 </label>
 
                 <label class="field">
-                    <span>Bank</span>
+                    <span class="span-field">Bank</span>
                     <input type="hidden" name="bankCode" value="${esc(model?.bankCode || '')}" required>
                     <div data-bank-dropdown></div>
                 </label>
 
                 <label class="field">
-                    <span>Account Number</span>
+                    <span class="span-field">Account Number</span>
                     <input type="text" name="accountNumber" value="${esc(model?.accountNumber || '')}" placeholder="Account Number" required>
                 </label>
 
                 <label class="field">
-                    <span>Bank Branch</span>
+                    <span class="span-field">Bank Branch</span>
                     <input type="text" name="branchName" value="${esc(model?.branchName || '')}" placeholder="Bank Branch">
                 </label>
             </div>
@@ -1172,17 +1419,49 @@ document.addEventListener('DOMContentLoaded', () => {
     function buildAppBankForm(model = null) {
         return `
         <form id="withdrawDynamicForm" data-editor-type="app_bank">
-            <div class="withdrawFormGrid">
-                <label class="field">
-                    <span>App Bank</span>
-                    <input type="text" value="A9Wallet / G2Point" disabled>
-                    <input type="hidden" name="bankCode" value="app_internal">
+            <div class="withdrawFormGrid withdrawFormGrid--appBank">
+                <div class="field--brand field--brandApp">
+                    <div class="appBankBrandCard">
+                        <img class="withdrawlogo__g2point" src="image/logo-g2point.png" alt="${esc(APP_BANK_NAME)}">
+                        
+                    </div>
+                    <label class="field">
+                    <span class="span-field">Username</span>
+                    <input
+                        type="text"
+                        name="accountName"
+                        value="${esc(model?.accountName || '')}"
+                        placeholder="Enter your username"
+                        required
+                    >
                 </label>
+                </div>
+                
+                </div>
+                
 
-                <label class="field">
-                    <span>Username</span>
-                    <input type="text" name="accountName" value="${esc(model?.accountName || '')}" placeholder="Account Name" required>
-                </label>
+                <div class="field field--info field--appDownload">
+                    <span class="span-field">Download App</span>
+
+                    <div class="appBankDownloadBox g2p__download">
+                        <ul class="g2p__downloadList">
+                            <li>
+                                <button type="button" class="g2p__downloadBtn" data-action="open-g2p-download" data-platform="ios"><img class="download-logo" src="image/icn-ios-logo.png" />iOS</button>
+                            </li>
+                            <li>
+                                <button type="button" class="g2p__downloadBtn" data-action="open-g2p-download" data-platform="android"><img class="download-logo" src="image/icn-googlePlay.png" />Android</button>
+                            </li>
+                            <li>
+                                <button type="button" class="g2p__downloadBtn" data-action="open-g2p-download" data-platform="huawei"><img class="download-logo" src="image/icn-appGallery.png" />Huawei</button>
+                            </li>
+                        </ul>
+
+                        <div class="g2p__website">
+                            <span class="g2p__websiteLabel">Official Website:</span>
+                            <a href="#" class="g2p__websiteLink">Click Here</a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="formActions">
@@ -1190,24 +1469,23 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         </form>`;
     }
-
     function buildEwalletForm(optionKey, model = null) {
         const meta = EWALLET_OPTIONS.find((item) => item.key === optionKey);
         return `
         <form id="withdrawDynamicForm" data-editor-type="ewallet" data-option-key="${esc(optionKey)}">
             <div class="withdrawFormGrid">
                 <label class="field">
-                    <span>E-wallet</span>
+                    <span class="span-field">E-wallet</span>
                     <input type="text" value="${esc(meta?.label || model?.label || 'E-wallet')}" disabled>
                 </label>
 
                 <label class="field">
-                    <span>Account Name</span>
+                    <span class="span-field">Account Name</span>
                     <input type="text" name="label" value="${esc(model?.label || meta?.label || '')}" placeholder="Account Name" required>
                 </label>
 
                 <label class="field">
-                    <span>Account Number</span>
+                    <span class="span-field">Account Number</span>
                     <input type="text" name="accountNumber" value="${esc(model?.accountNumber || '')}" placeholder="0123456789" required>
                 </label>
             </div>
@@ -1224,22 +1502,22 @@ document.addEventListener('DOMContentLoaded', () => {
         <form id="withdrawDynamicForm" data-editor-type="crypto" data-option-key="${esc(optionKey)}">
             <div class="withdrawFormGrid">
                 <label class="field">
-                    <span>Crypto</span>
+                    <span class="span-field">Crypto</span>
                     <input type="text" value="${esc(meta?.label || model?.label || 'Crypto')}" disabled>
                 </label>
 
                 <label class="field">
-                    <span>Network</span>
+                    <span class="span-field">Network</span>
                     <input type="text" value="${esc(meta?.network || model?.network || '')}" disabled>
                 </label>
 
                 <label class="field">
-                    <span>Wallet Label</span>
+                    <span class="span-field">Wallet Label</span>
                     <input type="text" name="label" value="${esc(model?.label || meta?.label || '')}" placeholder="Wallet Label" required>
                 </label>
 
                 <label class="field">
-                    <span>Wallet Address</span>
+                    <span class="span-field">Wallet Address</span>
                     <input type="text" name="address" value="${esc(model?.address || '')}" placeholder="Wallet Address" required>
                 </label>
             </div>
@@ -1259,8 +1537,8 @@ document.addEventListener('DOMContentLoaded', () => {
         editorState.optionKey = null;
 
         const title = mode === 'edit'
-            ? (isAppBank ? 'Edit App Bank Route' : 'Edit Bank Account')
-            : (isAppBank ? 'Add App Bank Route' : 'Add Bank Account');
+            ? (isAppBank ? `Edit ${APP_BANK_NAME}` : 'Edit Bank Account')
+            : (isAppBank ? `Add ${APP_BANK_NAME}` : 'Add Bank Account');
 
         const bank = isAppBank
             ? store.appBankAccount
@@ -1314,19 +1592,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     function canInteractWhileEditing(action) {
-        return action === 'cancel-editor' || action === 'close-sheet';
+        return action === 'cancel-editor'
+            || action === 'sheet-back'
+            || action === 'close-sheet'
+            || action === 'open-g2p-download'
+            || action === 'close-g2p-download';
+    }
+    function shouldCloseEditorForInteraction(target, action) {
+        if (!editorState.open || editorState.mobile) return false;
+        if (!target) return false;
+
+        const withinEditor = target.closest('#withdrawEditor');
+        if (withinEditor) return false;
+
+        const interactionsThatCancel = new Set([
+            'select-bank',
+            'select-app-bank',
+            'select-ewallet',
+            'select-crypto',
+            'open-bank-picker',
+            'open-app-bank-sheet',
+            'open-ewallet-picker',
+            'open-crypto-picker'
+        ]);
+
+        if (action && interactionsThatCancel.has(action)) return true;
+
+        const tab = target.closest('[data-wd-type]');
+        if (tab) return true;
+
+        return false;
     }
     function closeEditor() {
         if (!editorState.open) return;
 
+        const currentType = editorState.type;
         const closingType = editorState.mountKey;
         const isMobile = editorState.mobile;
-
-        if (isMobile) {
-            closeWithdrawSheet();
-        } else if (closingType) {
-            unlockMethodArea(closingType);
-        }
 
         editorState.open = false;
         editorState.mode = 'add';
@@ -1335,11 +1637,36 @@ document.addEventListener('DOMContentLoaded', () => {
         editorState.optionKey = null;
         editorState.mountKey = null;
         editorState.mobile = false;
-        sheetState.view = null;
+
+        if (isMobile) {
+            if (currentType === 'bank') {
+                openMethodSheet('bank-manage');
+                return;
+            }
+            if (currentType === 'app_bank') {
+                openMethodSheet('app-bank-manage');
+                return;
+            }
+            if (currentType === 'ewallet') {
+                openMethodSheet('ewallet-manage');
+                return;
+            }
+            if (currentType === 'crypto') {
+                openMethodSheet('crypto-manage');
+                return;
+            }
+
+            closeWithdrawSheet();
+            sheetState.view = null;
+            return;
+        }
+
+        if (closingType) {
+            unlockMethodArea(closingType);
+        }
 
         syncMethodAreaVisibility();
     }
-
     function saveEditorForm(form) {
         const fd = new FormData(form);
 
@@ -1431,7 +1758,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const reopenView = isMobileWithdrawUI()
             ? (editorState.type === 'bank' ? 'bank-manage'
-                : editorState.type === 'app_bank' ? 'app-bank'
+                : editorState.type === 'app_bank' ? 'app-bank-manage'
                     : editorState.type === 'ewallet' ? 'ewallet-manage'
                         : editorState.type === 'crypto' ? 'crypto-manage'
                             : null)
@@ -1561,7 +1888,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     els.tabs.forEach((tab) => {
         tab.addEventListener('click', () => {
-            if (editorState.open) return;
+            if (editorState.open) {
+                closeEditor();
+            }
 
             const type = tab.dataset.wdType || 'bank';
             store.preferences.preferredType = type;
@@ -1574,8 +1903,51 @@ document.addEventListener('DOMContentLoaded', () => {
         const actionEl = e.target.closest('[data-action]');
         const action = actionEl?.dataset.action || '';
 
-        // editor 开着时，除了 cancel / close-sheet 之外，其他点击都先挡住
+        const pkgCloseBtn = e.target.closest('#pkgSheet [data-sheet-close]');
+        if (pkgCloseBtn) {
+            closePkgSheet();
+            return;
+        }
+
+        const pkgOptionBtn = e.target.closest('#pkgSheet [data-pkg-value]');
+        if (pkgOptionBtn) {
+            pkgSheetState.currentValue = pkgOptionBtn.dataset.pkgValue;
+            syncPkgSheetActive(pkgSheetState.currentValue);
+            return;
+        }
+
+        const pkgDoneBtn = e.target.closest('#pkgSheet [data-sheet-done]');
+        if (pkgDoneBtn) {
+            if (!pkgSheetState.currentValue || !pkgSheetState.onPick) {
+                closePkgSheet();
+                return;
+            }
+
+            const bankOpt = BANK_OPTIONS.find((opt) => String(opt.code) === String(pkgSheetState.currentValue));
+            if (bankOpt) {
+                pkgSheetState.onPick(bankOpt);
+            }
+
+            closePkgSheet();
+            return;
+        }
+
+        if (shouldCloseEditorForInteraction(e.target, action)) {
+            closeEditor();
+        }
+
         if (editorState.open && !canInteractWhileEditing(action)) {
+            return;
+        }
+        const openG2PBtn = e.target.closest('[data-action="open-g2p-download"]');
+        if (openG2PBtn) {
+            openG2PDownloadModal(openG2PBtn.dataset.platform);
+            return;
+        }
+
+        const closeG2PBtn = e.target.closest('[data-action="close-g2p-download"]');
+        if (closeG2PBtn) {
+            closeG2PDownloadModal();
             return;
         }
 
@@ -1594,7 +1966,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             return;
         }
-
+        const sheetBackBtn = e.target.closest('[data-action="sheet-back"]');
+        if (sheetBackBtn) {
+            handleSheetBack();
+            return;
+        }
         const openBankPickerBtn = e.target.closest('[data-action="open-bank-picker"]');
         if (openBankPickerBtn) {
             openMethodSheet('bank-picker');
@@ -1612,7 +1988,11 @@ document.addEventListener('DOMContentLoaded', () => {
             openMethodSheet('app-bank');
             return;
         }
-
+        const openAppBankManageBtn = e.target.closest('[data-action="open-app-bank-manage"]');
+        if (openAppBankManageBtn) {
+            openMethodSheet('app-bank-manage');
+            return;
+        }
         const addAppBankBtn = e.target.closest('[data-action="add-app-bank"]');
         if (addAppBankBtn) {
             openBankEditor(store.appBankAccount ? 'edit' : 'add', store.appBankAccount?.id || null, true);
@@ -1653,7 +2033,13 @@ document.addEventListener('DOMContentLoaded', () => {
             setSelectedMethod('app_bank', selectAppBankBtn.dataset.id);
             return;
         }
-
+        const selectAppBankSheetBtn = e.target.closest('[data-action="select-app-bank-from-sheet"]');
+        if (selectAppBankSheetBtn) {
+            setSelectedMethod('app_bank', selectAppBankSheetBtn.dataset.id);
+            closeWithdrawSheet();
+            sheetState.view = null;
+            return;
+        }
         const editAppBankBtn = e.target.closest('[data-action="edit-app-bank"]');
         if (editAppBankBtn) {
             openBankEditor('edit', store.appBankAccount?.id || null, true);
@@ -1664,7 +2050,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (deleteAppBankBtn) {
             deleteAppBankAccount();
             if (!editorState.open && isMobileWithdrawUI()) {
-                openMethodSheet('app-bank');
+                openMethodSheet('app-bank-manage');
             }
             return;
         }
@@ -1791,4 +2177,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     renderAll();
+    window.addEventListener('resize', () => {
+        if (!window.matchMedia('(max-width: 767.98px)').matches) {
+            closePkgSheet();
+        }
+    });
 });
