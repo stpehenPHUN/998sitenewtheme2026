@@ -912,7 +912,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 .playcard__body { display: flex; flex-direction: column; align-items: stretch; height: 100%; /* background: var(--bg-color); */ border: var(--border-width) solid rgba(255, 255, 255, .10); border-radius: var(--radius-md); position: relative; border: var(--border-width) solid var(--primary-color); position: relative; }
 
 .playcard[data-href] .playcard__body:hover { border-color: var(--accent-color); }
-.playcard[data-no-nav] .playcard__body { border-color: var(--accent-color); }
+.playcard[data-no-nav] .playcard__body { border-color: var(--primary-color); }
 .playcard__header { color: var(--font-color); position: relative; z-index: 2; text-align: center; padding: var(--padding);background: var(--primary-color); margin-left: calc(var(--space-3) * -1); margin-right: calc(var(--space-3) * -1); font-weight: bold; border-radius: var(--radius-sm); }
 .playcard[data-href] .playcard__body:hover .playcard__header { background: var(--accent-color); }
 .playcard__header:after { }
