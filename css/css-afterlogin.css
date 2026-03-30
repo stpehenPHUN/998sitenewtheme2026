@@ -1641,8 +1641,59 @@ body.qrViewer-open { overflow: hidden; }
 
 .is-positive { color: var(--color-green); }
 
-@media (min-width: 768px) {
-    .transactionToolbar { gap: calc(var(--gap) * 4); }
+.betCategoryBtn{background:var(--secondary-color); border:0; padding:var(--space-2);border-radius:var(--radius-pill);position:relative; width:var(--icn-w40); height:var(--icn-w40);}
+.betCategoryBtn.is-active{background:var(--primary-color);}
+
+.dataTable--betHistory{}
+.dataTable--betHistory { width: 100%; min-width: 1200px; table-layout: fixed; }
+
+    .dataTable--betHistory .dataTable__headCell,
+    .dataTable--betHistory .dataTable__cell,
+    .dataTable--betHistory .dataTable__footCell { box-sizing: border-box; }
+
+    /* fixed column widths */
+    .dataTable--betHistory .dataTable__headCell--index,
+    .dataTable--betHistory .dataTable__cell--index { width: 6%; }
+
+    .dataTable--betHistory .dataTable__headCell--details,
+    .dataTable--betHistory .dataTable__cell--details { width: 24%; }
+
+    .dataTable--betHistory .dataTable__headCell--selection,
+    .dataTable--betHistory .dataTable__cell--selection { width: 26%; }
+
+    .dataTable--betHistory .dataTable__headCell--odds,
+    .dataTable--betHistory .dataTable__cell--odds { width: 10%; }
+
+    .dataTable--betHistory .dataTable__headCell--stake,
+    .dataTable--betHistory .dataTable__cell--stake { width: 12%; }
+
+    .dataTable--betHistory .dataTable__headCell--winlose,
+    .dataTable--betHistory .dataTable__cell--winlose { width: 14%; }
+
+    .dataTable--betHistory .dataTable__headCell--status,
+    .dataTable--betHistory .dataTable__cell--status { width: 8%; }
+    .dataTable--betHistory .dataTable__cell--details,
+    .dataTable--betHistory .dataTable__cell--selection,
+    .dataTable--betHistory .dataTable__cell--stake,
+    .dataTable--betHistory .dataTable__cell--winlose,
+    .dataTable--betHistory .dataTable__cell--status { overflow: hidden; }
+
+.betHistoryDetails,
+.betHistorySelection,
+.betHistoryStatus,
+.dataTable__amountStack { width: 100%; }
+
+.betHistoryDetails__provider,
+.betHistoryDetails__time,
+.betHistorySelection__value,
+.betHistoryStatus__label,
+.dataTable__amountValue { max-width: 100%; }
+.betHistoryDetails__provider { color: var(--color-purple); }
+.betHistorySelection__value{color:var(--color-orange);}
+.betHistorySelection__value { color: var(--color-orange); }
+    .betHistorySelection__value{}
+
+    @media (min-width: 768px) { .transactionToolbar { gap: calc(var(--gap) * 4); }
 
     .transactionToolbar__filters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap); }
 
