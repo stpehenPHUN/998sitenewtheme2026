@@ -1,4 +1,4 @@
-<script>
+
     (() => {
         const BREAKPOINT = 1024;
 
@@ -274,9 +274,9 @@
         });
 
     })();
-</script>
 
-<script>
+
+
     //side menu
     document.addEventListener('DOMContentLoaded', () => {
         const BP_MOBILE_MAX = 767;
@@ -376,9 +376,9 @@
         applyDefaults(true);
         window.addEventListener('resize', () => applyDefaults(false));
     });
-</script>
 
-<script>
+
+
     (() => {
         const BREAKPOINT = 1024;
 
@@ -485,8 +485,8 @@
             closeAll();
         });
     })();
-</script>
-<script>
+
+
     // fav button
     document.addEventListener('click', (e) => {
         const btn = e.target.closest('.btn-fav');
@@ -511,8 +511,8 @@
             btn.setAttribute('aria-pressed', 'true');
         }
     });
-</script>
-<script>
+
+
     const btn = document.querySelector('[data-action="toggle-app"]');
     const nav = document.querySelector('.sidebar-nav.sidebar-nav--product');
     const panel = nav?.querySelector('.prod-nav');
@@ -591,9 +591,9 @@
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && nav.classList.contains('active')) closeNav();
     });
-</script>
 
-<script>
+
+
     //search
     document.addEventListener('DOMContentLoaded', () => {
         const BP_MOBILE_MAX = 1024;
@@ -676,9 +676,9 @@
             rails.forEach((rail) => closeSearch(rail));
         });
     });
-</script>
 
-<script>
+
+
     document.addEventListener("click", (e) => {
         const btn = e.target.closest("#btn-settingsbox");
         if (!btn) return;
@@ -695,9 +695,9 @@
         // 无障碍：告诉读屏当前状态
         btn.setAttribute("aria-expanded", String(!isOpen));
     });
-</script>
 
-<script>
+
+
     //render background image form data
     document.querySelectorAll('.vendor-img').forEach(el => {
         const src = el.dataset.image;
@@ -722,4 +722,4 @@
 
         el.appendChild(img);
     });
-</script>
+
