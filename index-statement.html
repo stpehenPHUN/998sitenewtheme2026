@@ -48,7 +48,7 @@
                         </svg>
                     </a>
                     <div class="pagebar__title">
-                        Statement
+                        Statement - Cash History
                     </div>
 
 
@@ -59,15 +59,8 @@
 
             <div class="pkgSection panel" data-section="statement">
 
-                <div class="pkgSection__top">
-                    <div class="withdrawTopTabs" role="tablist" aria-label="Withdraw Type Tabs">
-                        <a href="#" class="tab is-active"><span class="p--methodBtn__ico" aria-hidden="true" data-ico="statement"></span>Statement</a>
-                        <a href="#" class="tab"><span class="p--methodBtn__ico" aria-hidden="true" data-ico="mybet"></span>MyBets</a>
-                    </div>
-
-                </div>
                 <section class="transactionTableCard">
-                    <div class="transactionToolbar">
+                    <div class="transactionToolbar ">
                         <div class="transactionToolbar__group">
                             <div class="transactionToolbar__label">Select Transaction Date</div>
                             <div class="transactionToolbar__filters">
@@ -88,130 +81,102 @@
                                 <button type="button" class="txnIconBtn" aria-label="Search">
                                     <span class="p--methodBtn__ico" data-ico="magnifier"></span>
                                 </button>
+
                             </div>
                         </div>
 
                         <div class="transactionToolbar__group">
-                            <a href="index-statement-cashhistory.html" class="txnActionBtn btnPrimary">
-                                <span class="p--methodBtn__ico txnActionBtn__icon" data-ico="statement"></span>
-                                <span>Transaction</span>
-                            </a>
                         </div>
                     </div>
 
                     <div class="transactionTablePanel panel-inner">
-                        <div class="dataTableWrap">
-                            <table class="dataTable dataTable--transaction">
+                        <div class="dataTableWrap dataTableWrap--cashflow">
+                            <table class="dataTable dataTable--cashflow">
                                 <thead class="dataTable__head">
                                     <tr class="dataTable__headRow">
                                         <th class="dataTable__headCell dataTable__headCell--date">Date</th>
+                                        <th class="dataTable__headCell dataTable__headCell--txnNo">Transaction No</th>
+                                        <th class="dataTable__headCell dataTable__headCell--desc">Description</th>
                                         <th class="dataTable__headCell dataTable__headCell--type">Type</th>
-                                        <th class="dataTable__headCell dataTable__headCell--amount">Total/Comm</th>
-                                        <th class="dataTable__headCell dataTable__headCell--running">Running Total</th>
+                                        <th class="dataTable__headCell dataTable__headCell--status">Status</th>
+                                        <th class="dataTable__headCell dataTable__headCell--amount">Amount</th>
+                                        <th class="dataTable__headCell dataTable__headCell--bonus">Bonus</th>
                                     </tr>
                                 </thead>
 
                                 <tbody class="dataTable__body">
                                     <tr class="dataTable__row">
                                         <td class="dataTable__cell dataTable__cell--date">
-                                            <div class="dataTable__cellInner dataTable__cellInner--date">
-                                                <span class="dataTable__dateText">Today, 09 Mar, 15:38</span>
-                                            </div>
+                                            <span class="dataTable__text">2026-02-13 11:41:31</span>
+                                        </td>
+                                        <td class="dataTable__cell dataTable__cell--txnNo">
+                                            <span class="dataTable__text">13BAQKEEWBJ8X</span>
+                                        </td>
+                                        <td class="dataTable__cell dataTable__cell--desc">
+                                            <span class="dataTable__text">zh gc 0123</span>
                                         </td>
                                         <td class="dataTable__cell dataTable__cell--type">
-                                            <div class="dataTable__cellInner dataTable__cellInner--type">
-                                                <a href="index-statement-bet.html" " class="txnTypeLink">
-                                                    <span class="txnTypeLink__icon">
-                                                        <span class="p--methodBtn__ico" data-ico="magnifier"></span>
-                                                    </span>
-                                                    <span class="txnTypeLink__label">Bet</span>
-                                                </a>
-                                            </div>
+                                            <span class="dataTable__text">Redemption</span>
+                                        </td>
+                                        <td class="dataTable__cell dataTable__cell--status">
+                                            <span class="dataTable__text">Approved</span>
                                         </td>
                                         <td class="dataTable__cell dataTable__cell--amount">
-                                            <div class="dataTable__cellInner dataTable__cellInner--amount">
-                                                <div class="dataTable__amountStack">
-                                                    <span class="dataTable__amountValue is-negative">RM -109.00</span>
-                                                    <span class="dataTable__amountValue is-comm">RM 0.90</span>
-                                                </div>
-                                            </div>
+                                            <span class="dataTable__amount">RM 0.00</span>
                                         </td>
-                                        <td class="dataTable__cell dataTable__cell--running">
-                                            <div class="dataTable__cellInner dataTable__cellInner--running">
-                                                <span class="dataTable__runningTotal is-positive">RM 991.00</span>
-                                            </div>
+                                        <td class="dataTable__cell dataTable__cell--bonus">
+                                            <span class="dataTable__bonus">RM 10.00</span>
                                         </td>
                                     </tr>
 
                                     <tr class="dataTable__row">
                                         <td class="dataTable__cell dataTable__cell--date">
-                                            <div class="dataTable__cellInner dataTable__cellInner--date">
-                                                <span class="dataTable__dateText">Tuesday, 03 Mar, 08:15</span>
-                                            </div>
+                                            <span class="dataTable__text">2026-02-13 11:41:31</span>
+                                        </td>
+                                        <td class="dataTable__cell dataTable__cell--txnNo">
+                                            <span class="dataTable__text">12X43A7BWBJ8X</span>
+                                        </td>
+                                        <td class="dataTable__cell dataTable__cell--desc">
+                                            <span class="dataTable__text">OCBC SGD</span>
                                         </td>
                                         <td class="dataTable__cell dataTable__cell--type">
-                                            <div class="dataTable__cellInner dataTable__cellInner--type">
-                                                <a href="index-statement-bet.html" class="txnTypeLink">
-                                                    <span class="txnTypeLink__icon">
-                                                        <span class="p--methodBtn__ico" data-ico="magnifier"></span>
-                                                    </span>
-                                                    <span class="txnTypeLink__label">Bet</span>
-                                                </a>
-                                            </div>
+                                            <span class="dataTable__text">Withdrawal</span>
+                                        </td>
+                                        <td class="dataTable__cell dataTable__cell--status">
+                                            <span class="dataTable__text">Approved</span>
                                         </td>
                                         <td class="dataTable__cell dataTable__cell--amount">
-                                            <div class="dataTable__cellInner dataTable__cellInner--amount">
-                                                <div class="dataTable__amountStack">
-                                                    <span class="dataTable__amountValue is-neutral">RM 0.00</span>
-                                                    <span class="dataTable__amountValue is-comm">RM 0.90</span>
-                                                </div>
-                                            </div>
+                                            <span class="dataTable__amount is-negative">RM -20.00</span>
                                         </td>
-                                        <td class="dataTable__cell dataTable__cell--running">
-                                            <div class="dataTable__cellInner dataTable__cellInner--running">
-                                                <span class="dataTable__runningTotal is-positive">RM 991.00</span>
-                                            </div>
+                                        <td class="dataTable__cell dataTable__cell--bonus">
+                                            <span class="dataTable__bonus"></span>
                                         </td>
                                     </tr>
 
                                     <tr class="dataTable__row">
                                         <td class="dataTable__cell dataTable__cell--date">
-                                            <div class="dataTable__cellInner dataTable__cellInner--date">
-                                                <span class="dataTable__dateText">Tuesday, 03 Mar, 08:15</span>
-                                            </div>
+                                            <span class="dataTable__text">2026-02-13 11:41:31</span>
+                                        </td>
+                                        <td class="dataTable__cell dataTable__cell--txnNo">
+                                            <span class="dataTable__text">12X43A7BWBJ8X</span>
+                                        </td>
+                                        <td class="dataTable__cell dataTable__cell--desc">
+                                            <span class="dataTable__text">OCBC SGD</span>
                                         </td>
                                         <td class="dataTable__cell dataTable__cell--type">
-                                            <div class="dataTable__cellInner dataTable__cellInner--type">
-                                                <a href="index-statement-cashhistory.html" class="txnTypeLink">
-                                                    <span class="txnTypeLink__icon">
-                                                        <span class="p--methodBtn__ico" data-ico="magnifier"></span>
-                                                    </span>
-                                                    <span class="txnTypeLink__label">Transaction</span>
-                                                </a>
-                                            </div>
+                                            <span class="dataTable__text">Deposit</span>
+                                        </td>
+                                        <td class="dataTable__cell dataTable__cell--status">
+                                            <span class="dataTable__text">Approved</span>
                                         </td>
                                         <td class="dataTable__cell dataTable__cell--amount">
-                                            <div class="dataTable__cellInner dataTable__cellInner--amount">
-                                                <div class="dataTable__amountStack">
-                                                    <span class="dataTable__amountValue is-neutral">RM 0.00</span>
-                                                    <span class="dataTable__amountValue is-comm">RM 0.90</span>
-                                                </div>
-                                            </div>
+                                            <span class="dataTable__amount is-positive">RM 20.00</span>
                                         </td>
-                                        <td class="dataTable__cell dataTable__cell--running">
-                                            <div class="dataTable__cellInner dataTable__cellInner--running">
-                                                <span class="dataTable__runningTotal is-positive">RM 1,100.00</span>
-                                            </div>
+                                        <td class="dataTable__cell dataTable__cell--bonus">
+                                            <span class="dataTable__bonus"></span>
                                         </td>
                                     </tr>
                                 </tbody>
-
-                                <tfoot class="dataTable__foot">
-                                    <tr class="dataTable__footRow">
-                                        <td colspan="3" class="dataTable__footCell dataTable__footCell--label">Total Outstanding</td>
-                                        <td class="dataTable__footCell dataTable__footCell--value">RM 500.00</td>
-                                    </tr>
-                                </tfoot>
                             </table>
                         </div>
                     </div>
@@ -312,7 +277,7 @@
             </div>
         </main>
     </div>
-    <div class="jspage" data-include="js/script-page.html"></div>
+    <script src="js/script-page.js"></script>
 
 </body>
 </html>
