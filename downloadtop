@@ -1,0 +1,36 @@
+<section class="sectiondownload">
+    <div class="d-flex align-items-center justify-content-between">
+        <div class="download-icon">
+            <img src="image/icn-testing.png" />
+        </div>
+        <div class="download-content">
+            Read to play? Download App now.
+            <br />
+            Earn daily free reward!
+        </div>
+        <button class="iconBtn" aria-label="Download">
+            <svg viewBox="0 0 20 20" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                <path d="M5 20h14v-2H5v2Zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1Z" />
+            </svg>
+            Download
+        </button>
+        <div>
+            <button class="icnX" aria-label="closeDownload">
+                X
+            </button>
+        </div>
+    </div>
+</section>
+
+<script>
+    //close download
+    document.addEventListener('click', (e) => {
+        const closeBtn = e.target.closest('.icnX[aria-label="closeDownload"]');
+        if (!closeBtn) return;
+
+        const banner = closeBtn.closest('.sectiondownload');
+        if (!banner) return;
+
+        banner.classList.add('is-hidden');
+    });
+</script>
