@@ -7,14 +7,45 @@
         }
     }
 
+    function waitForElement(selector, callback, options = {}) {
+        const {
+            root = document,
+            timeout = 5000,
+            once = true
+        } = options;
+
+        const found = root.querySelector(selector);
+        if (found) {
+            callback(found);
+            return;
+        }
+
+        const observer = new MutationObserver(() => {
+            const el = root.querySelector(selector);
+            if (!el) return;
+
+            callback(el);
+            if (once) observer.disconnect();
+        });
+
+        observer.observe(root === document ? document.body : root, {
+            childList: true,
+            subtree: true
+        });
+
+        if (timeout > 0) {
+            setTimeout(() => observer.disconnect(), timeout);
+        }
+    }
+
     /* =========================
        Language sheet
     ========================= */
-    onReady(() => {
-        const BREAKPOINT = 1024;
+    function initLanguageSheet(sheet) {
+        if (!sheet || sheet.dataset.langInit === 'true') return;
+        sheet.dataset.langInit = 'true';
 
-        const sheet = document.querySelector(".appSheet");
-        if (!sheet) return;
+        const BREAKPOINT = 1024;
 
         const panel = sheet.querySelector(".appSheet__panel");
         const scroller = sheet.querySelector(".wheel__scroller");
@@ -23,9 +54,7 @@
 
         if (!panel || !scroller || !wheel || !doneBtn) return;
 
-        const ITEM_H = 44;
         let currentValue = localStorage.getItem("lang") || "en";
-
         let activeTrigger = null;
 
         let pinned = false;
@@ -36,6 +65,10 @@
         const isDesktop = () => window.innerWidth >= BREAKPOINT;
         const isOpen = () => sheet.classList.contains("isOpen");
         const isHovering = () => hoveringTrigger || hoveringPanel;
+
+        function getTriggers() {
+            return document.querySelectorAll("[data-lang-trigger]");
+        }
 
         function openMobileSheet(triggerBtn) {
             activeTrigger = triggerBtn;
@@ -73,58 +106,64 @@
             document.body.style.overflow = "";
         }
 
-        const triggers = document.querySelectorAll("[data-lang-trigger]");
+        document.addEventListener("click", (e) => {
+            const btn = e.target.closest("[data-lang-trigger]");
+            if (!btn) return;
 
-        triggers.forEach(btn => {
-            btn.addEventListener("click", (e) => {
-                activeTrigger = btn;
+            activeTrigger = btn;
 
-                if (!isDesktop()) {
-                    openMobileSheet(btn);
-                    return;
-                }
+            if (!isDesktop()) {
+                e.preventDefault();
+                openMobileSheet(btn);
+                return;
+            }
 
-                if (!isOpen()) {
-                    pinned = true;
-                    suppressHoverUntilLeave = false;
-                    openDesktopDropdown(btn);
-                    return;
-                }
+            e.preventDefault();
 
-                if (!pinned) {
-                    pinned = true;
-                    suppressHoverUntilLeave = false;
-                    openDesktopDropdown(btn);
-                } else {
-                    pinned = false;
-                    closeAll();
-
-                    if (isHovering()) suppressHoverUntilLeave = true;
-                }
-            });
-
-            btn.addEventListener("mouseenter", () => {
-                if (!isDesktop()) return;
-                hoveringTrigger = true;
-                activeTrigger = btn;
-
-                if (pinned) {
-                    openDesktopDropdown(btn);
-                    return;
-                }
-                if (suppressHoverUntilLeave) return;
-
+            if (!isOpen()) {
+                pinned = true;
+                suppressHoverUntilLeave = false;
                 openDesktopDropdown(btn);
-            });
+                return;
+            }
 
-            btn.addEventListener("mouseleave", () => {
-                if (!isDesktop()) return;
-                hoveringTrigger = false;
+            if (!pinned) {
+                pinned = true;
+                suppressHoverUntilLeave = false;
+                openDesktopDropdown(btn);
+            } else {
+                pinned = false;
+                closeAll();
 
-                if (!isHovering()) suppressHoverUntilLeave = false;
-                if (!pinned && !isHovering()) closeAll();
-            });
+                if (isHovering()) suppressHoverUntilLeave = true;
+            }
         });
+
+        document.addEventListener("mouseenter", (e) => {
+            const btn = e.target.closest?.("[data-lang-trigger]");
+            if (!btn || !isDesktop()) return;
+
+            hoveringTrigger = true;
+            activeTrigger = btn;
+
+            if (pinned) {
+                openDesktopDropdown(btn);
+                return;
+            }
+            if (suppressHoverUntilLeave) return;
+
+            openDesktopDropdown(btn);
+        }, true);
+
+        document.addEventListener("mouseleave", (e) => {
+            const btn = e.target.closest?.("[data-lang-trigger]");
+            if (!btn || !isDesktop()) return;
+
+            hoveringTrigger = false;
+
+            if (!isHovering()) suppressHoverUntilLeave = false;
+            if (!pinned && !isHovering()) closeAll();
+        }, true);
 
         panel.addEventListener("mouseenter", () => {
             if (!isDesktop()) return;
@@ -215,7 +254,8 @@
             if (isDesktop()) return;
 
             const center = scroller.scrollTop + scroller.clientHeight / 2;
-            let best = null, bestDist = Infinity;
+            let best = null;
+            let bestDist = Infinity;
 
             getItems().forEach(el => {
                 const elCenter = el.offsetTop + el.offsetHeight / 2;
@@ -244,6 +284,10 @@
             hoveringPanel = false;
             suppressHoverUntilLeave = false;
         });
+    }
+
+    onReady(() => {
+        waitForElement(".appSheet", initLanguageSheet);
     });
 
     /* =========================
@@ -343,15 +387,17 @@
     /* =========================
        Note box
     ========================= */
-    onReady(() => {
+    function initNoteBox(note) {
+        if (!note || note.dataset.noteInit === 'true') return;
+        note.dataset.noteInit = 'true';
+
         const BREAKPOINT = 1024;
 
-        const note = document.querySelector("[data-note]");
         const overlay = document.querySelector(".overlay[data-action='close-all']");
         const openBtn = document.querySelector("[data-action='open-note']");
         const closeBtn = document.querySelector("[data-action='close-note']");
 
-        if (!note || !overlay || !openBtn) return;
+        if (!overlay || !openBtn) return;
 
         const isDesktop = () => window.innerWidth >= BREAKPOINT;
         const isOpen = () => note.classList.contains("is-open");
@@ -435,6 +481,10 @@
             if (!btn) return;
             closeAll();
         });
+    }
+
+    onReady(() => {
+        waitForElement("[data-note]", initNoteBox);
     });
 
     /* =========================
@@ -465,13 +515,13 @@
     /* =========================
        Product nav / toggle-app
     ========================= */
-    onReady(() => {
-        const btn = document.querySelector('[data-action="toggle-app"]');
-        const nav = document.querySelector('.sidebar-nav.sidebar-nav--product');
-        const panel = nav?.querySelector('.prod-nav');
-        const body = document.body;
+    function initProductNav(nav) {
+        if (!nav || nav.dataset.prodInit === 'true') return;
+        nav.dataset.prodInit = 'true';
 
-        if (!btn || !nav || !panel) return;
+        const body = document.body;
+        const panel = nav.querySelector('.prod-nav');
+        if (!panel) return;
 
         const ANIM_CLASS = 'nav-animating';
         const DURATION = 260;
@@ -506,7 +556,10 @@
             nav.classList.contains('active') ? closeNav() : openNav();
         }
 
-        btn.addEventListener('click', (e) => {
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('[data-action="toggle-app"]');
+            if (!btn) return;
+
             e.preventDefault();
             e.stopPropagation();
 
@@ -537,6 +590,10 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && nav.classList.contains('active')) closeNav();
         });
+    }
+
+    onReady(() => {
+        waitForElement('.sidebar-nav.sidebar-nav--product', initProductNav);
     });
 
     /* =========================
@@ -548,14 +605,6 @@
         const rails = document.querySelectorAll('[data-vendor-rail]');
 
         if (!rails.length) return;
-
-        const openSearch = (rail) => {
-            rail.classList.add('is-search-open');
-            const input = rail.querySelector('.vendor-search');
-            if (input) {
-                requestAnimationFrame(() => input.focus());
-            }
-        };
 
         const closeSearch = (rail) => {
             rail.classList.remove('is-search-open');
@@ -636,24 +685,26 @@
     /* =========================
        Render images from data attrs
     ========================= */
-    onReady(() => {
-        document.querySelectorAll('.vendor-img').forEach(el => {
+    function renderDataImages(root = document) {
+        root.querySelectorAll('.vendor-img').forEach(el => {
             const src = el.dataset.image;
-            if (src) {
+            if (src && !el.dataset.renderedBg) {
                 el.style.backgroundImage = `url("${src}")`;
+                el.dataset.renderedBg = 'true';
             }
         });
 
-        document.querySelectorAll('.vendor-bg').forEach(el => {
+        root.querySelectorAll('.vendor-bg').forEach(el => {
             const src = el.dataset.bg;
-            if (src) {
+            if (src && !el.dataset.renderedBg) {
                 el.style.backgroundImage = `url("${src}")`;
+                el.dataset.renderedBg = 'true';
             }
         });
 
-        document.querySelectorAll('.vendor-logo').forEach(el => {
+        root.querySelectorAll('.vendor-logo').forEach(el => {
             const src = el.dataset.logo;
-            if (!src) return;
+            if (!src || el.dataset.renderedLogo === 'true') return;
 
             const img = document.createElement('img');
             img.src = src;
@@ -661,7 +712,28 @@
             img.loading = 'lazy';
 
             el.appendChild(img);
+            el.dataset.renderedLogo = 'true';
         });
+    }
+
+    onReady(() => {
+        renderDataImages();
+
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                mutation.addedNodes.forEach((node) => {
+                    if (!(node instanceof Element)) return;
+                    renderDataImages(node);
+                });
+            });
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+
+        setTimeout(() => observer.disconnect(), 5000);
     });
 
     /* =========================
