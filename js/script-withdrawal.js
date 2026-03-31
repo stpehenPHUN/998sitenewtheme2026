@@ -90,15 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ewalletEditorMount: document.getElementById('ewalletEditorMount'),
         cryptoEditorMount: document.getElementById('cryptoEditorMount'),
 
-        withdrawSheet: document.getElementById('withdrawSheet'),
-        withdrawSheetBody: document.getElementById('withdrawSheetBody'),
-
-        pkgSheet: document.getElementById('pkgSheet'),
-        pkgSheetTitle: document.querySelector('#pkgSheet [data-sheet-title]'),
-        pkgSheetList: document.querySelector('#pkgSheet [data-sheet-list]'),
-        pkgSheetDone: document.querySelector('#pkgSheet [data-sheet-done]'),
-        pkgSheetCloseBtns: [...document.querySelectorAll('#pkgSheet [data-sheet-close]')],
-
         g2pModal: document.getElementById('g2pDownloadModal'),
         g2pModalQr: document.getElementById('g2pModalQr'),
 
@@ -117,6 +108,45 @@ document.addEventListener('DOMContentLoaded', () => {
             total: document.getElementById('sumTotal')
         }
     };
+    function ensureWithdrawSheetMounted() {
+        let sheet = document.getElementById('withdrawSheet');
+        if (sheet) return sheet;
+
+        const tpl = document.getElementById('withdrawSheetTemplate');
+        if (!tpl) return null;
+
+        const node = tpl.content.firstElementChild.cloneNode(true);
+        document.body.appendChild(node);
+        return node;
+    }
+
+    function ensurePkgSheetMounted() {
+        let sheet = document.getElementById('pkgSheet');
+        if (sheet) return sheet;
+
+        const tpl = document.getElementById('pkgSheetTemplate');
+        if (!tpl) return null;
+
+        const node = tpl.content.firstElementChild.cloneNode(true);
+        document.body.appendChild(node);
+        return node;
+    }
+    function getWithdrawSheetEls() {
+        return {
+            withdrawSheet: document.getElementById('withdrawSheet'),
+            withdrawSheetBody: document.getElementById('withdrawSheetBody')
+        };
+    }
+
+    function getPkgSheetEls() {
+        return {
+            pkgSheet: document.getElementById('pkgSheet'),
+            pkgSheetTitle: document.querySelector('#pkgSheet [data-sheet-title]'),
+            pkgSheetList: document.querySelector('#pkgSheet [data-sheet-list]'),
+            pkgSheetDone: document.querySelector('#pkgSheet [data-sheet-done]'),
+            pkgSheetCloseBtns: [...document.querySelectorAll('#pkgSheet [data-sheet-close]')]
+        };
+    }
     const editorState = {
         open: false,
         mode: 'add',
@@ -289,19 +319,35 @@ document.addEventListener('DOMContentLoaded', () => {
     let withdrawSheetReturnView = 'bank'; // 先只给 bank 用
 
     function openWithdrawSheet(html) {
-        if (!els.withdrawSheet || !els.withdrawSheetBody) return;
-        els.withdrawSheetBody.innerHTML = html;
-        els.withdrawSheet.hidden = false;
-        els.withdrawSheet.classList.add('isOpen');
-        els.withdrawSheet.setAttribute('aria-hidden', 'false');
+        const mounted = ensureWithdrawSheetMounted();
+        if (!mounted) return;
+
+        const { withdrawSheet, withdrawSheetBody } = getWithdrawSheetEls();
+        if (!withdrawSheet || !withdrawSheetBody) return;
+
+        withdrawSheetBody.innerHTML = html;
+        withdrawSheet.hidden = false;
+
+        requestAnimationFrame(() => {
+            withdrawSheet.classList.add('isOpen', 'is-open');
+            withdrawSheet.setAttribute('aria-hidden', 'false');
+        });
     }
 
     function closeWithdrawSheet() {
-        if (!els.withdrawSheet || !els.withdrawSheetBody) return;
-        els.withdrawSheet.hidden = true;
-        els.withdrawSheet.classList.remove('isOpen');
-        els.withdrawSheet.setAttribute('aria-hidden', 'true');
-        els.withdrawSheetBody.innerHTML = '';
+        const { withdrawSheet, withdrawSheetBody } = getWithdrawSheetEls();
+        if (!withdrawSheet || !withdrawSheetBody) return;
+
+        withdrawSheet.classList.remove('isOpen', 'is-open');
+        withdrawSheet.setAttribute('aria-hidden', 'true');
+
+        const finishClose = () => {
+            withdrawSheet.hidden = true;
+            withdrawSheetBody.innerHTML = '';
+        };
+
+        setTimeout(finishClose, 260);
+
         withdrawSheetMode = 'picker';
         withdrawSheetReturnView = 'bank';
     }
@@ -323,7 +369,17 @@ document.addEventListener('DOMContentLoaded', () => {
         isDisabled = () => false,
         onPick
     }) {
-        if (!els.pkgSheet || !els.pkgSheetList) return;
+        const mounted = ensurePkgSheetMounted();
+        if (!mounted) return;
+
+        const {
+            pkgSheet,
+            pkgSheetTitle,
+            pkgSheetList,
+            pkgSheetDone
+        } = getPkgSheetEls();
+
+        if (!pkgSheet || !pkgSheetList) return;
 
         const valueMap = new Map();
         list.forEach((item) => {
@@ -335,54 +391,62 @@ document.addEventListener('DOMContentLoaded', () => {
         pkgSheetState.onPick = onPick || null;
         pkgSheetState.valueMap = valueMap;
 
-        if (els.pkgSheetTitle) {
-            els.pkgSheetTitle.textContent = title;
+        if (pkgSheetTitle) {
+            pkgSheetTitle.textContent = title;
         }
 
-        if (els.pkgSheetDone) {
-            els.pkgSheetDone.hidden = true;
+        if (pkgSheetDone) {
+            pkgSheetDone.hidden = true;
         }
 
-        els.pkgSheetList.innerHTML = list.map((item) => {
+        pkgSheetList.innerHTML = list.map((item) => {
             const value = String(getValue(item));
             const active = String(currentValue ?? '') === value;
             const disabled = !!isDisabled(item);
 
             return `
-            <button
-                type="button"
-                class="desktopDropdownSheet__option ${active ? 'is-active' : ''} ${disabled ? 'is-disabled' : ''}"
-                data-pkg-value="${esc(value)}"
-                ${disabled ? 'disabled aria-disabled="true"' : ''}
-            >
-                ${getLabelHTML ? getLabelHTML(item) : esc(String(value))}
-            </button>
-        `;
+        <button
+            type="button"
+            class="desktopDropdownSheet__option ${active ? 'is-active' : ''} ${disabled ? 'is-disabled' : ''}"
+            data-pkg-value="${esc(value)}"
+            ${disabled ? 'disabled aria-disabled="true"' : ''}
+        >
+            ${getLabelHTML ? getLabelHTML(item) : esc(String(value))}
+        </button>
+    `;
         }).join('');
 
-        els.pkgSheet.classList.add('isOpen');
-        els.pkgSheet.setAttribute('aria-hidden', 'false');
+        pkgSheet.classList.add('isOpen');
+        pkgSheet.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
     }
+
     function closePkgSheet() {
-        if (!els.pkgSheet) return;
+        const {
+            pkgSheet,
+            pkgSheetDone
+        } = getPkgSheetEls();
+
+        if (!pkgSheet) return;
 
         pkgSheetState.open = false;
         pkgSheetState.currentValue = null;
         pkgSheetState.onPick = null;
         pkgSheetState.valueMap = null;
 
-        if (els.pkgSheetDone) {
-            els.pkgSheetDone.hidden = false;
+        if (pkgSheetDone) {
+            pkgSheetDone.hidden = false;
         }
 
-        els.pkgSheet.classList.remove('isOpen');
-        els.pkgSheet.setAttribute('aria-hidden', 'true');
+        pkgSheet.classList.remove('isOpen');
+        pkgSheet.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
     }
     function syncPkgSheetActive(value) {
-        if (!els.pkgSheetList) return;
-        els.pkgSheetList.querySelectorAll('[data-pkg-value]').forEach((el) => {
+        const { pkgSheetList } = getPkgSheetEls();
+        if (!pkgSheetList) return;
+
+        pkgSheetList.querySelectorAll('[data-pkg-value]').forEach((el) => {
             el.classList.toggle('is-active', el.dataset.pkgValue === String(value));
         });
     }
@@ -398,7 +462,9 @@ document.addEventListener('DOMContentLoaded', () => {
             editorState.mountKey = type;
             openWithdrawSheet(shell);
 
-            const form = els.withdrawSheetBody?.querySelector('#withdrawDynamicForm');
+            const { withdrawSheetBody } = getWithdrawSheetEls();
+            const form = withdrawSheetBody?.querySelector('#withdrawDynamicForm');
+
             if (form?.dataset.editorType === 'bank') {
                 initWithdrawBankDropdown(form, false);
             }
