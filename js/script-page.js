@@ -663,4 +663,37 @@
             el.appendChild(img);
         });
     });
+
+    /* =========================
+      current page render
+    ========================= */
+    onReady(() => {
+        const mainNav = document.querySelector('nav[aria-label="main navigation"]');
+        if (!mainNav) return;
+
+        const currentUrl = new URL(window.location.href);
+        const currentPath = currentUrl.pathname.split('/').pop() || 'index.html';
+
+        const links = mainNav.querySelectorAll('a[href]');
+
+        links.forEach(link => {
+            link.removeAttribute('aria-current');
+
+            const rawHref = (link.getAttribute('href') || '').trim();
+            if (!rawHref || rawHref === '#' || rawHref.startsWith('javascript:')) return;
+
+            let linkUrl;
+            try {
+                linkUrl = new URL(rawHref, window.location.href);
+            } catch {
+                return;
+            }
+
+            const linkPath = linkUrl.pathname.split('/').pop() || 'index.html';
+
+            if (linkPath === currentPath) {
+                link.setAttribute('aria-current', 'page');
+            }
+        });
+    });
 })();
