@@ -667,14 +667,15 @@
     /* =========================
       current page render
     ========================= */
-    onReady(() => {
+    function markCurrentMainNavLink() {
         const mainNav = document.querySelector('nav[aria-label="main navigation"]');
-        if (!mainNav) return;
+        if (!mainNav) return false;
 
         const currentUrl = new URL(window.location.href);
         const currentPath = currentUrl.pathname.split('/').pop() || 'index.html';
 
         const links = mainNav.querySelectorAll('a[href]');
+        let matched = false;
 
         links.forEach(link => {
             link.removeAttribute('aria-current');
@@ -691,9 +692,29 @@
 
             const linkPath = linkUrl.pathname.split('/').pop() || 'index.html';
 
-            if (linkPath === currentPath) {
+            if (!matched && linkPath === currentPath) {
                 link.setAttribute('aria-current', 'page');
+                matched = true;
             }
         });
+
+        return matched;
+    }
+
+    onReady(() => {
+        if (markCurrentMainNavLink()) return;
+
+        const observer = new MutationObserver(() => {
+            if (markCurrentMainNavLink()) {
+                observer.disconnect();
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+
+        setTimeout(() => observer.disconnect(), 5000);
     });
 })();
