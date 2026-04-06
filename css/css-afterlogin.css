@@ -1408,9 +1408,9 @@ body.qrViewer-open { overflow: hidden; }
 /*----------------------------------WITHDRAWAL*/
 [data-section="withdraw"] { }
 
-.withdrawTopTabs { border-radius: var(--radius-pill); background: var(--bg-color); display: flex; align-items: center; gap: var(--gap); margin: calc(var(--space-2) * -1) calc(var(--space-3) * -1); padding: 0 var(--space-3); }
-    .withdrawTopTabs .tab { color: var(--font-color); border-radius: var(--radius-pill); border: 0; background: var(--bg-color); padding-left: var(--space-5); padding-right: var(--space-5); }
-        .withdrawTopTabs .tab.is-active { background: var(--accent-color); }
+.topTabs { border-radius: var(--radius-pill); background: var(--bg-color); display: flex; align-items: center; gap: var(--gap); margin: calc(var(--space-2) * -1) calc(var(--space-3) * -1); padding: 0 var(--space-3); }
+    .topTabs .tab { color: var(--font-color); border-radius: var(--radius-pill); border: 0; background: var(--bg-color); padding-left: var(--space-5); padding-right: var(--space-5); }
+        .topTabs .tab.is-active { background: var(--accent-color); }
 
 .leftPanel { display: flex; flex-direction: column; gap: var(--space-3); }
 
@@ -1465,7 +1465,7 @@ body.qrViewer-open { overflow: hidden; }
 
 @media (min-width:1024px) {
     .withdrawSection { padding: var(--space-5); }
-    .withdrawTopTabs { padding: 0; }
+    .topTabs { padding: 0; }
     .noteBox { padding: var(--space-5); }
 
     .desktopDropdown__option { padding: var(--padding);color: var(--font-color); border: 0; background: var(--bg-color); white-space: nowrap; text-overflow: ellipsis; }
