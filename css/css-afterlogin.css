@@ -1792,9 +1792,9 @@ body.qrViewer-open { overflow: hidden; }
 
 }
 @media (min-width: 1024px) {
-    .page-shell-lock .noticeBoard__content { display: grid; grid-template-columns: 280px 1fr; gap: var(--space-3);  }
+    .page-shell-lock .noticeBoard__content { display: grid; grid-template-columns: 320px 1fr; gap: var(--space-3);  }
 
-    .noticeBoard__toolbar { display: grid; grid-template-columns: 280px 1fr; gap: var(--space-3); }
+    .noticeBoard__toolbar { display: grid; grid-template-columns: 320px 1fr; gap: var(--space-3); }
 
 }
 
