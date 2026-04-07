@@ -264,10 +264,10 @@
                                     </button>
 
                                 </div>
-                                <div class="noticeDetail" id="noticeDetail">
-                                    <div class="noticeDetail__title"></div>
-                                    <div class="noticeDetail__date"></div>
-                                    <div class="noticeDetail__body"></div>
+                                <div class="noticeDetail messagePanel announcementPanel" id="noticeDetail">
+                                    <div class="messagePanel__title"></div>
+                                    <div class="messagePanel__date"></div>
+                                    <div class="messagePanel__body"></div>
                                 </div>
 
                             </div>
@@ -289,9 +289,9 @@
 
                     const items = document.querySelectorAll(".noticeItem");
 
-                    const detailTitle = document.querySelector(".noticeDetail__title");
-                    const detailDate = document.querySelector(".noticeDetail__date");
-                    const detailBody = document.querySelector(".noticeDetail__body");
+                    const detailTitle = document.querySelector(".messagePanel__title");
+                    const detailDate = document.querySelector(".messagePanel__date");
+                    const detailBody = document.querySelector(".messagePanel__body");
 
                     const noticeSheet = document.getElementById("noticeSheet");
                     const noticeSheetTitle = document.getElementById("noticeSheetItemTitle");
@@ -385,10 +385,10 @@
                         <div class="appSheet__title" id="noticeSheetTitle">Announcement</div>
                     </div>
 
-                    <div class="noticeSheet__body">
-                        <div class="noticeSheet__itemTitle" id="noticeSheetItemTitle"></div>
-                        <div class="noticeSheet__itemDate" id="noticeSheetItemDate"></div>
-                        <div class="noticeSheet__itemContent" id="noticeSheetItemContent"></div>
+                    <div class="noticeSheet__body announcementSheet">
+                        <div class="messagePanel__title noticeSheet__itemTitle" id="noticeSheetItemTitle"></div>
+                        <div class="messagePanel__date noticeSheet__itemDate" id="noticeSheetItemDate"></div>
+                        <div class="messagePanel__body noticeSheet__itemContent" id="noticeSheetItemContent"></div>
                     </div>
                 </div>
             </div>
