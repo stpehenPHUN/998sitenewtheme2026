@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html data-theme="dark">
+<head>
+    <!--<script src="JS/common.js"></script>
+    <script src="JS/jquery.lastest.min.js"></script>
+    <script src="JS/jQuery.base64.js"></script>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title></title>
+    <link href="js/bootstrap-5.3.8/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/bootstrap-5.3.8/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="js/swiper-11.2.10/swiper-bundle.min.css" />
+    <script src="js/swiper-11.2.10/swiper-bundle.min.js"></script>
+    <link href="css/css-afterlogin.css" rel="stylesheet" />
+    <style>
+        :root { --bg-color: #1b2033; --font-color: #fff; --primary-color: #c084fc; --secondary-color: #2b3248; --accent-color: #9002ff; }
+        /*:root { --bg-color: #1A1B26; --font-color: #A9B1D6; --primary-color: #7AA2F7; --secondary-color: #24283B; --accent-color: #F7768E; }*/
+
+    </style>
+    <script src="js/import.js"></script>
+    <script src="js/jsQR.js"></script>
+    <script src="js/script-withdrawal.js"></script>
+</head>
+
+<body style=" ">
+
+    <div id="layout">
+        <div class="download_import" data-include="downloadtop.html"></div>
+        <aside class="sidebar sidebar--main">
+            <!-- rail + main menu -->
+            <div class="sidebar--wrapper" data-include="sidebar.html" data-lang="en"></div>
+        </aside>
+        <div class="overlay" data-action="close-all" aria-hidden="true"></div>
+        <!-- Main -->
+        <main id="main" class="main">
+            <!-- mobile 你还可以放一个按钮来开 promo（右侧） -->
+            <!-- main content -->
+            <header class="header" data-include="header.html" data-lang="en"></header>
+
+            <div class="pagebar" role="banner">
+                <div class="pagebar__left">
+                    <a class="pagebar__back" href="javascript:history.back()" aria-label="Back">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M15.5 19.5 8 12l7.5-7.5" fill="none" stroke="currentColor" stroke-width="2"
+                                  stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <div class="pagebar__title">Notification</div>
+                </div>
+            </div>
+
+            <div class="pkgSection panel page-shell-lock">
+
+                <div class="pkgSection__top">
+                    <div class="withdrawTopTabs topTabs" role="tablist" aria-label="Notification Tabs">
+                        <a href="#" type="button" class="tab is-active js-top-tab" data-tab="announcement">
+                            <span class="p--methodBtn__ico" aria-hidden="true" data-ico="notification"></span>
+                            Announcements
+                        </a>
+                        <a href="#" type="button" class="tab js-top-tab" data-tab="message">
+                            <span class="p--methodBtn__ico" aria-hidden="true" data-ico="mail"></span>
+                            Message
+                        </a>
+                    </div>
+                </div>
+                <section class="transactionTableCard">
+
+                    <div class="transactionToolbar">
+                        <div class="transactionToolbar__group">
+                            <div class="transactionToolbar__label">Select Transaction Date</div>
+                            <div class="transactionToolbar__filters">
+                                <button type="button" class="txnFilterBtn">Yesterday</button>
+                                <button type="button" class="txnFilterBtn">Last 7 Days</button>
+                                <button type="button" class="txnFilterBtn">Last 30 Days</button>
+                            </div>
+                        </div>
+
+                        <div class="transactionToolbar__group transactionToolbar__group--range">
+                            <div class="transactionToolbar__label">Custom Date Range</div>
+                            <div class="transactionToolbar__range">
+                                <input type="text" class="txnDateInput" placeholder="Start Date">
+                                <span class="txnRangeDash">–</span>
+                                <input type="text" class="txnDateInput" placeholder="End Date">
+
+                                <button type="button" class="txnIconBtn" aria-label="Search">
+                                    <span class="p--methodBtn__ico" data-ico="magnifier"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="transactionToolbar__group">
+
+                        </div>
+                    </div>
+
+                    <div class="panel-inner noticeLayout">
+                        <div class="noticeBoard">
+
+                            <div class="noticeBoard__toolbar">
+                                <div class="noticeBoard__wrapper">
+                                    <label class="noticeCheck noticeCheck--all">
+                                        <input type="checkbox" id="noticeSelectAll">
+                                        <span class="noticeCheck__box"></span>
+                                        <span class="noticeCheck__label">Select All</span>
+                                    </label>
+
+                                    <button type="button" class="noticeTrashBtn" aria-label="Delete">
+                                        <span class="p--methodBtn__ico" data-ico="bin"></span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="noticeBoard__content">
+                                <div class="noticeList" id="noticeList">
+
+                                    <button type="button" class="noticeItem is-active"
+                                            data-title="Free Spin 88"
+                                            data-date="2026-02-13 11:41:31"
+                                            data-body="Dear valued user,<br><br>Hello! As a valued member, we're giving you 88 Free Spins to use on our latest games. No complicated steps—just log in and start spinning.<br><br>Best regards.">
+                                        <label class="noticeCheck">
+                                            <input type="checkbox" class="noticeCheckbox">
+                                            <span class="noticeCheck__box"></span>
+                                        </label>
+
+                                        <div class="noticeItem__body">
+                                            <div class="noticeItem__title">Free Spin 88</div>
+                                            <div class="noticeItem__date">2026-02-13 11:41:31</div>
+                                        </div>
+
+                                        <span class="noticeItem__arrow">›</span>
+                                    </button>
+
+                                    <button type="button" class="noticeItem"
+                                            data-title="Welcome Bonus"
+                                            data-date="2026-02-14 09:18:02"
+                                            data-body="Dear valued user,<br><br>Your welcome bonus has been credited successfully after your first deposit. Kindly check your account balance for the updated amount.<br><br>Best regards.">
+                                        <label class="noticeCheck">
+                                            <input type="checkbox" class="noticeCheckbox">
+                                            <span class="noticeCheck__box"></span>
+                                        </label>
+
+                                        <div class="noticeItem__body">
+                                            <div class="noticeItem__title">Welcome Bonus</div>
+                                            <div class="noticeItem__date">2026-02-14 09:18:02</div>
+                                        </div>
+
+                                        <span class="noticeItem__arrow">›</span>
+                                    </button>
+
+                                    <button type="button" class="noticeItem"
+                                            data-title="Deposit Bonus"
+                                            data-date="2026-02-15 14:26:19"
+                                            data-body="Dear valued user,<br><br>Your latest deposit is eligible for a bonus reward campaign. Complete the required conditions to enjoy additional promotional credits.<br><br>Best regards.">
+                                        <label class="noticeCheck">
+                                            <input type="checkbox" class="noticeCheckbox">
+                                            <span class="noticeCheck__box"></span>
+                                        </label>
+
+                                        <div class="noticeItem__body">
+                                            <div class="noticeItem__title">Deposit Bonus</div>
+                                            <div class="noticeItem__date">2026-02-15 14:26:19</div>
+                                        </div>
+
+                                        <span class="noticeItem__arrow">›</span>
+                                    </button>
+
+                                    <button type="button" class="noticeItem"
+                                            data-title="Cashback Reward"
+                                            data-date="2026-02-16 18:40:55"
+                                            data-body="Dear valued user,<br><br>Your cashback reward has been issued successfully. Please log in and review the promotion details in your wallet section.<br><br>Best regards.">
+                                        <label class="noticeCheck">
+                                            <input type="checkbox" class="noticeCheckbox">
+                                            <span class="noticeCheck__box"></span>
+                                        </label>
+
+                                        <div class="noticeItem__body">
+                                            <div class="noticeItem__title">Cashback Reward</div>
+                                            <div class="noticeItem__date">2026-02-16 18:40:55</div>
+                                        </div>
+
+                                        <span class="noticeItem__arrow">›</span>
+                                    </button>
+
+                                    <button type="button" class="noticeItem"
+                                            data-title="Maintenance Notice"
+                                            data-date="2026-02-17 02:00:00"
+                                            data-body="Dear valued user,<br><br>Please be informed that scheduled system maintenance will be carried out during the specified period. Some services may be temporarily unavailable.<br><br>Thank you for your understanding.">
+                                        <label class="noticeCheck">
+                                            <input type="checkbox" class="noticeCheckbox">
+                                            <span class="noticeCheck__box"></span>
+                                        </label>
+
+                                        <div class="noticeItem__body">
+                                            <div class="noticeItem__title">Maintenance Notice</div>
+                                            <div class="noticeItem__date">2026-02-17 02:00:00</div>
+                                        </div>
+
+                                        <span class="noticeItem__arrow">›</span>
+                                    </button>
+
+                                    <button type="button" class="noticeItem"
+                                            data-title="VIP Upgrade"
+                                            data-date="2026-02-18 20:13:44"
+                                            data-body="Dear valued user,<br><br>Congratulations. Your account has been upgraded to a new VIP level. Enjoy exclusive benefits, enhanced support, and premium campaign access.<br><br>Best regards.">
+                                        <label class="noticeCheck">
+                                            <input type="checkbox" class="noticeCheckbox">
+                                            <span class="noticeCheck__box"></span>
+                                        </label>
+
+                                        <div class="noticeItem__body">
+                                            <div class="noticeItem__title">VIP Upgrade</div>
+                                            <div class="noticeItem__date">2026-02-18 20:13:44</div>
+                                        </div>
+
+                                        <span class="noticeItem__arrow">›</span>
+                                    </button>
+
+                                    <button type="button" class="noticeItem"
+                                            data-title="Security Reminder"
+                                            data-date="2026-02-19 08:05:27"
+                                            data-body="Dear valued user,<br><br>For your account safety, please do not share your password or verification code with anyone. We recommend updating your password regularly.<br><br>Best regards.">
+                                        <label class="noticeCheck">
+                                            <input type="checkbox" class="noticeCheckbox">
+                                            <span class="noticeCheck__box"></span>
+                                        </label>
+
+                                        <div class="noticeItem__body">
+                                            <div class="noticeItem__title">Security Reminder</div>
+                                            <div class="noticeItem__date">2026-02-19 08:05:27</div>
+                                        </div>
+
+                                        <span class="noticeItem__arrow">›</span>
+                                    </button>
+
+                                    <button type="button" class="noticeItem"
+                                            data-title="Rebate Promotion"
+                                            data-date="2026-02-20 21:36:44"
+                                            data-body="Dear valued user,<br><br>A new rebate promotion is now available for eligible members. Participate today and enjoy extra returns based on your qualified turnover.<br><br>Best regards.">
+                                        <label class="noticeCheck">
+                                            <input type="checkbox" class="noticeCheckbox">
+                                            <span class="noticeCheck__box"></span>
+                                        </label>
+
+                                        <div class="noticeItem__body">
+                                            <div class="noticeItem__title">Rebate Promotion</div>
+                                            <div class="noticeItem__date">2026-02-20 21:36:44</div>
+                                        </div>
+
+                                        <span class="noticeItem__arrow">›</span>
+                                    </button>
+
+                                    <button type="button" class="noticeItem"
+                                            data-title="Tournament Event"
+                                            data-date="2026-02-21 12:15:09"
+                                            data-body="Dear valued user,<br><br>Our new tournament event has started. Join now and compete with other players for exciting rewards and leaderboard prizes.<br><br>Best regards.">
+                                        <label class="noticeCheck">
+                                            <input type="checkbox" class="noticeCheckbox">
+                                            <span class="noticeCheck__box"></span>
+                                        </label>
+
+                                        <div class="noticeItem__body">
+                                            <div class="noticeItem__title">Tournament Event</div>
+                                            <div class="noticeItem__date">2026-02-21 12:15:09</div>
+                                        </div>
+
+                                        <span class="noticeItem__arrow">›</span>
+                                    </button>
+
+                                    <button type="button" class="noticeItem"
+                                            data-title="Special Gift Pack"
+                                            data-date="2026-02-22 17:49:36"
+                                            data-body="Dear valued user,<br><br>A special gift pack has been prepared for you. Log in today to check the latest rewards available in your account.<br><br>Best regards.">
+                                        <label class="noticeCheck">
+                                            <input type="checkbox" class="noticeCheckbox">
+                                            <span class="noticeCheck__box"></span>
+                                        </label>
+
+                                        <div class="noticeItem__body">
+                                            <div class="noticeItem__title">Special Gift Pack</div>
+                                            <div class="noticeItem__date">2026-02-22 17:49:36</div>
+                                        </div>
+
+                                        <span class="noticeItem__arrow">›</span>
+                                    </button>
+
+                                </div>
+                                <div class="noticeDetail" id="noticeDetail">
+                                    <div class="noticeDetail__title"></div>
+                                    <div class="noticeDetail__date"></div>
+                                    <div class="noticeDetail__body"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const tabs = document.querySelectorAll(".js-top-tab");
+                    tabs.forEach(tab => {
+                        tab.addEventListener("click", function () {
+                            tabs.forEach(t => t.classList.remove("is-active"));
+                            this.classList.add("is-active");
+                        });
+                    });
+
+                    const items = document.querySelectorAll(".noticeItem");
+
+                    const detailTitle = document.querySelector(".noticeDetail__title");
+                    const detailDate = document.querySelector(".noticeDetail__date");
+                    const detailBody = document.querySelector(".noticeDetail__body");
+
+                    const noticeSheet = document.getElementById("noticeSheet");
+                    const noticeSheetTitle = document.getElementById("noticeSheetItemTitle");
+                    const noticeSheetDate = document.getElementById("noticeSheetItemDate");
+                    const noticeSheetContent = document.getElementById("noticeSheetItemContent");
+                    const noticeSheetCloseBtns = document.querySelectorAll("[data-notice-close]");
+
+                    function isMobileView() {
+                        return window.matchMedia("(max-width: 767.98px)").matches;
+                    }
+
+                    function renderNotice(item) {
+                        if (!item) return;
+
+                        const title = item.dataset.title || "";
+                        const date = item.dataset.date || "";
+                        const body = item.dataset.body || "";
+
+                        if (detailTitle) detailTitle.textContent = title;
+                        if (detailDate) detailDate.textContent = date;
+                        if (detailBody) detailBody.innerHTML = body;
+
+                        if (noticeSheetTitle) noticeSheetTitle.textContent = title;
+                        if (noticeSheetDate) noticeSheetDate.textContent = date;
+                        if (noticeSheetContent) noticeSheetContent.innerHTML = body;
+                    }
+
+                    function openNoticeSheet() {
+                        if (!noticeSheet) return;
+                        noticeSheet.classList.add("isOpen");
+                        noticeSheet.setAttribute("aria-hidden", "false");
+                        document.body.classList.add("is-lock");
+                    }
+
+                    function closeNoticeSheet() {
+                        if (!noticeSheet) return;
+                        noticeSheet.classList.remove("isOpen");
+                        noticeSheet.setAttribute("aria-hidden", "true");
+                        document.body.classList.remove("is-lock");
+                    }
+
+                    items.forEach(item => {
+                        item.addEventListener("click", function (e) {
+                            if (e.target.closest(".noticeCheck")) return;
+
+                            items.forEach(i => i.classList.remove("is-active"));
+                            this.classList.add("is-active");
+
+                            renderNotice(this);
+
+                            if (isMobileView()) {
+                                openNoticeSheet();
+                            }
+                        });
+                    });
+
+                    noticeSheetCloseBtns.forEach(btn => {
+                        btn.addEventListener("click", closeNoticeSheet);
+                    });
+
+                    window.addEventListener("resize", function () {
+                        if (!isMobileView()) {
+                            closeNoticeSheet();
+                        }
+                    });
+
+                    const selectAll = document.getElementById("noticeSelectAll");
+                    const checkboxes = document.querySelectorAll(".noticeCheckbox");
+
+                    if (selectAll) {
+                        selectAll.addEventListener("change", function () {
+                            checkboxes.forEach(cb => cb.checked = this.checked);
+                        });
+                    }
+
+                    const defaultActive =
+                        document.querySelector(".noticeItem.is-active") ||
+                        document.querySelector(".noticeItem");
+
+                    renderNotice(defaultActive);
+                });
+            </script>
+
+            <!--  notice sheet -->
+            <div id="noticeSheet" class="appSheet noticeSheet" aria-hidden="true">
+                <div class="appSheet__backdrop" data-notice-close></div>
+
+                <div class="appSheet__panel noticeSheet__panel" role="dialog" aria-modal="true" aria-labelledby="noticeSheetTitle">
+                    <div class="appSheet__header noticeSheet__header">
+                        <button class="appSheet__textBtn" type="button" data-notice-close>Close</button>
+                        <div class="appSheet__title" id="noticeSheetTitle">Announcement</div>
+                    </div>
+
+                    <div class="noticeSheet__body">
+                        <div class="noticeSheet__itemTitle" id="noticeSheetItemTitle"></div>
+                        <div class="noticeSheet__itemDate" id="noticeSheetItemDate"></div>
+                        <div class="noticeSheet__itemContent" id="noticeSheetItemContent"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generic Select Bottom Sheet (reusable) -->
+            <div class="withdrawSheet appSheet" id="withdrawSheet" hidden>
+                <div class="withdrawSheet__backdrop appSheet__backdrop" data-action="close-sheet"></div>
+                <div class="withdrawSheet__panel appSheet__panel">
+                    <div class="withdrawSheet__handle"></div>
+                    <div class="withdrawSheet__body" id="withdrawSheetBody"></div>
+                </div>
+            </div>
+            <div id="pkgSheet" class="appSheet" aria-hidden="true">
+                <div class="appSheet__backdrop" data-sheet-close></div>
+
+                <div class="appSheet__panel">
+                    <div class="appSheet__header">
+                        <button class="appSheet__textBtn" type="button" data-sheet-close>Close</button>
+                        <div class="appSheet__title" data-sheet-title>Select</div>
+                        <button class="appSheet__textBtn appSheet__primary" type="button" data-sheet-done>Done</button>
+                    </div>
+
+                    <div class="wheel" data-sheet-wheel tabindex="0" aria-label="Picker">
+                        <div class="wheel__scroller" data-sheet-list></div>
+                        <div class="wheel__fade"></div>
+                        <div class="wheel__window"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QR VIEWER -->
+            <div id="qrViewer" class="qrViewer" hidden aria-hidden="true">
+                <div class="qrViewer__backdrop" data-qr-close></div>
+
+                <div class="qrViewer__panel" role="dialog" aria-modal="true" aria-labelledby="qrViewerTitle">
+                    <button type="button" class="qrViewer__close" data-qr-close aria-label="Close QR Viewer">
+                        ×
+                    </button>
+
+                    <div class="qrViewer__head">
+                        <h3 id="qrViewerTitle" class="qrViewer__title">Scan QR code</h3>
+                        <p class="qrViewer__sub">Scan QR and Deposit</p>
+                    </div>
+
+                    <div class="qrViewer__body">
+                        <img id="qrViewerImg" class="qrViewer__img" src="" alt="QR Code">
+                    </div>
+
+                    <div class="qrViewer__actions">
+                        <button type="button" class="qrViewer__action">
+                            <span class="qrViewer__actionIcon">↗</span>
+                            <span class="qrViewer__actionText">Share</span>
+                        </button>
+
+                        <button type="button" class="qrViewer__action">
+                            <span class="qrViewer__actionIcon">⬇</span>
+                            <span class="qrViewer__actionText">Save</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="g2pModal" id="g2pDownloadModal" hidden>
+                <div class="g2pModal__backdrop" data-action="close-g2p-download"></div>
+
+                <div class="g2pModal__dialog" role="dialog" aria-modal="true" aria-labelledby="g2pModalTitle">
+                    <button type="button" class="g2pModal__close" data-action="close-g2p-download" aria-label="Close">×</button>
+
+                    <div class="g2pModal__brand">
+                        <img class="g2pModal__logo" src="image/logo_icon-g2point.png" alt="G2Point">
+                        <div class="g2pModal__title" id="g2pModalTitle">G2Point</div>
+                    </div>
+
+                    <div class="g2pModal__qrWrap">
+                        <img id="g2pModalQr" class="g2pModal__qr" src="" alt="G2Point download QR">
+                    </div>
+
+                    <div class="g2pModal__hint">Scan here to download</div>
+
+                    <div class="g2pModal__actions">
+                        <button type="button" class="g2pModal__iconBtn">
+                            <span class="qrViewer__actionIcon">
+                                <svg class="icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><title>share</title><path d="M385 464Q357 464 339 445 320 426 320 399 320 390 321 388L171 303Q154 320 129 320 102 320 83 301 64 282 64 255 64 229 83 211 102 192 129 192 154 192 171 209L321 125Q320 122 320 111 320 85 339 67 357 48 384 48 410 48 429 67 447 85 448 111 448 138 429 157 410 176 384 176 361 176 341 159L191 244Q192 246 192 255 192 265 191 268L341 353Q361 336 385 336 415 336 431 355 447 374 447 400 447 426 431 445 415 464 385 464Z" /></svg>
+                            </span>
+                            <span class="qrViewer__actionText">Share</span>
+                        </button>
+                        <button type="button" class="g2pModal__iconBtn">
+                            <span class="qrViewer__actionIcon">
+                                <svg viewBox="0 0 14 14" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                                    <path d="M8 6.641l1.121-1.12a1 1 0 0 1 1.415 1.413L7.707 9.763a.997.997 0 0 1-1.414 0L3.464 6.934A1 1 0 1 1 4.88 5.52L6 6.641V1a1 1 0 1 1 2 0v5.641zM1 12h12a1 1 0 0 1 0 2H1a1 1 0 0 1 0-2z"></path>
+                                </svg>
+                            </span>
+                            <span class="qrViewer__actionText">Save</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/script-page.js"></script>
+
+</body>
+</html>
