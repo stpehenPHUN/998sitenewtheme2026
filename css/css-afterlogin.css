@@ -385,7 +385,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 /* right-side icon buttons */
 .topbar__right { border-left: var(--border-width) solid var(--primary-color); padding-left: var(--space-3); }
 .iconBtn { background-color: transparent; border: 0; }
-.iconBtn { display: grid; place-items: center; color: var(--primary-color); cursor: pointer; transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out), background var(--duration-fast) var(--ease-out); aspect-ratio: 1/1; }
+.iconBtn { display: grid; place-items: center; color: var(--primary-color); cursor: pointer; transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out), background var(--duration-fast) var(--ease-out); aspect-ratio: 1/1; width:var(--icn-w30);}
     .iconBtn:hover { background: var(--secondary-color); color: var(--font-color); }
     .iconBtn:active { transform: translateY(1px); }
 .topbar__right .iconBtn .icon { }
