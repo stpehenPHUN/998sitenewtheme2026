@@ -5,7 +5,6 @@
     <script src="JS/jquery.lastest.min.js"></script>
     <script src="JS/jQuery.base64.js"></script>-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title></title>
     <link href="js/bootstrap-5.3.8/css/bootstrap.min.css" rel="stylesheet" />
     <script src="js/bootstrap-5.3.8/js/bootstrap.bundle.min.js"></script>
@@ -13,23 +12,24 @@
     <script src="js/swiper-11.2.10/swiper-bundle.min.js"></script>
     <link href="css/css-afterlogin.css" rel="stylesheet" />
     <style>
-        :root { --bg-color: #1b2033; --font-color: #fff; --primary-color: #c084fc; --secondary-color: #2b3248; --accent-color: #c084fc; }
+        :root {
+            --bg-color: #1b2033;
+            --font-color: #fff;
+            --primary-color: #c084fc;
+            --secondary-color: #2b3248;
+            --accent-color: #c084fc;
+        }
         /*:root { --bg-color: #1A1B26; --font-color: #A9B1D6; --primary-color: #7AA2F7; --secondary-color: #24283B; --accent-color: #F7768E; }*/
-
     </style>
     <script src="js/import.js"></script>
-
 </head>
-
 <body style=" ">
-
     <div id="layout">
         <div class="download_import" data-include="downloadtop.html"></div>
         <aside class="sidebar sidebar--main">
             <!-- rail + main menu -->
             <div class="sidebar--wrapper" data-include="sidebar.html" data-lang="en"></div>
         </aside>
-
         <div class="overlay" data-action="close-all" aria-hidden="true"></div>
         <!-- Main -->
         <main id="main" class="main">
@@ -38,12 +38,23 @@
             <header class="header" data-include="header.html" data-lang="en"></header>
             <section class="banner">
                 <style>
-                    .swiper-slide img { width: 100%; }
+                    .swiper-slide img {
+                        width: 100%;
+                    }
 
-                    .banner-main { }
+                    .banner-main {
+                    }
+
                         .banner-main .swiper-wrapper,
-                        .banner-main .swiper-slide { height: 100%; }
-                        .banner-main .banner-slide { background-position: center; background-size: cover; background-repeat: no-repeat; }
+                        .banner-main .swiper-slide {
+                            height: 100%;
+                        }
+
+                        .banner-main .banner-slide {
+                            background-position: center;
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                        }
                 </style>
                 <div class="banner swiper banner-main js-banner">
                     <div class="swiper-wrapper">
@@ -53,7 +64,6 @@
                         <div class="swiper-slide banner-slide" data-bg="image/banner-testing2.png"></div>
                         <div class="swiper-slide banner-slide" data-bg="image/banner-testing3.png"></div>
                     </div>
-
                     <div class="swiper-pagination"></div>
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
@@ -151,7 +161,6 @@
                         // 5) resize 更新（跨断点）
                         window.addEventListener('resize', updateBanner);
                     });</script>
-
             </section>
             <section class="mt-3">
                 <div class="vendor-tabs">
@@ -194,7 +203,6 @@
                             </ul>
                         </div>
                         <div class="vendor-searchcontainer" data-search>
-
                             <div class="search-wrapper">
                                 <input class="vendor-search" type="search" placeholder="Search" autocomplete="off" name="search" / id="vendor-search">
                                 <button class="vendor-searchbtn" type="button" aria-label="Search" data-action="toggle-search">
@@ -204,14 +212,12 @@
                                 </button>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="vendors">
                     <ul class="vendor-list">
-                        <li class="vendor" data-tag="new" data-vendor-name="pt gaming">
-                            <div class="vendor-img" data-image="image/img-testing2.png">
-
+                        <li class="vendor" data-tag="new" data-vendor-name="ASKMESLOT">
+                            <div class="vendor-img" data-image="image/battle/banner-battleASKMESLOT.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -222,9 +228,8 @@
                                 </button>
                             </div>
                         </li>
-                        <li class="vendor" data-tag="promo" data-vendor-name="pragmatic play">
-                            <div class="vendor-img" data-image="image/img-testing3.png">
-
+                        <li class="vendor" data-tag="promo" data-vendor-name="battleBIGGAMING">
+                            <div class="vendor-img" data-image="image/battle/banner-battleBIGGAMING.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -235,9 +240,8 @@
                                 </button>
                             </div>
                         </li>
-                        <li class="vendor" data-tag="hot" data-vendor-name="live22">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
+                        <li class="vendor" data-tag="hot" data-vendor-name="battleBTGAMING">
+                            <div class="vendor-img" data-image="image/battle/banner-battleBTGAMING.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -248,9 +252,8 @@
                                 </button>
                             </div>
                         </li>
-                        <li class="vendor" data-vendor-name="fastspin">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
+                        <li class="vendor" data-vendor-name="CQ9">
+                            <div class="vendor-img" data-image="image/battle/banner-battleCQ9.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -261,9 +264,8 @@
                                 </button>
                             </div>
                         </li>
-                        <li class="vendor" data-tag="new" data-vendor-name="advant play">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
+                        <li class="vendor" data-tag="new" data-vendor-name="CREATIVEGAMING">
+                            <div class="vendor-img" data-image="image/battle/banner-battleCREATIVEGAMING.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -274,9 +276,8 @@
                                 </button>
                             </div>
                         </li>
-                        <li class="vendor" data-tag="promo" data-vendor-name="crowd play">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
+                        <li class="vendor" data-tag="promo" data-vendor-name="battleDIGMAAN">
+                            <div class="vendor-img" data-image="image/battle/banner-battleDIGMAAN.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -287,9 +288,8 @@
                                 </button>
                             </div>
                         </li>
-                        <li class="vendor" data-tag="hot" data-vendor-name="fa chai">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
+                        <li class="vendor" data-tag="hot" data-vendor-name="battleDRAGOONSOFT">
+                            <div class="vendor-img" data-image="image/battle/banner-battleDRAGOONSOFT.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -300,9 +300,8 @@
                                 </button>
                             </div>
                         </li>
-                        <li class="vendor" data-vendor-name="microgaming">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
+                        <li class="vendor" data-vendor-name="FACHAI">
+                            <div class="vendor-img" data-image="image/battle/banner-battleFACHAI.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -313,9 +312,8 @@
                                 </button>
                             </div>
                         </li>
-                        <li class="vendor" data-vendor-name="pegasus">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
+                        <li class="vendor" data-vendor-name="FASTSPIN">
+                            <div class="vendor-img" data-image="image/battle/banner-battleFASTSPIN.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -326,9 +324,8 @@
                                 </button>
                             </div>
                         </li>
-                        <li class="vendor" data-vendor-name="spadegaming">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
+                        <li class="vendor" data-vendor-name="GFG">
+                            <div class="vendor-img" data-image="image/battle/banner-battleGFG.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -339,9 +336,8 @@
                                 </button>
                             </div>
                         </li>
-                        <li class="vendor" data-vendor-name="yggdrasil">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
+                        <li class="vendor" data-vendor-name="GLOBALGAMING.">
+                            <div class="vendor-img" data-image="image/battle/banner-battleGLOBALGAMING.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -352,9 +348,8 @@
                                 </button>
                             </div>
                         </li>
-                        <li class="vendor" data-vendor-name="hacksaw">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
+                        <li class="vendor" data-vendor-name="battleJILI">
+                            <div class="vendor-img" data-image="image/battle/banner-battleJILI.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -365,9 +360,8 @@
                                 </button>
                             </div>
                         </li>
-                        <li class="vendor" data-vendor-name="galaxsys">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
+                        <li class="vendor" data-vendor-name="battleJOKER.">
+                            <div class="vendor-img" data-image="image/battle/banner-battleJOKER.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -378,9 +372,8 @@
                                 </button>
                             </div>
                         </li>
-                        <li class="vendor" data-vendor-name="spribe">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
+                        <li class="vendor" data-vendor-name="MIKIWORLD">
+                            <div class="vendor-img" data-image="image/battle/banner-battleMIKIWORLD.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -391,9 +384,8 @@
                                 </button>
                             </div>
                         </li>
-                        <li class="vendor" data-vendor-name="joker">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
+                        <li class="vendor" data-vendor-name="PTGAMING">
+                            <div class="vendor-img" data-image="image/battle/banner-battlePTGAMING.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -404,9 +396,8 @@
                                 </button>
                             </div>
                         </li>
-                        <li class="vendor" data-vendor-name="betsoft">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
+                        <li class="vendor" data-vendor-name="battleRCB988">
+                            <div class="vendor-img" data-image="image/battle/banner-battleRCB988.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -417,9 +408,8 @@
                                 </button>
                             </div>
                         </li>
-                        <li class="vendor" data-tag="new" data-vendor-name="relax">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
+                        <li class="vendor" data-tag="new" data-vendor-name="battleRICH88">
+                            <div class="vendor-img" data-image="image/battle/banner-battleRICH88.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -430,9 +420,8 @@
                                 </button>
                             </div>
                         </li>
-                        <li class="vendor" data-tag="promo" data-vendor-name="mimi gaming">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
+                        <li class="vendor" data-tag="promo" data-vendor-name="SKYWIND">
+                            <div class="vendor-img" data-image="image/battle/banner-battleSKYWIND.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -443,9 +432,8 @@
                                 </button>
                             </div>
                         </li>
-                        <li class="vendor" data-tag="hot" data-vendor-name="creative gaming">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
+                        <li class="vendor" data-tag="hot" data-vendor-name="SPADEGAMING">
+                            <div class="vendor-img" data-image="image/battle/banner-battleSPADEGAMING.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -457,8 +445,7 @@
                             </div>
                         </li>
                         <li class="vendor">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
+                            <div class="vendor-img" data-image="image/battle/banner-battleYGR.jpg">
                             </div>
                             <div class="vendor-hover">
                                 <a href="#" class="btn-play btn btn-white btn-round">
@@ -469,228 +456,6 @@
                                 </button>
                             </div>
                         </li>
-                        <li class="vendor">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
-                            </div>
-                            <div class="vendor-hover">
-                                <a href="#" class="btn-play btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
-                                </a>
-                                <button class="btn-fav btn btn-white btn-round">
-                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="vendor">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
-                            </div>
-                            <div class="vendor-hover">
-                                <a href="#" class="btn-play btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
-                                </a>
-                                <button class="btn-fav btn btn-white btn-round">
-                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="vendor">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
-                            </div>
-                            <div class="vendor-hover">
-                                <a href="#" class="btn-play btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
-                                </a>
-                                <button class="btn-fav btn btn-white btn-round">
-                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="vendor">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
-                            </div>
-                            <div class="vendor-hover">
-                                <a href="#" class="btn-play btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
-                                </a>
-                                <button class="btn-fav btn btn-white btn-round">
-                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="vendor">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
-                            </div>
-                            <div class="vendor-hover">
-                                <a href="#" class="btn-play btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
-                                </a>
-                                <button class="btn-fav btn btn-white btn-round">
-                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="vendor">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
-                            </div>
-                            <div class="vendor-hover">
-                                <a href="#" class="btn-play btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
-                                </a>
-                                <button class="btn-fav btn btn-white btn-round">
-                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="vendor">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
-                            </div>
-                            <div class="vendor-hover">
-                                <a href="#" class="btn-play btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
-                                </a>
-                                <button class="btn-fav btn btn-white btn-round">
-                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="vendor">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
-                            </div>
-                            <div class="vendor-hover">
-                                <a href="#" class="btn-play btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
-                                </a>
-                                <button class="btn-fav btn btn-white btn-round">
-                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="vendor">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
-                            </div>
-                            <div class="vendor-hover">
-                                <a href="#" class="btn-play btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
-                                </a>
-                                <button class="btn-fav btn btn-white btn-round">
-                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="vendor">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
-                            </div>
-                            <div class="vendor-hover">
-                                <a href="#" class="btn-play btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
-                                </a>
-                                <button class="btn-fav btn btn-white btn-round">
-                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="vendor">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
-                            </div>
-                            <div class="vendor-hover">
-                                <a href="#" class="btn-play btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
-                                </a>
-                                <button class="btn-fav btn btn-white btn-round">
-                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="vendor">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
-                            </div>
-                            <div class="vendor-hover">
-                                <a href="#" class="btn-play btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
-                                </a>
-                                <button class="btn-fav btn btn-white btn-round">
-                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="vendor">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
-                            </div>
-                            <div class="vendor-hover">
-                                <a href="#" class="btn-play btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
-                                </a>
-                                <button class="btn-fav btn btn-white btn-round">
-                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="vendor">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
-                            </div>
-                            <div class="vendor-hover">
-                                <a href="#" class="btn-play btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
-                                </a>
-                                <button class="btn-fav btn btn-white btn-round">
-                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="vendor">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
-                            </div>
-                            <div class="vendor-hover">
-                                <a href="#" class="btn-play btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
-                                </a>
-                                <button class="btn-fav btn btn-white btn-round">
-                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="vendor">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
-                            </div>
-                            <div class="vendor-hover">
-                                <a href="#" class="btn-play btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
-                                </a>
-                                <button class="btn-fav btn btn-white btn-round">
-                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="vendor">
-                            <div class="vendor-img" data-image="image/img-testing.png">
-
-                            </div>
-                            <div class="vendor-hover">
-                                <a href="#" class="btn-play btn btn-white btn-round">
-                                    <svg viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" /></svg>
-                                </a>
-                                <button class="btn-fav btn btn-white btn-round">
-                                    <svg class="heart" viewBox="-2 -2 20 20" preserveAspectRatio="xMidYMid meet"> <path d="M4.03553 1C1.80677 1 0 2.80677 0 5.03553C0 6.10582 0.42517 7.13228 1.18198 7.88909L7.14645 13.8536C7.34171 14.0488 7.65829 14.0488 7.85355 13.8536L13.818 7.88909C14.5748 7.13228 15 6.10582 15 5.03553C15 2.80677 13.1932 1 10.9645 1C9.89418 1 8.86772 1.42517 8.11091 2.18198L7.5 2.79289L6.88909 2.18198C6.13228 1.42517 5.10582 1 4.03553 1Z" /> </svg>
-                                </button>
-                            </div>
-                        </li>
-
 
                     </ul>
                 </div>
@@ -703,8 +468,12 @@
                         }
                     });</script>
                 <style>
-                    .vendor.hidden { display: none; }
-                    .vendor-empty { }
+                    .vendor.hidden {
+                        display: none;
+                    }
+
+                    .vendor-empty {
+                    }
                 </style>
                 <script>
                     //filter and search
@@ -860,7 +629,5 @@
         </main>
     </div>
     <script src="js/script-page.js"></script>
-
 </body>
 </html>
-
