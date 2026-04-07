@@ -114,8 +114,6 @@
                                 <div class="noticeList" id="noticeList">
 
                                     <button type="button" class="noticeItem is-active"
-                                            data-title="Free Spin 88"
-                                            data-date="2026-02-13 11:41:31"
                                             data-body="Dear valued user,<br><br>Hello! As a valued member, we're giving you 88 Free Spins to use on our latest games. No complicated steps—just log in and start spinning.<br><br>Best regards.">
                                         <label class="noticeCheck">
                                             <input type="checkbox" class="noticeCheckbox">
@@ -123,7 +121,7 @@
                                         </label>
 
                                         <div class="noticeItem__body">
-                                            <div class="noticeItem__title">Free Spin 88</div>
+                                            <div class="noticeItem__title">Free Spin 888888888</div>
                                             <div class="noticeItem__date">2026-02-13 11:41:31</div>
                                         </div>
 
@@ -131,8 +129,6 @@
                                     </button>
 
                                     <button type="button" class="noticeItem"
-                                            data-title="Welcome Bonus"
-                                            data-date="2026-02-14 09:18:02"
                                             data-body="Dear valued user,<br><br>Your welcome bonus has been credited successfully after your first deposit. Kindly check your account balance for the updated amount.<br><br>Best regards.">
                                         <label class="noticeCheck">
                                             <input type="checkbox" class="noticeCheckbox">
@@ -148,8 +144,6 @@
                                     </button>
 
                                     <button type="button" class="noticeItem"
-                                            data-title="Deposit Bonus"
-                                            data-date="2026-02-15 14:26:19"
                                             data-body="Dear valued user,<br><br>Your latest deposit is eligible for a bonus reward campaign. Complete the required conditions to enjoy additional promotional credits.<br><br>Best regards.">
                                         <label class="noticeCheck">
                                             <input type="checkbox" class="noticeCheckbox">
@@ -165,8 +159,6 @@
                                     </button>
 
                                     <button type="button" class="noticeItem"
-                                            data-title="Cashback Reward"
-                                            data-date="2026-02-16 18:40:55"
                                             data-body="Dear valued user,<br><br>Your cashback reward has been issued successfully. Please log in and review the promotion details in your wallet section.<br><br>Best regards.">
                                         <label class="noticeCheck">
                                             <input type="checkbox" class="noticeCheckbox">
@@ -174,7 +166,7 @@
                                         </label>
 
                                         <div class="noticeItem__body">
-                                            <div class="noticeItem__title">Cashback Reward</div>
+                                            <div class="noticeItem__title">Cashback Reward  checking checking testing</div>
                                             <div class="noticeItem__date">2026-02-16 18:40:55</div>
                                         </div>
 
@@ -182,8 +174,6 @@
                                     </button>
 
                                     <button type="button" class="noticeItem"
-                                            data-title="Maintenance Notice"
-                                            data-date="2026-02-17 02:00:00"
                                             data-body="Dear valued user,<br><br>Please be informed that scheduled system maintenance will be carried out during the specified period. Some services may be temporarily unavailable.<br><br>Thank you for your understanding.">
                                         <label class="noticeCheck">
                                             <input type="checkbox" class="noticeCheckbox">
@@ -191,7 +181,7 @@
                                         </label>
 
                                         <div class="noticeItem__body">
-                                            <div class="noticeItem__title">Maintenance Notice</div>
+                                            <div class="noticeItem__title">Maintenance Notice  testing loooooooong</div>
                                             <div class="noticeItem__date">2026-02-17 02:00:00</div>
                                         </div>
 
@@ -199,8 +189,6 @@
                                     </button>
 
                                     <button type="button" class="noticeItem"
-                                            data-title="VIP Upgrade"
-                                            data-date="2026-02-18 20:13:44"
                                             data-body="Dear valued user,<br><br>Congratulations. Your account has been upgraded to a new VIP level. Enjoy exclusive benefits, enhanced support, and premium campaign access.<br><br>Best regards.">
                                         <label class="noticeCheck">
                                             <input type="checkbox" class="noticeCheckbox">
@@ -216,8 +204,6 @@
                                     </button>
 
                                     <button type="button" class="noticeItem"
-                                            data-title="Security Reminder"
-                                            data-date="2026-02-19 08:05:27"
                                             data-body="Dear valued user,<br><br>For your account safety, please do not share your password or verification code with anyone. We recommend updating your password regularly.<br><br>Best regards.">
                                         <label class="noticeCheck">
                                             <input type="checkbox" class="noticeCheckbox">
@@ -233,8 +219,6 @@
                                     </button>
 
                                     <button type="button" class="noticeItem"
-                                            data-title="Rebate Promotion"
-                                            data-date="2026-02-20 21:36:44"
                                             data-body="Dear valued user,<br><br>A new rebate promotion is now available for eligible members. Participate today and enjoy extra returns based on your qualified turnover.<br><br>Best regards.">
                                         <label class="noticeCheck">
                                             <input type="checkbox" class="noticeCheckbox">
@@ -250,8 +234,6 @@
                                     </button>
 
                                     <button type="button" class="noticeItem"
-                                            data-title="Tournament Event"
-                                            data-date="2026-02-21 12:15:09"
                                             data-body="Dear valued user,<br><br>Our new tournament event has started. Join now and compete with other players for exciting rewards and leaderboard prizes.<br><br>Best regards.">
                                         <label class="noticeCheck">
                                             <input type="checkbox" class="noticeCheckbox">
@@ -267,8 +249,6 @@
                                     </button>
 
                                     <button type="button" class="noticeItem"
-                                            data-title="Special Gift Pack"
-                                            data-date="2026-02-22 17:49:36"
                                             data-body="Dear valued user,<br><br>A special gift pack has been prepared for you. Log in today to check the latest rewards available in your account.<br><br>Best regards.">
                                         <label class="noticeCheck">
                                             <input type="checkbox" class="noticeCheckbox">
@@ -326,8 +306,8 @@
                     function renderNotice(item) {
                         if (!item) return;
 
-                        const title = item.dataset.title || "";
-                        const date = item.dataset.date || "";
+                        const title = item.querySelector(".noticeItem__title")?.textContent.trim() || "";
+                        const date = item.querySelector(".noticeItem__date")?.textContent.trim() || "";
                         const body = item.dataset.body || "";
 
                         if (detailTitle) detailTitle.textContent = title;
