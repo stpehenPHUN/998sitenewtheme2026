@@ -1,121 +1,511 @@
-<nav class="mobileBottomNav" aria-label="Bottom Navigation">
-    <button data-action="toggle-sidebar" class="mobileBottomNav__item">
-        <div class="mobileBottomNav__icon" aria-hidden="true">
-            <span class="p--methodBtn__ico" data-ico="menu"></span>
-        </div>
-        <span class="mobileBottomNav__label">Menu</span>
-    </button>
+<!DOCTYPE html>
+<html data-theme="dark">
+<head>
+    <!--<script src="JS/common.js"></script>
+    <script src="JS/jquery.lastest.min.js"></script>
+    <script src="JS/jQuery.base64.js"></script>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <a href="index.html"
-       class="mobileBottomNav__item"
-       data-nav="home">
-        <div class="mobileBottomNav__icon" aria-hidden="true">
-            <span class="p--methodBtn__ico" data-ico="home"></span>
-        </div>
-        <span class="mobileBottomNav__label">Home</span>
-    </a>
+    <title></title>
+    <link href="js/bootstrap-5.3.8/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/bootstrap-5.3.8/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="js/swiper-11.2.10/swiper-bundle.min.css" />
+    <script src="js/swiper-11.2.10/swiper-bundle.min.js"></script>
+    <link href="css/css-afterlogin.css" rel="stylesheet" />
+    <style>
+        :root { --bg-color: #1b2033; --font-color: #fff; --primary-color: #c084fc; --secondary-color: #2b3248; --accent-color: #9002ff; }
+        /*:root { --bg-color: #1A1B26; --font-color: #A9B1D6; --primary-color: #7AA2F7; --secondary-color: #24283B; --accent-color: #F7768E; }*/
 
-    <a href="index-deposit-banner4.html"
-       class="mobileBottomNav__item mobileBottomNav__item--main"
-       data-nav="deposit">
-        <span class="mobileBottomNav__mainBtnWrap">
-            <div class="mobileBottomNav__mainBtnIcon" aria-hidden="true">
-                <span class="p--methodBtn__ico" data-ico="plus_big"></span>
+    </style>
+    <script src="js/import.js"></script>
+</head>
+
+<body style=" ">
+
+    <div id="layout">
+        <div class="download_import" data-include="downloadtop.html"></div>
+        <aside class="sidebar sidebar--main">
+            <!-- rail + main menu -->
+            <div class="sidebar--wrapper" data-include="sidebar.html" data-lang="en"></div>
+        </aside>
+        <div class="overlay" data-action="close-all" aria-hidden="true"></div>
+        <!-- Main -->
+        <main id="main" class="main">
+            <!-- mobile 你还可以放一个按钮来开 promo（右侧） -->
+            <!-- main content -->
+            <header class="header" data-include="header.html" data-lang="en"></header>
+
+            <div class="pagebar" role="banner">
+                <!-- Left side: back + title (swap/replace freely) -->
+                <div class="pagebar__left">
+                    <a class="pagebar__back" href="javascript:history.back()" aria-label="Back">
+                        <!-- chevron-left -->
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M15.5 19.5 8 12l7.5-7.5" fill="none" stroke="currentColor" stroke-width="2"
+                                  stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <div class="pagebar__title">
+                        Statement - Bet
+                    </div>
+
+
+                </div>
+
             </div>
-        </span>
-        <span class="mobileBottomNav__label mobileBottomNav__label--main">Deposit</span>
-    </a>
 
 
-    <a href="index-message.html"
-       class="mobileBottomNav__item"
-       data-nav="inbox">
-        <div class="mobileBottomNav__icon" aria-hidden="true">
-            <span class="p--methodBtn__ico" data-ico="mail"></span>
-        </div>
-        <span class="mobileBottomNav__label">Inbox</span>
-    </a>
+            <div class="pkgSection panel" data-section="statement">
+                <section class="transactionTableCard">
+                    <div class="betCategoryBar">
+                        <button class="betCategoryBtn is-active" type="button" data-filter="all" role="tab" aria-selected="true">
+                            <span class="catBtn__ico"><img alt="Soccer" loading="lazy" src="image/menu-all.png"></span>
+                            <span class="catBtn__txt">All</span>
+                        </button>
+                        <button class="betCategoryBtn" type="button" data-filter="sport" role="tab" aria-selected="false">
+                            <span class="catBtn__ico"><img alt="Soccer" loading="lazy" src="image/menu-sports.png"></span>
+                            <span class="catBtn__txt">Sport</span>
+                        </button>
+                        <button class="betCategoryBtn" type="button" data-filter="casino" role="tab" aria-selected="false">
+                            <span class="catBtn__ico"><img alt="Casino" loading="lazy" src="image/menu-casino.png"></span>
+                            <span class="catBtn__txt">Live Casino</span>
+                        </button>
+                        <button class="betCategoryBtn" type="button" data-filter="lottery" role="tab" aria-selected="false">
+                            <span class="catBtn__ico"><img alt="Lottery" loading="lazy" src="image/menu-lottery.png"></span>
+                            <span class="catBtn__txt">Lottery</span>
+                        </button>
+                        <button class="betCategoryBtn" type="button" data-filter="slots" role="tab" aria-selected="false">
+                            <span class="catBtn__ico"><img alt="Slots" loading="lazy" src="image/menu-slots.png"></span>
+                            <span class="catBtn__txt">Slots</span>
+                        </button>
+                        <button class="betCategoryBtn" type="button" data-filter="battle" role="tab" aria-selected="false">
+                            <span class="catBtn__ico"><img alt="Battle" loading="lazy" src="image/menu-pk.png"></span>
+                            <span class="catBtn__txt">Bttle</span>
+                        </button>
+                        <button class="betCategoryBtn" type="button" data-filter="p2p" role="tab" aria-selected="false">
+                            <span class="catBtn__ico"><img alt="P2P" loading="lazy" src="image/menu-gaming2.png"></span>
+                            <span class="catBtn__txt">P2P</span>
+                        </button>
+                    </div>
 
-    <a href="index-statement.html"
-       class="mobileBottomNav__item"
-       data-nav="me">
-        <div class="mobileBottomNav__icon" aria-hidden="true">
-            <span class="p--methodBtn__ico" data-ico="statement"></span>
-        </div>
-        <span class="mobileBottomNav__label">Statement</span>
-    </a>
-</nav>
+                    <div class="betHistoryPanel panel-inner">
 
-<style>
-    :root { --mobile-bottom-nav-h: 72px; --mobile-bottom-nav-side-gap: 12px; --mobile-bottom-nav-bg: #18203d; --mobile-bottom-nav-border: rgba(255, 255, 255, 0.08); --mobile-bottom-nav-shadow: 0 -8px 24px rgba(0, 0, 0, 0.28); --mobile-bottom-nav-icon-color: rgba(255, 255, 255, 0.68); --mobile-bottom-nav-label-color: rgba(255, 255, 255, 0.76); --mobile-bottom-nav-active-text: #ffffff; --mobile-bottom-nav-active-icon: #ffffff; --mobile-bottom-nav-active-bg-start: #7d2cff; --mobile-bottom-nav-active-bg-end: #c532ff; --mobile-bottom-nav-active-glow: rgba(150, 70, 255, 0.22); --mobile-bottom-nav-main-size: 52px; --mobile-bottom-nav-main-offset: 14px; }
+                        <div class="dataTableWrap">
+                            <div class="dataTableWrap">
+                                <table class="dataTable dataTable--betHistory">
+                                    <thead class="dataTable__head">
+                                        <tr class="dataTable__headRow">
+                                            <th class="dataTable__headCell dataTable__headCell--index">#</th>
+                                            <th class="dataTable__headCell dataTable__headCell--details">Details</th>
+                                            <th class="dataTable__headCell dataTable__headCell--selection">Selection</th>
+                                            <th class="dataTable__headCell dataTable__headCell--odds">Odds</th>
+                                            <th class="dataTable__headCell dataTable__headCell--stake">Stake</th>
+                                            <th class="dataTable__headCell dataTable__headCell--winlose">Win/Lose</th>
+                                            <th class="dataTable__headCell dataTable__headCell--status">Status</th>
+                                        </tr>
+                                    </thead>
 
-    /* 页面内容预留底部空间 */
-    .hasMobileBottomNav,
-    .noticeLayout,
-    .main,
-    .pageMain { padding-bottom: calc( var(--mobile-bottom-nav-h) + env(safe-area-inset-bottom) + var(--space-5) ); }
+                                    <tbody class="dataTable__body" id="betHistoryTableBody">
+                                        <tr class="dataTable__row" data-category="slots">
+                                            <td class="dataTable__cell dataTable__cell--index">
+                                                <span class="dataTable__text">1</span>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--details">
+                                                <div class="betHistoryDetails">
+                                                    <div class="betHistoryDetails__provider" data-provider="SA Gaming">SA_34263713_18459837456384</div>
+                                                    <div class="betHistoryDetails__time">2026/03/03 | 15:31:40</div>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--selection">
+                                                <div class="betHistorySelection">
+                                                    <div class="betHistorySelection__row betHistorySelection__row--game">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--game">Game:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--game">carnivaltreasure</span>
+                                                    </div>
+                                                    <div class="betHistorySelection__row betHistorySelection__row--gameCode">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--gameCode">Game code:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--gameCode">carnivaltreasure</span>
+                                                    </div>
+                                                    <div class="betHistorySelection__row betHistorySelection__row--round">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--round">Round:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--round">18459837456384</span>
+                                                    </div>
+                                                    <div class="betHistorySelection__row betHistorySelection__row--shoeNum">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--shoeNum">Shoe Num:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--shoeNum">0</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--odds">
+                                                <span class="dataTable__amountValue is-neutral">RM 1.00</span>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--stake">
+                                                <div class="dataTable__amountStack">
+                                                    <span class="dataTable__amountValue is-neutral">RM 100</span>
+                                                    <span class="dataTable__amountValue">RM 100</span>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--winlose">
+                                                <div class="dataTable__amountStack">
+                                                    <span class="dataTable__amountValue is-negative">RM -100</span>
+                                                    <span class="dataTable__amountValue is-comm">RM 0</span>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--status">
+                                                <span class="betHistoryStatus txnTypeLink">
+                                                    <span class="betHistoryStatus__label">Lose</span>
+                                                    <span class="betHistoryStatus__icon p--methodBtn__ico" data-ico="magnifier"></span>
+                                                </span>
+                                            </td>
+                                        </tr>
 
-    .mobileBottomNav { position: fixed; left: var(--mobile-bottom-nav-side-gap); right: var(--mobile-bottom-nav-side-gap); bottom: 0; z-index: 100; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: center; min-height: calc(var(--mobile-bottom-nav-h) + env(safe-area-inset-bottom));/* padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); */background: linear-gradient( 180deg, color-mix(in srgb, var(--mobile-bottom-nav-bg) 88%, #24315c) 0%, var(--mobile-bottom-nav-bg) 100% ); border: 1px solid var(--mobile-bottom-nav-border); border-bottom: 0; border-radius: 20px 20px 0 0; box-shadow: var(--mobile-bottom-nav-shadow); overflow: visible; }
+                                        <tr class="dataTable__row" data-category="slots">
+                                            <td class="dataTable__cell dataTable__cell--index">
+                                                <span class="dataTable__text">2</span>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--details">
+                                                <div class="betHistoryDetails">
+                                                    <div class="betHistoryDetails__provider" data-provider="AIG">AIG_336596</div>
+                                                    <div class="betHistoryDetails__time">2026/03/03 | 15:27:47</div>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--selection">
+                                                <div class="betHistorySelection">
+                                                    <div class="betHistorySelection__row betHistorySelection__row--game">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--game">Game:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--game">Little Mermaid</span>
+                                                    </div>
+                                                    <div class="betHistorySelection__row betHistorySelection__row--gameCode">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--gameCode">Game code:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--gameCode">littlemermaid</span>
+                                                    </div>
+                                                    <div class="betHistorySelection__row betHistorySelection__row--round">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--round">Round:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--round">202603031527477733</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--odds">
+                                                <span class="dataTable__amountValue is-neutral">RM 1.00</span>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--stake">
+                                                <div class="dataTable__amountStack">
+                                                    <span class="dataTable__amountValue is-neutral">RM 4.50</span>
+                                                    <span class="dataTable__amountValue">RM 4.50</span>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--winlose">
+                                                <div class="dataTable__amountStack">
+                                                    <span class="dataTable__amountValue is-negative">RM -4.50</span>
+                                                    <span class="dataTable__amountValue is-comm">RM 0.04</span>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--status">
+                                                <span class="betHistoryStatus txnTypeLink">
+                                                    <span class="betHistoryStatus__label">Lose</span>
+                                                    <span class="betHistoryStatus__icon p--methodBtn__ico" data-ico="magnifier"></span>
+                                                </span>
+                                            </td>
+                                        </tr>
 
-    .mobileBottomNav__item { position: relative; min-width: 0; min-height: 56px; padding: 4px 2px 2px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: inherit; background: transparent; border: 0; outline: 0; cursor: pointer; appearance: none; -webkit-tap-highlight-color: transparent; transition: transform var(--duration-fast) var(--ease-interact); }
+                                        <tr class="dataTable__row" data-category="sport">
+                                            <td class="dataTable__cell dataTable__cell--index">
+                                                <span class="dataTable__text">3</span>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--details">
+                                                <div class="betHistoryDetails">
+                                                    <div class="betHistoryDetails__provider" data-provoder="SBO">SBO_887213</div>
+                                                    <div class="betHistoryDetails__time">2026/03/03 | 16:10:11</div>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--selection">
+                                                <div class="betHistorySelection">
+                                                    <div class="betHistorySelection__row betHistorySelection__row--game">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--game">Game:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--game">SBO Sports</span>
+                                                    </div>
+                                                    <div class="betHistorySelection__row betHistorySelection__row--gameCode">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--gameCode">Game code:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--gameCode">sbo-football</span>
+                                                    </div>
+                                                    <div class="betHistorySelection__row betHistorySelection__row--round">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--round">Round:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--round">FT93887721</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--odds">
+                                                <span class="dataTable__amountValue is-neutral">1.88</span>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--stake">
+                                                <div class="dataTable__amountStack">
+                                                    <span class="dataTable__amountValue is-neutral">RM 50.00</span>
+                                                    <span class="dataTable__amountValue">RM 50.00</span>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--winlose">
+                                                <div class="dataTable__amountStack">
+                                                    <span class="dataTable__amountValue is-positive">RM 44.00</span>
+                                                    <span class="dataTable__amountValue is-comm">RM 0.00</span>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--status">
+                                                <span class="betHistoryStatus txnTypeLink">
+                                                    <span class="betHistoryStatus__label">Win</span>
+                                                    <span class="betHistoryStatus__icon p--methodBtn__ico" data-ico="magnifier"></span>
+                                                </span>
+                                            </td>
+                                        </tr>
 
-        .mobileBottomNav__item::before { content: ""; position: absolute; left: 6px; right: 6px; top: 2px; bottom: 0; border-radius: 14px; background: transparent; opacity: 0; transform: scale(0.96); transition: opacity var(--duration-normal) var(--ease-move), transform var(--duration-normal) var(--ease-move), box-shadow var(--duration-normal) var(--ease-move), background var(--duration-normal) var(--ease-move); }
+                                        <tr class="dataTable__row" data-category="casino">
+                                            <td class="dataTable__cell dataTable__cell--index">
+                                                <span class="dataTable__text">4</span>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--details">
+                                                <div class="betHistoryDetails">
+                                                    <div class="betHistoryDetails__provider" data-provider="AG">AG_220981</div>
+                                                    <div class="betHistoryDetails__time">2026/03/03 | 16:42:03</div>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--selection">
+                                                <div class="betHistorySelection">
+                                                    <div class="betHistorySelection__row betHistorySelection__row--game">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--game">Game:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--game">AG Baccarat</span>
+                                                    </div>
+                                                    <div class="betHistorySelection__row betHistorySelection__row--gameCode">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--gameCode">Game code:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--gameCode">ag-baccarat</span>
+                                                    </div>
+                                                    <div class="betHistorySelection__row betHistorySelection__row--round">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--round">Round:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--round">BAC8821093</span>
+                                                    </div>
+                                                    <div class="betHistorySelection__row betHistorySelection__row--shoeNum">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--shoeNum">Shoe Num:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--shoeNum">6</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--odds">
+                                                <span class="dataTable__amountValue is-neutral">0.95</span>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--stake">
+                                                <div class="dataTable__amountStack">
+                                                    <span class="dataTable__amountValue is-neutral">RM 200.00</span>
+                                                    <span class="dataTable__amountValue">RM 200.00</span>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--winlose">
+                                                <div class="dataTable__amountStack">
+                                                    <span class="dataTable__amountValue is-negative">RM -200.00</span>
+                                                    <span class="dataTable__amountValue is-comm">RM 0.00</span>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--status">
+                                                <span class="betHistoryStatus txnTypeLink">
+                                                    <span class="betHistoryStatus__label">Lose</span>
+                                                    <span class="betHistoryStatus__icon p--methodBtn__ico" data-ico="magnifier"></span>
+                                                </span>
+                                            </td>
+                                        </tr>
 
-    .mobileBottomNav__icon { width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--mobile-bottom-nav-icon-color); transition: color var(--duration-normal) var(--ease-interact), transform var(--duration-normal) var(--ease-move); }
+                                        <tr class="dataTable__row" data-category="lottery">
+                                            <td class="dataTable__cell dataTable__cell--index">
+                                                <span class="dataTable__text">5</span>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--details">
+                                                <div class="betHistoryDetails">
+                                                    <div class="betHistoryDetails__provider" data-provider="Magnum">MAGNUM_90012</div>
+                                                    <div class="betHistoryDetails__time">2026/03/03 | 17:01:12</div>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--selection">
+                                                <div class="betHistorySelection">
+                                                    <div class="betHistorySelection__row betHistorySelection__row--game">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--game">Game:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--game">Magnum 4D</span>
+                                                    </div>
+                                                    <div class="betHistorySelection__row betHistorySelection__row--gameCode">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--gameCode">Game code:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--gameCode">magnum-4d</span>
+                                                    </div>
+                                                    <div class="betHistorySelection__row betHistorySelection__row--round">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--round">Round:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--round">4D773821</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--odds">
+                                                <span class="dataTable__amountValue is-neutral">5000</span>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--stake">
+                                                <div class="dataTable__amountStack">
+                                                    <span class="dataTable__amountValue is-neutral">RM 10.00</span>
+                                                    <span class="dataTable__amountValue">RM 10.00</span>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--winlose">
+                                                <div class="dataTable__amountStack">
+                                                    <span class="dataTable__amountValue is-positive">RM 0.00</span>
+                                                    <span class="dataTable__amountValue is-comm">RM 0.00</span>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--status">
+                                                <span class="betHistoryStatus txnTypeLink">
+                                                    <span class="betHistoryStatus__label">Pending</span>
+                                                    <span class="betHistoryStatus__icon p--methodBtn__ico" data-ico="magnifier"></span>
+                                                </span>
+                                            </td>
+                                        </tr>
 
+                                        <tr class="dataTable__row" data-category="battle">
+                                            <td class="dataTable__cell dataTable__cell--index">
+                                                <span class="dataTable__text">6</span>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--details">
+                                                <div class="betHistoryDetails">
+                                                    <div class="betHistoryDetails__provider" data-provider="FISH">FISH_441928</div>
+                                                    <div class="betHistoryDetails__time">2026/03/03 | 18:19:55</div>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--selection">
+                                                <div class="betHistorySelection">
+                                                    <div class="betHistorySelection__row betHistorySelection__row--game">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--game">Game:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--game">Dragon Hunter</span>
+                                                    </div>
+                                                    <div class="betHistorySelection__row betHistorySelection__row--gameCode">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--gameCode">Game code:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--gameCode">dragon-hunter</span>
+                                                    </div>
+                                                    <div class="betHistorySelection__row betHistorySelection__row--round">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--round">Round:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--round">DH882291</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--odds">
+                                                <span class="dataTable__amountValue is-neutral">1.00</span>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--stake">
+                                                <div class="dataTable__amountStack">
+                                                    <span class="dataTable__amountValue is-neutral">RM 30.00</span>
+                                                    <span class="dataTable__amountValue">RM 30.00</span>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--winlose">
+                                                <div class="dataTable__amountStack">
+                                                    <span class="dataTable__amountValue is-positive">RM 12.00</span>
+                                                    <span class="dataTable__amountValue is-comm">RM 0.00</span>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--status">
+                                                <span class="betHistoryStatus txnTypeLink">
+                                                    <span class="betHistoryStatus__label">Win</span>
+                                                    <span class="betHistoryStatus__icon p--methodBtn__ico" data-ico="magnifier"></span>
+                                                </span>
+                                            </td>
+                                        </tr>
 
-    .mobileBottomNav__label { max-width: 100%; font-size: var(--text-xxs); line-height: 1.1; font-weight: var(--font-medium); color: var(--mobile-bottom-nav-label-color); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color var(--duration-normal) var(--ease-interact), transform var(--duration-normal) var(--ease-move); }
+                                        <tr class="dataTable__row" data-category="p2p">
+                                            <td class="dataTable__cell dataTable__cell--index">
+                                                <span class="dataTable__text">7</span>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--details">
+                                                <div class="betHistoryDetails">
+                                                    <div class="betHistoryDetails__provider" data-provider="P2P">P2P_117201</div>
+                                                    <div class="betHistoryDetails__time">2026/03/03 | 19:03:26</div>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--selection">
+                                                <div class="betHistorySelection">
+                                                    <div class="betHistorySelection__row betHistorySelection__row--game">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--game">Game:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--game">Player Duel</span>
+                                                    </div>
+                                                    <div class="betHistorySelection__row betHistorySelection__row--gameCode">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--gameCode">Game code:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--gameCode">player-duel</span>
+                                                    </div>
+                                                    <div class="betHistorySelection__row betHistorySelection__row--round">
+                                                        <span class="betHistorySelection__label betHistorySelection__label--round">Round:</span>
+                                                        <span class="betHistorySelection__value betHistorySelection__value--round">P2P662801</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--odds">
+                                                <span class="dataTable__amountValue is-neutral">2.10</span>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--stake">
+                                                <div class="dataTable__amountStack">
+                                                    <span class="dataTable__amountValue is-neutral">RM 60.00</span>
+                                                    <span class="dataTable__amountValue">RM 60.00</span>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--winlose">
+                                                <div class="dataTable__amountStack">
+                                                    <span class="dataTable__amountValue is-negative">RM -60.00</span>
+                                                    <span class="dataTable__amountValue is-comm">RM 0.00</span>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__cell dataTable__cell--status">
+                                                <span class="betHistoryStatus txnTypeLink">
+                                                    <span class="betHistoryStatus__label">Lose</span>
+                                                    <span class="betHistoryStatus__icon p--methodBtn__ico" data-ico="magnifier"></span>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
 
-    .mobileBottomNav__item:hover { transform: translateY(-1px); }
+                                    <tfoot class="dataTable__foot">
+                                        <tr class="dataTable__footRow">
+                                            <td colspan="4" class="dataTable__footCell dataTable__footCell--label">Total</td>
+                                            <td class="dataTable__footCell dataTable__footCell--stakeTotal">
+                                                <div class="dataTable__amountStack">
+                                                    <span class="dataTable__amountValue is-positive">RM 454.50</span>
+                                                    <span class="dataTable__amountValue">RM 454.50</span>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__footCell dataTable__footCell--winloseTotal">
+                                                <div class="dataTable__amountStack">
+                                                    <span class="dataTable__amountValue is-negative">RM -308.50</span>
+                                                    <span class="dataTable__amountValue is-comm">RM -0.04</span>
+                                                </div>
+                                            </td>
+                                            <td class="dataTable__footCell dataTable__footCell--empty"></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-    .mobileBottomNav__item:active { transform: translateY(0); }
+                <script>
+                    const categoryButtons = document.querySelectorAll('.betCategoryBtn');
+                    const betRows = document.querySelectorAll('#betHistoryTableBody .dataTable__row');
 
-    .mobileBottomNav__item:focus-visible { border-radius: var(--radius-xl); box-shadow: var(--focus-ring); }
+                    categoryButtons.forEach((button) => {
+                        button.addEventListener('click', () => {
+                            const filter = button.dataset.filter;
 
-    .mobileBottomNav__item.is-active::before,
-    .mobileBottomNav__item[aria-current="page"]::before { opacity: 1; transform: scale(1); background: linear-gradient( 180deg, color-mix(in srgb, var(--mobile-bottom-nav-active-bg-start) 24%, transparent) 0%, color-mix(in srgb, var(--mobile-bottom-nav-active-bg-end) 18%, transparent) 100% ); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 6px 14px var(--mobile-bottom-nav-active-glow); }
+                            categoryButtons.forEach((btn) => btn.classList.remove('is-active'));
+                            button.classList.add('is-active');
 
-    .mobileBottomNav__item.is-active .mobileBottomNav__icon,
-    .mobileBottomNav__item[aria-current="page"] .mobileBottomNav__icon { color: var(--mobile-bottom-nav-active-icon); }
+                            betRows.forEach((row) => {
+                                const category = row.dataset.category;
+                                const shouldShow = filter === 'all' || category === filter;
+                                row.hidden = !shouldShow;
+                            });
+                        });
+                    });
+                </script>
+            </div>
+            <footer class="footer" data-include="footer.html"></footer>
+        </main>
+    </div>
+    <script src="js/script-page.js"></script>
 
-    .mobileBottomNav__item.is-active .mobileBottomNav__label,
-    .mobileBottomNav__item[aria-current="page"] .mobileBottomNav__label { color: var(--mobile-bottom-nav-active-text); }
-
-    /* 中间主按钮 */
-    .mobileBottomNav__item--main { min-height: 64px; gap: 6px; transform: translateY(calc(var(--mobile-bottom-nav-main-offset) * -1)); margin-top:-12px;}
-
-        .mobileBottomNav__item--main::before { display: none; }
-
-    .mobileBottomNav__mainBtnWrap { width: calc(var(--mobile-bottom-nav-main-size) + 6px); height: calc(var(--mobile-bottom-nav-main-size) + 6px); display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #202a4f; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 6px 14px rgba(0, 0, 0, 0.22); }
-
-    .mobileBottomNav__mainBtnIcon { width: var(--mobile-bottom-nav-main-size); height: var(--mobile-bottom-nav-main-size); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: #ffffff; background: linear-gradient( 180deg, var(--mobile-bottom-nav-active-bg-start) 0%, var(--mobile-bottom-nav-active-bg-end) 100% ); box-shadow: 0 10px 20px rgba(133, 45, 255, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.18); transition: transform var(--duration-normal) var(--ease-move), box-shadow var(--duration-normal) var(--ease-move); }
-
-    .mobileBottomNav__label--main { color: #ffffff; font-size: var(--text-xs); font-weight: var(--font-semibold); }
-
-    .mobileBottomNav__item--main:hover { transform: translateY(calc(var(--mobile-bottom-nav-main-offset) * -1 - 1px)); }
-
-        .mobileBottomNav__item--main:hover .mobileBottomNav__mainBtnIcon { transform: translateY(-1px); }
-
-    .mobileBottomNav__item--main:active .mobileBottomNav__mainBtnIcon { transform: scale(0.98); }
-
-    /* 让中间下面的字不要离圆钮太远 */
-    .mobileBottomNav__item--main .mobileBottomNav__label { margin-top: 0; }
-
-    /* 小屏再压一点 */
-    @media (max-width: 380px) {
-        :root { --mobile-bottom-nav-h: 68px; --mobile-bottom-nav-main-size: 48px; --mobile-bottom-nav-main-offset: 12px; }
-
-        .mobileBottomNav { left: 8px; right: 8px; }
-
-        .mobileBottomNav__icon { width: 20px; height: 20px; }
-
-        .mobileBottomNav__label { font-size: 8.5px; }
-
-        .mobileBottomNav__label--main { font-size: 10px; }
-    }
-
-    @media (min-width: 768px) {
-        .mobileBottomNav { display: none; }
-    }
-    .mobileBottomNav__item .p--methodBtn__ico { width: var(--icn-w30); height: var(--icn-w30); }
-</style>
+</body>
+</html>
