@@ -1749,7 +1749,7 @@ body.qrViewer-open { overflow: hidden; }
 
 .noticeBoard__wrapper { display: flex; align-items: center; justify-content: space-between; padding: var(--space-3) var(--space-4); color: var(--font-color); }
 
-.noticeBoard__content { display: grid; grid-template-columns: 280px 1fr; gap: var(--space-3); padding: 0 var(--space-3) var(--space-3); }
+.noticeBoard__content { display: grid; grid-template-columns: 320px 1fr; gap: var(--space-3); padding: 0 var(--space-3) var(--space-3); }
 
 .noticeList { background: var(--secondary-color); border-radius: var(--radius-sm); padding: var(--space-2); display: flex; flex-direction: column; gap: 0; min-height: 0; overflow-y: auto; }
 
@@ -1944,12 +1944,13 @@ body.is-lock { overflow: hidden; touch-action: none; }
 /* =========================
    Composer
 ========================= */
-.chatComposer { position: sticky; bottom: 0; z-index: 3; display: flex; align-items: center; gap: 10px; margin-top: 14px; padding: 12px 22px 18px; border-top: 1px solid rgba(255,255,255,.08); background: linear-gradient(180deg, rgba(27,32,51,0), rgba(27,32,51,.92) 20%, rgba(27,32,51,1) 100%); margin-left: -22px; margin-right: -22px; }
+.messagePanel.chatPanel{padding-bottom:0;}
+.chatComposer { position: sticky; bottom: 0; z-index: 3; display: flex; align-items: center; gap: var(--gap); margin-top: var(--space-3); padding: var(--space-2) var(--space-4) var(--space-3); border-top: 1px solid var(--border-from-font-10); background: linear-gradient(180deg, transparent, var(--bg-color) 20%, var(--bg-color) 100%); margin-left: calc(var(--space-4) * -1); margin-right: calc(var(--space-4) * -1); }
 
 .chatComposer__plus,
-.chatComposer__send { width: 40px; height: 40px; border: 0; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; background: rgba(255,255,255,.08); color: #fff; flex: 0 0 auto; }
+.chatComposer__send { width: 40px; height: 40px; border: 0; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; background: rgba(255,255,255,.08); color: var(--font-color); flex: 0 0 auto; }
 
-.chatComposer__send { background: linear-gradient(180deg, #a855f7, #7c3aed); box-shadow: 0 8px 20px rgba(144,2,255,.28); }
+.chatComposer__send { background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); box-shadow: 0 8px 20px rgba(144,2,255,.28); }
 
 .chatComposer__input { flex: 1; min-height: 44px; display: flex; align-items: center; padding: 0 14px; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); color: #fff; font-size: 14px; outline: none; }
 
