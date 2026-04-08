@@ -973,7 +973,11 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 [data-ico="print"] { --ico: url('../assets/icon/print.svg'); }
 [data-ico="bin"] { --ico: url('../assets/icon/bin.svg'); }
 [data-ico="plus"] { --ico: url('../assets/icon/plus.svg'); }
+[data-ico="plus_big"] { --ico: url('../assets/icon/plus2.svg'); }
 [data-ico="send"] { --ico: url('../assets/icon/send.svg'); }
+
+[data-ico="menu"] { --ico: url('../assets/icon/menu.svg'); }
+[data-ico="home"] { --ico: url('../assets/icon/home.svg'); }
 /* -------- cats row -------- */
 .playcard__cats { display: flex; flex-wrap: wrap; gap: var(--space-1); justify-content: center; margin-top: auto; /* height: 100%; */ }
 .catBtn { appearance: none; border: var(--border-width) solid rgba(255,255,255,0); background: rgba(255,255,255,.03); color: var(--font-color); border-radius: var(--radius-sm); display: inline-flex; align-items: center; justify-content: center; /* gap: var(--gap); */ padding: var(--space-1) var(--space-2); cursor: pointer; border-radius: 999px; }
