@@ -287,9 +287,8 @@
     }
 
     onReady(() => {
-        waitForElement(".appSheet", initLanguageSheet);
-    });
-
+    waitForElement('#langSheet', initLanguageSheet);
+});
     /* =========================
        Side menu
     ========================= */
