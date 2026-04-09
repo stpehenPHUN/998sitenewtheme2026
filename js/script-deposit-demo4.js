@@ -1559,14 +1559,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 sumRolloverEl.innerHTML = `
   <span class="rolloverFormula__main">
     Rollover Requirement : 
-    (Deposit ${fmtMoneySep(dep, 2)} × ${x}) + 
-    (Bonus ${fmtMoneySep(bon, 2)} × ${x}) + 
-    (Max Bonus ${fmtMoneySep(maxBon, 2)} × ${x}) 
+    (Deposit ${fmtMoneySep(dep, 2)}) + 
+    (Bonus ${fmtMoneySep(bon, 2)} + 
+    (Max Bonus ${fmtMoneySep(maxBon, 2)}) 
   
   </span>
-  <span class="rolloverFormula__note">  = ${pkgCur} ${fmtMoneySep(knownTurnover, 2)}
-    + (To be calculated after Free Spin Completion)
-  </span>
+  <span class="rolloverFormula__note">  = ${pkgCur} ${fmtMoneySep(knownTurnover, 2)}</span>
 `;
             }
 
