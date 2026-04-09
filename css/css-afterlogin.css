@@ -1634,6 +1634,9 @@ body.qrViewer-open { overflow: hidden; }
 /* =========================
    transaction modifier
 ========================= */
+.transactionTablePanel.panel-inner { flex: 1; overflow-y: auto; }
+.dataTable__head { position: sticky; top: 0; z-index: 2; }
+
 .dataTable--transaction .dataTable__headCell--date,
 .dataTable--transaction .dataTable__cell--date { width: 32%; }
 
