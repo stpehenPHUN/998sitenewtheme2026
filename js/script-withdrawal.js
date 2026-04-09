@@ -101,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
             iconImg: document.getElementById('sumWithdrawBankImg'),
             to: document.getElementById('sumWithdrawTo'),
             account: document.getElementById('sumWithdrawAccount'),
+            name: document.getElementById('sumWithdrawName'),
             amount: document.getElementById('sumWithdrawAmount'),
             target: document.getElementById('sumTarget'),
             rollover: document.getElementById('sumRollover'),
@@ -981,6 +982,9 @@ document.addEventListener('DOMContentLoaded', () => {
         </svg>
     `;
     }
+    function plusBigIcon() {
+        return `<span class="p--methodBtn__ico" data-ico="plus_big"></span>`;
+    }
     function currentSelection() {
         const p = store.preferences || {};
 
@@ -991,6 +995,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     type: 'bank',
                     label: acc.bankName || getBankLabel(acc.bankCode),
                     account: maskAccountNumber(acc.accountNumber),
+                    name: acc.accountName || '-',
                     icon: getBankIconPath(acc.bankCode),
                     network: '',
                     raw: acc
@@ -1004,6 +1009,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 type: 'app_bank',
                 label: acc.bankName || getBankLabel(acc.bankCode || 'app_internal', 'App Bank Route'),
                 account: acc.accountName || '-',
+                name: acc.accountName || '-',
                 icon: getBankIconPath(acc.bankCode || 'app_internal'),
                 network: '',
                 raw: acc
@@ -1017,6 +1023,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     type: 'ewallet',
                     label: acc.label || EWALLET_LABEL_MAP[p.selectedEwalletType] || 'E-wallet',
                     account: maskAccountNumber(acc.accountNumber),
+                    name: acc.label || '-',
                     icon: acc.icon || getEwalletIconPath(p.selectedEwalletType),
                     network: '',
                     raw: acc
@@ -1031,6 +1038,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     type: 'crypto',
                     label: acc.label || CRYPTO_META_MAP[p.selectedCryptoKey]?.label || 'Crypto',
                     account: maskAddress(acc.address),
+                    name: acc.label || '-',
                     icon: acc.icon || getCryptoIconPath(p.selectedCryptoKey),
                     network: acc.network || CRYPTO_META_MAP[p.selectedCryptoKey]?.network || '',
                     raw: acc
@@ -1111,7 +1119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return window.matchMedia('(max-width: 767.98px)').matches;
     }
 
-    function buildMobileMethodEntry({ action, icon, title, meta, extraClass = '' }) {
+    function buildMobileMethodEntry({ action, icon, title, meta, extraClass = '', trailingIcon = true }) {
         return `
         <button type="button" class="withdrawCard withdrawCard--picker ${esc(extraClass)}" data-action="${esc(action)}">
             <span class="withdrawCard__icon"><img src="${esc(icon)}" alt="${esc(title)}"></span>
@@ -1119,6 +1127,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="withdrawCard__title">${esc(title)}</span>
                 <span class="withdrawCard__meta">${esc(meta)}</span>
             </span>
+            ${trailingIcon ? `<span class="p--methodBtn__ico" data-ico="more"></span>` : ''}
         </button>`;
     }
 
@@ -1153,16 +1162,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderMobileAppBankEntry() {
         if (!els.appBankSlot) return;
+
         const acc = store.appBankAccount;
+        const hasAccount = !!acc;
         const title = acc?.bankName || APP_BANK_NAME;
         const meta = acc?.accountName || 'Tap to manage';
         const icon = getBankIconPath(acc?.bankCode || 'app_internal');
+
         els.appBankSlot.innerHTML = buildMobileMethodEntry({
-            action: 'open-app-bank-sheet',
+            action: hasAccount ? 'select-app-bank-mobile' : 'open-app-bank-sheet',
             icon,
             title,
             meta,
-            extraClass: store.preferences.selectedType === 'app_bank' ? 'is-active' : ''
+            extraClass: store.preferences.selectedType === 'app_bank' ? 'is-active' : '',
+            trailingIcon: true
         });
     }
 
@@ -1291,17 +1304,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 </button>
             ` : `
                 <button type="button" class="withdrawCard withdrawCard--add" data-action="add-app-bank">
-                    <span class="withdrawCard__icon withdrawCard__icon--add">${addCircleIcon()}</span>
+                    <span class="withdrawCard__icon withdrawCard__icon--add">${plusBigIcon()}</span>
                     <span class="withdrawCard__body">
                         <span class="withdrawCard__title">Add ${esc(APP_BANK_NAME)}</span>
                         <span class="withdrawCard__meta">Link your username</span>
                     </span>
                 </button>
             `}
-        </div>
-
-        <div class="sheetActions">
-            <button type="button" class="sheetHead__btn" data-action="open-app-bank-manage">Edit account</button>
         </div>
     </section>`;
     }
@@ -1310,7 +1319,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         return `
     <section class="withdrawSheetPanel withdrawSheetPanel--manage withdrawSheetPanel--appBank">
-        ${buildSheetHeader('Back', `Edit ${APP_BANK_NAME}`)}
+        ${buildSheetHeader('Back', `Manage ${APP_BANK_NAME}`)}
 
         <div class="sheetList">
             ${acc ? `
@@ -1322,15 +1331,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         aria-label="Delete ${esc(APP_BANK_NAME)} account"
                     >
                         ${toolIcon('delete')}
-                    </button>
-
-                    <button
-                        type="button"
-                        class="withdrawCard__tool withdrawCard__tool--edit"
-                        data-action="edit-app-bank"
-                        aria-label="Edit ${esc(APP_BANK_NAME)} account"
-                    >
-                        ${toolIcon('edit')}
                     </button>
 
                     <div class="withdrawCard__main">
@@ -1345,7 +1345,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </article>
             ` : `
                 <button type="button" class="withdrawCard withdrawCard--add" data-action="add-app-bank">
-                    <span class="withdrawCard__icon withdrawCard__icon--add">${addCircleIcon()}</span>
+                    <span class="withdrawCard__icon withdrawCard__icon--add">${plusBigIcon()}</span>
                     <span class="withdrawCard__body">
                         <span class="withdrawCard__title">Add ${esc(APP_BANK_NAME)}</span>
                         <span class="withdrawCard__meta">Link your username</span>
@@ -1584,15 +1584,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderAppBankRoute() {
         if (!els.appBankSlot) return;
         const acc = store.appBankAccount;
+
         if (!acc) {
             els.appBankSlot.innerHTML = `
     <article class="withdrawCard withdrawCard--empty withdrawCard--appBankEmpty">
       <button
-        type="button"        class="withdrawCard__tool withdrawCard__tool--edit"
+        type="button"
+        class="withdrawCard__tool withdrawCard__tool--edit"
         data-action="add-app-bank"
         aria-label="Add app bank route"
       >
-        ${toolIcon('edit')}
+        ${plusBigIcon()}
       </button>
 
       <div class="withdrawCard__main" aria-disabled="true">
@@ -1610,15 +1612,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const active = store.preferences.selectedType === 'app_bank' && store.preferences.selectedAppBankId === acc.id;
         const title = acc.bankName || getBankLabel(acc.bankCode || 'app_internal', 'App Bank Route');
+
         els.appBankSlot.innerHTML = `
       <article class="withdrawCard ${active ? 'is-active' : ''}" data-app-bank-id="${esc(acc.id)}">
         <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-app-bank" aria-label="Delete app bank route">${toolIcon('delete')}</button>
-        <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-app-bank" aria-label="Edit app bank route">${toolIcon('edit')}</button>
         <button type="button" class="withdrawCard__main" data-action="select-app-bank" data-id="${esc(acc.id)}" aria-pressed="${active ? 'true' : 'false'}">
           <span class="withdrawCard__icon"><img src="${esc(getBankIconPath(acc.bankCode || 'app_internal'))}" alt="${esc(title)}"></span>
           <span class="withdrawCard__body">
             <span class="withdrawCard__title">${esc(title)}</span>
-            <span class="withdrawCard__meta">${esc(maskAccountNumber(acc.accountName))}</span>
+            <span class="withdrawCard__meta">${esc(acc.accountName || '-')}</span>
           </span>
         </button>
       </article>`;
@@ -2186,6 +2188,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const selected = currentSelection();
         if (els.summary.to) els.summary.to.textContent = selected?.label || '-';
         if (els.summary.account) els.summary.account.textContent = selected?.account || '-';
+        if (els.summary.name) els.summary.name.textContent = selected?.name || '-';
 
         if (els.summary.iconWrap && els.summary.iconImg) {
             if (selected?.icon) {
@@ -2370,6 +2373,15 @@ document.addEventListener('DOMContentLoaded', () => {
             openMethodSheet('app-bank');
             return;
         }
+        const selectAppBankMobileBtn = e.target.closest('[data-action="select-app-bank-mobile"]');
+        if (selectAppBankMobileBtn) {
+            if (store.appBankAccount?.id) {
+                setSelectedMethod('app_bank', store.appBankAccount.id);
+            } else {
+                openMethodSheet('app-bank');
+            }
+            return;
+        }
         const openAppBankManageBtn = e.target.closest('[data-action="open-app-bank-manage"]');
         if (openAppBankManageBtn) {
             openMethodSheet('app-bank-manage');
@@ -2377,7 +2389,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const addAppBankBtn = e.target.closest('[data-action="add-app-bank"]');
         if (addAppBankBtn) {
-            openBankEditor(store.appBankAccount ? 'edit' : 'add', store.appBankAccount?.id || null, true);
+            if (store.appBankAccount) return;
+            openBankEditor('add', null, true);
             return;
         }
 
@@ -2424,7 +2437,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const editAppBankBtn = e.target.closest('[data-action="edit-app-bank"]');
         if (editAppBankBtn) {
-            openBankEditor('edit', store.appBankAccount?.id || null, true);
             return;
         }
 
