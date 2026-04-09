@@ -1482,6 +1482,9 @@ body.qrViewer-open { overflow: hidden; }
     .topTabs { padding: 0; }
     .noteBox { padding: var(--space-5); }
 
+    .withdrawTopTabs.topTabs {padding: 0; }
+
+
     .desktopDropdown__option { padding: var(--padding);color: var(--font-color); border: 0; background: var(--bg-color); white-space: nowrap; text-overflow: ellipsis; }
         .desktopDropdown__option:hover { background: var(--secondary-color); }
     .withdrawEditor { padding: var(--space-5); margin-top: var(--space-3); }
