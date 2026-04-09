@@ -69,8 +69,8 @@
                         <div class="transactionToolbar__group">
                             <div class="transactionToolbar__label">Select Transaction Date</div>
                             <div class="transactionToolbar__filters">
-                                <button type="button" class="txnFilterBtn">Yesterday</button>
                                 <button type="button" class="txnFilterBtn">Last 7 Days</button>
+                                <button type="button" class="txnFilterBtn">Last 14 Days</button>
                                 <button type="button" class="txnFilterBtn">Last 30 Days</button>
                             </div>
                         </div>
@@ -374,7 +374,10 @@
                     renderNotice(defaultActive);
                 });
             </script>
+
+
             <footer class="footer" data-include="footer.html"></footer>
+
 
             <!--  notice sheet -->
             <div id="noticeSheet" class="appSheet noticeSheet" aria-hidden="true">
@@ -487,6 +490,7 @@
                     </div>
                 </div>
             </div>
+            <footer class="footer" data-include="footer.html"></footer>
         </main>
     </div>
     <script src="js/script-page.js"></script>
