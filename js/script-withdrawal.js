@@ -1255,9 +1255,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const title = acc.bankName || getBankLabel(acc.bankCode);
             return `
                     <article class="withdrawCard" data-bank-id="${esc(acc.id)}">
-                        <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-bank" data-id="${esc(acc.id)}" aria-label="Delete bank account">${toolIcon('delete')}</button>
-                        <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-bank" data-id="${esc(acc.id)}" aria-label="Edit bank account">${toolIcon('edit')}</button>
-                        <div class="withdrawCard__main">
+<div class="withdrawCard__tools">
+            <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-bank" data-id="${esc(acc.id)}" aria-label="Delete bank account">${toolIcon('delete')}</button>
+            <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-bank" data-id="${esc(acc.id)}" aria-label="Edit bank account">${toolIcon('edit')}</button>
+        </div>
+        <div class="withdrawCard__main">
                             <span class="withdrawCard__icon"><img src="${esc(getBankIconPath(acc.bankCode))}" alt="${esc(title)}"></span>
                             <span class="withdrawCard__body">
                                 <span class="withdrawCard__title">${esc(title)}</span>
@@ -1324,14 +1326,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="sheetList">
             ${acc ? `
                 <article class="withdrawCard" data-app-bank-id="${esc(acc.id)}">
-                    <button
-                        type="button"
-                        class="withdrawCard__tool withdrawCard__tool--delete"
-                        data-action="delete-app-bank"
-                        aria-label="Delete ${esc(APP_BANK_NAME)} account"
-                    >
-                        ${toolIcon('delete')}
-                    </button>
+                <div class="withdrawCard__tools">
+            <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-bank" data-id="${esc(acc.id)}" aria-label="Delete bank account">${toolIcon('delete')}</button>
+        </div>
 
                     <div class="withdrawCard__main">
                         <span class="withdrawCard__icon">
@@ -1396,8 +1393,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const icon = item.icon || item.meta?.icon;
             return `
                 <article class="withdrawCard" data-ewallet-type="${esc(item.key)}">
-                    <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-ewallet" data-id="${esc(item.key)}">${toolIcon('delete')}</button>
-                    <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-ewallet" data-id="${esc(item.key)}">${toolIcon('edit')}</button>
+                    <div class="withdrawCard__tools">
+            <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-bank" data-id="${esc(acc.id)}" aria-label="Delete bank account">${toolIcon('delete')}</button>
+            <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-bank" data-id="${esc(acc.id)}" aria-label="Edit bank account">${toolIcon('edit')}</button>
+        </div>
                     <div class="withdrawCard__main">
                         <span class="withdrawCard__icon"><img src="${esc(icon)}" alt="${esc(title)}"></span>
                         <span class="withdrawCard__body">
@@ -1462,15 +1461,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             return `
                 <article class="withdrawCard" data-crypto-key="${esc(item.key)}">
-                    <button
-                        type="button"
-                        class="withdrawCard__tool withdrawCard__tool--delete"
-                        data-action="delete-crypto"
-                        data-id="${esc(item.key)}"
-                        aria-label="Delete crypto wallet"
-                    >
-                        ${toolIcon('delete')}
-                    </button>
+                <div class="withdrawCard__tools">
+            <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-bank" data-id="${esc(acc.id)}" aria-label="Delete bank account">${toolIcon('delete')}</button>
+        </div>
 
                     <button
                         type="button"
@@ -1556,9 +1549,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const title = acc.bankName || getBankLabel(acc.bankCode);
             return `
         <article class="withdrawCard ${active ? 'is-active' : ''}" data-bank-id="${esc(acc.id)}">
-          <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-bank" data-id="${esc(acc.id)}" aria-label="Delete bank account">${toolIcon('delete')}</button>
-          <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-bank" data-id="${esc(acc.id)}" aria-label="Edit bank account">${toolIcon('edit')}</button>
-          <button type="button" class="withdrawCard__main" data-action="select-bank" data-id="${esc(acc.id)}" aria-pressed="${active ? 'true' : 'false'}">
+<div class="withdrawCard__tools">
+    <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-bank" data-id="${esc(acc.id)}" aria-label="Delete bank account">${toolIcon('delete')}</button>
+    <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-bank" data-id="${esc(acc.id)}" aria-label="Edit bank account">${toolIcon('edit')}</button>
+</div>
+<button type="button" class="withdrawCard__main" data-action="select-bank" data-id="${esc(acc.id)}" aria-pressed="${active ? 'true' : 'false'}">
             <span class="withdrawCard__icon"><img src="${esc(iconPath)}" alt="${esc(title)}"></span>
             <span class="withdrawCard__body">
               <span class="withdrawCard__title">${esc(title)}</span>
@@ -1615,7 +1610,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         els.appBankSlot.innerHTML = `
       <article class="withdrawCard ${active ? 'is-active' : ''}" data-app-bank-id="${esc(acc.id)}">
-        <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-app-bank" aria-label="Delete app bank route">${toolIcon('delete')}</button>
+ <div class="withdrawCard__tools">
+            <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-bank" data-id="${esc(acc.id)}" aria-label="Delete bank account">${toolIcon('delete')}</button>
+        </div>
         <button type="button" class="withdrawCard__main" data-action="select-app-bank" data-id="${esc(acc.id)}" aria-pressed="${active ? 'true' : 'false'}">
           <span class="withdrawCard__icon"><img src="${esc(getBankIconPath(acc.bankCode || 'app_internal'))}" alt="${esc(title)}"></span>
           <span class="withdrawCard__body">
@@ -1642,8 +1639,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             return `
         <article class="withdrawCard ${active ? 'is-active' : ''}" data-ewallet-type="${esc(item.key)}">
-            <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-ewallet" data-id="${esc(item.key)}" aria-label="Delete e-wallet account">${toolIcon('delete')}</button>
-            <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-ewallet" data-id="${esc(item.key)}" aria-label="Edit e-wallet account">${toolIcon('edit')}</button>
+<div class="withdrawCard__tools">
+            <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-bank" data-id="${esc(acc.id)}" aria-label="Delete bank account">${toolIcon('delete')}</button>
+            <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-bank" data-id="${esc(acc.id)}" aria-label="Edit bank account">${toolIcon('edit')}</button>
+        </div>
             <button type="button" class="withdrawCard__main" data-action="select-ewallet" data-id="${esc(item.key)}" aria-pressed="${active ? 'true' : 'false'}">
                 <span class="withdrawCard__icon"><img src="${esc(icon)}" alt="${esc(title)}"></span>
                 <span class="withdrawCard__body">
@@ -1684,9 +1683,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             return `
         <article class="withdrawCard ${active ? 'is-active' : ''}" data-crypto-key="${esc(item.key)}">
-            <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-crypto" data-id="${esc(item.key)}" aria-label="Delete crypto account">${toolIcon('delete')}</button>
-            <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-crypto" data-id="${esc(item.key)}" aria-label="Edit crypto account">${toolIcon('edit')}</button>
-            <button type="button" class="withdrawCard__main" data-action="select-crypto" data-id="${esc(item.key)}" aria-pressed="${active ? 'true' : 'false'}">
+<div class="withdrawCard__tools">
+            <button type="button" class="withdrawCard__tool withdrawCard__tool--delete" data-action="delete-bank" data-id="${esc(acc.id)}" aria-label="Delete bank account">${toolIcon('delete')}</button>
+            <button type="button" class="withdrawCard__tool withdrawCard__tool--edit" data-action="edit-bank" data-id="${esc(acc.id)}" aria-label="Edit bank account">${toolIcon('edit')}</button>
+        </div>
+        <button type="button" class="withdrawCard__main" data-action="select-crypto" data-id="${esc(item.key)}" aria-pressed="${active ? 'true' : 'false'}">
                 <span class="withdrawCard__icon"><img src="${esc(icon)}" alt="${esc(title)}"></span>
                 <span class="withdrawCard__body">
                     <span class="withdrawCard__title">${esc(title)}</span>
