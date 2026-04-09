@@ -1441,7 +1441,7 @@ body.qrViewer-open { overflow: hidden; }
     .withdrawCard__body span { display: block; text-align: left; }
 
 
-.withdrawCard__tool { /* position: absolute; */ width: var(--icn-w24); height: var(--icn-w24); border-radius: var(--radius-pill); /* top: calc(var(--space-2) * -1); */ border: 0; }
+.withdrawCard__tool { /* position: absolute; */ width: var(--icn-w24); height: var(--icn-w24); border-radius: var(--radius-pill); /* top: calc(var(--space-2) * -1); */ border: 0; color:var(--white-color);}
     .withdrawCard__tool .icon { width: var(--icn-w12); height: var(--icn-w12); }
 .withdrawCard__tool--delete { background-color: var(--bs-red); right: calc(var(--space-3) + var(--icn-w24) ); }
 .withdrawCard__tool--edit { background-color: var(--primary-color); right: var(--space-2); }
