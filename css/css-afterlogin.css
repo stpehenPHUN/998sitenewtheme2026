@@ -1634,7 +1634,7 @@ body.qrViewer-open { overflow: hidden; }
 /* =========================
    transaction modifier
 ========================= */
-.transactionTablePanel.panel-inner, betHistoryPanel.panel-inne { flex: 1; overflow-y: auto; }
+.transactionTablePanel.panel-inner, .betHistoryPanel.panel-inne { flex: 1; overflow-y: auto; }
 .dataTable__head { position: sticky; top: 0; z-index: 2; }
 
 .dataTable--transaction .dataTable__headCell--date,
