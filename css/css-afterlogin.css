@@ -862,7 +862,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 .pkgSelect { position: relative; }
 #pkgOpt { width: 100%; padding: var(--padding);border-radius: var(--radius-md); background: var(--secondary-color); display: flex; justify-content: space-between; align-items: center; border: 0; color: var(--font-color); -webkit-appearance: none; /* For Chrome, Safari, etc. */ -moz-appearance: none; /* For Firefox */ appearance: none; }
 
-.pkgSelect__btn { width: 100%; padding: var(--padding);border-radius: var(--radius-md); background: var(--secondary-color); display: flex; justify-content: space-between; align-items: center; border: 0; color: var(--font-color); }
+.pkgSelect__btn { width: 100%; padding: var(--padding);border-radius: var(--radius-md); background: var(--primary-color); display: flex; justify-content: space-between; align-items: center; border: 0; color: var(--font-color); }
 .pkgSelect__menu { position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: 50; border-radius: var(--radius-md); overflow: hidden; background: var(--bg-color); border: 0; }
 .pkgSelect__item { padding: var(--padding);cursor: pointer; }
     .pkgSelect__item:hover { background: rgba(255,255,255,.08); }
@@ -1017,10 +1017,10 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
        Responsive
     ========================= */
 @media(max-width:1023.98px) {
-    .playcard[data-no-nav] .playcard__body { /*display: grid; grid-template-columns: 2fr 3fr;*/ display: flex; }
+    .playcard[data-no-nav] .playcard__body { /*display: grid; grid-template-columns: 2fr 3fr;*/ display: flex; border-color:var(--secondary-color);}
     .playcard[data-no-nav] .playcard-content { flex-direction: row; flex-wrap: wrap; }
     .playcard[data-no-nav] .playcard__media { aspect-ratio: auto; }
-    .playcard[data-no-nav] .playcard__header { margin-left: calc(var(--space-2) * -1); margin-right: calc(var(--space-2) * -1); font-size: var(--text-sm); flex: 1 1 100%; }
+    .playcard[data-no-nav] .playcard__header { margin-left: calc(var(--space-2) * -1); margin-right: calc(var(--space-2) * -1); font-size: var(--text-sm); flex: 1 1 100%; background:var(--secondary-color);}
     .playcard__media { display: none; }
     .playcard[data-no-nav] .playcard__stats { flex: 1 1 100%; }
     .playcard[data-no-nav] .playcard__methods { flex: 1 1 50%; }
@@ -1146,8 +1146,8 @@ ard { flex: 0 0 var(--card-w); width: var(--card-w); }
 /* ===== RIGHT ===== */
 .rightPanel { min-width: 0; gap: var(--space-3); display: flex; flex-direction: column; height: 100%; }
 
-.topTabs { display: flex; gap: var(--space-1); overflow-x: auto; white-space: nowrap; }
-.tab { border-top-left-radius: var(--radius-md); border-top-right-radius: var(--radius-md); cursor: pointer; padding: var(--space-2) var(--space-4); display: flex; align-items: center; gap: var(--space-1); }
+.DepositTopTabs.topTabs { display: flex; gap: var(--space-1); overflow-x: auto; white-space: nowrap; }
+.DepositTopTabs .tab { border-top-left-radius: var(--radius-md); border-top-right-radius: var(--radius-md); cursor: pointer; padding: var(--space-2) var(--space-4); display: flex; align-items: center; gap: var(--space-1); }
     .tab.is-active { background: var(--secondary-color); }
     .tab.is-disabled { cursor: not-allowed }
         .tab.is-disabled .content { opacity: 0.3; }
@@ -1421,9 +1421,9 @@ body.qrViewer-open { overflow: hidden; }
 /*----------------------------------WITHDRAWAL*/
 [data-section="withdraw"] { }
 
-.topTabs { border-radius: var(--radius-pill); background: var(--bg-color); display: flex; align-items: center; gap: var(--gap); margin: calc(var(--space-2) * -1) calc(var(--space-3) * -1); padding: 0 var(--space-3); }
-    .topTabs .tab { color: var(--font-color); border-radius: var(--radius-pill); border: 0; background: var(--bg-color); padding-left: var(--space-5); padding-right: var(--space-5); }
-        .topTabs .tab.is-active { background: var(--accent-color); }
+.withdrawTopTabs.topTabs { border-radius: var(--radius-pill); background: var(--bg-color); display: flex; align-items: center; gap: var(--gap); margin: calc(var(--space-2) * -1) calc(var(--space-3) * -1); padding: 0 var(--space-3); }
+    .withdrawTopTabs.topTabs .tab { color: var(--font-color); border-radius: var(--radius-pill); border: 0; background: var(--bg-color); padding-left: var(--space-5); padding-right: var(--space-5); }
+        .withdrawTopTabs.topTabs .tab.is-active { background: var(--accent-color); }
 
 .leftPanel { display: flex; flex-direction: column; gap: var(--space-3); }
 
