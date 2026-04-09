@@ -978,6 +978,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 
 [data-ico="menu"] { --ico: url('../assets/icon/menu.svg'); }
 [data-ico="home"] { --ico: url('../assets/icon/home.svg'); }
+[data-ico="more"] { --ico: url('../assets/icon/more.svg'); }
 /* -------- cats row -------- */
 .playcard__cats { display: flex; flex-wrap: wrap; gap: var(--space-1); justify-content: center; margin-top: auto; /* height: 100%; */ }
 .catBtn { appearance: none; border: var(--border-width) solid rgba(255,255,255,0); background: rgba(255,255,255,.03); color: var(--font-color); border-radius: var(--radius-sm); display: inline-flex; align-items: center; justify-content: center; /* gap: var(--gap); */ padding: var(--space-1) var(--space-2); cursor: pointer; border-radius: 999px; }
@@ -1147,7 +1148,7 @@ ard { flex: 0 0 var(--card-w); width: var(--card-w); }
 .rightPanel { min-width: 0; gap: var(--space-3); display: flex; flex-direction: column; height: 100%; }
 
 .DepositTopTabs.topTabs { display: flex; gap: var(--space-1); overflow-x: auto; white-space: nowrap; }
-.DepositTopTabs .tab { border-top-left-radius: var(--radius-md); border-top-right-radius: var(--radius-md); cursor: pointer; padding: var(--space-2) var(--space-4); display: flex; align-items: center; gap: var(--space-1); }
+.tab { border-top-left-radius: var(--radius-md); border-top-right-radius: var(--radius-md); cursor: pointer; padding: var(--space-2) var(--space-4); display: flex; align-items: center; gap: var(--space-1); }
     .tab.is-active { background: var(--secondary-color); }
     .tab.is-disabled { cursor: not-allowed }
         .tab.is-disabled .content { opacity: 0.3; }
@@ -1435,7 +1436,7 @@ body.qrViewer-open { overflow: hidden; }
 .withdrawCard__icon { width: var(--icn-w24); }
 .withdrawCard.is-active .withdrawCard__main, .withdrawCard.is-active .withdrawCard--add, .withdrawCard.is-active .withdrawCard--empty { border-color: var(--primary-color); }
 .withdrawCard__icon img { width: 100%; border-radius: var(--radius-pill); }
-.withdrawCard__body { }
+.withdrawCard__body { margin-left: 0; margin-right: auto; }
     .withdrawCard__body span { display: block; text-align: left; }
 
 
@@ -1538,7 +1539,7 @@ body.qrViewer-open { overflow: hidden; }
 
 .g2pModal__iconBtn { background: var(--secondary-color); color: var(--font-color); display: flex; flex-direction: column; justify-content: center; align-items: center; border: 0; }
 
-.withdrawCard--picker { width: 100%; padding: var(--padding);border-radius: var(--radius-md); background: var(--bg-color); display: flex; align-items: center; border: var(--border-width) solid transparent; color: var(--font-color); gap: var(--gap); }
+.withdrawCard--picker { width: 100%; padding: var(--padding); border-radius: var(--radius-md); background: var(--bg-color); display: flex; align-items: center; border: var(--border-width) solid transparent; color: var(--font-color); gap: var(--gap); justify-content: space-between; }
     .withdrawCard--picker.is-active { border-color: var(--primary-color); }
 .withdrawCard__icon { }
 
