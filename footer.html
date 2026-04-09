@@ -50,10 +50,7 @@
     :root { --mobile-bottom-nav-h: 72px; --mobile-bottom-nav-side-gap: 12px; --mobile-bottom-nav-bg: #18203d; --mobile-bottom-nav-border: rgba(255, 255, 255, 0.08); --mobile-bottom-nav-shadow: 0 -8px 24px rgba(0, 0, 0, 0.28); --mobile-bottom-nav-icon-color: rgba(255, 255, 255, 0.68); --mobile-bottom-nav-label-color: rgba(255, 255, 255, 0.76); --mobile-bottom-nav-active-text: #ffffff; --mobile-bottom-nav-active-icon: #ffffff; --mobile-bottom-nav-active-bg-start: #7d2cff; --mobile-bottom-nav-active-bg-end: #c532ff; --mobile-bottom-nav-active-glow: rgba(150, 70, 255, 0.22); --mobile-bottom-nav-main-size: 52px; --mobile-bottom-nav-main-offset: 14px; }
 
     /* 页面内容预留底部空间 */
-    .hasMobileBottomNav,
-    .noticeLayout,
-    .main,
-    .pageMain { padding-bottom: calc( var(--mobile-bottom-nav-h) + env(safe-area-inset-bottom) + var(--space-5) ); }
+
 
     .mobileBottomNav { position: fixed; left: var(--mobile-bottom-nav-side-gap); right: var(--mobile-bottom-nav-side-gap); bottom: 0; z-index: 100; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: center; min-height: calc(var(--mobile-bottom-nav-h) + env(safe-area-inset-bottom));/* padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); */background: linear-gradient( 180deg, color-mix(in srgb, var(--mobile-bottom-nav-bg) 88%, #24315c) 0%, var(--mobile-bottom-nav-bg) 100% ); border: 1px solid var(--mobile-bottom-nav-border); border-bottom: 0; border-radius: 20px 20px 0 0; box-shadow: var(--mobile-bottom-nav-shadow); overflow: visible; }
 
@@ -116,6 +113,12 @@
 
     @media (min-width: 768px) {
         .mobileBottomNav { display: none; }
+    }
+    @media (max-width:1023.89px){
+        .hasMobileBottomNav,
+        .noticeLayout,
+        .main,
+        .pageMain { padding-bottom: calc( var(--mobile-bottom-nav-h) + env(safe-area-inset-bottom) + var(--space-5) ); }
     }
     .mobileBottomNav__item .p--methodBtn__ico { width: var(--icn-w30); height: var(--icn-w30); }
 </style>
