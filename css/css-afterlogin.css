@@ -1671,7 +1671,7 @@ body.qrViewer-open { overflow: hidden; }
     .betCategoryBtn.is-active { background: var(--primary-color); }
 
 .dataTable--betHistory { }
-.dataTable--betHistory { width: 100%; min-width: 1200px; table-layout: fixed; }
+.dataTable--betHistory { width: 100%; min-width:1000px; table-layout: fixed; }
 
     .dataTable--betHistory .dataTable__headCell,
     .dataTable--betHistory .dataTable__cell,
