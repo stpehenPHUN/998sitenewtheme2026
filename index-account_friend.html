@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html data-theme="dark">
+<head>
+    <!--<script src="JS/common.js"></script>
+    <script src="JS/jquery.lastest.min.js"></script>
+    <script src="JS/jQuery.base64.js"></script>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title></title>
+    <link href="js/bootstrap-5.3.8/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/bootstrap-5.3.8/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="js/swiper-11.2.10/swiper-bundle.min.css" />
+    <script src="js/swiper-11.2.10/swiper-bundle.min.js"></script>
+    <link href="css/css-afterlogin.css" rel="stylesheet" />
+    <style>
+        :root { --bg-color: #1b2033; --font-color: #fff; --primary-color: #c084fc; --secondary-color: #2b3248; --accent-color: #9002ff; }
+        /*:root { --bg-color: #1A1B26; --font-color: #A9B1D6; --primary-color: #7AA2F7; --secondary-color: #24283B; --accent-color: #F7768E; }*/
+
+    </style>
+    <script src="js/import.js"></script>
+    <script src="js/jsQR.js"></script>
+    <script src="js/script-withdrawal.js"></script>
+</head>
+
+<body style=" ">
+
+    <div id="layout">
+        <div class="download_import" data-include="downloadtop.html"></div>
+        <aside class="sidebar sidebar--main">
+            <!-- rail + main menu -->
+            <div class="sidebar--wrapper" data-include="sidebar.html" data-lang="en"></div>
+        </aside>
+        <div class="overlay" data-action="close-all" aria-hidden="true"></div>
+        <!-- Main -->
+        <main id="main" class="main">
+            <!-- mobile 你还可以放一个按钮来开 promo（右侧） -->
+            <!-- main content -->
+            <header class="header" data-include="header.html" data-lang="en"></header>
+
+            <div class="pagebar" role="banner">
+                <div class="accountTopTabs topTabs" role="tablist" aria-label="Notification Tabs">
+                    <a href="index-account.html" type="button" class="tab js-top-tab" data-tab="announcement">
+                        <span class="p--methodBtn__ico" aria-hidden="true" data-ico="notification"></span>
+                        Account
+                    </a>
+                    <a href="index-account_daily.html" type="button" class="tab js-top-tab" data-tab="message">
+                        <span class="p--methodBtn__ico" aria-hidden="true" data-ico="mail"></span>
+                        Daily Check-in
+                    </a>
+                    <a href="index-account_friend.html" type="button" class="tab js-top-tab" data-tab="message">
+                        <span class="p--methodBtn__ico" aria-hidden="true" data-ico="mail"></span>
+                        Invite Friend
+                    </a>
+                    <a href="index-account_lv.html" type="button" class="tab js-top-tab" data-tab="message">
+                        <span class="p--methodBtn__ico" aria-hidden="true" data-ico="mail"></span>
+                        Leveling Program
+                    </a>
+                    <a href="index-account_friend.html" type="button" class="tab is-active js-top-tab" data-tab="message">
+                        <span class="p--methodBtn__ico" aria-hidden="true" data-ico="mail"></span>
+                        Friend Feature
+                    </a>
+                    <a href="index-account_PK.html" type="button" class="tab js-top-tab" data-tab="message">
+                        <span class="p--methodBtn__ico" aria-hidden="true" data-ico="mail"></span>
+                        PK
+                    </a>
+                </div>
+            </div>
+            <style>
+            </style>
+
+            <div class="pkgSection panel">
+                <section class="iframe__container">
+
+
+                    <div class="account-inner ">
+                        <!--<img src="assets/account/sample_daily.png" style="width:100%;" />-->
+                        <iframe src="assets/account/sample_friend.png"></iframe>
+                    </div>
+
+                </section>
+            </div>
+
+            <footer class="footer" data-include="footer.html"></footer>
+
+
+            <!--  notice sheet -->
+            <div id="noticeSheet" class="appSheet noticeSheet" aria-hidden="true">
+                <div class="appSheet__backdrop" data-notice-close></div>
+
+                <div class="appSheet__panel noticeSheet__panel" role="dialog" aria-modal="true" aria-labelledby="noticeSheetTitle">
+                    <div class="appSheet__header noticeSheet__header">
+                        <button class="appSheet__textBtn" type="button" data-notice-close>Close</button>
+                        <div class="appSheet__title" id="noticeSheetTitle">Announcement</div>
+                    </div>
+
+                    <div class="noticeSheet__body announcementSheet">
+                        <div class="messagePanel__title noticeSheet__itemTitle" id="noticeSheetItemTitle"></div>
+                        <div class="messagePanel__date noticeSheet__itemDate" id="noticeSheetItemDate"></div>
+                        <div class="messagePanel__body noticeSheet__itemContent" id="noticeSheetItemContent"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generic Select Bottom Sheet (reusable) -->
+            <div class="withdrawSheet appSheet" id="withdrawSheet" hidden>
+                <div class="withdrawSheet__backdrop appSheet__backdrop" data-action="close-sheet"></div>
+                <div class="withdrawSheet__panel appSheet__panel">
+                    <div class="withdrawSheet__handle"></div>
+                    <div class="withdrawSheet__body" id="withdrawSheetBody"></div>
+                </div>
+            </div>
+            <div id="pkgSheet" class="appSheet" aria-hidden="true">
+                <div class="appSheet__backdrop" data-sheet-close></div>
+
+                <div class="appSheet__panel">
+                    <div class="appSheet__header">
+                        <button class="appSheet__textBtn" type="button" data-sheet-close>Close</button>
+                        <div class="appSheet__title" data-sheet-title>Select</div>
+                        <button class="appSheet__textBtn appSheet__primary" type="button" data-sheet-done>Done</button>
+                    </div>
+
+                    <div class="wheel" data-sheet-wheel tabindex="0" aria-label="Picker">
+                        <div class="wheel__scroller" data-sheet-list></div>
+                        <div class="wheel__fade"></div>
+                        <div class="wheel__window"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QR VIEWER -->
+            <div id="qrViewer" class="qrViewer" hidden aria-hidden="true">
+                <div class="qrViewer__backdrop" data-qr-close></div>
+
+                <div class="qrViewer__panel" role="dialog" aria-modal="true" aria-labelledby="qrViewerTitle">
+                    <button type="button" class="qrViewer__close" data-qr-close aria-label="Close QR Viewer">
+                        ×
+                    </button>
+
+                    <div class="qrViewer__head">
+                        <h3 id="qrViewerTitle" class="qrViewer__title">Scan QR code</h3>
+                        <p class="qrViewer__sub">Scan QR and Deposit</p>
+                    </div>
+
+                    <div class="qrViewer__body">
+                        <img id="qrViewerImg" class="qrViewer__img" src="" alt="QR Code">
+                    </div>
+
+                    <div class="qrViewer__actions">
+                        <button type="button" class="qrViewer__action">
+                            <span class="qrViewer__actionIcon">↗</span>
+                            <span class="qrViewer__actionText">Share</span>
+                        </button>
+
+                        <button type="button" class="qrViewer__action">
+                            <span class="qrViewer__actionIcon">⬇</span>
+                            <span class="qrViewer__actionText">Save</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="g2pModal" id="g2pDownloadModal" hidden>
+                <div class="g2pModal__backdrop" data-action="close-g2p-download"></div>
+
+                <div class="g2pModal__dialog" role="dialog" aria-modal="true" aria-labelledby="g2pModalTitle">
+                    <button type="button" class="g2pModal__close" data-action="close-g2p-download" aria-label="Close">×</button>
+
+                    <div class="g2pModal__brand">
+                        <img class="g2pModal__logo" src="image/logo_icon-g2point.png" alt="G2Point">
+                        <div class="g2pModal__title" id="g2pModalTitle">G2Point</div>
+                    </div>
+
+                    <div class="g2pModal__qrWrap">
+                        <img id="g2pModalQr" class="g2pModal__qr" src="" alt="G2Point download QR">
+                    </div>
+
+                    <div class="g2pModal__hint">Scan here to download</div>
+
+                    <div class="g2pModal__actions">
+                        <button type="button" class="g2pModal__iconBtn">
+                            <span class="qrViewer__actionIcon">
+                                <svg class="icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><title>share</title><path d="M385 464Q357 464 339 445 320 426 320 399 320 390 321 388L171 303Q154 320 129 320 102 320 83 301 64 282 64 255 64 229 83 211 102 192 129 192 154 192 171 209L321 125Q320 122 320 111 320 85 339 67 357 48 384 48 410 48 429 67 447 85 448 111 448 138 429 157 410 176 384 176 361 176 341 159L191 244Q192 246 192 255 192 265 191 268L341 353Q361 336 385 336 415 336 431 355 447 374 447 400 447 426 431 445 415 464 385 464Z" /></svg>
+                            </span>
+                            <span class="qrViewer__actionText">Share</span>
+                        </button>
+                        <button type="button" class="g2pModal__iconBtn">
+                            <span class="qrViewer__actionIcon">
+                                <svg viewBox="0 0 14 14" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
+                                    <path d="M8 6.641l1.121-1.12a1 1 0 0 1 1.415 1.413L7.707 9.763a.997.997 0 0 1-1.414 0L3.464 6.934A1 1 0 1 1 4.88 5.52L6 6.641V1a1 1 0 1 1 2 0v5.641zM1 12h12a1 1 0 0 1 0 2H1a1 1 0 0 1 0-2z"></path>
+                                </svg>
+                            </span>
+                            <span class="qrViewer__actionText">Save</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer" data-include="footer.html"></footer>
+        </main>
+    </div>
+    <script src="js/script-page.js"></script>
+
+</body>
+</html>
