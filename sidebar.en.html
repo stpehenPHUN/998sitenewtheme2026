@@ -270,45 +270,64 @@
         </div>
     </section>
     <nav class="sidebar-nav sidebar-nav--product" aria-label="prod navigation">
-        <ul class="prod-nav nav--left border-top-1">
-            <li>
-                <a href="#">
-                    <span class="nav-icon"><img src="image/menu-daily.png" /></span><span class="span-toggle">Daily</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="nav-icon"><img src="image/menu-friend.png" /></span><span class="span-toggle">Friend</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="nav-icon"><img src="image/menu-pk.png" /></span><span class="span-toggle">PK</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="nav-icon"><img src="image/menu-tressure.png" /></span><span class="span-toggle">Treasure</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="nav-icon"><img src="image/menu-luckydraw.png" /></span><span class="span-toggle">Lucky Draw</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="nav-icon"><img src="image/menu-redeem.png" /></span><span class="span-toggle">Redeem</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="nav-icon"><img src="image/menu-download.png" /></span><span class="span-toggle">Downloads</span>
-                </a>
-            </li>
-        </ul>
+        <div class="mainnav__container">
+            <style>
+                .prod-top:after { background-image: url('image/menu_img-bg.png'); }
+            </style>
+
+            <div class="prod-top">
+                <div class="prodtop-text">
+                    <b>Features</b>
+                    <p>Join PK Program</p>
+                </div>
+                <div class="prodtop-img">
+                    <img src="image/menu_img-feature.png" />
+                </div>
+            </div>
+            <ul class="prod-nav nav--left">
+                <li>
+                    <a href="index-account_daily.html">
+                        <span class="nav-icon"><img src="image/menu-daily.png" /></span><span class="span-toggle">Daily</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="index-account_friend.html">
+                        <span class="nav-icon"><img src="image/menu-friend.png" /></span><span class="span-toggle">Friend</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="index-account_pk.html">
+                        <span class="nav-icon"><img src="image/menu-pk.png" /></span><span class="span-toggle">PK</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="nav-icon"><img src="image/menu-tressure.png" /></span><span class="span-toggle">Treasure</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="nav-icon"><img src="image/menu-luckydraw.png" /></span><span class="span-toggle">Lucky Draw</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="nav-icon"><img src="image/menu-redeem.png" /></span><span class="span-toggle">Redeem</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="nav-icon"><img src="image/menu-download.png" /></span><span class="span-toggle">Downloads</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="btn-close-menu">
+            <span class="p--methodBtn__ico" aria-hidden="true" data-ico="close"></span>
+        </div>
     </nav>
     <nav aria-label="main navigation" class="sidebar-nav sidebar-nav--main">
+
         <ul class="menu-nav nav--left border-top-1">
             <li>
                 <a href="#">
@@ -361,6 +380,7 @@
                 </a>
             </li>
         </ul>
+
     </nav>
 
 </div>
