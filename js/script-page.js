@@ -519,7 +519,7 @@
         nav.dataset.prodInit = 'true';
 
         const body = document.body;
-        const panel = nav.querySelector('.prod-nav');
+        const panel = nav.querySelector('.mainnav__container');
         if (!panel) return;
 
         const ANIM_CLASS = 'nav-animating';
