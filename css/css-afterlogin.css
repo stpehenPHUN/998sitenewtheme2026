@@ -1691,8 +1691,9 @@ body.qrViewer-open { overflow: hidden; }
 .betCategoryBtn { background: var(--secondary-color); border: 0; padding: var(--space-2); border-radius: var(--radius-pill); position: relative; width: var(--icn-w40); height: var(--icn-w40); }
     .betCategoryBtn.is-active { background: var(--primary-color); }
 
+.dataTableWrap { width: 100%; min-width: 800px; table-layout: fixed; }
 .dataTable--betHistory { }
-.dataTable--betHistory { width: 100%; min-width:1000px; table-layout: fixed; }
+.dataTable--betHistory { width: 100%; min-width:800px; table-layout: fixed; }
 
     .dataTable--betHistory .dataTable__headCell,
     .dataTable--betHistory .dataTable__cell,
