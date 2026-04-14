@@ -1000,6 +1000,16 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 
 [data-ico="close"] { --ico: url('../assets/icon/close.svg'); }
 
+[data-ico="treasure"] { --ico: url('../assets/icon/treasure.svg'); }
+[data-ico="history"] { --ico: url('../assets/icon/history.svg'); }
+[data-ico="gift"] { --ico: url('../assets/icon/gift.svg'); }
+
+[data-ico="account"] { --ico: url('../assets/icon/person.svg'); }
+[data-ico="daily"] { --ico: url('../assets/icon/correct.svg'); }
+[data-ico="level"] { --ico: url('../assets/icon/diamond.svg'); }
+[data-ico="battle"] { --ico: url('../assets/icon/boxing.svg'); }
+[data-ico="friend"] { --ico: url('../assets/icon/people.svg'); }
+
 /* -------- cats row -------- */
 .playcard__cats { display: flex; flex-wrap: wrap; gap: var(--space-1); justify-content: center; margin-top: auto; /* height: 100%; */ }
 .catBtn { appearance: none; border: var(--border-width) solid rgba(255,255,255,0); background: rgba(255,255,255,.03); color: var(--font-color); border-radius: var(--radius-sm); display: inline-flex; align-items: center; justify-content: center; /* gap: var(--gap); */ padding: var(--space-1) var(--space-2); cursor: pointer; border-radius: 999px; }
