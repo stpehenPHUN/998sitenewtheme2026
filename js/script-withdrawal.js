@@ -1127,7 +1127,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="withdrawCard__title">${esc(title)}</span>
                 <span class="withdrawCard__meta">${esc(meta)}</span>
             </span>
-            ${trailingIcon ? `<span class="p--methodBtn__ico" data-ico="more"></span>` : ''}
+            ${trailingIcon ? `<span class="p--methodBtn__ico" data-ico="arrowt_down"></span>` : ''}
         </button>`;
     }
 
