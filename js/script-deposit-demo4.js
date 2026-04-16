@@ -1558,9 +1558,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 sumRolloverEl.innerHTML = `
   <span class="rolloverFormula__main">
-    Rollover Requirement : 
+    Rollover Requirement : <br>
     (Deposit ${fmtMoneySep(dep, 2)}) + 
-    (Bonus ${fmtMoneySep(bon, 2)} + 
+    (Bonus ${fmtMoneySep(bon, 2)}) + 
     (Max Bonus ${fmtMoneySep(maxBon, 2)}) 
   
   </span>
@@ -2030,7 +2030,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <span class="pf-label">
         ${current ? getPayItemHTML(current, isBankTransfer, channel) : `<span class="payOpt__title">Select</span>`}
     </span>
-    <span aria-hidden="true">▾</span>
+   <span class="p--methodBtn__ico" aria-hidden="true" data-ico="arrowt_down"></span>
 `;
                 payFromGrid.appendChild(pickBtn);
 
