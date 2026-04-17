@@ -68,18 +68,147 @@
             <style>
             </style>
 
-            <div class="pkgSection panel">
-                <section class="iframe__container">
+            <div class="pkgSection panel ">
+                <div class="accountGrid panel-inner">
+
+                    <!-- PROFILE -->
+                    <section class="accountCard">
+                        <h3 class="accountCard__title card__title">Profile</h3>
+                        <!-- header -->
+                        <div class="profileHeader">
+                            <div class="profileAvatar">YQ</div>
+                            <div class="">
+                                <div class="profileName">YOU QING</div>
+                                <div class="profileUsername">@a111w2gdwon2</div>
+                            </div>
+                        </div>
+
+                        <!-- balance -->
+                        <div class="balanceGrid">
+                            <div class="balanceCard bubbleCard bubbleCard--success">
+                                <span class="accountInfoItem__label">Available Balance</span>
+                                <span class="accountInfoItem__value is-success value--strong">RM 0.00</span>
+                            </div>
+
+                            <div class="balanceCard balanceCard--danger bubbleCard bubbleCard--warning">
+                                <span class="accountInfoItem__label">Outstanding</span>
+                                <span class="accountInfoItem__value is-warning value--strong">RM 0.00</span>
+                            </div>
+                        </div>
+
+                        <!-- info -->
+                        <div class="accountInfoGrid">
+
+                            <div class="infoItem bubbleCard">
+                                <span class="accountInfoItem__label">Date of Birth</span>
+                                <span class="accountInfoItem__value">2018-01-01</span>
+                            </div>
+
+                            <div class="infoItem bubbleCard">
+                                <span class="accountInfoItem__label">Currency</span>
+                                <span class="accountInfoItem__value">MYR</span>
+                            </div>
+
+                            <div class="infoItem bubbleCard">
+                                <span class="accountInfoItem__label">Gender</span>
+                                <span class="accountInfoItem__value">Male</span>
+                            </div>
+
+                            <div class="infoItem bubbleCard">
+                                <span class="accountInfoItem__label">Bank</span>
+                                <span class="accountInfoItem__value">AFFIN BANK - 1111222233334444</span>
+                            </div>
+
+                            <div class="infoItem bubbleCard">
+                                <span class="accountInfoItem__label">Email</span>
+                                <span class="accountInfoItem__value">--</span>
+                            </div>
+
+                            <div class="infoItem bubbleCard">
+                                <span class="accountInfoItem__label">Mobile</span>
+                                <span class="accountInfoItem__value">01********</span>
+                            </div>
+
+                            <div class="infoItem bubbleCard">
+                                <span class="accountInfoItem__label">Time Zone</span>
+                                <span class="accountInfoItem__value">+08:00</span>
+                            </div>
+
+                        </div>
+
+                    </section>
 
 
-                    <div class="account-inner ">
-                        <!--<img src="assets/account/sample_account.png" style="width:100%;" />-->
-                        <iframe src="assets/account/sample_account.png"></iframe>
-                    </div>
+                    <!-- PASSWORD -->
+                    <section class="accountCard">
+                        <h3 class="accountCard__title card__title">Password</h3>
 
-                </section>
+                        <div class="formGroup">
+                            <label class="formLabel">Current Password</label>
+                            <input type="password" class="formInput">
+                        </div>
+
+                        <div class="formGroup">
+                            <label class="formLabel">New Password</label>
+                            <input type="password" class="formInput">
+                        </div>
+
+                        <div class="formGroup">
+                            <label class="formLabel">Confirm</label>
+                            <input type="password" class="formInput">
+                        </div>
+
+                        <div class="formGroup">
+                            <label class="formLabel">Password Hint</label>
+                            <input type="text" class="formInput">
+                        </div>
+
+                        <button class="submit">Change Password</button>
+
+                        <div class="passwordPolicy infoBlock">
+                            <p>Password Policy</p>
+                            <ul>
+                                <li>8–15 characters</li>
+                                <li>Letters + numbers + special characters</li>
+                            </ul>
+                        </div>
+
+                    </section>
+
+                </div>
             </div>
+            <style>
+               
+            </style>
+            <!--<style>
+                .accountCard { border-radius: var(--radius-sm); background: var(--secondary-color); display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-3); }
 
+               
+
+                /* ===== profile info ===== */
+                .accountInfoGrid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+
+                .accountInfoItem { /*border-radius: var(--radius-md); *//*background: var(--bg-color);*//*border: 1px solid var(--border-from-font-16)*/; display: flex; flex-direction: column; gap: var(--gap); }
+
+                .accountInfoItem__label { font-size: var(--text-xs); color: var(--color-font-50); }
+
+                .accountInfoItem__value {  }
+                .input-box { border-radius: var(--radius-md); background: var(--bg-color); border: 1px solid var(--border-from-font-16); padding: var(--padding); }
+
+                /* ===== form ===== */
+                .formGroup { display: flex; flex-direction: column; gap: 6px; margin-bottom: var(--space-3); }
+
+                    .formGroup label { font-size: var(--text-xs); color: var(--color-font-50); }
+
+                .formInput {  }
+
+                    .formInput:focus {  }
+                .passwordPolicy{font-size:var(--text-sm);}
+
+                @media (min-width:1024px) { .accountGrid { display: grid; grid-template-columns: 2fr 1fr; }
+                    .accountCard { padding: var(--space-5); }
+                }
+            </style>-->
             <footer class="footer" data-include="footer.html"></footer>
 
 
