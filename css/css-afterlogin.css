@@ -2118,8 +2118,8 @@ body.is-lock { overflow: hidden; touch-action: none; }
 
 /******************** account */
 
-.accountTopTabs { display: flex; gap: var(--gap); overflow: auto; width: 100%; }
-    .accountTopTabs .tab { border-radius: var(--radius-pill); border: var(--border-width) solid var(--secondary-color); }
+.accountTopTabs { border-radius: var(--radius-pill); background: var(--bg-color); display: flex; align-items: center; gap: var(--gap); margin: calc(var(--space-2) * -1) calc(var(--space-3) * -1); padding: 0 var(--space-3); }
+.accountTopTabs .tab { border-radius: var(--radius-pill); border: var(--border-width) solid var(--secondary-color); }
     .accountTopTabs .tab { position: relative; white-space: nowrap; }
         .accountTopTabs .tab:before { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; opacity: 0; pointer-events: none; background: var(--primary-color); transition: opacity var(--duration-normal) var(--ease-move); }
         .accountTopTabs .tab.is-active { border-color: var(--border-from-primary-70); background: linear-gradient( 180deg, var(--bg-soft-deep) 0%, var(--bg-deep) 100% ); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 0 0 1px rgba(193, 106, 255, 0.18), 0 0 24px rgba(169, 66, 255, 0.28), 0 10px 22px rgba(0, 0, 0, 0.24); }
@@ -2131,14 +2131,16 @@ iframe { height: clamp(200px, calc(100dvh - 200px), 100dvh); width: 100%; }
 @media (max-width:768px) {
     ifram { height: clamp(200px, calc(100dvh - 280px), 100dvh); }
 }
-
+@media (min-width: 1024px) {
+    .accountTopTabs.topTabs { padding: 0; }
+}
 
 /*----------------------------- ACCOUNT */
 /* layout */
 .accountGrid { }
 
 /* card */
-.accountCard { border-radius: var(--radius-sm); background: var(--secondary-color); display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-3); }
+.panelCard { border-radius: var(--radius-lg); background: var(--secondary-color); display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-3); }
 
 /* profile header */
 .profileHeader { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--border-from-font-10); }
@@ -2205,4 +2207,22 @@ iframe { height: clamp(200px, calc(100dvh - 200px), 100dvh); width: 100%; }
 @media (min-width:1024px) {
     .accountGrid { display: grid; grid-template-columns: 5fr 3fr; }
     .accountCard { padding: var(--space-5); }
+}
+
+
+/***** invite friend */
+
+.inviteCard__desc { margin-top: var(--space-3); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--text-sm); color: var(--color-font-70); }
+
+
+.btn-copy { padding: var(--padding); border-radius: var(--radius-pill); background: linear-gradient(to left, var(--accent-color), var(--primary-color)); color: var(--font-color); font-size: var(--text-sm); border: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    .btn-copy:hover { transform: translateY(-1px); }
+
+.inviteAside { display: flex; flex-direction: column; gap: var(--gap); }
+.inviteStats { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid var(--border-from-font-10); }
+.inviteStat { }
+
+
+@media (min-width:1024px) {
+    .inviteLayout { display: grid; grid-template-columns: 5fr 3fr; }
 }
