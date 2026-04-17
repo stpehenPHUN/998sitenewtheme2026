@@ -673,12 +673,12 @@
         const box = document.querySelector("#togglesettings");
         if (!box) return;
 
-        const isOpen = box.classList.contains("open");
-        box.classList.toggle("open", !isOpen);
+        const willOpen = !box.classList.contains("open");
+        box.classList.toggle("open", willOpen);
 
-        btn.classList.toggle("btn-setting__open", isOpen);
-        btn.classList.toggle("btn-setting__close", !isOpen);
-        btn.setAttribute("aria-expanded", String(!isOpen));
+        btn.classList.toggle("btn-setting__open", willOpen);
+        btn.classList.toggle("btn-setting__close", !willOpen);
+        btn.setAttribute("aria-expanded", String(willOpen));
     });
 
     /* =========================
