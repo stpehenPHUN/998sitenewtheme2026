@@ -2118,7 +2118,7 @@ body.is-lock { overflow: hidden; touch-action: none; }
 
 /******************** account */
 
-.accountTopTabs { border-radius: var(--radius-pill); background: var(--bg-color); display: flex; align-items: center; gap: var(--gap); margin: calc(var(--space-2) * -1) calc(var(--space-3) * -1); padding: 0 var(--space-3); }
+.accountTopTabs { display: flex; gap: var(--gap); overflow: auto; width: 100%; }
 .accountTopTabs .tab { border-radius: var(--radius-pill); border: var(--border-width) solid var(--secondary-color); }
     .accountTopTabs .tab { position: relative; white-space: nowrap; }
         .accountTopTabs .tab:before { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; opacity: 0; pointer-events: none; background: var(--primary-color); transition: opacity var(--duration-normal) var(--ease-move); }
