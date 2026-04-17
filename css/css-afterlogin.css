@@ -97,6 +97,7 @@ a { color: var(--font-color); text-decoration: none; }
 [data-ico="badge"] { --ico: url('../assets/icon/badge.svg'); }
 [data-ico="power"] { --ico: url('../assets/icon/power.svg'); }
 [data-ico="bell"] { --ico: url('../assets/icon/bell.svg'); }
+[data-ico="download"] { --ico: url('../assets/icon/download.svg'); }
 [data-ico="language"] { --ico: url('../assets/icon/language.svg'); }
 
 
