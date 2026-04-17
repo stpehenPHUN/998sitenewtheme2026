@@ -69,17 +69,91 @@
             </style>
 
             <div class="pkgSection panel">
-                <section class="iframe__container">
+                <div class="inviteLayout panel-inner">
+
+                    <!-- left invite main card -->
+                    <div class="bubbleCard inviteCard">
+                        <h3 class="accountCard__title card__title">Invite Friend</h3>
+
+                        <div class="inviteCard__section">
+                            <label class="formLabel">Referral Code</label>
+                            <div class="copyBox formInput">
+                                <span>T3S7</span>
+                                <button class="btn-copy">Copy</button>
+                            </div>
+                        </div>
+
+                        <div class="inviteCard__section">
+                            <label class="formLabel">Invite Link</label>
+                            <div class="copyBox formInput">
+                                <span>https://testingic.t/en/asdoijgfn1q8usdflk12308udlkjn</span>
+                                <button class="btn-copy">Copy</button>
+                            </div>
+                        </div>
+
+                        <div class="inviteCard__desc ">
+                            <p class="">
+                                Your friends will get MYR 0 with rollover x0 upon depositing a mininum of MYR 30 within 30 day(s), while you'll be rewarded MYR 6.01 with rollover x2.
+                            </p>
+                        </div>
 
 
-                    <div class="account-inner ">
-                        <!--<img src="assets/account/sample_daily.png" style="width:100%;" />-->
-                        <iframe src="assets/account/sample_invite.png"></iframe>
+                        <div class="inviteStats">
+                            <div class="bubbleCard bubbleCard--warning inviteStat">
+                                <span class="inviteStat__label">Pending Bonus</span>
+                                <span class="inviteStat__value is-warning value--strong">MYR 0.00</span>
+                            </div>
+
+                            <div class="bubbleCard bubbleCard--success inviteStat">
+                                <span class="inviteStat__label">Earned Bonus</span>
+                                <span class="inviteStat__value is-success value--strong">MYR 0.00</span>
+                            </div>
+                        </div>
                     </div>
 
-                </section>
+                    <!-- right -->
+                    <div class="inviteAside inviteTerms context-detail">
+
+                        <!-- bonus -->
+
+                        <!-- terms -->
+                            <div class="noteBox" id="noteBox" data-note="" data-note-init="true">
+                                <h5>Term &amp; Conditions</h5>
+                                <ol>
+                                    <li>
+                                      The invite friend bonus is only valid for your new registered friend throught code.
+                                    </li>
+                                    <li>
+                                        Referrer will receeive the invite friend bonus after your referee completed the despot.
+                                    </li>
+                                    <li>
+                                      Company reserives the right to remove invite friend bonus if we notice any activity that we believe is abusive and fraudulent.
+                                    </li>
+                                </ol>
+                            </div>
+
+                    </div>
+                </div>
             </div>
 
+            <style>
+                .inviteCard__desc { margin-top: var(--space-3); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--text-sm); color: var(--color-font-70); }
+
+                .inviteCard { position: relative; z-index: 2; box-shadow: 0 12px 30px color-mix(in srgb, var(--bg-color) 70%, transparent), 0 2px 6px color-mix(in srgb, var(--bg-color) 60%, transparent); }
+                .inviteCard__section { }
+
+
+                .btn-copy { padding: var(--padding); border-radius: var(--radius-pill); background: linear-gradient(to left, var(--accent-color), var(--primary-color)); color: var(--font-color); font-size: var(--text-sm); border: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+                    .btn-copy:hover { transform: translateY(-1px); }
+
+                .inviteAside { display: flex; flex-direction: column; gap: var(--gap); }
+                .inviteStats { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid var(--border-from-font-10); }
+                .inviteStat { }
+
+
+                @media (min-width:1024px) { .inviteLayout { display: grid; grid-template-columns: 5fr 3fr; }
+                }
+            </style>
             <footer class="footer" data-include="footer.html"></footer>
 
 
