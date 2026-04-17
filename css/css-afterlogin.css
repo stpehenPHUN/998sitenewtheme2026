@@ -82,6 +82,62 @@ a { color: var(--font-color); text-decoration: none; }
 
 .border-top-1 { border-top: var(--border-width) solid var(--primary-color); }
 
+/* ico */
+[data-ico] { width: var(--icn-w24); height: var(--icn-w24); display: inline-block; border-radius: 999px; background-color: currentColor; -webkit-mask: var(--ico) no-repeat center / 70% 70%; mask: var(--ico) no-repeat center / 70% 70%; box-shadow: 0 0 0 1px var(--border-from-font-16) inset; }
+
+[data-ico="arrowt_down"] { --ico: url('../assets/icon/arrow_t-down.svg'); }
+[data-ico="arrow_right"] { --ico: url('../assets/icon/arrow-right.svg'); }
+[data-ico="arrow_slide"] { --ico: url('../assets/icon/arrow-slide.svg'); }
+
+
+[data-ico="wallet"] { --ico: url('../assets/icon/pay/wallet.svg'); }
+[data-ico="deposit"] { --ico: url('../assets/icon/deposit.svg'); }
+[data-ico="withdraw"] { --ico: url('../assets/icon/withdraw.svg'); }
+
+[data-ico="badge"] { --ico: url('../assets/icon/badge.svg'); }
+[data-ico="power"] { --ico: url('../assets/icon/power.svg'); }
+[data-ico="bell"] { --ico: url('../assets/icon/bell.svg'); }
+[data-ico="language"] { --ico: url('../assets/icon/language.svg'); }
+
+
+[data-ico="bank"] { --ico: url('../assets/icon/pay/bank.svg'); }
+[data-ico="crypto"] { --ico: url('../assets/icon/pay/bitcoin.svg'); }
+[data-ico="gateway"] { --ico: url('../assets/icon/pay/wallet.svg'); }
+[data-ico="qr"] { --ico: url('../assets/icon/pay/qr.svg'); }
+[data-ico="online"] { --ico: url('../assets/icon/pay/onlinet.svg'); }
+[data-ico="ewallet"] { --ico: url('../assets/icon/pay/wallet.svg'); }
+
+[data-ico="statement"] { --ico: url('../assets/icon/statement.svg'); }
+[data-ico="mybet"] { --ico: url('../assets/icon/mybet.svg'); }
+
+[data-ico="magnifier"] { --ico: url('../assets/icon/magnifier.svg'); }
+
+[data-ico="notification"] { --ico: url('../assets/icon/notification.svg'); }
+[data-ico="mail"] { --ico: url('../assets/icon/mail.svg'); }
+[data-ico="print"] { --ico: url('../assets/icon/print.svg'); }
+[data-ico="bin"] { --ico: url('../assets/icon/bin.svg'); }
+[data-ico="plus"] { --ico: url('../assets/icon/plus.svg'); }
+[data-ico="plus_big"] { --ico: url('../assets/icon/plus2.svg'); }
+[data-ico="send"] { --ico: url('../assets/icon/send.svg'); }
+
+[data-ico="menu"] { --ico: url('../assets/icon/menu.svg'); }
+[data-ico="home"] { --ico: url('../assets/icon/home.svg'); }
+[data-ico="more"] { --ico: url('../assets/icon/more.svg'); }
+
+[data-ico="close"] { --ico: url('../assets/icon/close.svg'); }
+
+[data-ico="treasure"] { --ico: url('../assets/icon/treasure.svg'); }
+[data-ico="history"] { --ico: url('../assets/icon/history.svg'); }
+[data-ico="gift"] { --ico: url('../assets/icon/gift.svg'); }
+
+[data-ico="account"] { --ico: url('../assets/icon/person.svg'); }
+[data-ico="daily"] { --ico: url('../assets/icon/correct.svg'); }
+[data-ico="level"] { --ico: url('../assets/icon/diamond.svg'); }
+[data-ico="battle"] { --ico: url('../assets/icon/boxing.svg'); }
+[data-ico="friend"] { --ico: url('../assets/icon/people.svg'); }
+
+
+
 
 /* tooltips */
 /* ===== Tooltip base ===== */
@@ -133,6 +189,9 @@ body.sidebar-open [data-action="toggle-sidebar"] svg { transform: rotate(180deg)
 .sidebar.sidebar--main { transition: width var(--duration-normal) var(--ease-interact), transform var(--duration-normal) var(--ease-interact); will-change: width, transform; }
 
 @media (min-width:768px) {
+    .sidebar-header__actions { display: flex; gap: var(--gap); margin: 0 var(--space-4) var(--space-2); }
+
+    .sidebar-header__quick{display:none;}
     .sidebar { position: fixed; top: 0; left: 0; height: 100vh; height: 100dvh; width: var(--sidebar-w); background-color: var(--secondary-color); color: var(--font-color); z-index: 1000; transition: width var(--duration-normal) var(--ease-in), transform var(--duration-normal) var(--ease-in); max-width: var(--sidebar-w); overflow-x: visible; overflow-y: auto; }
     .sidebar--wrapper { width: var(--sidebar-w); }
     .main { margin-left: var(--sidebar-w); transition: margin-left var(--duration-normal) var(--ease-in) }
@@ -194,29 +253,75 @@ body.sidebar-animating .span-toggle { transition: none !important; }
 /* slidenav END */
 
 /* NAV List */
-.sidebar-header { margin: var(--space-3) var(--space-2) var(--space-2); }
+@media (max-width: 767.98px) {
+    .sidebar-header { margin: 0; padding: var(--padding); position: relative; display: flex; flex-direction: column; gap: var(--gap); }
 
-.sidebar-header__top { margin-bottom: var(--space-2); }
-.sidebar-header__tools { display: flex; gap: var(--space-1); position: absolute; right: var(--space-3); }
-.sidebar--main .dropdown-menu:after { right: auto; left: 40px; }
-.sidebar-header__profile { display: flex; /* align-items: center;*/ }
-    .sidebar-header__profile [aria-label="Player"] { background: transparent; border: var(--border-width) solid var(--primary-color); color: var(--primary-color); }
-    .sidebar-header__profile [aria-label="playerName"] { }
-.sidebar-header__quick { display: flex; color: var(--primary-color); align-items: center; }
-    .sidebar-header__quick > ul { /*flex-direction:column;*/ }
-    .sidebar-header__quick .pill__icon { color: var(--primary-color); margin-right: var(--space-2); }
-    .sidebar-header__quick .pill__iconBtn { padding: 0; border: 0; background-color: transparent; color: var(--primary-color); }
-.sidebar-header__profile-body { width: 100%; }
-.sidebar-header__profile .pill__iconBtn[aria-label="Player"] { margin: 0; width: var(--icn-w44); height: var(--icn-w44); padding: var(--space-2); margin-right: var(--space-2); }
-    .sidebar-header__profile .pill__iconBtn[aria-label="Player"] svg { width: 100%; height: 100%; }
+    .sidebar-header__top { margin-bottom: var(--gap-3); position: relative; display: flex; justify-content: space-between; align-items: center; }
+
+    .sidebar-header__profile { align-items: flex-start; display: flex; align-items: center; gap: var(--gap); }
 
 
-.sidebar-header__profile-top { display: flex; justify-content: space-between; align-items: center; /* margin-top: var(--space-3);*/ margin-bottom: var(--space-1); margin-right: var(--space-2); margin-left: var(--space-2); }
-.sidebar-header__tools { /* margin-top: calc(var(--space-3) * -1)*/ }
+    .sidebar-header__profile-top { }
 
-.sidebar-header__actions { display: flex; justify-content: space-between; align-items: center; gap: var(--gap); }
-    .sidebar-header__actions.btn-withdraw { margin-right: auto; }
-    .sidebar-header__actions [data-action].btn { margin-left: auto; }
+        .sidebar-header__profile-top .d-flex.align-items-center { flex-direction: column; align-items: flex-start !important; }
+
+    .sidebar-header__profile [aria-label="playerName"] { font-size: 1.1rem; font-weight: 700; letter-spacing: .02em; line-height: 1.1; }
+
+    .sidebar-header__profile-body { }
+
+    .badge.btn-level { padding: 0px; /*border: 1px solid var(--primary-color);*/ border-radius: 999px; background: transparent; }
+    .sidebar-header__top .dropdown-menu:after { left: 36px; right: 0; }
+
+    .sidebar-header__tools { /* position: absolute; */ /* top: 2px; */ right: 0; gap: 0; display: flex; align-items: center; margin-right: calc(var(--space-3) * -1); }
+
+    .settings-menu__panel { }
+
+    #btn-settingsbox { width: var(--w44); height: var(--w44); background: transparent; display: grid; place-items: center; }
+
+    .sidebar-header__quick { }
+
+    .sidebar-header__quickList { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; align-items: stretch; }
+
+        .sidebar-header__quickList > li { min-width: 0; position: relative; }
+
+            .sidebar-header__quickList > li:not(:last-child)::after { content: ""; position: absolute; top: 8px; right: calc(var(--gap)/ 2 * -1); width: 1px; height: calc(100% - 16px); background: color-mix(in srgb, var(--primary-color) 28%, transparent); }
+
+    .quickInfo { width: 100%; display: flex; align-items: center; gap: var(--gap); padding: var(--padding); background: transparent; border: 0; color: var(--primary-color); text-align: left; }
+
+    .quickInfo__icon { w }
+
+        .quickInfo__icon .icon { }
+
+    .quickInfo__body { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+
+    .quickInfo__label { font-size: var(--text-sm); line-height: 1; color: var(--color-font-70); }
+
+    .quickInfo__value { line-height: 1.1; font-weight: 600; color: var(--font-color); white-space: nowrap; }
+
+    .quickInfo--features { justify-content: flex-start; }
+
+        .quickInfo--features .quickInfo__label { color: var(--font-color); font-weight: 500; }
+
+    .quickInfo__arrow { margin-left: auto; font-size: 1.5rem; line-height: 1; color: var(--primary-color); }
+
+    .sidebar-header__actions { display: grid; grid-template-columns: 1.08fr 1fr 1fr; gap: var(--gap); align-items: stretch; margin-bottom: var(--space-3); }
+
+        .sidebar-header__actions .btn { min-width: 0; min-height: 46px; padding: 0 12px; justify-content: center; font-size: 0.9rem; }
+
+        .sidebar-header__actions .btn-deposit { background: linear-gradient(to left, var(--accent-color), var(--primary-color)) !important; color: var(--font-color) !important; border-color: transparent !important; font-weight: 700; box-shadow: 0 8px 18px color-mix(in srgb, var(--primary-color) 28%, transparent); }
+
+        .sidebar-header__actions .btn-withdraw,
+        .sidebar-header__actions .btn-bet { background: transparent !important; border: var(--border-width) solid color-mix(in srgb, var(--primary-color) 70%, transparent) !important; color: var(--primary-color) !important; }
+
+        .sidebar-header__actions .btn-bet { gap: 8px; }
+            .sidebar-header__actions .btn-bet .ttip__bubble { display: block; }
+
+            .sidebar-header__actions .btn-bet .icon { width: 16px; height: 16px; flex: 0 0 auto; }
+
+        .sidebar-header__actions [data-action="toggle-sidebar"] { position: absolute; top: 8px; right: 0; width: ; height: ; padding: 0; border-radius: 18px 0 0 18px; background: linear-gradient(to left, var(--accent-color), var(--primary-color)); border: 0 !important; display: grid; place-items: center; z-index: 3; color:var(--font-color);}
+
+            .sidebar-header__actions [data-action="toggle-sidebar"] .icon { width: 22px; height: 22px; fill: var(--font-color); }
+}
 
 .mainnav__container { margin: var(--space-4); }
 .prod-nav { margin-left: 0; padding-left: 0; display: flex; flex-wrap: wrap; padding-top: var(--space-4); /*margin: var(--space-4) var(--space-2);*/ font-size: var(--text-xs); background: var(--secondary-color); padding: var(--padding-2); border-bottom-right-radius: var(--radius-lg); border-bottom-left-radius: var(--radius-lg); }
@@ -243,7 +348,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
             .menu-nav li > a[aria-current] { background-color: var(--primary-color) !important; color: var(--white-color); }
             .menu-nav li > a img { margin-right: var(--space-2); width: var(--icn-w30); height: var(--icn-w30); }
     .menu-nav:hover li > a[aria-current] { }
-.sidebar-header__quick .btn-2 { padding-left: var(--space-2); padding-right: var(--space-2); }
+.sidebar-header__quick .btn-2 { }
 .pill__text { }
 
 @media(min-width:768px) {
@@ -293,7 +398,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 @media (max-width:1023.98px) {
     .sidebar-header__quick { }
         .sidebar-header__quick > ul { gap: var(--space-1); }
-            .sidebar-header__quick > ul li { background: var(--bg-color); display: flex; justify-content: center; align-items: center; }
+            .sidebar-header__quick > ul li { display: flex; justify-content: center; align-items: center; }
 
 
         .sidebar-header__quick .btn-2 .pill__text { }
@@ -411,7 +516,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 /* right-side icon buttons */
 .topbar__right { border-left: var(--border-width) solid var(--primary-color); padding-left: var(--space-3); }
 .iconBtn { background-color: transparent; border: 0; }
-.iconBtn { display: grid; place-items: center; color: var(--primary-color); cursor: pointer; transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out), background var(--duration-fast) var(--ease-out); aspect-ratio: 1/1; width: var(--icn-w30); }
+.iconBtn { display: grid; place-items: center; color: var(--primary-color); cursor: pointer; transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out), background var(--duration-fast) var(--ease-out); aspect-ratio: 1/1;}
     .iconBtn:hover { background: var(--secondary-color); color: var(--font-color); }
     .iconBtn:active { transform: translateY(1px); }
 .topbar__right .iconBtn .icon { }
@@ -760,9 +865,10 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 
     #btn-settingsbox.btn-setting__open { }
 #btn-settingsbox { padding: var(--space-1); border: 0; position: relative; z-index: 3; }
-    #btn-settingsbox svg { fill: var(--font-color); transition: transform 0.3s ease-in-out; transform: rotate(0deg); width: var(--icn-w24); height: var(--icn-w24); }
-#btn-settingsbox { background: var(--bg-color) }
-    #btn-settingsbox.btn-setting__open svg { transform: rotate(90deg); }
+    #btn-settingsbox span { color:var(--font-color);}
+#btn-settingsbox { }
+    #btn-settingsbox.btn-setting span { transition:transform var(--duration-normal) var(--ease-out); }
+    #btn-settingsbox.btn-setting__open span { transform: rotate(90deg); }
     #btn-settingsbox.btn-setting__open { background: var(--primary-color) }
 
 
@@ -975,51 +1081,13 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 .p--methodBtn__txt { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 
 
-.p--methodBtn__ico { width: var(--icn-w24); height: var(--icn-w24); display: inline-block; border-radius: 999px; background-color: currentColor; -webkit-mask: var(--ico) no-repeat center / 70% 70%; mask: var(--ico) no-repeat center / 70% 70%; box-shadow: 0 0 0 1px var(--border-from-font-16) inset; }
+.p--methodBtn__ico { }
 
 
 .p--methodBtn { color: var(--primary-color); }
 .p--methodBtn__txt { color: var(--font-color); }
 
 
-[data-ico="arrowt_down"] { --ico: url('../assets/icon/arrow_t-down.svg'); }
-
-
-[data-ico="bank"] { --ico: url('../assets/icon/pay/bank.svg'); }
-[data-ico="crypto"] { --ico: url('../assets/icon/pay/bitcoin.svg'); }
-[data-ico="gateway"] { --ico: url('../assets/icon/pay/wallet.svg'); }
-[data-ico="qr"] { --ico: url('../assets/icon/pay/qr.svg'); }
-[data-ico="online"] { --ico: url('../assets/icon/pay/onlinet.svg'); }
-[data-ico="ewallet"] { --ico: url('../assets/icon/pay/wallet.svg'); }
-
-[data-ico="statement"] { --ico: url('../assets/icon/statement.svg'); }
-[data-ico="mybet"] { --ico: url('../assets/icon/mybet.svg'); }
-
-[data-ico="magnifier"] { --ico: url('../assets/icon/magnifier.svg'); }
-
-[data-ico="notification"] { --ico: url('../assets/icon/notification.svg'); }
-[data-ico="mail"] { --ico: url('../assets/icon/mail.svg'); }
-[data-ico="print"] { --ico: url('../assets/icon/print.svg'); }
-[data-ico="bin"] { --ico: url('../assets/icon/bin.svg'); }
-[data-ico="plus"] { --ico: url('../assets/icon/plus.svg'); }
-[data-ico="plus_big"] { --ico: url('../assets/icon/plus2.svg'); }
-[data-ico="send"] { --ico: url('../assets/icon/send.svg'); }
-
-[data-ico="menu"] { --ico: url('../assets/icon/menu.svg'); }
-[data-ico="home"] { --ico: url('../assets/icon/home.svg'); }
-[data-ico="more"] { --ico: url('../assets/icon/more.svg'); }
-
-[data-ico="close"] { --ico: url('../assets/icon/close.svg'); }
-
-[data-ico="treasure"] { --ico: url('../assets/icon/treasure.svg'); }
-[data-ico="history"] { --ico: url('../assets/icon/history.svg'); }
-[data-ico="gift"] { --ico: url('../assets/icon/gift.svg'); }
-
-[data-ico="account"] { --ico: url('../assets/icon/person.svg'); }
-[data-ico="daily"] { --ico: url('../assets/icon/correct.svg'); }
-[data-ico="level"] { --ico: url('../assets/icon/diamond.svg'); }
-[data-ico="battle"] { --ico: url('../assets/icon/boxing.svg'); }
-[data-ico="friend"] { --ico: url('../assets/icon/people.svg'); }
 
 /* -------- cats row -------- */
 .playcard__cats { display: flex; flex-wrap: wrap; gap: var(--space-1); justify-content: center; margin-top: auto; /* height: 100%; */ }
@@ -1605,6 +1673,11 @@ body.qrViewer-open { overflow: hidden; }
 .withdrawEditorHost { padding: var(--space-4); }
 .withdrawSheetPanel .appBankBrandCard { display: none; }
 .withdrawSheetPanel .field--brandApp { display: block; }
+
+.withdrawSheet__body { height: 100%; }
+.withdrawSheetPanel.withdrawSheetPanel--picker { height: 100%; display: flex; flex-direction: column; }
+.sheetList > button:last-child { border-bottom: 0; }
+.sheetActions { border-top: var(--border-width) solid var(--border-from-font-16); margin-top: auto; margin-left: var(--space-3); margin-right: var(--space-3); }
 
 .desktopDropdownSheet__option.is-disabled { opacity: .45; }
 
