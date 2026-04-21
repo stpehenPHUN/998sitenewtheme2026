@@ -390,6 +390,7 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 
     body.sidebar-close .sidebar-header__top { display: none; }
 
+
     .sidebar-header__actions .btn { padding-left: var(--space-3); padding-right: var(--space-3); }
 }
 
@@ -410,7 +411,12 @@ body:not(.sidebar-close) .span-toggle { overflow: hidden; white-space: nowrap; t
 @media (max-width:365px) {
     .sidebar-header__actions { flex-wrap: wrap; justify-content: normal; }
 }
-
+@media (min-width:768px) and (max-width:1023.89px){
+    .sidebar-header__top{display:none;}
+    .sidebar-header__actions { grid-template-columns: 1.08fr 1fr 1fr 1fr; display: grid; margin-top: var(--space-4);}
+    .sidebar-close .sidebar-header__actions {display:flex; }
+    #ttip-withdraw { display: none; }
+} 
 @media (max-width:767.98px) {
     [data-action="toggle-app"] { fill: var(--primary-color); margin-right: auto; margin-left: 0 !important; }
 
@@ -2013,6 +2019,7 @@ body.qrViewer-open { overflow: hidden; }
 
 .page-shell-lock { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; overflow: hidden; height: clamp(140px, calc(100dvh - 140px), 100dvh); }
 
+
     .page-shell-lock .transactionTableCard,
     .page-shell-lock .noticeLayout,
     .page-shell-lock .noticeBoard { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
@@ -2022,12 +2029,19 @@ body.qrViewer-open { overflow: hidden; }
     .page-shell-lock .noticeList,
     .page-shell-lock .noticeDetail { min-height: 0; overflow-y: auto; overflow-x: hidden; }
 
+
+
 body.is-lock { overflow: hidden; touch-action: none; }
 
 @media (min-width: 1024px) {
     .page-shell-lock .noticeBoard__content { display: grid; grid-template-columns: 320px 1fr; gap: var(--space-3); }
 
     .noticeBoard__toolbar { display: grid; grid-template-columns: 320px 1fr; gap: var(--space-3); }
+
+    .page-shell-lock2 { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; overflow: hidden; height: clamp(140px, calc(100dvh - 230px), 100dvh); }
+    .shell-height { height: 100%; }
+    .shell-scoll { min-height: 0; overflow-y: auto; overflow-x: hidden; height: 100%; }
+
 }
 
 @media (max-width: 1023.89px) {
