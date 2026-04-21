@@ -90,6 +90,7 @@ a { color: var(--font-color); text-decoration: none; }
 [data-ico="arrow_slide"] { --ico: url('../assets/icon/arrow-slide.svg'); }
 
 
+[data-ico="setting"] { --ico: url('../assets/icon/setting.svg'); }
 [data-ico="wallet"] { --ico: url('../assets/icon/pay/wallet.svg'); }
 [data-ico="deposit"] { --ico: url('../assets/icon/deposit.svg'); }
 [data-ico="withdraw"] { --ico: url('../assets/icon/withdraw.svg'); }
@@ -2243,3 +2244,86 @@ iframe { height: clamp(200px, calc(100dvh - 200px), 100dvh); width: 100%; }
 @media (min-width:1024px) {
     .inviteLayout { display: grid; grid-template-columns: 5fr 3fr; }
 }
+
+
+.panelActionBtn { border-radius: var(--radius-md); padding: var(--space-2); }
+
+
+.friendSheet[hidden] { display: none; }
+
+/* 只写 friendSheet 自己特有的差异，不重复 appSheet base */
+.friendSheet { z-index: 99999; }
+
+    /* 用你原本 appSheet__backdrop，当 friendSheet 开启时只做额外视觉 */
+    .friendSheet .appSheet__backdrop { background: radial-gradient( circle at top, color-mix(in srgb, var(--accent-color) 14%, transparent), transparent 42% ), rgba(7, 10, 18, 0.68); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+
+/* 重点：你 HTML 用的是 friendSheet__panel，不是 friendSheet__dialog */
+.friendSheet__panel { position: relative; min-height: 0; overflow: hidden; background: linear-gradient( 180deg, color-mix(in srgb, var(--secondary-color) 96%, var(--bg-color)) 0%, color-mix(in srgb, var(--secondary-color) 86%, black) 100% ); border: 1px solid color-mix(in srgb, var(--primary-color) 26%, var(--bg-color)); box-shadow: 0 24px 70px rgba(0,0,0,.42), 0 0 0 1px color-mix(in srgb, var(--primary-color) 14%, transparent) inset; }
+
+    .friendSheet__panel::before { content: ""; position: absolute; left: 18px; right: 18px; top: 0; height: 1px; background: linear-gradient( 90deg, transparent, color-mix(in srgb, var(--font-color) 24%, transparent), transparent ); opacity: .65; pointer-events: none; }
+
+/* header / title / close 都沿用 appSheet 的通用样式
+   所以这里只做细部差异，不重写整套 */
+.friendSheet__header { gap: var(--space-3); }
+
+.friendSheet__title { font-size: var(--text-xl); font-weight: var(--font-bold); letter-spacing: .02em; }
+
+/* body 这个可以保留，属于内容区专属 */
+.friendSheet__body { padding: var(--space-4); overflow: auto; min-height: 0; }
+
+.friendSheet__handle { display: none; }
+
+/* desktop: 真正做中间弹窗效果 */
+@media (min-width: 1024px) {
+    .friendSheet { position: fixed; inset: 0; display: block; opacity: 0; pointer-events: none; transition: opacity var(--duration-normal) var(--ease-out); z-index: 99999; max-height: none !important; overflow: visible !important; width: auto; height: auto; margin: 0; }
+
+        .friendSheet.isOpen { opacity: 1; pointer-events: auto; }
+
+        .friendSheet .appSheet__backdrop { display: block !important; position: absolute; inset: 0; }
+
+    .friendSheet__panel { position: absolute; top: 50%; left: 50%; width: min(620px, calc(100vw - 48px)); max-height: min(82vh, 760px); display: flex; flex-direction: column; border-radius: calc(var(--radius-xl) + 2px); padding-bottom: 0; opacity: 0; transform: translate(-50%, calc(-50% + 16px)) scale(.96) !important; transition: transform var(--duration-normal) var(--ease-out), opacity var(--duration-normal) var(--ease-out) !important; margin: 0; }
+
+    .friendSheet.isOpen .friendSheet__panel { opacity: 1; transform: translate(-50%, -50%) scale(1) !important; }
+
+    .appSheet__header.friendSheet__header { display: grid !important; grid-template-columns: 1fr auto; align-items: center; position: relative; }
+
+        .appSheet__header.friendSheet__header .appSheet__title { text-align: left; padding-right: var(--space-5); }
+
+        .appSheet__header.friendSheet__header .appSheet__textBtn { font-size: 0; width: var(--icn-w24); height: var(--icn-w24); min-width: var(--icn-w24); padding: 0; border-radius: var(--radius-pill); background-color: var(--font-color); -webkit-mask: url('../assets/icon/close.svg') no-repeat center / 70% 70%; mask: url('../assets/icon/close.svg') no-repeat center / 70% 70%; justify-self: end; }
+       .appSheet__header.friendSheet__header .appSheet__title { text-align: left; }
+
+    .appSheet__header.friendSheet__header { position: relative; }
+        .appSheet__header.friendSheet__header .appSheet__textBtn { font-size: 0; position: absolute; top: var(--space-2); right: var(--space-3); display:block; padding:var(--space-1); mask: url(../assets/icon/close.svg) no-repeat center / 70% 70%; width: var(--icn-w24); height: var(--icn-w24); background-color: var(--font-color); }
+            .appSheet__header.friendSheet__header .appSheet__textBtn:hover { background: var(--color-font-70); }
+}
+
+/* mobile: 沿用 appSheet bottom sheet，不重复写基础结构 */
+@media (max-width: 1023.98px) {
+    .friendSheet__panel { min-height: 50vh; display: flex; flex-direction: column; }
+
+    .friendSheet__handle { display: block; width: 44px; height: 5px; border-radius: 999px; background: color-mix(in srgb, var(--primary-color) 60%, transparent); margin: var(--space-2) auto 0; flex: 0 0 auto; }
+
+    .friendSheet__body { flex: 1 1 auto; }
+}
+
+/* content beautify only */
+.friendPopup { display: flex; flex-direction: column; gap: var(--space-3); }
+
+.friendPopup__section { display: flex; flex-direction: column; gap: var(--space-3); }
+
+.friendPopup__row { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-md); background: color-mix(in srgb, var(--bg-color) 88%, var(--secondary-color)); border: 1px solid var(--border-from-font-10); }
+
+.friendPopup__sub { margin-top: 2px; font-size: var(--text-sm); color: var(--color-font-50); }
+
+.friendPopup__meta { flex: 0 0 auto; font-size: var(--text-sm); color: var(--color-font-50); white-space: nowrap; }
+
+.friendPopup__label { font-size: var(--text-sm); color: var(--color-font-70); margin-bottom: calc(var(--space-1) * -1); }
+
+.friendPopup__input,
+.friendPopup__textarea { width: 100%; border: 1px solid var(--border-from-font-16); outline: 0; border-radius: var(--radius-md); background: color-mix(in srgb, var(--bg-color) 90%, var(--secondary-color)); color: var(--font-color); padding: var(--padding); }
+
+.friendPopup__textarea { min-height: 120px; resize: vertical; }
+
+.friendPopup__toggleRow { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-md); background: color-mix(in srgb, var(--bg-color) 88%, var(--secondary-color)); border: 1px solid var(--border-from-font-10); }
+
+.friendPopup__actions { display: flex; justify-content: flex-end; gap: var(--space-2); padding-top: var(--space-2); }
