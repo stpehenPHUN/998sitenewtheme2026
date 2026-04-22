@@ -91,27 +91,27 @@
                         <!-- left: cards + reward + tips -->
                         <section class="friendsHub">
                             <!--<div class="friendsHub__head">
-                        <div class="accountTopTabs friendsTabs">
-                            <button type="button" class="tab is-active">All Friends (13)</button>
-                            <button type="button" class="tab">Friend Request</button>
-                            <button type="button" class="tab">Sent Request</button>
-                        </div>
+                                <div class="accountTopTabs friendsTabs">
+                                    <button type="button" class="tab is-active">All Friends (13)</button>
+                                    <button type="button" class="tab">Friend Request</button>
+                                    <button type="button" class="tab">Sent Request</button>
+                                </div>
 
-                        <div class="friendsTools">
-                            <button type="button" class="friendsTools__btn iconBtn" aria-label="History">
-                                <span data-ico="history"></span>
-                            </button>
-                            <button type="button" class="friendsTools__btn iconBtn" aria-label="Exchange">
-                                <span data-ico="refresh"></span>
-                            </button>
-                            <button type="button" class="friendsTools__btn iconBtn" aria-label="Add Friend">
-                                <span data-ico="friend"></span>
-                            </button>
-                            <button type="button" class="friendsTools__btn iconBtn" aria-label="Settings">
-                                <span data-ico="menu"></span>
-                            </button>
-                        </div>
-                    </div>-->
+                                <div class="friendsTools">
+                                    <button type="button" class="friendsTools__btn iconBtn" aria-label="History">
+                                        <span data-ico="history"></span>
+                                    </button>
+                                    <button type="button" class="friendsTools__btn iconBtn" aria-label="Exchange">
+                                        <span data-ico="refresh"></span>
+                                    </button>
+                                    <button type="button" class="friendsTools__btn iconBtn" aria-label="Add Friend">
+                                        <span data-ico="friend"></span>
+                                    </button>
+                                    <button type="button" class="friendsTools__btn iconBtn" aria-label="Settings">
+                                        <span data-ico="menu"></span>
+                                    </button>
+                                </div>
+                            </div>-->
 
                             <div class="friendsHub__main">
                                 <div class="friendsCards bubbleCard">
@@ -178,8 +178,16 @@
 
                                 <section class="friendsReward bubbleCard">
                                     <div class="friendsReward__title">
+                                        <h3 class="friendsCards__title card__title">
+                                            <span data-ico="gift"></span>Reward / Prizes
+                                        </h3>
 
-                                        <h3 class="friendsCards__title card__title">    <span data-ico="gift"></span>Reward / Prizes</h3>
+                                        <button type="button"
+                                                class="panelActionBtn friend__panelActionBtn ttip ttip--top btn"
+                                                data-tips-sheet-open>
+                                            <span aria-hidden="true" data-ico="notification"></span>
+                                            <span class="ttip__bubble" role="tooltip">Tips</span>
+                                        </button>
                                     </div>
 
                                     <div class="friendsReward__list">
@@ -209,7 +217,7 @@
                                     </div>
                                 </section>
 
-                                <section class="friendsNotice bubbleCard bubbleCard--info">
+                                <section class="friendsNotice bubbleCard bubbleCard--info  is-tips-hidden">
                                     <div class="friendsNotice__title">
                                         <h3 class="friendsCards__title card__title">
                                             <span data-ico="notification"></span>Tips
@@ -233,7 +241,7 @@
                         </section>
 
                         <!-- right: friends list -->
-                        <section class="friendsListPanel panelCard">
+                        <section class="friendsListPanel panelCard friendListScrollShell">
                             <div class="friendsListPanel__head">
                                 <h3 class="friendsCards__title card__title">Friends (12)</h3>
 
@@ -617,14 +625,18 @@
                 .friendsHub__main { display: grid; gap: var(--space-4); }
 
 
-                .friendsCards { padding: var(--space-4); }
 
                 .friendsCards__title,
                 .friendsReward__title,
                 .friendsNotice__title,
                 .friendsListPanel__title { display: flex; align-items: center; gap: var(--gap); /*font-size: var(--text-lg);*/ /*font-weight: var(--font-bold); */ /*color: var(--primary-color);*/ /*margin-bottom: var(--space-3); */ justify-content: space-between; }
 
-                .friendsCards__title { margin-bottom: var(--space-4); letter-spacing: .03em; font-size: var(--text-base); }
+                .friendsCards__title { letter-spacing: .03em; font-size: var(--text-base); }
+                .friendsCards__title { margin-bottom: var(--space-3) }
+
+                .friendsListPanel__title { margin: 0; }
+                .friendsNotice__title,
+                .friendsReward__title { margin-bottom: var(--space-3); }
 
 
                 .friendCardItem { position: relative; border: 0; background: transparent; padding: 0; cursor: pointer; border-radius: var(--radius-md); overflow: hidden; transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out); }
@@ -637,11 +649,6 @@
 
                 .friendCardItem__count { position: absolute; top: var(--space-2); right: var(--space-2); z-index: 2; min-width: 34px; height: 24px; padding: 0 var(--space-2); display: inline-flex; align-items: center; justify-content: center; border-radius: var(--radius-sm); background: color-mix(in srgb, var(--bg-color) 92%, black); color: var(--font-color); font-size: var(--text-sm); font-weight: var(--font-bold); border: var(--border-width) solid var(--border-from-font-16); }
 
-                .friendsHub__bottom { display: grid; gap: var(--gap); }
-
-                @media (min-width: 768px) {
-                    .friendsHub__bottom { grid-template-columns: minmax(280px, 0.92fr) minmax(0, 1fr); }
-                }
 
                 .friendsReward,
                 .friendsNotice { padding: var(--space-4); }
@@ -656,7 +663,6 @@
 
                     .friendsReward__meta span { font-size: var(--text-sm); color: var(--color-font-70); }
 
-                .friendsReward .btn { min-width: 88px; }
 
                 .friendsNotice__body { display: flex; flex-direction: column; gap: var(--gap); }
 
@@ -807,21 +813,53 @@
                 }
 
 
-                @media (min-width:1500px) {
-                    .friendsHub__main { display: grid; gap: var(--space-4); grid-template-columns: 2fr 3fr; }
+                @media (min-width: 768px) and (max-width: 1099.98px) {
+                    .friendsHub__main { grid-template-columns: 1fr; }
 
-                    .friendsCards { grid-column: 1 / -1 }
+                    .friendsCards,
+                    .friendsReward,
+                    .friendsNotice { grid-column: auto; }
+                }
+
+                /* 1100 ~ 1499：cards 和 reward 并排，tips 独立一行 */
+                @media (min-width: 1100px) and (max-width: 1499.98px) {
+                    .friendsHub__main { grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr); align-items: stretch; }
+
+                    .friendsCards { grid-column: 1 / 2; }
+
+                    .friendsReward { grid-column: 2 / 3; }
+
+                    .friendsNotice { grid-column: 1 / -1; }
+                }
+
+                /* 1500+：cards 满一行，reward 和 tips 并排 */
+                @media (min-width: 1500px) {
+                    .friendsHub__main { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: stretch; }
+
+                    .friendsCards { grid-column: 1 / -1; }
+
                     .friendsReward { grid-column: 1 / 2; }
+
                     .friendsNotice { grid-column: 2 / 3; }
                 }
 
-                @media (min-width: 1024px) and (max-width:1499.98px) {
+                @media (min-width: 1199.98px) {
+                    .friendsListPanel { display: flex; flex-direction: column; min-height: 0; }
 
-                    .friendsHub__main { display: grid; gap: var(--space-4); grid-template-columns: 3fr 2fr; }
+                    .friendsList { overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; padding-right: var(--space-1); max-height: clamp(420px, 62dvh, 760px); }
 
-                    .friendsCards { grid-column: 1 / 2; }
-                    .friendsReward { grid-column: 2 / 3; }
-                    .friendsNotice { grid-column: 1 / -1; }
+                    .friendsListPanel__head,
+                    .friendsListPanel__foot { flex: 0 0 auto; }
+                }
+
+                @media (max-width: 799.98px) {
+                    .friendsCards__title .friendsListPanel__title { flex: 1 1 100%; min-width: 0; }
+
+                    .friendsCards__title .panelActions { flex: 1 1 100%; display: flex; justify-content: flex-end; gap:var(--space-1);}
+
+                    .friend__panelActions { width: 100%; }
+
+                    .friend__panelActionBtn { width: var(--icn-w40); height: var(--icn-w40); padding: 0; flex: 0 0var(--icn-w40);; justify-content: center; }
                 }
                 /* mobile */
                 @media (max-width: 767.98px) {
@@ -832,9 +870,8 @@
 
                     .friendsSearch { flex: none; min-width: 0; }
 
-                    .friendsReward__row { align-items: stretch; flex-direction: column; }
+                    .friendsReward__row { align-items: stretch; }
 
-                    .friendsReward .btn { width: 100%; }
 
                     .friendRow__left { gap: var(--gap); }
 
@@ -854,6 +891,27 @@
                     .friendRow__actions { justify-content: flex-start; }
 
                         .friendRow__actions .friendAction--pk { margin-left: auto; }
+                }
+
+                /* tips hidden state */
+                .friendsNotice.is-tips-hidden { display: none; }
+
+                /* reward title right button alignment */
+                .friendsReward__title { display: flex; align-items: center; justify-content: space-between; gap: var(--gap); }
+
+                    .friendsReward__title .friend__panelActionBtn { flex: 0 0 auto; }
+                .friend__panelActionBtn.ttip { color: var(--font-color); }
+                /* tips sheet */
+
+                /* tips popup content spacing */
+                .tipsSheet__body { padding: var(--space-4); }
+
+                    .tipsSheet__body .friendsNotice__body { gap: var(--space-3); }
+
+                /* 1500 以上直接不显示右边原本 tips */
+                @media (min-width: 1500px) {
+                    .friendsReward .friend__panelActionBtn.ttip { display: none; }
+                    .friendsNotice.is-tips-hidden { display: block; }
                 }
             </style>
             <footer class="footer" data-include="footer.html"></footer>
@@ -890,8 +948,23 @@
                         <div class="friendSheet__title appSheet__title" id="friendSheetTitle">Title</div>
                     </div>
 
-                    <div class="friendSheet__handle"></div>
+                    <!--<div class="friendSheet__handle"></div>-->
                     <div class="friendSheet__body" id="friendSheetBody"></div>
+                </div>
+            </div>
+            <div id="tipsSheet" class="friendSheet appSheet tipsSheet" hidden aria-hidden="true">
+                <div class="friendSheet__backdrop appSheet__backdrop" data-tips-sheet-close></div>
+
+                <div class="friendSheet__panel appSheet__panel tipsSheet__panel" role="dialog" aria-modal="true" aria-labelledby="tipsSheetTitle">
+                    <div class="friendSheet__header appSheet__header tipsSheet__header">
+                        <button type="button" class="friendSheet__close appSheet__textBtn btn" data-tips-sheet-close>
+                            Close
+                        </button>
+                        <div class="friendSheet__title appSheet__title" id="tipsSheetTitle">Tips</div>
+                        <div></div>
+                    </div>
+
+                    <div class="friendSheet__body tipsSheet__body" id="tipsSheetBody"></div>
                 </div>
             </div>
 
@@ -909,99 +982,99 @@
                     "claim-history": {
                         title: "Claim History",
                         body: `
-                        <div class="friendPopup friendPopup--history">
-                            <div class="friendPopup__section">
-                                <div class="friendPopup__row">
-                                    <div>
-                                        <strong>Reward Claimed</strong>
-                                        <div class="friendPopup__sub">3 Cards Reward</div>
-                                    </div>
-                                    <div class="friendPopup__meta">2026-04-21 12:30</div>
-                                </div>
+                                <div class="friendPopup friendPopup--history">
+                                    <div class="friendPopup__section">
+                                        <div class="friendPopup__row">
+                                            <div>
+                                                <strong>Reward Claimed</strong>
+                                                <div class="friendPopup__sub">3 Cards Reward</div>
+                                            </div>
+                                            <div class="friendPopup__meta">2026-04-21 12:30</div>
+                                        </div>
 
-                                <div class="friendPopup__row">
-                                    <div>
-                                        <strong>Reward Claimed</strong>
-                                        <div class="friendPopup__sub">4 Cards Reward</div>
+                                        <div class="friendPopup__row">
+                                            <div>
+                                                <strong>Reward Claimed</strong>
+                                                <div class="friendPopup__sub">4 Cards Reward</div>
+                                            </div>
+                                            <div class="friendPopup__meta">2026-04-18 09:12</div>
+                                        </div>
                                     </div>
-                                    <div class="friendPopup__meta">2026-04-18 09:12</div>
                                 </div>
-                            </div>
-                        </div>
-                    `
+                            `
                     },
 
                     "transfer-history": {
                         title: "Transfer History",
                         body: `
-                        <div class="friendPopup friendPopup--transfer">
-                            <div class="friendPopup__section">
-                                <div class="friendPopup__row">
-                                    <div>
-                                        <strong>A3 Card Sent</strong>
-                                        <div class="friendPopup__sub">To @neonfox01</div>
-                                    </div>
-                                    <div class="friendPopup__meta">2026-04-20 20:11</div>
-                                </div>
+                                <div class="friendPopup friendPopup--transfer">
+                                    <div class="friendPopup__section">
+                                        <div class="friendPopup__row">
+                                            <div>
+                                                <strong>A3 Card Sent</strong>
+                                                <div class="friendPopup__sub">To @neonfox01</div>
+                                            </div>
+                                            <div class="friendPopup__meta">2026-04-20 20:11</div>
+                                        </div>
 
-                                <div class="friendPopup__row">
-                                    <div>
-                                        <strong>A5 Card Received</strong>
-                                        <div class="friendPopup__sub">From @asterbee77</div>
+                                        <div class="friendPopup__row">
+                                            <div>
+                                                <strong>A5 Card Received</strong>
+                                                <div class="friendPopup__sub">From @asterbee77</div>
+                                            </div>
+                                            <div class="friendPopup__meta">2026-04-19 15:44</div>
+                                        </div>
                                     </div>
-                                    <div class="friendPopup__meta">2026-04-19 15:44</div>
                                 </div>
-                            </div>
-                        </div>
-                    `
+                            `
                     },
 
                     "add-friend": {
                         title: "Add Friend",
                         body: `
-                        <div class="friendPopup friendPopup--add">
-                            <div class="friendPopup__section">
-                                <label class="friendPopup__label">Friend ID</label>
-                                <input type="text" class="friendPopup__input" placeholder="Enter username or ID">
+                                <div class="friendPopup friendPopup--add">
+                                    <div class="friendPopup__section">
+                                        <label class="friendPopup__label">Friend ID</label>
+                                        <input type="text" class="friendPopup__input" placeholder="Enter username or ID">
 
-                                <label class="friendPopup__label">Message</label>
-                                <textarea class="friendPopup__textarea" placeholder="Say something..."></textarea>
+                                        <label class="friendPopup__label">Message</label>
+                                        <textarea class="friendPopup__textarea" placeholder="Say something..."></textarea>
 
-                                <div class="friendPopup__actions">
-                                    <button type="button" class="btn btn-2" data-friend-sheet-close-inner>Cancel</button>
-                                    <button type="button" class="btn btn-1">Send Request</button>
+                                        <div class="friendPopup__actions">
+                                            <button type="button" class="btn btn-2" data-friend-sheet-close-inner>Cancel</button>
+                                            <button type="button" class="btn btn-1">Send Request</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    `
+                            `
                     },
 
                     "setting": {
                         title: "Friend Settings",
                         body: `
-                        <div class="friendPopup friendPopup--setting">
-                            <div class="friendPopup__section">
-                                <label class="friendPopup__toggleRow">
-                                    <span>Allow card transfer from friends</span>
-                                    <input type="checkbox" checked>
-                                </label>
+                                <div class="friendPopup friendPopup--setting">
+                                    <div class="friendPopup__section">
+                                        <label class="friendPopup__toggleRow">
+                                            <span>Allow card transfer from friends</span>
+                                            <input type="checkbox" checked>
+                                        </label>
 
-                                <label class="friendPopup__toggleRow">
-                                    <span>Allow PK requests</span>
-                                    <input type="checkbox" checked>
-                                </label>
+                                        <label class="friendPopup__toggleRow">
+                                            <span>Allow PK requests</span>
+                                            <input type="checkbox" checked>
+                                        </label>
 
-                                <label class="friendPopup__toggleRow">
-                                    <span>Show online status</span>
-                                    <input type="checkbox">
-                                </label>
+                                        <label class="friendPopup__toggleRow">
+                                            <span>Show online status</span>
+                                            <input type="checkbox">
+                                        </label>
 
-                                <div class="friendPopup__actions">
-                                    <button type="button" class="btn btn-1">Save Changes</button>
+                                        <div class="friendPopup__actions">
+                                            <button type="button" class="btn btn-1">Save Changes</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    `
+                            `
                     }
                 };
 
@@ -1010,6 +1083,53 @@
                     body: `<div class="friendPopup__empty">No content.</div>`
                 };
             }
+
+            const tipsSheet = document.getElementById("tipsSheet");
+            const tipsSheetBody = document.getElementById("tipsSheetBody");
+            const friendsNotice = document.querySelector(".friendsNotice");
+            const friendsNoticeBody = document.querySelector(".friendsNotice .friendsNotice__body");
+
+            function openTipsSheet() {
+                if (!tipsSheet || !tipsSheetBody || !friendsNoticeBody) return;
+
+                tipsSheetBody.innerHTML = friendsNoticeBody.innerHTML;
+
+                tipsSheet.hidden = false;
+                tipsSheet.setAttribute("aria-hidden", "false");
+
+                requestAnimationFrame(() => {
+                    tipsSheet.classList.add("isOpen");
+                });
+
+                document.body.classList.add("no-scroll");
+            }
+
+            function closeTipsSheet() {
+                if (!tipsSheet) return;
+
+                tipsSheet.classList.remove("isOpen");
+                tipsSheet.setAttribute("aria-hidden", "true");
+                document.body.classList.remove("no-scroll");
+
+                setTimeout(() => {
+                    if (!tipsSheet.classList.contains("isOpen")) {
+                        tipsSheet.hidden = true;
+                    }
+                }, 250);
+            }
+
+
+            document.addEventListener("click", (e) => {
+                if (e.target.closest("[data-tips-sheet-open]")) {
+                    e.preventDefault();
+                    openTipsSheet();
+                    return;
+                }
+
+                if (e.target.closest("[data-tips-sheet-close]")) {
+                    closeTipsSheet();
+                }
+            });
 
             const friendSheet = document.getElementById("friendSheet");
             const friendSheetTitle = document.getElementById("friendSheetTitle");
@@ -1071,6 +1191,7 @@
             window.addEventListener("keydown", (e) => {
                 if (e.key === "Escape") {
                     closeFriendSheet();
+                    closeTipsSheet();
                 }
             });
 
@@ -1078,7 +1199,13 @@
                 if (friendSheet.classList.contains("isOpen")) {
                     closeFriendSheet();
                 }
+
+                if (tipsSheet && tipsSheet.classList.contains("isOpen")) {
+                    closeTipsSheet();
+                }
             });
+
+
         });
     </script>
-    </html>
+</html>
