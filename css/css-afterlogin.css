@@ -2692,3 +2692,55 @@ iframe { height: clamp(200px, calc(100dvh - 200px), 100dvh); width: 100%; }
 @media(min-width:1024px) {
     .cardPick:hover { transform: translateY(-2px); }
 }
+
+.requestPage { display: block; }
+
+.requestBoard { display: flex; flex-direction: column; gap: var(--space-4); }
+
+.requestBoard__head { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); flex-wrap: wrap; }
+
+.requestBoard__titleWrap { display: flex; flex-direction: column; gap: 4px; }
+
+.requestBoard__title { margin: 0; }
+
+.requestBoard__sub { font-size: var(--text-sm); color: var(--color-font-50); }
+
+.requestGrid { display: grid; gap: var(--space-4); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.requestCard { padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-3); min-height: 100%; }
+
+.requestCard__top { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-3); }
+
+.requestCard__identity { display: flex; align-items: center; gap: var(--space-3); min-width: 0; }
+
+.requestCard__avatar { width: 52px; height: 52px; flex: 0 0 52px; font-size: var(--text-base); }
+
+.requestCard__user { min-width: 0; }
+
+.requestCard__name { font-size: var(--text-lg); font-weight: var(--font-semibold); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.requestCard__id { font-size: var(--text-sm); color: var(--color-font-50); }
+
+.requestCard__index { font-size: var(--text-base); font-weight: var(--font-semibold); color: var(--primary-color); flex: 0 0 auto; }
+
+.requestCard__levels { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+.requestCard__actions { margin-top: auto; display: flex; gap: var(--space-2); justify-content: flex-end; }
+
+    .requestCard__actions .btn { min-width: 110px; }
+
+@media (max-width: 1399.98px) {
+    .requestGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 767.98px) {
+    .requestBoard__head { align-items: stretch; }
+
+    .friendsSearch { flex: 1 1 100%; min-width: 0; }
+
+    .requestGrid { grid-template-columns: 1fr; }
+
+    .requestCard__actions { justify-content: stretch; }
+
+        .requestCard__actions .btn { flex: 1 1 0; min-width: 0; }
+}
