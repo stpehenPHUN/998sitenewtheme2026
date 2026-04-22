@@ -946,11 +946,15 @@
 
                 .cardPick { cursor: pointer; transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out); }
 
-                    .cardPick:hover { transform: translateY(-2px); }
+                  
 
                 .cardPick__check { position: absolute; top: var(--space-2); left: var(--space-2); width: 28px; height: 28px; border-radius: 999px; display: none; align-items: center; justify-content: center; background: color-mix(in srgb, var(--primary-color) 85%, white 15%); color: var(--bg-color); font-size: 16px; font-weight: 700; box-shadow: 0 4px 12px rgba(0,0,0,.22); z-index: 2; }
 
                 .cardPick.is-selected .cardPick__check { display: inline-flex; }
+
+                @media(min-width:1024px){
+                    .cardPick:hover { transform: translateY(-2px); }
+                }
             </style>
             <footer class="footer" data-include="footer.html"></footer>
 
