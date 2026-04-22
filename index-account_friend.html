@@ -91,27 +91,27 @@
                         <!-- left: cards + reward + tips -->
                         <section class="friendsHub">
                             <!--<div class="friendsHub__head">
-                        <div class="accountTopTabs friendsTabs">
-                            <button type="button" class="tab is-active">All Friends (13)</button>
-                            <button type="button" class="tab">Friend Request</button>
-                            <button type="button" class="tab">Sent Request</button>
-                        </div>
+                                <div class="accountTopTabs friendsTabs">
+                                    <button type="button" class="tab is-active">All Friends (13)</button>
+                                    <button type="button" class="tab">Friend Request</button>
+                                    <button type="button" class="tab">Sent Request</button>
+                                </div>
 
-                        <div class="friendsTools">
-                            <button type="button" class="friendsTools__btn iconBtn" aria-label="History">
-                                <span data-ico="history"></span>
-                            </button>
-                            <button type="button" class="friendsTools__btn iconBtn" aria-label="Exchange">
-                                <span data-ico="refresh"></span>
-                            </button>
-                            <button type="button" class="friendsTools__btn iconBtn" aria-label="Add Friend">
-                                <span data-ico="friend"></span>
-                            </button>
-                            <button type="button" class="friendsTools__btn iconBtn" aria-label="Settings">
-                                <span data-ico="menu"></span>
-                            </button>
-                        </div>
-                    </div>-->
+                                <div class="friendsTools">
+                                    <button type="button" class="friendsTools__btn iconBtn" aria-label="History">
+                                        <span data-ico="history"></span>
+                                    </button>
+                                    <button type="button" class="friendsTools__btn iconBtn" aria-label="Exchange">
+                                        <span data-ico="refresh"></span>
+                                    </button>
+                                    <button type="button" class="friendsTools__btn iconBtn" aria-label="Add Friend">
+                                        <span data-ico="friend"></span>
+                                    </button>
+                                    <button type="button" class="friendsTools__btn iconBtn" aria-label="Settings">
+                                        <span data-ico="menu"></span>
+                                    </button>
+                                </div>
+                            </div>-->
 
                             <div class="friendsHub__main">
                                 <div class="friendsCards bubbleCard">
@@ -591,370 +591,6 @@
             </div>
 
             <style>
-                .card__group { width: 100%; gap: var(--gap); }
-                .card__item img { width: 100%; }
-                .card__item { flex: 1; overflow: hidden; border-radius: var(--radius-xl); position: relative; }
-                .card__item-quantity { position: absolute; top: var(--space-1); right: var(--space-1); background: color-mix(in srgb, var(--bg-color) 92%, var(--secondary-color)); border: 1px solid var(--border-from-font-16); font-size: var(--text-sm); padding: var(--padding); border-radius: var(--radius-md) }
-                /* =========================
-                   FRIENDS DASHBOARD
-                ========================= */
-                .friendsDashboard { gap: var(--space-4); }
-
-                .friendsDashboard__top { display: grid; gap: var(--space-4); }
-
-                @media (min-width: 1500px) {
-                    .friendsDashboard__top { grid-template-columns: minmax(0, 1.5fr) minmax(360px, 0.92fr); align-items: start; }
-                }
-
-                /* left hub */
-                .friendsHub,
-                .friendsListPanel { min-width: 0; }
-
-                .friendsHub { gap: var(--space-4); }
-
-                .friendsHub__head { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--gap); flex-wrap: wrap; }
-
-                .friendsTabs { flex: 1; min-width: 0; }
-
-                .friendsTools { display: flex; gap: var(--gap); flex-wrap: wrap; }
-
-                .friendsTools__btn { width: var(--icn-w44); height: var(--icn-w44); border-radius: var(--radius-md); border: var(--border-width) solid var(--border-from-primary-70); background: linear-gradient(180deg, var(--bg-soft-deep) 0%, var(--bg-deep) 100%); box-shadow: 0 0 0 1px rgba(193,106,255,0.12), 0 0 18px rgba(169,66,255,0.18); }
-
-                    .friendsTools__btn [data-ico] { width: var(--icn-w20); height: var(--icn-w20); box-shadow: none; }
-
-                .friendsHub__main { display: grid; gap: var(--space-4); }
-
-
-
-                .friendsCards__title,
-                .friendsReward__title,
-                .friendsNotice__title,
-                .friendsListPanel__title { display: flex; align-items: center; gap: var(--gap); /*font-size: var(--text-lg);*/ /*font-weight: var(--font-bold); */ /*color: var(--primary-color);*/ /*margin-bottom: var(--space-3); */ justify-content: space-between; }
-
-                .friendsCards__title { letter-spacing: .03em; font-size: var(--text-base); }
-                .friendsCards__title { margin-bottom: var(--space-3) }
-
-                .friendsListPanel__title { margin: 0; }
-                .friendsNotice__title,
-                .friendsReward__title { margin-bottom: var(--space-3); }
-
-
-                .friendCardItem { position: relative; border: 0; background: transparent; padding: 0; cursor: pointer; border-radius: var(--radius-md); overflow: hidden; transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out); }
-
-                    .friendCardItem img { width: 100%; display: block; border-radius: var(--radius-md); border: var(--border-width) solid var(--border-from-primary-70); box-shadow: 0 0 0 1px rgba(193,106,255,0.12), 0 0 12px rgba(169,66,255,0.18); }
-
-                    .friendCardItem:hover { transform: translateY(-2px); }
-
-                    .friendCardItem.is-active img { box-shadow: 0 0 0 1px rgba(193,106,255,0.28), 0 0 22px rgba(169,66,255,0.30); }
-
-                .friendCardItem__count { position: absolute; top: var(--space-2); right: var(--space-2); z-index: 2; min-width: 34px; height: 24px; padding: 0 var(--space-2); display: inline-flex; align-items: center; justify-content: center; border-radius: var(--radius-sm); background: color-mix(in srgb, var(--bg-color) 92%, black); color: var(--font-color); font-size: var(--text-sm); font-weight: var(--font-bold); border: var(--border-width) solid var(--border-from-font-16); }
-
-
-                .friendsReward,
-                .friendsNotice { padding: var(--space-4); }
-
-                .friendsReward__list { display: flex; flex-direction: column; gap: var(--gap); }
-
-                .friendsReward__row { display: flex; justify-content: space-between; align-items: center; gap: var(--gap); padding: var(--space-3); border-radius: var(--radius-md); background: color-mix(in srgb, var(--bg-color) 88%, var(--secondary-color)); border: var(--border-width) solid var(--border-from-font-10); }
-
-                .friendsReward__meta { display: flex; flex-direction: column; gap: 2px; }
-
-                    .friendsReward__meta strong { font-size: var(--text-base); font-weight: var(--font-semibold); }
-
-                    .friendsReward__meta span { font-size: var(--text-sm); color: var(--color-font-70); }
-
-
-                .friendsNotice__body { display: flex; flex-direction: column; gap: var(--gap); }
-
-                    .friendsNotice__body p { margin: 0; line-height: var(--leading-relaxed); }
-
-                .friendsNotice__list { margin: 0; padding-left: 1.15rem; display: grid; gap: var(--gap); font-size: var(--text-sm); color: var(--color-font-70); }
-
-                /* right list */
-                .friendsListPanel { display: flex; flex-direction: column; gap: var(--gap); }
-
-                .friendsListPanel__head { display: flex; justify-content: space-between; align-items: center; gap: var(--gap); flex-wrap: wrap; }
-
-                .friendsSearch { min-width: min(100%, 270px); flex: 0 0 270px; position: relative; }
-
-                .friendsSearch__icon { position: absolute; left: var(--space-3); top: 50%; transform: translateY(-50%); width: var(--icn-w18); height: var(--icn-w18); box-shadow: none; opacity: .72; }
-
-                .friendsSearch__input { width: 100%; border: 0; outline: 0; border-radius: var(--radius-pill); background: color-mix(in srgb, var(--bg-color) 88%, var(--secondary-color)); color: var(--font-color); padding: var(--space-3) var(--space-4) var(--space-3) calc(var(--space-5) + var(--space-3)); border: var(--border-width) solid var(--border-from-font-10); }
-
-                .friendsList { display: flex; flex-direction: column; gap: var(--gap); min-height: 0; }
-
-                .friendRow { padding: var(--padding); display: grid; gap: var(--gap); align-items: center; }
-                .friendRow__left { display: flex; align-items: center; gap: var(--gap); }
-                .friendRow__right { display: flex; align-items: flex-end; gap: var(--gap); flex-direction: column; }
-                .friendRow__index { min-width: 32px; font-weight: var(--font-semibold); color: var(--primary-color); text-align: center; }
-
-                .friendRow__avatar { width: var(--icn-w40); height: var(--icn-w40); flex: 0 0 auto; font-size: var(--text-sm); }
-
-                .friendRow__user { min-width: 0; }
-
-                .friendRow__name { font-size: var(--text-base); font-weight: var(--font-semibold); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-                .friendRow__id { font-size: var(--text-sm); color: var(--color-font-50); }
-
-                .friendRow__levels { display: flex; flex-wrap: wrap; gap: var(--space-1); }
-
-                .friendLv { display: inline-flex; align-items: center; justify-content: center; padding: var(--padding); border-radius: var(--radius-pill); background: color-mix(in srgb, var(--bg-color) 86%, var(--secondary-color)); border: var(--border-width) solid var(--border-from-font-10); font-size: var(--text-xs); color: var(--color-font-70); white-space: nowrap; }
-
-                .friendRow__actions { }
-                .friendRow__actions__wrapper { display: flex; align-items: center; gap: var(--gap); flex-wrap: wrap; justify-content: flex-end; }
-                .friendAction { border: 0; background: transparent; padding: var(--padding); border-radius: var(--radius-pill); cursor: pointer; font-size: var(--text-sm); color: var(--font-color); }
-
-                .friendAction--text { color: var(--primary-color); }
-
-                .friendAction--muted { color: var(--color-font-50); }
-
-                .friendAction--pk { min-width: var(--icn-w64); color: var(--font-color); font-weight: var(--font-semibold); background: linear-gradient(180deg, color-mix(in srgb, var(--color-pink) 46%, var(--primary-color)) 0%, color-mix(in srgb, var(--accent-color) 88%, var(--primary-color)) 100%); box-shadow: var(--shadow-sm); display: flex; align-items: center; }
-
-                .friendsListPanel__foot { text-align: center; font-size: var(--text-sm); color: var(--color-font-50); padding-top: var(--space-2); }
-
-
-                .friendRow { padding: var(--padding); display: grid; gap: var(--gap); align-items: center; }
-
-                .friendRow__left { display: flex; align-items: center; gap: var(--gap); min-width: 0; }
-
-                .friendRow__user { min-width: 0; }
-
-                .friendRow__name { font-size: var(--text-base); font-weight: var(--font-semibold); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-                .friendRow__id { font-size: var(--text-sm); color: var(--color-font-50); }
-
-                .friendRow__right { min-width: 0; display: grid; gap: var(--space-2); }
-
-                .friendRow__levels { display: flex; flex-wrap: wrap; gap: var(--space-1); }
-
-                .friendRow__actions { display: flex; align-items: center; gap: var(--gap); flex-wrap: wrap; }
-
-
-                .friendRow[data-status="online"] { }
-                    .friendRow[data-status="online"] .friendRow__avatar { border: calc(var(--border-width) * 2) solid var(--color-green); }
-
-                .friendAction--pk { min-width: var(--icn-w64); display: inline-flex; align-items: center; justify-content: center; gap: var(--space-1); }
-
-                /* desktop alignment */
-                @media (min-width: 1750px) {
-                    .friendRow { display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: repeat(2, 1fr); grid-column-gap: 0px; grid-row-gap: 0px; }
-
-
-                    .friendRow__left { grid-area: 1 / 1 / 2 / 5; display: flex; align-items: center; align-self: center; min-height: 100%; }
-
-                    .friendRow__levels { justify-content: flex-start; grid-area: 2 / 1 / 3 / 5; }
-
-                    .friendRow__actions { justify-content: flex-end; grid-area: 1 / 5 / 3 / 7; }
-
-                    .friendAction--pk { min-width: 120px; }
-                }
-
-                @media (min-width: 1500px) and (max-width: 1749.98px) {
-                    .friendRow { display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: repeat(2, 1fr); grid-column-gap: 0px; grid-row-gap: 0px; }
-
-
-                    .friendRow__left { grid-area: 1 / 1 / 2 / 5; display: flex; align-items: center; align-self: center; min-height: 100%; }
-
-                    .friendRow__levels { justify-content: flex-start; grid-area: 2 / 1 / 3 / 5; }
-
-                    .friendRow__actions { justify-content: flex-end; grid-area: 1 / 5 / 3 / 7; }
-                }
-
-
-                @media (min-width: 1200px) and (max-width: 1499.98px) {
-                    .friendsCards__rail { grid-template-columns: repeat(5, minmax(110px, 1fr)); overflow-x: auto; padding-bottom: var(--space-2); }
-
-                    .friendCardItem { min-width: 110px; }
-
-                    .friendRow { grid-template-columns: minmax(200px, 0.9fr) minmax(280px, 1.3fr) minmax(0, 1fr); }
-                    .friendRow__left { display: flex; align-items: center; align-self: center; min-height: 100%; }
-
-                    .friendRow__levels { justify-content: center; }
-
-                    .friendRow__actions { justify-content: flex-end; }
-                }
-
-                @media (min-width: 600px) and (max-width: 1199.98px) {
-                    .friendRow { display: grid; grid-template-columns: repeat(6, 1fr); }
-
-
-                    .friendRow__left { grid-area: 1 / 1 / 2 / 5; display: flex; align-items: center; align-self: center; min-height: 100%; }
-
-                    .friendRow__levels { justify-content: flex-start; grid-area: 2 / 1 / 3 / 5; margin-top: var(--space-1); }
-
-                    .friendRow__actions { justify-content: flex-end; grid-area: 1 / 5 / 3 / 7; }
-
-                    .friendLv { padding: var(--space-1) var(--space-2); }
-                }
-
-                @media (max-width:599.98px) {
-                    .friendRow { display: grid; grid-template-columns: repeat(6, 1fr);; }
-
-
-                    .friendRow__left { grid-area: 1 / 1 / 2 / 5; display: flex; align-items: center; align-self: center; min-height: 100%; }
-
-                    .friendRow__levels { justify-content: flex-start; grid-area: 2 / 1 / 3 / 5; }
-
-                    .friendRow__actions { justify-content: flex-end; grid-area: 1 / 5 / 3 / 7; max-width: 110px; }
-
-                    .friendRow__levels { gap: var(--space-1) }
-                    .friendLv { padding: var(--space-1) var(--space-1); border-radius: var(--radius-sm); }
-                    .friendRow__actions__wrapper { display: flex; align-items: center; justify-content: flex-end; gap: var(--space-2); flex-wrap: wrap; width: 100%; }
-                    .friendAction { padding: var(--space-1) var(--space-2); }
-                }
-
-                @media (max-width:399.98px) {
-                    .friendRow__left { grid-area: 1 / 1 / 2 / 7; }
-
-                    .friendRow__levels { grid-area: 2 / 1 / 2 / 4; }
-
-                    .friendRow__actions { grid-area: 2 / 4 / 2 / 7; }
-                    .friendRow__actions__wrapper { gap: var(--space-1); }
-                }
-
-
-                @media (min-width: 768px) and (max-width: 1099.98px) {
-                    .friendsHub__main { grid-template-columns: 1fr; }
-
-                    .friendsCards,
-                    .friendsReward,
-                    .friendsNotice { grid-column: auto; }
-                }
-
-                /* 1100 ~ 1499：cards 和 reward 并排，tips 独立一行 */
-                @media (min-width: 1100px) and (max-width: 1499.98px) {
-                    .friendsHub__main { grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr); align-items: stretch; }
-
-                    .friendsCards { grid-column: 1 / 2; }
-
-                    .friendsReward { grid-column: 2 / 3; }
-
-                    .friendsNotice { grid-column: 1 / -1; }
-                }
-
-                /* 1500+：cards 满一行，reward 和 tips 并排 */
-                @media (min-width: 1500px) {
-                    .friendsHub__main { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: stretch; }
-
-                    .friendsCards { grid-column: 1 / -1; }
-
-                    .friendsReward { grid-column: 1 / 2; }
-
-                    .friendsNotice { grid-column: 2 / 3; }
-                }
-
-                @media (min-width: 1199.98px) {
-                    .friendsListPanel { display: flex; flex-direction: column; min-height: 0; }
-
-                    .friendsList { overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; padding-right: var(--space-1); max-height: clamp(420px, 62dvh, 760px); }
-
-                    .friendsListPanel__head,
-                    .friendsListPanel__foot { flex: 0 0 auto; }
-                }
-
-                @media (max-width: 799.98px) {
-                    .friendsCards__title .friendsListPanel__title { flex: 1 1 100%; min-width: 0; }
-
-                    .friendsCards__title .panelActions { flex: 1 1 100%; display: flex; justify-content: flex-end; gap: var(--space-1); }
-
-                    .friend__panelActions { width: 100%; }
-
-                    .friend__panelActionBtn { width: var(--icn-w40); height: var(--icn-w40); padding: 0; flex: 0 0var(--icn-w40);; justify-content: center; }
-                }
-                /* mobile */
-                @media (max-width: 767.98px) {
-                    .friendsHub__head,
-                    .friendsListPanel__head { flex-direction: column; align-items: stretch; }
-
-                    .friendsTools { justify-content: flex-end; }
-
-                    .friendsSearch { flex: none; min-width: 0; }
-
-                    .friendsReward__row { align-items: stretch; }
-
-
-                    .friendRow__left { gap: var(--gap); }
-
-                    .friendRow__index { min-width: 26px; }
-
-                    .friendRow__actions { width: 100%; }
-
-                    .friendAction--pk { margin-left: auto; }
-
-
-                    .friendRow { grid-template-columns: 1fr; }
-
-                    .friendRow__right { display: grid; gap: var(--space-2); }
-
-                    .friendRow__levels { justify-content: flex-start; }
-
-                    .friendRow__actions { justify-content: flex-start; }
-
-                        .friendRow__actions .friendAction--pk { margin-left: auto; }
-                }
-
-                /* tips hidden state */
-                .friendsNotice.is-tips-hidden { display: none; }
-
-                /* reward title right button alignment */
-                .friendsReward__title { display: flex; align-items: center; justify-content: space-between; gap: var(--gap); }
-
-                    .friendsReward__title .friend__panelActionBtn { flex: 0 0 auto; }
-                .friend__panelActionBtn.ttip { color: var(--font-color); }
-                /* tips sheet */
-
-                /* tips popup content spacing */
-                .tipsSheet__body { padding: var(--space-4); }
-
-                    .tipsSheet__body .friendsNotice__body { gap: var(--space-3); }
-
-                /* 1500 以上直接不显示右边原本 tips */
-                @media (min-width: 1500px) {
-                    .friendsReward .friend__panelActionBtn.ttip { display: none; }
-                    .friendsNotice.is-tips-hidden { display: block; }
-                }
-
-
-                .cardActionSheet__body { display: flex; flex-direction: column; gap: var(--space-4); }
-
-                .cardActionSheet__desc,
-                .cardActionSheet__summary { font-size: var(--text-sm); color: var(--color-font-70); }
-
-                .cardActionGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: var(--space-3); }
-
-                .cardPick { position: relative; border-radius: var(--radius-lg); border: var(--border-width) solid var(--border-from-font-10); background: color-mix(in srgb, var(--bg-color) 90%, var(--secondary-color)); padding: var(--space-2); display: flex; flex-direction: column; gap: var(--space-2); }
-
-                    .cardPick.is-selected { border-color: var(--primary-color); box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary-color) 55%, transparent); }
-
-                .cardPick__thumb { position: relative; overflow: hidden; border-radius: var(--radius-lg); }
-
-                    .cardPick__thumb img { width: 100%; display: block; }
-
-                .cardPick__count { position: absolute; top: var(--space-1); right: var(--space-1); min-width: 28px; height: 24px; padding: 0 var(--space-2); border-radius: var(--radius-md); display: inline-flex; align-items: center; justify-content: center; font-size: var(--text-xs); background: color-mix(in srgb, var(--bg-color) 92%, black); border: 1px solid var(--border-from-font-16); }
-
-                .cardPick__name { font-size: var(--text-sm); font-weight: var(--font-semibold); text-align: center; }
-
-                .cardPick__btn { width: 100%; }
-
-                .cardQty { display: flex; align-items: center; justify-content: center; gap: var(--space-2); }
-
-                .cardQty__btn { width: 32px; height: 32px; border: 0; border-radius: var(--radius-md); background: color-mix(in srgb, var(--secondary-color) 80%, var(--bg-color)); color: var(--font-color); }
-
-                .cardQty__value { min-width: 24px; text-align: center; font-size: var(--text-sm); font-weight: var(--font-semibold); }
-
-                .cardActionSheet__actions { display: flex; justify-content: flex-end; gap: var(--space-2); }
-
-                .cardPick { cursor: pointer; transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out); }
-
-                  
-
-                .cardPick__check { position: absolute; top: var(--space-2); left: var(--space-2); width: 28px; height: 28px; border-radius: 999px; display: none; align-items: center; justify-content: center; background: color-mix(in srgb, var(--primary-color) 85%, white 15%); color: var(--bg-color); font-size: 16px; font-weight: 700; box-shadow: 0 4px 12px rgba(0,0,0,.22); z-index: 2; }
-
-                .cardPick.is-selected .cardPick__check { display: inline-flex; }
-
-                @media(min-width:1024px){
-                    .cardPick:hover { transform: translateY(-2px); }
-                }
             </style>
             <footer class="footer" data-include="footer.html"></footer>
 
@@ -1050,99 +686,99 @@
                     "claim-history": {
                         title: "Claim History",
                         body: `
-                                <div class="friendPopup friendPopup--history">
-                                    <div class="friendPopup__section">
-                                        <div class="friendPopup__row">
-                                            <div>
-                                                <strong>Reward Claimed</strong>
-                                                <div class="friendPopup__sub">3 Cards Reward</div>
+                                    <div class="friendPopup friendPopup--history">
+                                        <div class="friendPopup__section">
+                                            <div class="friendPopup__row">
+                                                <div>
+                                                    <strong>Reward Claimed</strong>
+                                                    <div class="friendPopup__sub">3 Cards Reward</div>
+                                                </div>
+                                                <div class="friendPopup__meta">2026-04-21 12:30</div>
                                             </div>
-                                            <div class="friendPopup__meta">2026-04-21 12:30</div>
-                                        </div>
 
-                                        <div class="friendPopup__row">
-                                            <div>
-                                                <strong>Reward Claimed</strong>
-                                                <div class="friendPopup__sub">4 Cards Reward</div>
+                                            <div class="friendPopup__row">
+                                                <div>
+                                                    <strong>Reward Claimed</strong>
+                                                    <div class="friendPopup__sub">4 Cards Reward</div>
+                                                </div>
+                                                <div class="friendPopup__meta">2026-04-18 09:12</div>
                                             </div>
-                                            <div class="friendPopup__meta">2026-04-18 09:12</div>
                                         </div>
                                     </div>
-                                </div>
-                            `
+                                `
                     },
 
                     "transfer-history": {
                         title: "Transfer History",
                         body: `
-                                <div class="friendPopup friendPopup--transfer">
-                                    <div class="friendPopup__section">
-                                        <div class="friendPopup__row">
-                                            <div>
-                                                <strong>A3 Card Sent</strong>
-                                                <div class="friendPopup__sub">To @neonfox01</div>
+                                    <div class="friendPopup friendPopup--transfer">
+                                        <div class="friendPopup__section">
+                                            <div class="friendPopup__row">
+                                                <div>
+                                                    <strong>A3 Card Sent</strong>
+                                                    <div class="friendPopup__sub">To @neonfox01</div>
+                                                </div>
+                                                <div class="friendPopup__meta">2026-04-20 20:11</div>
                                             </div>
-                                            <div class="friendPopup__meta">2026-04-20 20:11</div>
-                                        </div>
 
-                                        <div class="friendPopup__row">
-                                            <div>
-                                                <strong>A5 Card Received</strong>
-                                                <div class="friendPopup__sub">From @asterbee77</div>
+                                            <div class="friendPopup__row">
+                                                <div>
+                                                    <strong>A5 Card Received</strong>
+                                                    <div class="friendPopup__sub">From @asterbee77</div>
+                                                </div>
+                                                <div class="friendPopup__meta">2026-04-19 15:44</div>
                                             </div>
-                                            <div class="friendPopup__meta">2026-04-19 15:44</div>
                                         </div>
                                     </div>
-                                </div>
-                            `
+                                `
                     },
 
                     "add-friend": {
                         title: "Add Friend",
                         body: `
-                                <div class="friendPopup friendPopup--add">
-                                    <div class="friendPopup__section">
-                                        <label class="friendPopup__label">Friend ID</label>
-                                        <input type="text" class="friendPopup__input" placeholder="Enter username or ID">
+                                    <div class="friendPopup friendPopup--add">
+                                        <div class="friendPopup__section">
+                                            <label class="friendPopup__label">Friend ID</label>
+                                            <input type="text" class="friendPopup__input" placeholder="Enter username or ID">
 
-                                        <label class="friendPopup__label">Message</label>
-                                        <textarea class="friendPopup__textarea" placeholder="Say something..."></textarea>
+                                            <label class="friendPopup__label">Message</label>
+                                            <textarea class="friendPopup__textarea" placeholder="Say something..."></textarea>
 
-                                        <div class="friendPopup__actions">
-                                            <button type="button" class="btn btn-2" data-friend-sheet-close-inner>Cancel</button>
-                                            <button type="button" class="btn btn-1">Send Request</button>
+                                            <div class="friendPopup__actions">
+                                                <button type="button" class="btn btn-2" data-friend-sheet-close-inner>Cancel</button>
+                                                <button type="button" class="btn btn-1">Send Request</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            `
+                                `
                     },
 
                     "setting": {
                         title: "Friend Settings",
                         body: `
-                                <div class="friendPopup friendPopup--setting">
-                                    <div class="friendPopup__section">
-                                        <label class="friendPopup__toggleRow">
-                                            <span>Allow card transfer from friends</span>
-                                            <input type="checkbox" checked>
-                                        </label>
+                                    <div class="friendPopup friendPopup--setting">
+                                        <div class="friendPopup__section">
+                                            <label class="friendPopup__toggleRow">
+                                                <span>Allow card transfer from friends</span>
+                                                <input type="checkbox" checked>
+                                            </label>
 
-                                        <label class="friendPopup__toggleRow">
-                                            <span>Allow PK requests</span>
-                                            <input type="checkbox" checked>
-                                        </label>
+                                            <label class="friendPopup__toggleRow">
+                                                <span>Allow PK requests</span>
+                                                <input type="checkbox" checked>
+                                            </label>
 
-                                        <label class="friendPopup__toggleRow">
-                                            <span>Show online status</span>
-                                            <input type="checkbox">
-                                        </label>
+                                            <label class="friendPopup__toggleRow">
+                                                <span>Show online status</span>
+                                                <input type="checkbox">
+                                            </label>
 
-                                        <div class="friendPopup__actions">
-                                            <button type="button" class="btn btn-1">Save Changes</button>
+                                            <div class="friendPopup__actions">
+                                                <button type="button" class="btn btn-1">Save Changes</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            `
+                                `
                     }
                 };
 
@@ -1300,14 +936,14 @@
                 item.dataset.cardId = card.id;
 
                 item.innerHTML = `
-        <div class="cardPick__thumb">
-            <span class="cardPick__check" aria-hidden="true">✓</span>
-            <img src="${card.img}" alt="${card.name}">
-            <div class="cardPick__count">${card.qty}</div>
-        </div>
-        <div class="cardPick__name">${card.name}</div>
-        ${extraContent}
-    `;
+            <div class="cardPick__thumb">
+                <span class="cardPick__check" aria-hidden="true">✓</span>
+                <img src="${card.img}" alt="${card.name}">
+                <div class="cardPick__count">${card.qty}</div>
+            </div>
+            <div class="cardPick__name">${card.name}</div>
+            ${extraContent}
+        `;
 
                 return item;
             }
@@ -1434,12 +1070,12 @@
                     const item = createCardPickBase(
                         card,
                         `
-            <div class="cardQty">
-                <button type="button" class="cardQty__btn" data-step="-1">−</button>
-                <div class="cardQty__value">0</div>
-                <button type="button" class="cardQty__btn" data-step="1">+</button>
-            </div>
-            `
+                <div class="cardQty">
+                    <button type="button" class="cardQty__btn" data-step="-1">−</button>
+                    <div class="cardQty__value">0</div>
+                    <button type="button" class="cardQty__btn" data-step="1">+</button>
+                </div>
+                `
                     );
 
                     item.querySelectorAll(".cardQty__btn").forEach(btn => {
