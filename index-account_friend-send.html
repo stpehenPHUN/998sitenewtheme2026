@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html data-theme="dark">
+<head>
+    <!--<script src="JS/common.js"></script>
+    <script src="JS/jquery.lastest.min.js"></script>
+    <script src="JS/jQuery.base64.js"></script>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title></title>
+    <link href="js/bootstrap-5.3.8/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/bootstrap-5.3.8/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="js/swiper-11.2.10/swiper-bundle.min.css" />
+    <script src="js/swiper-11.2.10/swiper-bundle.min.js"></script>
+    <link href="css/css-afterlogin.css" rel="stylesheet" />
+    <style>
+        :root { --bg-color: #1b2033; --font-color: #fff; --primary-color: #c084fc; --secondary-color: #2b3248; --accent-color: #9002ff; }
+        /*:root { --bg-color: #1A1B26; --font-color: #A9B1D6; --primary-color: #7AA2F7; --secondary-color: #24283B; --accent-color: #F7768E; }*/
+
+    </style>
+    <script src="js/import.js"></script>
+</head>
+
+<body style=" ">
+
+    <div id="layout">
+        <div class="download_import" data-include="downloadtop.html"></div>
+        <aside class="sidebar sidebar--main">
+            <!-- rail + main menu -->
+            <div class="sidebar--wrapper" data-include="sidebar.html" data-lang="en"></div>
+        </aside>
+        <div class="overlay" data-action="close-all" aria-hidden="true"></div>
+        <!-- Main -->
+        <main id="main" class="main">
+            <!-- mobile 你还可以放一个按钮来开 promo（右侧） -->
+            <!-- main content -->
+            <header class="header" data-include="header.html" data-lang="en"></header>
+
+            <div class="pagebar" role="banner">
+                <div class="accountTopTabs topTabs" role="tablist" aria-label="Notification Tabs">
+                    <a href="index-account.html" type="button" class="tab js-top-tab" data-tab="announcement">
+                        <span class="p--methodBtn__ico" aria-hidden="true" data-ico="account"></span>
+                        Account
+                    </a>
+                    <a href="index-account_daily.html" type="button" class="tab js-top-tab" data-tab="message">
+                        <span class="p--methodBtn__ico" aria-hidden="true" data-ico="daily"></span>
+                        Daily Check-in
+                    </a>
+                    <a href="index-account_invite.html" type="button" class="tab js-top-tab" data-tab="message">
+                        <span class="p--methodBtn__ico" aria-hidden="true" data-ico="mail"></span>
+                        Invite Friend
+                    </a>
+                    <a href="index-account_lv.html" type="button" class="tab js-top-tab" data-tab="message">
+                        <span class="p--methodBtn__ico" aria-hidden="true" data-ico="level"></span>
+                        Leveling Program
+                    </a>
+                    <a href="index-account_friend.html" type="button" class="tab is-active js-top-tab" data-tab="message">
+                        <span class="p--methodBtn__ico" aria-hidden="true" data-ico="friend"></span>
+                        Friend Feature
+                    </a>
+                    <a href="index-account_PK.html" type="button" class="tab js-top-tab" data-tab="message">
+                        <span class="p--methodBtn__ico" aria-hidden="true" data-ico="battle"></span>
+                        PK
+                    </a>
+                </div>
+            </div>
+            <style>
+            </style>
+            <div class="pkgSection panel">
+                <div class="pkgSection__top">
+                    <div class="withdrawTopTabs topTabs" role="tablist" aria-label="Friend Tabs">
+                        <a href="index-account_friend.html" type="button" class="tab js-top-tab">
+                            <span class="p--methodBtn__ico" aria-hidden="true" data-ico="treasure"></span>
+                            All Friends
+                        </a>
+                        <a href="index-account_friend-request.html" type="button" class="tab js-top-tab">
+                            <span class="p--methodBtn__ico" aria-hidden="true" data-ico="history"></span>
+                            Friend Request
+                        </a>
+                        <a href="index-account_friend-send.html" type="button" class="tab is-active js-top-tab">
+                            <span class="p--methodBtn__ico" aria-hidden="true" data-ico="gift"></span>
+                            Send Request
+                        </a>
+                    </div>
+                </div>
+
+                <div class="panel-inner requestPage">
+                    <section class="requestBoard panelCard">
+                        <div class="requestBoard__head">
+                            <div class="requestBoard__titleWrap">
+                                <h3 class="requestBoard__title card__title">Friend Requests</h3>
+                                <div class="requestBoard__sub">3 pending requests</div>
+                            </div>
+
+                            <label class="friendsSearch">
+                                <span class="friendsSearch__icon" data-ico="magnifier"></span>
+                                <input type="text" class="friendsSearch__input" placeholder="Search requests..." />
+                            </label>
+                        </div>
+
+                        <div class="requestGrid">
+                            <article class="requestCard bubbleCard" data-status="online">
+                                <div class="requestCard__top">
+                                    <div class="requestCard__identity">
+                                        <div class="requestCard__avatar profileAvatar">E</div>
+                                        <div class="requestCard__user">
+                                            <div class="requestCard__name">EchoNya</div>
+                                            <div class="requestCard__id">@echonya88</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="requestCard__index">01</div>
+                                </div>
+
+                                <div class="requestCard__levels">
+                                    <span class="friendLv">Pending</span>
+                                    <span class="friendLv">Sent 2h ago</span>
+                                </div>
+
+                                <div class="requestCard__actions">
+                                    <button type="button" class="btn btn-pill btn-2">Cancel</button>
+                                    <button type="button" class="btn btn-pill btn-1">Resend</button>
+                                </div>
+                            </article>
+
+                            <article class="requestCard bubbleCard">
+                                <div class="requestCard__top">
+                                    <div class="requestCard__identity">
+                                        <div class="requestCard__avatar profileAvatar">Y</div>
+                                        <div class="requestCard__user">
+                                            <div class="requestCard__name">YumePop</div>
+                                            <div class="requestCard__id">@yumepop22</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="requestCard__index">02</div>
+                                </div>
+
+                                <div class="requestCard__levels">
+                                    <span class="friendLv">Pending</span>
+                                    <span class="friendLv">Sent 2h ago</span>
+                                </div>
+
+                                <div class="requestCard__actions">
+                                    <button type="button" class="btn btn-pill btn-2">Cancel</button>
+                                    <button type="button" class="btn btn-pill btn-1">Resend</button>
+                                </div>
+                            </article>
+
+                            <article class="requestCard bubbleCard">
+                                <div class="requestCard__top">
+                                    <div class="requestCard__identity">
+                                        <div class="requestCard__avatar profileAvatar">M</div>
+                                        <div class="requestCard__user">
+                                            <div class="requestCard__name">MiraDrop</div>
+                                            <div class="requestCard__id">@miradrop31</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="requestCard__index">03</div>
+                                </div>
+
+                                <div class="requestCard__levels">
+                                    <span class="friendLv">Pending</span>
+                                    <span class="friendLv">Sent 2h ago</span>
+                                </div>
+
+                                <div class="requestCard__actions">
+                                    <button type="button" class="btn btn-pill btn-2">Cancel</button>
+                                    <button type="button" class="btn btn-pill btn-1">Resend</button>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="friendsListPanel__foot">Showing 3 of 3 pending requests</div>
+                    </section>
+                </div>
+            </div>
+            <style>
+                
+            </style>
+            <footer class="footer" data-include="footer.html"></footer>
+
+
+            <!--  notice sheet -->
+            <div id="noticeSheet" class="appSheet noticeSheet" aria-hidden="true">
+                <div class="appSheet__backdrop" data-notice-close></div>
+
+                <div class="appSheet__panel noticeSheet__panel" role="dialog" aria-modal="true" aria-labelledby="noticeSheetTitle">
+                    <div class="appSheet__header noticeSheet__header">
+                        <button class="appSheet__textBtn" type="button" data-notice-close>Close</button>
+                        <div class="appSheet__title" id="noticeSheetTitle">Announcement</div>
+                    </div>
+
+                    <div class="noticeSheet__body announcementSheet">
+                        <div class="messagePanel__title noticeSheet__itemTitle" id="noticeSheetItemTitle"></div>
+                        <div class="messagePanel__date noticeSheet__itemDate" id="noticeSheetItemDate"></div>
+                        <div class="messagePanel__body noticeSheet__itemContent" id="noticeSheetItemContent"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Friend desktop modal -->
+            <div class="friendSheet appSheet" id="friendSheet" hidden aria-hidden="true">
+                <div class="friendSheet__backdrop appSheet__backdrop" data-friend-sheet-close></div>
+
+                <div class="friendSheet__panel appSheet__panel" role="dialog" aria-modal="true" aria-labelledby="friendSheetTitle">
+                    <div class="friendSheet__header appSheet__header">
+                        <button type="button" class="friendSheet__close appSheet__textBtn btn" data-friend-sheet-close>
+                            Close
+                        </button>
+                        <div class="friendSheet__title appSheet__title" id="friendSheetTitle">Title</div>
+                    </div>
+
+                    <!--<div class="friendSheet__handle"></div>-->
+                    <div class="friendSheet__body" id="friendSheetBody"></div>
+                </div>
+            </div>
+            <div id="tipsSheet" class="friendSheet appSheet tipsSheet" hidden aria-hidden="true">
+                <div class="friendSheet__backdrop appSheet__backdrop" data-tips-sheet-close></div>
+
+                <div class="friendSheet__panel appSheet__panel tipsSheet__panel" role="dialog" aria-modal="true" aria-labelledby="tipsSheetTitle">
+                    <div class="friendSheet__header appSheet__header tipsSheet__header">
+                        <button type="button" class="friendSheet__close appSheet__textBtn btn" data-tips-sheet-close>
+                            Close
+                        </button>
+                        <div class="friendSheet__title appSheet__title" id="tipsSheetTitle">Tips</div>
+                        <div></div>
+                    </div>
+
+                    <div class="friendSheet__body tipsSheet__body" id="tipsSheetBody"></div>
+                </div>
+            </div>
+            <div id="cardActionSheet" class="friendSheet appSheet" hidden aria-hidden="true">
+                <div class="friendSheet__backdrop appSheet__backdrop" data-card-action-close></div>
+
+                <div class="friendSheet__panel appSheet__panel" role="dialog" aria-modal="true" aria-labelledby="cardActionSheetTitle">
+                    <div class="friendSheet__header appSheet__header">
+                        <button type="button" class="friendSheet__close appSheet__textBtn btn" data-card-action-close>
+                            Close
+                        </button>
+                        <div class="friendSheet__title appSheet__title" id="cardActionSheetTitle">Card Action</div>
+                        <div></div>
+                    </div>
+
+                    <div class="friendSheet__body cardActionSheet__body">
+                        <div class="cardActionSheet__desc" id="cardActionSheetDesc"></div>
+
+                        <div class="cardActionGrid" id="cardActionGrid"></div>
+
+                        <div class="cardActionSheet__summary" id="cardActionSheetSummary"></div>
+
+                        <div class="cardActionSheet__actions">
+                            <button type="button" class="btn btn-2" data-card-action-close>Cancel</button>
+                            <button type="button" class="btn btn-1" id="cardActionConfirmBtn">Claim</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer" data-include="footer.html"></footer>
+        </main>
+    </div>
+    <script src="js/script-page.js"></script>
+</html>
