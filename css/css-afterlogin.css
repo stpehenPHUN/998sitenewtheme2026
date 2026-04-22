@@ -2281,7 +2281,7 @@ iframe { height: clamp(200px, calc(100dvh - 200px), 100dvh); width: 100%; }
 
         .friendSheet .appSheet__backdrop { display: block !important; position: absolute; inset: 0; }
 
-    .friendSheet__panel { position: absolute; top: 50%; left: 50%; width: min(620px, calc(100vw - 48px)); max-height: min(82vh, 760px); display: flex; flex-direction: column; border-radius: calc(var(--radius-xl) + 2px); padding-bottom: 0; opacity: 0; transform: translate(-50%, calc(-50% + 16px)) scale(.96) !important; transition: transform var(--duration-normal) var(--ease-out), opacity var(--duration-normal) var(--ease-out) !important; margin: 0; }
+    .friendSheet__panel { position: absolute; top: 50%; left: 50%; width: min(980px, calc(100vw - 48px)); max-height: min(82vh, 760px); display: flex; flex-direction: column; border-radius: calc(var(--radius-xl) + 2px); padding-bottom: 0; opacity: 0; transform: translate(-50%, calc(-50% + 16px)) scale(.96) !important; transition: transform var(--duration-normal) var(--ease-out), opacity var(--duration-normal) var(--ease-out) !important; margin: 0; }
 
     .friendSheet.isOpen .friendSheet__panel { opacity: 1; transform: translate(-50%, -50%) scale(1) !important; }
 
