@@ -2764,7 +2764,7 @@ iframe { height: clamp(200px, calc(100dvh - 200px), 100dvh); width: 100%; }
 
 .pkHero { position: relative; min-width: 0; min-height: 550px; border-radius: var(--radius-md); border: var(--border-width) solid var(--border-from-primary-16); background: var(--secondary-color); padding: var(--space-4); display: flex; background-position: center top; background-size: cover; overflow: hidden; isolation: isolate; }
 
-    .pkHero::before { content: ""; position: absolute; inset: 0; z-index: 0; background-image: url("image/pk/desktop-bg.jpg"); background-position: center top; background-repeat: no-repeat; background-size: cover; opacity: 0.75; filter: blur(6px); transform: scale(1.04); height: 100%; }
+    .pkHero::before { content: ""; position: absolute; inset: 0; z-index: 0;  background-image: url('../image/pk/desktop-bg.jpg'); background-position: center top; background-repeat: no-repeat; background-size: cover; opacity: 0.75; filter: blur(6px); transform: scale(1.04); height: 100%; }
 
     .pkHero::after { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient( 180deg, rgba(27, 32, 51, 0.28) 0%, rgba(27, 32, 51, 0.46) 100% ); }
 
