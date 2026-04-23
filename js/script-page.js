@@ -390,15 +390,12 @@
         if (!note || note.dataset.noteInit === 'true') return;
         note.dataset.noteInit = 'true';
 
-        const BREAKPOINT = 1024;
-
         const overlay = document.querySelector(".overlay[data-action='close-all']");
         const openBtn = document.querySelector("[data-action='open-note']");
         const closeBtn = document.querySelector("[data-action='close-note']");
 
         if (!overlay || !openBtn) return;
 
-        const isDesktop = () => window.innerWidth >= BREAKPOINT;
         const isOpen = () => note.classList.contains("is-open");
 
         const withNoteAnimation = (mutate) => {
@@ -429,7 +426,6 @@
         };
 
         function openNote() {
-            if (isDesktop()) return;
             if (isOpen()) return;
 
             withNoteAnimation(() => {
@@ -471,17 +467,12 @@
             closeAll();
         });
 
-        window.addEventListener("resize", () => {
-            if (isDesktop()) closeAll();
-        });
-
         document.addEventListener("click", (e) => {
             const btn = e.target.closest?.('[data-action="close-all"]');
             if (!btn) return;
             closeAll();
         });
     }
-
     onReady(() => {
         waitForElement("[data-note]", initNoteBox);
     });
