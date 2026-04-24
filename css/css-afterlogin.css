@@ -3208,3 +3208,53 @@ iframe { height: clamp(200px, calc(100dvh - 200px), 100dvh); width: 100%; }
 
 .dailyHero__btn.is-checked,
 .dailyHero__btn:disabled { opacity: .7; cursor: not-allowed; box-shadow: none; }
+
+
+/* =========================================================
+   HEADER VIP LEVEL DROPDOWN
+   Fix hover gap so user can move into dropdown menu
+========================================================= */
+
+@media (min-width: 1024px) {
+    .playerLevelDropdown { position: relative; }
+
+        .playerLevelDropdown > .dropdown-menu { left: 0 !important; top: 100% !important; inset: auto auto auto 0 !important; transform: none !important; margin-top: 0 !important; padding-top: var(--space-2); pointer-events: auto; }
+
+        /* create an invisible hover bridge between LV badge and menu */
+        .playerLevelDropdown::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: var(--space-3); z-index: 1000; }
+
+        .playerLevelDropdown:hover > .dropdown-menu,
+        .playerLevelDropdown > .dropdown-menu:hover,
+        .playerLevelDropdown .dropdown-menu.show { display: block; }
+
+        .playerLevelDropdown > .dropdown-menu::after {}
+}
+@media (min-width: 1024px) {
+    .playerLevelDropdown.is-hover-open > .dropdown-menu { display: block; }
+}
+
+/* =========================================================
+   HEADER VIP LEVEL DROPDOWN
+   Keep menu absolute even while closing
+========================================================= */
+
+@media (min-width: 1024px) {
+    .playerLevelDropdown { position: relative; }
+
+        /* 重点：永远 absolute，永远不进入 header flow */
+        .playerLevelDropdown > .dropdown-menu { position: absolute !important; left: 0 !important; top: calc(100% + var(--space-2)) !important; right: auto !important; bottom: auto !important; inset: auto auto auto 0 !important; display: block !important; min-width: max-content; margin-top: 0 !important; transform: translateY(6px) !important; opacity: 0; visibility: hidden; pointer-events: none; z-index: 2000; transition: opacity var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out), visibility 0s linear var(--duration-fast); }
+
+        /* hover bridge */
+        .playerLevelDropdown::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: var(--space-3); z-index: 1999; }
+
+        /* 打开状态 */
+        .playerLevelDropdown:hover > .dropdown-menu,
+        .playerLevelDropdown.is-hover-open > .dropdown-menu,
+        .playerLevelDropdown > .dropdown-menu:hover,
+        .playerLevelDropdown > .dropdown-menu.show { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0) !important; transition: opacity var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out), visibility 0s; }
+
+        /* 覆盖旧的通用 .dropdown:hover 规则，避免 transform 跳回 36px */
+        .playerLevelDropdown.dropdown:hover > .dropdown-menu { position: absolute !important; inset: auto auto auto 0 !important; transform: translateY(0) !important; }
+
+        .playerLevelDropdown > .dropdown-menu::after { top: -6px; }
+}
