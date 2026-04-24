@@ -1386,7 +1386,8 @@ ard { flex: 0 0 var(--card-w); width: var(--card-w); }
 
 @media (max-width: 1199.98px) {
     .tab { border-radius: var(--radius-pill); margin: var(--space-2) 0; border: var(--border-width) solid transparent; }
-        .tab.is-active { border-color: var(--primary-color); }
+    .withdrawTopTabs.topTabs .tab{margin:0;}
+    .tab.is-active { border-color: var(--primary-color); }
 }
 
 @media (max-width: 980px) {
