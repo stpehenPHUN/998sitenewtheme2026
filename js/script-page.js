@@ -4,7 +4,7 @@ window.LEVEL_DATA = {
         level: 8,
         progress: 42,
         icon: "image/menu-sports.png",
-        heroImage: "../image/level/sport_embassy2.png",
+        heroImage: "image/level/sport_embassy2.png",
         rewards: [
             ["Level 1", "MYR 9 Sports Cash Reward"],
             ["Level 2", "MYR 19 Free Bet Voucher"],
@@ -30,7 +30,7 @@ window.LEVEL_DATA = {
         level: 12,
         progress: 68,
         icon: "image/menu-casino.png",
-        heroImage: "../image/level/casino_embassy2.png",
+        heroImage: "image/level/casino_embassy2.png",
         rewards: [
             ["Level 1", "MYR 18 Casino Welcome Chips"],
             ["Level 2", "MYR 38 Live Casino Voucher"],
@@ -66,7 +66,7 @@ window.LEVEL_DATA = {
         level: 5,
         progress: 27,
         icon: "image/menu-lottery.png",
-        heroImage: "../image/level/lottery_embassy2.png",
+        heroImage: "image/level/lottery_embassy2.png",
         rewards: [
             ["Level 1", "MYR 5 Lucky Number Voucher"],
             ["Level 2", "MYR 15 Lottery Credit"],
@@ -86,7 +86,7 @@ window.LEVEL_DATA = {
         level: 16,
         progress: 74,
         icon: "image/menu-slots.png",
-        heroImage: "../image/level/games_embassy2.png",
+        heroImage: "image/level/games_embassy2.png",
         rewards: [
             ["Level 1", "MYR 9 Arcade Credit"],
             ["Level 2", "MYR 29 Mini Game Bonus"],
@@ -125,7 +125,7 @@ window.LEVEL_DATA = {
         level: 3,
         progress: 19,
         icon: "image/menu-gaming2.png",
-        heroImage: "../image/level/p2p_embassy2.png",
+        heroImage: "image/level/p2p_embassy2.png",
         rewards: [
             ["Level 1", "MYR 10 P2P Starter Bonus"],
             ["Level 2", "MYR 25 Table Game Credit"],
