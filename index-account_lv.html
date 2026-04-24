@@ -67,23 +67,23 @@
             </div>
             <style>
             </style>
-            <div class="pkgSection panel">
+            <div class="panel-inner noteBox__1">
+                <button class="noteBox__btn" type="button" data-level-terms-open aria-controls="levelTermsSheet" aria-expanded="false">
+                    Term &amp; Conditions
+                    <span class="icn-information"></span>
+                </button>
+            </div>
+
+            <div class="pkgSection panel levelProgram">
                 <div class="pkgSection__top">
-                    <div class="innerTopTabs topTabs" role="tablist" aria-label="Withdraw Type Tabs">
+
+                    <div class="withdrawTopTabs topTabs" role="tablist" aria-label="Notification Tabs">
                         <button type="button" class="tab is-active" data-wd-type="sport" aria-selected="true"><span class="catBtn__ico"><img alt="Soccer" loading="lazy" src="image/menu-sports.png"></span>Sport</button>
                         <button type="button" class="tab" data-wd-type="casino" aria-selected="false">  <span class="catBtn__ico"><img alt="Casino" loading="lazy" src="image/menu-casino.png"></span>Casino</button>
                         <button type="button" class="tab" data-wd-type="lottery" aria-selected="false"><span class="catBtn__ico"><img alt="Lottery" loading="lazy" src="image/menu-lottery.png"></span>Lottery</button>
                         <button type="button" class="tab" data-wd-type="games" aria-selected="false"><span class="catBtn__ico"><img alt="Slots" loading="lazy" src="image/menu-slots.png"></span>Games</button>
                         <button type="button" class="tab" data-wd-type="p2p" aria-selected="false"><span class="catBtn__ico"><img alt="P2P" loading="lazy" src="image/menu-gaming2.png"></span>P2P</button>
                     </div>
-
-                </div>
-                <div class="panel-inner noteBox__1">
-                    <!-- mobile 用：打开 bottom sheet；桌面可以隐藏 -->
-                    <button class="noteBox__btn" type="button" data-action="open-note" aria-controls="noteBox" aria-expanded="false">
-                        Term &amp; Conditions
-                        <span class="icn-information"></span>
-                    </button>
                 </div>
                 <div class="levelLayout panel-inner">
 
@@ -97,7 +97,9 @@
 
                                     <div class="bubbleCard bubbleCard-- levelInfoCard">
                                         <div class="levelInfo__header">
-                                            <div class="levelInfo__icon"></div>
+                                            <div class="levelInfo__icon">
+                                                <img alt="Soccer" loading="lazy" src="image/menu-sports.png">
+                                            </div>
                                             <div>
                                                 <div class="levelInfo__level">Lv. 0</div>
                                                 <div class="levelInfo__type">Sport</div>
@@ -111,32 +113,25 @@
                                             <span class="progressText">12%</span>
                                         </div>
 
+                                        <div class="levelInfo__imageSlot" aria-hidden="true"></div>
+
                                         <p class="levelInfo__desc">
                                             Start earning rewards by leveling up and reach milestones.
                                         </p>
 
-                                        <div class="infoBlock noteBox">
+                                        <button type="button" class="levelInfo__guideBtn btn btn-1 btn-pill" data-level-info-open aria-label="Start Earning Rewards Now">
+                                            <span class="icn-information"></span>
+                                        </button>
+
+                                        <div class="infoBlock noteBox levelInfoGuideInline" data-level-info-source>
                                             <h3>Start Earning Rewards Now!</h3>
                                             <ol>
-
-                                                <li>
-                                                    XP is required to level up
-                                                </li>
-                                                <li>
-                                                    You can earn XP by placing bets in any game categories.
-                                                </li>
-                                                <li>
-                                                    The more you bet, the more XP you earn.
-                                                </li>
-                                                <li>
-                                                    XP gain varies by game category.
-                                                </li>
-                                                <li>
-                                                    Reward will be given for every milestone level you reach!
-                                                </li>
-                                                <li>
-                                                    Only 1 reward will be given for each milestone level.
-                                                </li>
+                                                <li>XP is required to level up</li>
+                                                <li>You can earn XP by placing bets in any game categories.</li>
+                                                <li>The more you bet, the more XP you earn.</li>
+                                                <li>XP gain varies by game category.</li>
+                                                <li>Reward will be given for every milestone level you reach!</li>
+                                                <li>Only 1 reward will be given for each milestone level.</li>
                                             </ol>
                                         </div>
                                     </div>
@@ -147,21 +142,22 @@
 
                         <!-- Terms（独立） -->
                         <div class="levelTerms">
-                                <div class="bubbleCard panelNote noteBox" id="noteBox" data-note="" data-note-init="false">
-    <h3>Terms &amp; Condition</h3>
-    <ol>
-        <li>This payment method is operated by our payment processe partner. Please refer to the instructions provided in the payment page to avoid any monetary loss!</li>
-        <li>
-            Do not save the recipient account and pay without submitting a deposit request.
-        </li>
-        <li>
-            Account used to make the payment must match your Full Name.
-        </li>
-        <li>
-            All deposites must be played to fulfill the turnover requirement to withdraw. The requirement may be different depending on the deposit amount and bonus seleced. Please check Deposit Summary page for the exact value.
-        </li>
-    </ol>
-</div>
+                            <button class="levelTermsBtn bubbleCard" type="button" data-level-terms-open aria-controls="levelTermsSheet" aria-expanded="false">
+                                <span class="levelTermsBtn__main">
+                                    <strong>Terms &amp; Conditions</strong>
+                                    <small>View leveling program rules</small>
+                                </span>
+                                <span class="icn-information"></span>
+                            </button>
+
+                            <div class="levelTermsContentSource" data-level-terms-source>
+                                <ol>
+                                    <li>This payment method is operated by our payment processe partner. Please refer to the instructions provided in the payment page to avoid any monetary loss!</li>
+                                    <li>Do not save the recipient account and pay without submitting a deposit request.</li>
+                                    <li>Account used to make the payment must match your Full Name.</li>
+                                    <li>All deposites must be played to fulfill the turnover requirement to withdraw. The requirement may be different depending on the deposit amount and bonus seleced. Please check Deposit Summary page for the exact value.</li>
+                                </ol>
+                            </div>
                         </div>
 
                     </div>
@@ -173,138 +169,127 @@
                         </div>
                         <div class="rewardGrid">
 
-                            <div class="rewardCard bubbleCard bubbleCard--info">
+                            <div class="rewardCard bubbleCard">
                                 <div class="rewardCard__level">Level 1</div>
                                 <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 9</div>
+                                <div class="rewardCard__value">MYR 9 Cash Reward</div>
                             </div>
 
-                            <div class="rewardCard bubbleCard bubbleCard--info">
+                            <div class="rewardCard bubbleCard">
                                 <div class="rewardCard__level">Level 2</div>
                                 <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 19</div>
+                                <div class="rewardCard__value">MYR 19 Free Credit</div>
                             </div>
 
-                            <div class="rewardCard bubbleCard bubbleCard--success">
+                            <div class="rewardCard bubbleCard">
                                 <div class="rewardCard__level">Level 3</div>
                                 <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 39</div>
+                                <div class="rewardCard__value">MYR 39 Bonus Voucher</div>
                             </div>
 
-                            <div class="rewardCard bubbleCard bubbleCard--success">
+                            <div class="rewardCard bubbleCard">
                                 <div class="rewardCard__level">Level 4</div>
                                 <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 99</div>
+                                <div class="rewardCard__value">10% Cashback Voucher</div>
                             </div>
 
-                            <div class="rewardCard bubbleCard bubbleCard--warning">
+                            <div class="rewardCard bubbleCard">
                                 <div class="rewardCard__level">Level 5</div>
                                 <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 219</div>
+                                <div class="rewardCard__value">MYR 99 Lucky Spin Ticket</div>
                             </div>
 
-                            <div class="rewardCard bubbleCard bubbleCard--warning">
+                            <div class="rewardCard bubbleCard">
                                 <div class="rewardCard__level">Level 6</div>
                                 <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 319</div>
-                            </div>
-                            <div class="rewardCard bubbleCard bubbleCard--info">
-                                <div class="rewardCard__level">Level 1</div>
-                                <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 9</div>
+                                <div class="rewardCard__value">MYR 219 Cash Prize</div>
                             </div>
 
-                            <div class="rewardCard bubbleCard bubbleCard--info">
-                                <div class="rewardCard__level">Level 2</div>
+                            <div class="rewardCard bubbleCard">
+                                <div class="rewardCard__level">Level 7</div>
                                 <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 19</div>
+                                <div class="rewardCard__value">Exclusive VIP Bonus Pack</div>
                             </div>
 
-                            <div class="rewardCard bubbleCard bubbleCard--success">
-                                <div class="rewardCard__level">Level 3</div>
+                            <div class="rewardCard bubbleCard">
+                                <div class="rewardCard__level">Level 8</div>
                                 <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 39</div>
+                                <div class="rewardCard__value">MYR 319 Shopping Voucher</div>
                             </div>
 
-                            <div class="rewardCard bubbleCard bubbleCard--success">
-                                <div class="rewardCard__level">Level 4</div>
+                            <div class="rewardCard bubbleCard">
+                                <div class="rewardCard__level">Level 9</div>
                                 <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 99</div>
+                                <div class="rewardCard__value">RM500 Touch 'n Go eWallet Credit</div>
                             </div>
 
-                            <div class="rewardCard bubbleCard bubbleCard--warning">
-                                <div class="rewardCard__level">Level 5</div>
+                            <div class="rewardCard bubbleCard">
+                                <div class="rewardCard__level">Level 10</div>
                                 <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 219</div>
+                                <div class="rewardCard__value">Samsung Galaxy Buds FE</div>
                             </div>
 
-                            <div class="rewardCard bubbleCard bubbleCard--warning">
-                                <div class="rewardCard__level">Level 6</div>
+                            <div class="rewardCard bubbleCard">
+                                <div class="rewardCard__level">Level 12</div>
                                 <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 319</div>
-                            </div>
-                            <div class="rewardCard bubbleCard bubbleCard--info">
-                                <div class="rewardCard__level">Level 1</div>
-                                <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 9</div>
+                                <div class="rewardCard__value">Apple AirPods Pro 2nd Generation</div>
                             </div>
 
-                            <div class="rewardCard bubbleCard bubbleCard--info">
-                                <div class="rewardCard__level">Level 2</div>
+                            <div class="rewardCard bubbleCard">
+                                <div class="rewardCard__level">Level 15</div>
                                 <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 19</div>
+                                <div class="rewardCard__value">Nintendo Switch OLED Console</div>
                             </div>
 
-                            <div class="rewardCard bubbleCard bubbleCard--success">
-                                <div class="rewardCard__level">Level 3</div>
+                            <div class="rewardCard bubbleCard">
+                                <div class="rewardCard__level">Level 18</div>
                                 <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 39</div>
+                                <div class="rewardCard__value">MYR 1,000 Mega Cash Bonus</div>
                             </div>
 
-                            <div class="rewardCard bubbleCard bubbleCard--success">
-                                <div class="rewardCard__level">Level 4</div>
+                            <div class="rewardCard bubbleCard">
+                                <div class="rewardCard__level">Level 20</div>
                                 <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 99</div>
+                                <div class="rewardCard__value">iPad 10th Generation Wi-Fi 64GB</div>
                             </div>
 
-                            <div class="rewardCard bubbleCard bubbleCard--warning">
-                                <div class="rewardCard__level">Level 5</div>
+                            <div class="rewardCard bubbleCard">
+                                <div class="rewardCard__level">Level 25</div>
                                 <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 219</div>
+                                <div class="rewardCard__value">PlayStation 5 Slim Console Disc Edition</div>
                             </div>
 
-                            <div class="rewardCard bubbleCard bubbleCard--warning">
-                                <div class="rewardCard__level">Level 6</div>
+                            <div class="rewardCard bubbleCard">
+                                <div class="rewardCard__level">Level 30</div>
                                 <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 319</div>
-                            </div>
-                            <div class="rewardCard bubbleCard bubbleCard--info">
-                                <div class="rewardCard__level">Level 1</div>
-                                <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 9</div>
+                                <div class="rewardCard__value">iPhone 16 Pro Max 256GB</div>
                             </div>
 
-                            <div class="rewardCard bubbleCard bubbleCard--info">
-                                <div class="rewardCard__level">Level 2</div>
+                            <div class="rewardCard bubbleCard">
+                                <div class="rewardCard__level">Level 35</div>
                                 <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 19</div>
+                                <div class="rewardCard__value">Luxury Staycation Hotel Voucher for 2 Pax</div>
                             </div>
 
-                            <div class="rewardCard bubbleCard bubbleCard--success">
-                                <div class="rewardCard__level">Level 3</div>
+                            <div class="rewardCard bubbleCard">
+                                <div class="rewardCard__level">Level 40</div>
                                 <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 39</div>
+                                <div class="rewardCard__value">MYR 8,888 Grand Jackpot Reward</div>
                             </div>
 
-                            <div class="rewardCard bubbleCard bubbleCard--success">
-                                <div class="rewardCard__level">Level 4</div>
+                            <div class="rewardCard bubbleCard">
+                                <div class="rewardCard__level">Level 45</div>
                                 <div class="rewardCard__img"></div>
-                                <div class="rewardCard__value">MYR 99</div>
+                                <div class="rewardCard__value">MacBook Air 13-inch M3 256GB</div>
                             </div>
 
+                            <div class="rewardCard bubbleCard">
+                                <div class="rewardCard__level">Level 50</div>
+                                <div class="rewardCard__img"></div>
+                                <div class="rewardCard__value">Ultimate VIP Mystery Gift Box With Premium Rewards</div>
+                            </div>
 
                         </div>
-
                     </div>
 
                 </div>
@@ -312,19 +297,422 @@
             </div>
 
             <style>
+                /* =========================================================
+                                   LEVELING PROGRAM
+                                   Clean version
+                                   Scope: .levelProgram only
+                                   Do not restyle .pkgSection__top / .withdrawTopTabs / .appSheet
+                                ========================================================= */
 
-                .rewardGrid { grid-template-columns: repeat(5, minmax(0, 1fr));  }
-                .rewardCard { aspect-ratio: 1 / 1; min-width: 0; }
+                .levelProgram { --lv-gold: #d7a84f; --lv-gold-soft: rgba(215, 168, 79, .18); --lv-gold-line: rgba(215, 168, 79, .38); }
 
+                    /* ---------- base safety ---------- */
 
-                @media(min-width:1024px){
-                    .levelLayout { display: grid; grid-template-columns: 2fr 3fr; gap: var(--gap); }
-                    .levelLeft { display: flex; flex-direction: column; gap: var(--gap); }
-                    .levelRewards { display: flex; flex-direction: column; gap: var(--gap); }
+                    .levelProgram .levelLayout,
+                    .levelProgram .levelLeft,
+                    .levelProgram .levelRewards,
+                    .levelProgram .levelMain,
+                    .levelProgram .levelBanner,
+                    .levelProgram .levelBanner__content,
+                    .levelProgram .levelInfoCard,
+                    .levelProgram .rewardGrid,
+                    .levelProgram .rewardCard { min-width: 0; }
 
-                    .rewardGrid { flex: 1; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-3); }
+                    .levelProgram .levelLayout { gap: var(--space-3); }
+
+                    .levelProgram .levelLeft,
+                    .levelProgram .levelRewards { min-height: 0; }
+
+                /* =========================================================
+                                   MOBILE / TABLET TOP TERMS BUTTON
+                                   Keep this button no matter what on <=1199
+                                ========================================================= */
+
+                @media (min-width: 1200px) {
+                    .noteBox__1 { display: none !important; }
                 }
+
+                @media (max-width: 1199.98px) {
+                    .noteBox__1 { display: flex !important; }
+                }
+
+                /* =========================================================
+                                   LEFT: LEVEL INFO CARD
+                                ========================================================= */
+
+                .levelProgram .levelMain,
+                .levelProgram .levelBanner,
+                .levelProgram .levelBanner__content { min-height: 0; }
+
+                .levelProgram .levelBanner { position: relative; overflow: hidden; border-radius: var(--radius-lg); min-height: 360px; background: radial-gradient(circle at 85% 15%, color-mix(in srgb, var(--primary-color) 22%, transparent), transparent 34%), radial-gradient(circle at 15% 85%, color-mix(in srgb, var(--accent-color) 16%, transparent), transparent 38%), linear-gradient(135deg, color-mix(in srgb, var(--secondary-color) 96%, black), color-mix(in srgb, var(--bg-color) 82%, black)); border: var(--border-width) solid var(--border-from-font-16); box-shadow: inset 0 1px 0 color-mix(in srgb, var(--font-color) 8%, transparent), 0 10px 24px rgba(0,0,0,.22); }
+
+                    .levelProgram .levelBanner::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.30), rgba(0,0,0,.06)), radial-gradient(circle at 78% 52%, var(--lv-gold-soft), transparent 32%); pointer-events: none; }
+
+                .levelProgram .levelBanner__content { position: relative; z-index: 1; height: 100%; }
+
+                .levelProgram .levelInfoCard { position: relative; height: 100%; overflow: hidden; isolation: isolate; gap: var(--space-3); background: none; }
+
+                /* absolute image / character holder */
+                .levelProgram .levelInfo__imageSlot { position: absolute !important; z-index: 0; top: 0; right: 0; bottom: 0; width: 100%; min-height: 0 !important; height: auto !important; flex: none !important; grid-column: auto !important; grid-row: auto !important; border: 0; border-radius: 0; box-shadow: none; overflow: hidden; background: radial-gradient(circle at 55% 38%, color-mix(in srgb, var(--primary-color) 18%, transparent), transparent 36%), linear-gradient(135deg, color-mix(in srgb, var(--secondary-color) 92%, black), color-mix(in srgb, var(--bg-color) 78%, black)); }
+
+                    /*
+                                Later, put your character image here:
+
+                                .levelProgram .levelInfo__imageSlot {
+                                    background-image:
+                                        linear-gradient(90deg, rgba(7, 12, 22, .76), rgba(7, 12, 22, .16) 48%, rgba(7, 12, 22, 0)),
+                                        url("../image/your-level-character.png");
+                                    background-size: cover;
+                                    background-position: center right;
+                                    background-repeat: no-repeat;
+                                }
+                                */
+
+                    .levelProgram .levelInfo__imageSlot::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, color-mix(in srgb, var(--bg-color) 72%, transparent), transparent 52%), linear-gradient(180deg, transparent 54%, color-mix(in srgb, var(--bg-color) 74%, transparent)); pointer-events: none; }
+
+                /* content above image */
+                .levelProgram .levelInfo__header,
+                .levelProgram .levelInfo__progress,
+                .levelProgram .levelInfo__desc,
+                .levelProgram .levelInfoGuideInline { position: relative; z-index: 2; }
+                .levelProgram .levelInfo__header,
+                .levelProgram .levelInfo__progress,
+                .levelProgram .levelInfo__desc { width: min(100%, 62%) }
+
+                .levelProgram .levelInfo__header { display: flex; align-items: center; gap: var(--space-3); }
+
+                .levelProgram .levelInfo__icon { width: var(--icn-w48); height: var(--icn-w48); flex: 0 0 auto; border-radius: var(--radius-md); background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); box-shadow: inset 0 1px 0 rgba(255,255,255,.24), 0 8px 18px rgba(0,0,0,.28); position: relative; display: flex; justify-content: center; align-items: center; }
+
+                    .levelProgram .levelInfo__icon img { max-width: var(--icn-w30); width: 100%; }
+
+                .levelProgram .levelInfo__level { font-size: clamp(var(--text-2xl), 2vw, 2.4rem); line-height: 1; font-weight: 900; color: var(--font-color); text-shadow: 0 3px 12px rgba(0,0,0,.45); }
+
+                .levelProgram .levelInfo__type { margin-top: var(--space-1); font-size: var(--text-lg); color: var(--color-font-70); }
+
+                .levelProgram .levelInfo__progress { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: var(--space-2); }
+
+                .levelProgram .progressBar { position: relative; height: 10px; overflow: hidden; border-radius: var(--radius-pill); background: color-mix(in srgb, var(--bg-color) 72%, black); box-shadow: inset 0 1px 4px rgba(0,0,0,.45); }
+
+                .levelProgram .progressBar__fill { height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); box-shadow: 0 0 18px color-mix(in srgb, var(--primary-color) 38%, transparent); }
+
+                .levelProgram .progressText { padding: 3px 8px; border-radius: var(--radius-pill); background: color-mix(in srgb, var(--primary-color) 20%, var(--bg-color)); color: var(--font-color); font-size: var(--text-xs); font-weight: var(--font-bold); }
+
+                .levelProgram .levelInfo__desc { margin: 0; color: var(--color-font-70); line-height: var(--leading-normal); }
+
+                /* =========================================================
+                                   LEVEL INFO GUIDE
+                                   >=1200: compact inline card
+                                   <=1199: hidden, use corner info button
+                                ========================================================= */
+
+                .levelProgram .levelInfoGuideInline { position: relative; z-index: 2; margin-top: auto; padding: var(--space-3); border-radius: var(--radius-md); background: color-mix(in srgb, var(--bg-color) 68%, transparent); border: var(--border-width) solid var(--border-from-font-16); box-shadow: none; overflow: hidden; height: auto; }
+
+                    .levelProgram .levelInfoGuideInline h3 { margin: 0 0 var(--space-2); color: var(--primary-color); font-size: var(--text-base); }
+
+                    .levelProgram .levelInfoGuideInline ol { margin: 0; padding-left: 1.15rem; font-size: var(--text-sm); line-height: 1.45; max-height: 120px; overflow: hidden; }
+
+                        .levelProgram .levelInfoGuideInline ol li { margin-bottom: 2px; }
+
+                /* corner info button */
+                .levelProgram .levelInfo__guideBtn { position: absolute; z-index: 5; top: var(--space-3); right: var(--space-3); display: none; width: var(--icn-w40); height: var(--icn-w40); min-width: var(--icn-w40); padding: 0; border-radius: var(--radius-pill); align-items: center; justify-content: center; gap: 0; background: color-mix(in srgb, var(--bg-color) 62%, transparent) !important; border: var(--border-width) solid var(--border-from-font-16) !important; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+
+                    .levelProgram .levelInfo__guideBtn .icn-information { width: var(--icn-w20); height: var(--icn-w20); color: var(--primary-color); }
+
+                /* =========================================================
+                                   TERMS AS BUTTON
+                                ========================================================= */
+
+                .levelProgram .levelTerms { flex: 0 0 auto; min-height: 0; position: relative; }
+
+                .levelProgram .levelTermsBtn { width: 100%; border: var(--border-width) solid var(--border-from-font-16); color: var(--font-color); cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); text-align: left; padding: var(--space-3) var(--space-4); flex-direction: row; }
+
+                    .levelProgram .levelTermsBtn:hover { border-color: var(--border-from-primary-70); box-shadow: inset 0 1px 0 color-mix(in srgb, var(--font-color) 8%, transparent), 0 8px 18px color-mix(in srgb, var(--primary-color) 12%, transparent); }
+
+                .levelProgram .levelTermsBtn__main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+
+                    .levelProgram .levelTermsBtn__main strong { font-size: var(--text-base); line-height: 1.2; }
+
+                    .levelProgram .levelTermsBtn__main small { font-size: var(--text-xs); color: var(--color-font-50); }
+
+                .levelProgram .levelTermsBtn .icn-information { flex: 0 0 auto; width: var(--icn-w24); height: var(--icn-w24); color: var(--primary-color); }
+
+                /* desktop terms popup using the same #noteBox source */
+                @media (min-width: 1200px) {
+                    .levelProgram .levelTermsSource { position: fixed !important; z-index: 99999; top: 50%; left: 50%; width: min(720px, calc(100vw - 48px)); max-height: min(78vh, 720px); overflow: auto !important; opacity: 0; pointer-events: none; transform: translate(-50%, calc(-50% + 16px)) scale(.96) !important; transition: opacity var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out); border-radius: calc(var(--radius-xl) + 2px); box-shadow: 0 24px 70px rgba(0,0,0,.42), 0 0 0 1px color-mix(in srgb, var(--primary-color) 14%, transparent) inset; }
+
+                        .levelProgram .levelTermsSource.is-open,
+                        .levelProgram .levelTermsSource.isOpen { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) scale(1) !important; }
+                }
+
+                /* <=1199: top noteBox__1 button controls the same noteBox;
+                                   keep source in DOM and let your existing noteBox sheet CSS/JS handle it */
+                @media (max-width: 1199.98px) {
+                    .levelProgram .levelTermsBtn { display: none !important; }
+
+                    .levelProgram .levelTerms { min-height: 0; height: 0; overflow: visible; }
+                }
+
+                /* =========================================================
+                                   REWARD AREA
+                                   levelRewards scrolls as one whole area
+                                   rewardGrid only handles card layout
+                                ========================================================= */
+
+                .levelProgram .levelRewards { min-height: 0; }
+
+                .levelProgram .rewards-top { display: block; overflow: hidden; border-radius: var(--radius-lg); border: var(--border-width) solid var(--border-from-font-16); box-shadow: 0 10px 24px rgba(0,0,0,.22); margin-bottom: var(--space-3); }
+
+                    .levelProgram .rewards-top img { display: block; width: 100%; object-fit: cover; border-radius: inherit; }
+
+                .levelProgram .rewardGrid { display: grid; gap: var(--space-3); min-width: 0; align-content: start; overflow: visible !important; padding-right: 0 !important; }
+
+                .levelProgram .rewardCard { min-width: 0; padding: var(--space-3); justify-content: space-between; isolation: isolate; color: var(--font-color); background: radial-gradient(circle at 85% 10%, color-mix(in srgb, var(--primary-color) 18%, transparent), transparent 36%), linear-gradient(180deg, color-mix(in srgb, var(--secondary-color) 96%, var(--bg-color)), color-mix(in srgb, var(--secondary-color) 82%, black)); border-color: color-mix(in srgb, var(--primary-color) 26%, var(--bg-color)); box-shadow: inset 0 1px 0 color-mix(in srgb, var(--font-color) 8%, transparent), 0 8px 18px rgba(0,0,0,.22); height:100%; }
+
+                    .levelProgram .rewardCard::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(135deg, rgba(255,255,255,.08), transparent 34%), radial-gradient(circle at 18% 88%, var(--lv-gold-soft), transparent 32%); opacity: .8; }
+
+                .levelProgram .rewardCard__level { position: relative; text-align: center; font-weight: var(--font-bold); padding-bottom: var(--space-2); border-bottom: var(--border-width) solid var(--border-from-font-16); }
+
+                .levelProgram .rewardCard__img { flex: 1 1 auto; min-height: 0; display: grid; place-items: center; margin: var(--space-2) 0; }
+
+                    .levelProgram .rewardCard__img::before { content: "★"; width: clamp(42px, 5vw, 68px); height: clamp(42px, 5vw, 68px); display: grid; place-items: center; border-radius: var(--radius-pill); font-size: clamp(1.4rem, 2.6vw, 2.6rem); color: #fff3c4; background: radial-gradient(circle at 35% 28%, rgba(255,255,255,.52) 0 10%, transparent 11%), linear-gradient(135deg, color-mix(in srgb, var(--lv-gold) 92%, white), color-mix(in srgb, var(--lv-gold) 72%, #6b3f10)); box-shadow: inset 0 2px 0 rgba(255,255,255,.32), 0 10px 18px rgba(0,0,0,.25), 0 0 18px var(--lv-gold-soft); }
+
+                .levelProgram .rewardCard__value { min-height: 42px; display: flex; align-items: center; justify-content: center; padding: var(--space-2); border-radius: var(--radius-md); background: color-mix(in srgb, var(--bg-color) 70%, black); border: var(--border-width) solid var(--lv-gold-line); color: var(--font-color); text-align: center; font-size:var(--text-xs);}
+
+                /* optional future states */
+                .levelProgram .rewardCard.is-locked { filter: grayscale(.8); opacity: .55; }
+
+                .levelProgram .rewardCard.is-current { border-color: var(--lv-gold-line); box-shadow: inset 0 1px 0 color-mix(in srgb, var(--font-color) 8%, transparent), 0 0 0 2px color-mix(in srgb, var(--lv-gold) 18%, transparent), 0 12px 28px color-mix(in srgb, var(--lv-gold) 12%, transparent); }
+
+                .levelProgram .rewardCard.is-claimed::after { content: "CLAIMED"; position: absolute; top: var(--space-2); right: calc(var(--space-5) * -1); width: 100px; padding: 3px 0; text-align: center; transform: rotate(35deg); background: var(--primary-color); color: var(--font-color); font-size: var(--text-xxs); font-weight: var(--font-bold); letter-spacing: .08em; }
+
+                /* =========================================================
+                                   LEVEL INFO POPUP
+                                   Base modal uses .friendSheet / .appSheet
+                                ========================================================= */
+
+                .levelInfoSheet__body .noteBox { position: relative !important; inset: auto !important; transform: none !important; max-height: none !important; overflow: visible !important; box-shadow: none; }
+
+                /* =========================================================
+                                   DESKTOP >= 1200
+                                   Left + right layout
+                                ========================================================= */
+
+                @media (min-width: 1200px) {
+                    .levelProgram .levelLayout { height: clamp(520px, calc(100dvh - 250px), 760px); min-height: 0; overflow: hidden; display: grid; grid-template-columns: clamp(320px, 30%, 440px) minmax(0, 1fr); gap: var(--space-3); align-items: stretch; }
+
+                    .levelProgram .levelLeft { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: var(--space-3); min-height: 0; overflow: hidden; }
+
+                    .levelProgram .levelMain { min-height: 0; overflow: hidden; }
+
+                    .levelProgram .levelBanner,
+                    .levelProgram .levelBanner__content,
+                    .levelProgram .levelInfoCard { height: 100%; min-height: 0; }
+
+                    .levelProgram .levelInfoCard { display: flex; flex-direction: column; justify-content: flex-start; padding: var(--space-4); }
+
+                    .levelProgram .levelInfo__header,
+                    .levelProgram .levelInfo__progress,
+                    .levelProgram .levelInfo__desc,
+                    .levelProgram .levelInfoGuideInline { }
+
+                    .levelProgram .levelInfoGuideInline { margin-top: auto; }
+
+                    .levelProgram .levelInfo__guideBtn { display: none; }
+
+                    .levelProgram .levelRewards { display: block !important; min-height: 0; height: 100%; overflow-y: auto !important; overflow-x: hidden !important; overscroll-behavior: contain; padding-right: var(--space-1); }
+
+                    .levelProgram .rewardGrid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+                }
+
+                /* 1200-1599: sidebar may squeeze the page */
+                @media (min-width: 1200px) and (max-width: 1599.98px) {
+                    .levelProgram .levelLayout { grid-template-columns: clamp(300px, 29%, 390px) minmax(0, 1fr); }
+
+                    .levelProgram .rewardGrid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+                }
+
+                /* 1600-1799: still prefer 4 columns */
+                @media (min-width: 1600px) and (max-width: 1799.98px) {
+                    .levelProgram .levelLayout { grid-template-columns: clamp(320px, 28%, 420px) minmax(0, 1fr); }
+
+                    .levelProgram .rewardGrid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+                }
+
+                /* 1800+: allow 5 columns */
+                @media (min-width: 1800px) {
+                    .levelProgram .levelLayout { grid-template-columns: clamp(340px, 30%, 480px) minmax(0, 1fr); }
+
+                    .levelProgram .rewardGrid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+                }
+
+                /* =========================================================
+                                   TABLET DASHBOARD 1024 - 1199
+                                   Top + bottom layout
+                                ========================================================= */
+
+                @media (min-width: 1024px) and (max-width: 1199.98px) {
+                    .levelProgram .levelLayout { min-height: 0; overflow: hidden; display: grid; grid-template-columns: 1fr;  gap: var(--space-3); align-items: stretch; }
+
+                    .levelProgram .levelLeft { min-height: 0; overflow: hidden; display: block; }
+
+                    .levelProgram .levelMain,
+                    .levelProgram .levelBanner,
+                    .levelProgram .levelBanner__content,
+                    .levelProgram .levelInfoCard { height: 100%; min-height: 0; }
+
+                    .levelProgram .levelInfoCard { display: flex; flex-direction: column; justify-content: center; padding: var(--space-4); }
+
+                    .levelProgram .levelInfo__header,
+                    .levelProgram .levelInfo__progress,
+                    .levelProgram .levelInfo__desc { width: min(100%, 48%); }
+
+                    .levelProgram .levelInfo__imageSlot { }
+
+                    .levelProgram .levelInfoGuideInline { display: none !important; }
+
+                    .levelProgram .levelInfo__guideBtn { display: inline-flex; }
+
+                    .levelProgram .levelRewards { display: block !important; min-height: 0; height: 100%; overflow-y: auto !important; overflow-x: hidden !important; overscroll-behavior: contain; padding-right: var(--space-1); }
+
+                    .levelProgram .rewards-top img { }
+
+                    .levelProgram .rewardGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+                    .sidebar-close .levelProgram .rewardGrid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+                    .levelProgram .rewardCard {  }
+                }
+
+                @media (min-width: 1024px) and (max-width: 1099.98px) {
+                    .levelProgram .rewardGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+                }
+
+                /* =========================================================
+                                   MOBILE <= 1023
+                                ========================================================= */
+
+                @media (max-width: 1023.98px) {
+                    .levelProgram .levelLayout { display: flex; flex-direction: column; gap: var(--space-3); }
+
+                    .levelProgram .levelLeft { display: flex; flex-direction: column; gap: var(--space-3); }
+
+                    .levelProgram .levelBanner { min-height: auto; }
+
+                    .levelProgram .levelInfoCard { padding: var(--space-4); }
+
+                    .levelProgram .levelInfo__imageSlot { }
+
+                    .levelProgram .levelInfo__header,
+                    .levelProgram .levelInfo__progress,
+                    .levelProgram .levelInfo__desc { width: min(100%, 62%); }
+
+                    .levelProgram .levelInfo__progress { grid-template-columns: 1fr; }
+
+                    .levelProgram .progressText { justify-self: start; }
+
+                    .levelProgram .levelInfoGuideInline { display: none !important; }
+
+                    .levelProgram .levelInfo__guideBtn { display: inline-flex; }
+
+                    .levelProgram .rewards-top img { }
+
+                    .levelProgram .rewardGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+                    .sidebar-close .levelProgram .rewardGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+                    .levelProgram .rewardCard { min-height: auto; }
+
+                    .levelProgram .rewardCard__value { min-height: 38px; }
+                }
+
+                @media (max-width: 650px) {
+                    .levelProgram .rewardGrid { gap: var(--space-2); gap: var(--space-1); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+                    .levelProgram .rewardCard { padding: var(--space-2); min-height: auto; }
+                }
+
+                @media (max-width: 420px) {
+
+                    .levelProgram .rewardCard__level { font-size: var(--text-sm); }
+
+                    .levelProgram .rewardCard__value { font-size: var(--text-xs); }
+                }
+
+                /* =========================================================
+                                   LEVEL REWARDS SCROLLBAR
+                                ========================================================= */
+
+                @media (min-width: 1024px) {
+                    .levelProgram .levelRewards::-webkit-scrollbar { width: 10px; }
+
+                    .levelProgram .levelRewards::-webkit-scrollbar-track { background: var(--bg-color); border-radius: var(--radius-pill); }
+
+                    .levelProgram .levelRewards::-webkit-scrollbar-thumb { background: var(--secondary-color); border-radius: var(--radius-pill); border: 2px solid var(--bg-color); }
+
+                    .levelProgram .levelRewards { scrollbar-width: thin; scrollbar-color: var(--secondary-color) var(--bg-color); }
+                }
+
+                /* =========================================================
+                   LEVELING PROGRAM - 1024~1199 remove height lock only
+                   不改 rewardGrid columns
+                ========================================================= */
+
+                @media (min-width: 1024px) and (max-width: 1199.98px) {
+                    .levelProgram .levelLayout { height: auto !important; max-height: none !important; overflow: visible !important; }
+
+                    .levelProgram .levelLeft { height: auto !important; max-height: none !important; overflow: visible !important; }
+
+                    .levelProgram .levelMain,
+                    .levelProgram .levelBanner,
+                    .levelProgram .levelBanner__content,
+                    .levelProgram .levelInfoCard { height: auto !important; max-height: none !important; }
+
+                    .levelProgram .levelRewards { height: auto !important; max-height: none !important; overflow: visible !important; padding-right: 0 !important; }
+
+                    .levelProgram .rewardGrid { height: auto !important; max-height: none !important; overflow: visible !important; padding-right: 0 !important; }
+                }
+
+                /* =========================================================
+   LEVEL TERMS - independent source + sheet
+   Do not use .noteBox for this source
+========================================================= */
+
+                .levelProgram .levelTermsContentSource { display: none !important; }
+
+                .levelTermsSheet__body h3 { margin: 0 0 var(--space-3); color: var(--primary-color); font-size: var(--text-lg); }
+
+                .levelTermsSheet__body ol { margin: 0; padding-left: 1.25rem; color: var(--font-color); line-height: 1.55; }
+
+                .levelTermsSheet__body li + li { margin-top: var(--space-2); }
+
+                .levelInfoSheet__panel h3{display:none;}
+
+                .levelProgram .rewardCard__value { word-break: break-word; overflow-wrap: anywhere; }
+
+
+                /* =========================================================
+   REWARD CLAIMED STATE
+   Only claimed state, no locked/current
+========================================================= */
+
+                .levelProgram .rewardCard { position: relative; overflow: hidden; }
+
+                    /* claimed 卡片本身不要整张灰掉，只给一点点完成感 */
+                    .levelProgram .rewardCard.is-claimed { opacity: 1; }
+
+                        /* 只让图案暗一点点，不影响文字可读性 */
+                        .levelProgram .rewardCard.is-claimed .rewardCard__img { filter: brightness(.82) saturate(.88); opacity: .82; }
+
+                        /* 斜角 CLAIMED tag */
+                        .levelProgram .rewardCard.is-claimed::after { content: "CLAIMED"; position: absolute; z-index: 5; top: var(--space-3); right: calc(var(--space-6) * -1); width: 112px; padding: 4px 0; text-align: center; transform: rotate(35deg); background: linear-gradient( 180deg, color-mix(in srgb, var(--color-green) 88%, white), color-mix(in srgb, var(--color-green) 82%, black) ); color: var(--color-green-contrast); font-size: var(--text-xxs); font-weight: var(--font-bold); letter-spacing: .08em; box-shadow: 0 6px 14px rgba(0,0,0,.22); }
+
+                    /* 给 claimed 的卡片一点点边框提示，不要太重 */
+                    .levelProgram .rewardCard.is-claimed { border-color: color-mix(in srgb, var(--color-green) 28%, var(--bg-color)); }
+
+                        /* 防止 tag 被 rewardCard__level 或 pseudo background 盖掉 */
+                        .levelProgram .rewardCard.is-claimed::before { z-index: -1; }
             </style>
+
+
 
             <footer class="footer" data-include="footer.html"></footer>
 
@@ -373,77 +761,180 @@
                 </div>
             </div>
 
-            <!-- QR VIEWER -->
-            <div id="qrViewer" class="qrViewer" hidden aria-hidden="true">
-                <div class="qrViewer__backdrop" data-qr-close></div>
+            <div id="levelTermsSheet" class="friendSheet appSheet levelTermsSheet" hidden aria-hidden="true">
+                <div class="friendSheet__backdrop appSheet__backdrop" data-level-terms-close></div>
 
-                <div class="qrViewer__panel" role="dialog" aria-modal="true" aria-labelledby="qrViewerTitle">
-                    <button type="button" class="qrViewer__close" data-qr-close aria-label="Close QR Viewer">
-                        ×
-                    </button>
-
-                    <div class="qrViewer__head">
-                        <h3 id="qrViewerTitle" class="qrViewer__title">Scan QR code</h3>
-                        <p class="qrViewer__sub">Scan QR and Deposit</p>
-                    </div>
-
-                    <div class="qrViewer__body">
-                        <img id="qrViewerImg" class="qrViewer__img" src="" alt="QR Code">
-                    </div>
-
-                    <div class="qrViewer__actions">
-                        <button type="button" class="qrViewer__action">
-                            <span class="qrViewer__actionIcon">↗</span>
-                            <span class="qrViewer__actionText">Share</span>
+                <div class="friendSheet__panel appSheet__panel levelTermsSheet__panel"
+                     role="dialog"
+                     aria-modal="true"
+                     aria-labelledby="levelTermsSheetTitle">
+                    <div class="friendSheet__header appSheet__header">
+                        <button type="button" class="friendSheet__close appSheet__textBtn btn" data-level-terms-close>
+                            Close
                         </button>
-
-                        <button type="button" class="qrViewer__action">
-                            <span class="qrViewer__actionIcon">⬇</span>
-                            <span class="qrViewer__actionText">Save</span>
-                        </button>
+                        <div class="friendSheet__title appSheet__title" id="levelTermsSheetTitle">
+                            Terms &amp; Conditions
+                        </div>
+                        <div></div>
                     </div>
+
+                    <div class="friendSheet__body levelTermsSheet__body" id="levelTermsSheetBody"></div>
                 </div>
             </div>
 
-            <div class="g2pModal" id="g2pDownloadModal" hidden>
-                <div class="g2pModal__backdrop" data-action="close-g2p-download"></div>
+            <div id="levelInfoSheet" class="friendSheet appSheet levelInfoSheet" hidden aria-hidden="true">
+                <div class="friendSheet__backdrop appSheet__backdrop" data-level-info-close></div>
 
-                <div class="g2pModal__dialog" role="dialog" aria-modal="true" aria-labelledby="g2pModalTitle">
-                    <button type="button" class="g2pModal__close" data-action="close-g2p-download" aria-label="Close">×</button>
-
-                    <div class="g2pModal__brand">
-                        <img class="g2pModal__logo" src="image/logo_icon-g2point.png" alt="G2Point">
-                        <div class="g2pModal__title" id="g2pModalTitle">G2Point</div>
-                    </div>
-
-                    <div class="g2pModal__qrWrap">
-                        <img id="g2pModalQr" class="g2pModal__qr" src="" alt="G2Point download QR">
-                    </div>
-
-                    <div class="g2pModal__hint">Scan here to download</div>
-
-                    <div class="g2pModal__actions">
-                        <button type="button" class="g2pModal__iconBtn">
-                            <span class="qrViewer__actionIcon">
-                                <svg class="icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><title>share</title><path d="M385 464Q357 464 339 445 320 426 320 399 320 390 321 388L171 303Q154 320 129 320 102 320 83 301 64 282 64 255 64 229 83 211 102 192 129 192 154 192 171 209L321 125Q320 122 320 111 320 85 339 67 357 48 384 48 410 48 429 67 447 85 448 111 448 138 429 157 410 176 384 176 361 176 341 159L191 244Q192 246 192 255 192 265 191 268L341 353Q361 336 385 336 415 336 431 355 447 374 447 400 447 426 431 445 415 464 385 464Z" /></svg>
-                            </span>
-                            <span class="qrViewer__actionText">Share</span>
+                <div class="friendSheet__panel appSheet__panel levelInfoSheet__panel"
+                     role="dialog"
+                     aria-modal="true"
+                     aria-labelledby="levelInfoSheetTitle">
+                    <div class="friendSheet__header appSheet__header">
+                        <button type="button" class="friendSheet__close appSheet__textBtn btn" data-level-info-close>
+                            Close
                         </button>
-                        <button type="button" class="g2pModal__iconBtn">
-                            <span class="qrViewer__actionIcon">
-                                <svg viewBox="0 0 14 14" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
-                                    <path d="M8 6.641l1.121-1.12a1 1 0 0 1 1.415 1.413L7.707 9.763a.997.997 0 0 1-1.414 0L3.464 6.934A1 1 0 1 1 4.88 5.52L6 6.641V1a1 1 0 1 1 2 0v5.641zM1 12h12a1 1 0 0 1 0 2H1a1 1 0 0 1 0-2z"></path>
-                                </svg>
-                            </span>
-                            <span class="qrViewer__actionText">Save</span>
-                        </button>
+                        <div class="friendSheet__title appSheet__title" id="levelInfoSheetTitle">
+                            Start Earning Rewards Now!
+                        </div>
+                        <div></div>
                     </div>
+
+                    <div class="friendSheet__body levelInfoSheet__body" id="levelInfoSheetBody"></div>
                 </div>
             </div>
+
+
             <footer class="footer" data-include="footer.html"></footer>
         </main>
     </div>
     <script src="js/script-page.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const infoOpenBtn = document.querySelector("[data-level-info-open]");
+            const infoSheet = document.getElementById("levelInfoSheet");
+            const infoSheetBody = document.getElementById("levelInfoSheetBody");
+            const infoSource = document.querySelector("[data-level-info-source]");
+
+            if (!infoOpenBtn || !infoSheet || !infoSheetBody || !infoSource) return;
+
+            function openLevelInfoSheet() {
+                infoSheetBody.innerHTML = infoSource.innerHTML;
+
+                infoSheet.hidden = false;
+                infoSheet.setAttribute("aria-hidden", "false");
+
+                requestAnimationFrame(() => {
+                    infoSheet.classList.add("isOpen");
+                });
+
+                document.body.classList.add("no-scroll");
+            }
+
+            function closeLevelInfoSheet() {
+                infoSheet.classList.remove("isOpen");
+                infoSheet.setAttribute("aria-hidden", "true");
+                document.body.classList.remove("no-scroll");
+
+                setTimeout(() => {
+                    if (!infoSheet.classList.contains("isOpen")) {
+                        infoSheet.hidden = true;
+                    }
+                }, 250);
+            }
+
+            infoOpenBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                openLevelInfoSheet();
+            });
+
+            document.addEventListener("click", (e) => {
+                if (e.target.closest("[data-level-info-close]")) {
+                    closeLevelInfoSheet();
+                }
+            });
+
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                    closeLevelInfoSheet();
+                }
+            });
+
+            window.addEventListener("resize", () => {
+                if (infoSheet.classList.contains("isOpen")) {
+                    closeLevelInfoSheet();
+                }
+            });
+
+        });
+    </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const termsOpenBtns = document.querySelectorAll("[data-level-terms-open]");
+        const termsSheet = document.getElementById("levelTermsSheet");
+        const termsSheetBody = document.getElementById("levelTermsSheetBody");
+        const termsSource = document.querySelector("[data-level-terms-source]");
+
+        if (!termsOpenBtns.length || !termsSheet || !termsSheetBody || !termsSource) return;
+
+        function openLevelTermsSheet() {
+            termsSheetBody.innerHTML = termsSource.innerHTML;
+
+            termsSheet.hidden = false;
+            termsSheet.setAttribute("aria-hidden", "false");
+
+            requestAnimationFrame(() => {
+                termsSheet.classList.add("isOpen");
+            });
+
+            document.body.classList.add("no-scroll");
+
+            termsOpenBtns.forEach((btn) => {
+                btn.setAttribute("aria-expanded", "true");
+            });
+        }
+
+        function closeLevelTermsSheet() {
+            termsSheet.classList.remove("isOpen");
+            termsSheet.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("no-scroll");
+
+            termsOpenBtns.forEach((btn) => {
+                btn.setAttribute("aria-expanded", "false");
+            });
+
+            setTimeout(() => {
+                if (!termsSheet.classList.contains("isOpen")) {
+                    termsSheet.hidden = true;
+                }
+            }, 250);
+        }
+
+        termsOpenBtns.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                openLevelTermsSheet();
+            });
+        });
+
+        document.addEventListener("click", (e) => {
+            if (e.target.closest("[data-level-terms-close]")) {
+                closeLevelTermsSheet();
+            }
+        });
+
+        window.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && termsSheet.classList.contains("isOpen")) {
+                closeLevelTermsSheet();
+            }
+        });
+
+        window.addEventListener("resize", () => {
+            if (termsSheet.classList.contains("isOpen")) {
+                closeLevelTermsSheet();
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
