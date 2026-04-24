@@ -1,3 +1,144 @@
+window.LEVEL_DATA = {
+    sport: {
+        label: "Sport",
+        level: 8,
+        progress: 42,
+        icon: "image/menu-sports.png",
+        heroImage: "image/level/level-sport-placeholder.png",
+        rewards: [
+            ["Level 1", "MYR 9 Sports Cash Reward"],
+            ["Level 2", "MYR 19 Free Bet Voucher"],
+            ["Level 3", "MYR 39 Match Day Bonus"],
+            ["Level 4", "10% Sports Cashback Voucher"],
+            ["Level 5", "MYR 99 Football Night Reward"],
+            ["Level 6", "MYR 219 Sports Bonus Pack"],
+            ["Level 7", "MYR 288 Weekend Sports Rebate"],
+            ["Level 8", "Limited Edition Jersey Voucher"],
+            ["Level 9", "MYR 399 Goal Rush Bonus"],
+            ["Level 10", "MYR 500 Sports VIP Credit"],
+            ["Level 12", "Premium Match Pass Voucher"],
+            ["Level 15", "MYR 1,000 Sports Champion Bonus"],
+            ["Level 18", "Smartwatch Fitness Tracker"],
+            ["Level 20", "Apple AirPods Pro 2nd Generation"],
+            ["Level 25", "PlayStation 5 Slim Console Disc Edition"],
+            ["Level 30", "MYR 5,000 Sports Legend Cash Prize"]
+        ]
+    },
+
+    casino: {
+        label: "Casino",
+        level: 12,
+        progress: 68,
+        icon: "image/menu-casino.png",
+        heroImage: "image/level/level-casino-placeholder.png",
+        rewards: [
+            ["Level 1", "MYR 18 Casino Welcome Chips"],
+            ["Level 2", "MYR 38 Live Casino Voucher"],
+            ["Level 3", "MYR 88 Baccarat Bonus"],
+            ["Level 4", "15% Live Casino Cashback"],
+            ["Level 5", "MYR 188 Roulette Reward"],
+            ["Level 6", "MYR 388 Dragon Tiger Bonus"],
+            ["Level 7", "MYR 488 Sic Bo Night Voucher"],
+            ["Level 8", "Exclusive Casino VIP Bonus Pack"],
+            ["Level 9", "MYR 688 Live Dealer Credit"],
+            ["Level 10", "RM500 Touch 'n Go eWallet Credit"],
+            ["Level 11", "MYR 888 Premium Casino Chips"],
+            ["Level 12", "Samsung Galaxy Buds FE"],
+            ["Level 13", "MYR 1,288 Baccarat Master Bonus"],
+            ["Level 14", "Luxury Dining Voucher for 2 Pax"],
+            ["Level 15", "iPad 10th Generation Wi-Fi 64GB"],
+            ["Level 16", "MYR 1,888 Casino Royal Bonus"],
+            ["Level 18", "Premium Hotel Staycation Voucher"],
+            ["Level 20", "Luxury Staycation Hotel Voucher for 2 Pax"],
+            ["Level 22", "MYR 3,888 Live Casino Grand Reward"],
+            ["Level 25", "Gold VIP Mystery Gift Box"],
+            ["Level 28", "Samsung Galaxy S Series Smartphone"],
+            ["Level 30", "iPhone 16 Pro Max 256GB"],
+            ["Level 35", "MYR 8,888 Casino Elite Cash Prize"],
+            ["Level 40", "MacBook Air 13-inch M3 256GB"],
+            ["Level 45", "Luxury Travel Voucher for 2 Pax"],
+            ["Level 50", "Ultimate Casino Royal Jackpot Package"]
+        ]
+    },
+
+    lottery: {
+        label: "Lottery",
+        level: 5,
+        progress: 27,
+        icon: "image/menu-lottery.png",
+        heroImage: "image/level/level-lottery-placeholder.png",
+        rewards: [
+            ["Level 1", "MYR 5 Lucky Number Voucher"],
+            ["Level 2", "MYR 15 Lottery Credit"],
+            ["Level 3", "MYR 30 Jackpot Entry Ticket"],
+            ["Level 4", "Double Chance Lottery Pass"],
+            ["Level 5", "MYR 88 Lucky Draw Bonus"],
+            ["Level 6", "MYR 188 Grand Draw Voucher"],
+            ["Level 8", "Mystery Number Bonus Box"],
+            ["Level 10", "MYR 388 Lottery Reward"],
+            ["Level 12", "Shopping Voucher MYR 500"],
+            ["Level 15", "Nintendo Switch OLED Console"]
+        ]
+    },
+
+    games: {
+        label: "Games",
+        level: 16,
+        progress: 74,
+        icon: "image/menu-slots.png",
+        heroImage: "image/level/level-games-placeholder.png",
+        rewards: [
+            ["Level 1", "MYR 9 Arcade Credit"],
+            ["Level 2", "MYR 29 Mini Game Bonus"],
+            ["Level 3", "MYR 59 Slots Free Spin Voucher"],
+            ["Level 4", "20 Free Spins Reward"],
+            ["Level 5", "MYR 129 Games Bonus Pack"],
+            ["Level 6", "MYR 299 Mega Spin Voucher"],
+            ["Level 7", "MYR 399 Bonus Stage Voucher"],
+            ["Level 8", "Exclusive Gamer Reward Box"],
+            ["Level 9", "MYR 499 Jackpot Spin Ticket"],
+            ["Level 10", "Razer Gaming Mouse"],
+            ["Level 11", "MYR 699 Weekend Game Pass"],
+            ["Level 12", "Nintendo Switch OLED Console"],
+            ["Level 13", "MYR 899 Super Spin Reward"],
+            ["Level 14", "Gaming Headset RGB Edition"],
+            ["Level 15", "PlayStation 5 Slim Console Disc Edition"],
+            ["Level 16", "MYR 1,600 Level Up Cash Bonus"],
+            ["Level 17", "Mechanical Gaming Keyboard"],
+            ["Level 18", "MYR 1,888 Mega Game Voucher"],
+            ["Level 20", "Gaming Monitor 27-inch Voucher"],
+            ["Level 22", "MYR 2,888 Arcade Master Bonus"],
+            ["Level 25", "Gaming Chair Premium Edition"],
+            ["Level 28", "MYR 3,888 Jackpot Hunter Reward"],
+            ["Level 30", "MacBook Air 13-inch M3 256GB"],
+            ["Level 35", "PlayStation Portal Remote Player"],
+            ["Level 40", "MYR 8,888 Ultimate Games Cash Prize"],
+            ["Level 45", "Full Gaming Setup Voucher"],
+            ["Level 50", "Ultimate VIP Mystery Gift Box With Premium Rewards"],
+            ["Level 60", "Luxury Console Bundle With Extra Controller"],
+            ["Level 70", "MYR 18,888 Games Legend Grand Reward"]
+        ]
+    },
+
+    p2p: {
+        label: "P2P",
+        level: 3,
+        progress: 19,
+        icon: "image/menu-gaming2.png",
+        heroImage: "image/level/level-p2p-placeholder.png",
+        rewards: [
+            ["Level 1", "MYR 10 P2P Starter Bonus"],
+            ["Level 2", "MYR 25 Table Game Credit"],
+            ["Level 3", "MYR 50 Poker Night Voucher"],
+            ["Level 4", "P2P Cashback 8% Voucher"],
+            ["Level 5", "MYR 120 P2P Bonus Pack"],
+            ["Level 6", "MYR 250 Premium Table Reward"],
+            ["Level 8", "Exclusive Poker Gift Box"],
+            ["Level 10", "MYR 500 P2P Champion Bonus"]
+        ]
+    }
+};
+
 (() => {
     function onReady(fn) {
         if (document.readyState === 'loading') {
@@ -287,8 +428,8 @@
     }
 
     onReady(() => {
-    waitForElement('#langSheet', initLanguageSheet);
-});
+        waitForElement('#langSheet', initLanguageSheet);
+    });
     /* =========================
        Side menu
     ========================= */
@@ -782,4 +923,280 @@
 
 
 
+})();
+
+/* =========================
+   Header VIP hover dropdown
+   Waits for imported header
+========================= */
+(() => {
+    function initVipDropdown(vipDropdown) {
+        if (!vipDropdown || vipDropdown.dataset.vipDropdownInit === "true") return;
+        vipDropdown.dataset.vipDropdownInit = "true";
+
+        const toggle = vipDropdown.querySelector("#playerLevel");
+        const menu = vipDropdown.querySelector(".dropdown-menu");
+        if (!toggle || !menu) return;
+
+        let closeTimer = null;
+
+        function openVipDropdown() {
+            clearTimeout(closeTimer);
+
+            vipDropdown.classList.add("is-hover-open");
+            toggle.classList.add("show");
+            menu.classList.add("show");
+
+            toggle.setAttribute("aria-expanded", "true");
+            menu.setAttribute("aria-hidden", "false");
+        }
+
+        function closeVipDropdown() {
+            closeTimer = setTimeout(() => {
+                vipDropdown.classList.remove("is-hover-open");
+                toggle.classList.remove("show");
+                menu.classList.remove("show");
+
+                toggle.setAttribute("aria-expanded", "false");
+                menu.setAttribute("aria-hidden", "true");
+            }, 180);
+        }
+
+        vipDropdown.addEventListener("mouseenter", openVipDropdown);
+        vipDropdown.addEventListener("mouseleave", closeVipDropdown);
+
+        menu.addEventListener("mouseenter", openVipDropdown);
+        menu.addEventListener("mouseleave", closeVipDropdown);
+    }
+
+    function startVipDropdownWatcher() {
+        const existing = document.querySelector(".playerLevelDropdown");
+        if (existing) {
+            initVipDropdown(existing);
+            return;
+        }
+
+        const observer = new MutationObserver(() => {
+            const vipDropdown = document.querySelector(".playerLevelDropdown");
+            if (!vipDropdown) return;
+
+            initVipDropdown(vipDropdown);
+            observer.disconnect();
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+
+        setTimeout(() => observer.disconnect(), 5000);
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", startVipDropdownWatcher, { once: true });
+    } else {
+        startVipDropdownWatcher();
+    }
+})();
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const LEVEL_DATA = window.LEVEL_DATA;
+    if (!LEVEL_DATA) return;
+
+    const levelProgram = document.querySelector(".levelProgram");
+    if (!levelProgram) return;
+
+    const categoryTabs = levelProgram.querySelectorAll("[data-wd-type]");
+    const levelText = levelProgram.querySelector(".levelInfo__level");
+    const typeText = levelProgram.querySelector(".levelInfo__type");
+    const progressFill = levelProgram.querySelector(".progressBar__fill");
+    const progressText = levelProgram.querySelector(".progressText");
+    const rewardGrid = levelProgram.querySelector(".rewardGrid");
+
+    const levelIconImg = levelProgram.querySelector(".levelInfo__icon img");
+    const levelImageSlot = levelProgram.querySelector(".levelInfo__imageSlot");
+
+    if (
+        !categoryTabs.length ||
+        !levelText ||
+        !typeText ||
+        !progressFill ||
+        !progressText ||
+        !rewardGrid ||
+        !levelIconImg ||
+        !levelImageSlot
+    ) return;
+
+
+    function escapeHtml(value) {
+        return String(value)
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+    }
+
+    function getRewardLevel(levelText) {
+        const match = String(levelText).match(/\d+/);
+        return match ? Number(match[0]) : 0;
+    }
+
+
+    function renderRewards(rewards, currentLevel) {
+        rewardGrid.innerHTML = rewards.map(([level, value]) => {
+            const rewardLevel = getRewardLevel(level);
+            const isClaimed = rewardLevel <= currentLevel;
+
+            return `
+            <div class="rewardCard bubbleCard ${isClaimed ? "is-claimed" : ""}">
+                <div class="rewardCard__level">${escapeHtml(level)}</div>
+                <div class="rewardCard__img"></div>
+                <div class="rewardCard__value">${escapeHtml(value)}</div>
+            </div>
+        `;
+        }).join("");
+    }
+
+    function setActiveCategory(category) {
+        const data = LEVEL_DATA[category] || LEVEL_DATA.sport;
+
+        categoryTabs.forEach((tab) => {
+            const isActive = tab.dataset.wdType === category;
+            tab.classList.toggle("is-active", isActive);
+            tab.setAttribute("aria-selected", isActive ? "true" : "false");
+        });
+
+        levelText.textContent = `Lv. ${data.level}`;
+        typeText.textContent = data.label;
+
+        progressFill.style.width = `${data.progress}%`;
+        progressText.textContent = `${data.progress}%`;
+        levelIconImg.src = data.icon;
+        levelIconImg.alt = data.label;
+
+        levelImageSlot.style.backgroundImage = `
+    linear-gradient(90deg, rgba(7, 12, 22, .76), rgba(7, 12, 22, .18) 48%, rgba(7, 12, 22, 0)),
+    url("${data.heroImage}")
+`;
+        levelImageSlot.style.backgroundSize = "cover";
+        levelImageSlot.style.backgroundPosition = "center right";
+        levelImageSlot.style.backgroundRepeat = "no-repeat";
+
+        renderRewards(data.rewards, data.level);
+
+        levelProgram.dataset.levelCategory = category;
+    }
+
+    categoryTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            const category = tab.dataset.wdType;
+            if (!category) return;
+
+            setActiveCategory(category);
+
+            const url = new URL(window.location.href);
+            url.searchParams.set("category", category);
+            window.history.replaceState({}, "", url);
+        });
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    const categoryFromUrl = params.get("category");
+    const defaultCategory = window.LEVEL_DATA[categoryFromUrl] ? categoryFromUrl : "sport";
+
+    setActiveCategory(defaultCategory);
+
+});
+/* =========================
+   Header VIP level sync
+   Uses window.LEVEL_DATA, safe for imported header
+========================= */
+(() => {
+    function getHighestLevel(LEVEL_DATA) {
+        return Math.max(
+            ...Object.values(LEVEL_DATA).map((item) => Number(item.level) || 0)
+        );
+    }
+
+    function syncHeaderLevelDisplay() {
+        const LEVEL_DATA = window.LEVEL_DATA;
+        if (!LEVEL_DATA) {
+            return {
+                hasAnyLevelLink: false,
+                hasMainBadge: false
+            };
+        }
+
+        const levelLinks = document.querySelectorAll("[data-level-category-link]");
+        const playerLevelText = document.querySelector("#playerLevel .badge__text");
+
+        levelLinks.forEach((link) => {
+            const category = link.dataset.levelCategoryLink;
+            const data = LEVEL_DATA[category];
+
+            if (!data) return;
+
+            const levelRight = link.querySelector(".level__right");
+            const nextLevelText = `LV.${data.level}`;
+            const nextHref = `index-account_lv.html?category=${encodeURIComponent(category)}`;
+
+            if (levelRight && levelRight.textContent.trim() !== nextLevelText) {
+                levelRight.textContent = nextLevelText;
+            }
+
+            if (link.getAttribute("href") !== nextHref) {
+                link.setAttribute("href", nextHref);
+            }
+        });
+
+        if (playerLevelText) {
+            const nextBadgeText = `LV.${getHighestLevel(LEVEL_DATA)}`;
+
+            if (playerLevelText.textContent.trim() !== nextBadgeText) {
+                playerLevelText.textContent = nextBadgeText;
+            }
+        }
+
+        return {
+            hasAnyLevelLink: levelLinks.length > 0,
+            hasMainBadge: !!playerLevelText
+        };
+    }
+
+    function startHeaderLevelSync() {
+        const firstSync = syncHeaderLevelDisplay();
+
+        /* 
+           重点：
+           有 copied level link 不代表 header badge 已经进来了。
+           所以只有 main badge 出现后，才可以不用继续等。
+        */
+        if (firstSync.hasMainBadge) return;
+
+        const observer = new MutationObserver(() => {
+            const result = syncHeaderLevelDisplay();
+
+            if (result.hasMainBadge) {
+                observer.disconnect();
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+
+        setTimeout(() => {
+            syncHeaderLevelDisplay();
+            observer.disconnect();
+        }, 5000);
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", startHeaderLevelSync, { once: true });
+    } else {
+        startHeaderLevelSync();
+    }
 })();
