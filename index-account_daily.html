@@ -67,23 +67,518 @@
             </div>
             <style>
             </style>
-
+            <div class="panel-inner noteBox__1">
+                <!-- mobile 用：打开 bottom sheet；桌面可以隐藏 -->
+                <button class="noteBox__btn" type="button" data-action="open-note" aria-controls="noteBox" aria-expanded="false">
+                    Terms and Conditions
+                    <span class="icn-information"></span>
+                </button>
+            </div>
             <div class="pkgSection panel">
-                <section class="iframe__container">
+                <div class="panel-inner dailyPage">
+                    <div class="dailyDashboard">
 
+                        <div class="dailyDashboard__top">
+                            <section class="dailyHero bubbleCard">
+                                <button type="button" class="dailyHero__historyBtn" data-daily-reward-open aria-label="Open Reward Claim Message">
+                                    <span aria-hidden="true" data-ico="gift"></span>
+                                </button>
 
-                    <div class="account-inner ">
-                        <!--<img src="assets/account/sample_daily.png" style="width:100%;" />-->
-                        <iframe src="assets/account/sample_daily.png"></iframe>
+                                <div class="dailyHero__content">
+                                    <div class="dailyHero__headline">
+                                        <div class="dailyHero__eyebrow">DAILY</div>
+                                        <div class="dailyHero__title">CHECK-IN</div>
+                                    </div>
+
+                                    <div class="dailyBoard">
+                                        <button type="button" class="dailyCell is-claimed suit-spade">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">1</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell is-claimed suit-spade">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">2</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell is-claimed suit-spade">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">3</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell is-claimed suit-spade">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">4</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell is-claimed suit-spade">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">5</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell is-claimed suit-spade">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">6</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell is-claimed is-reward-day suit-spade">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">7</span>
+                                            <span class="dailyCell__gift" aria-hidden="true">🎁</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell is-claimed suit-heart">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">8</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell is-claimed suit-heart">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">9</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell is-claimed suit-heart">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">10</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell is-claimed suit-heart">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">11</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell is-claimed suit-heart">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">12</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell is-claimed suit-heart">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">13</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell is-claimed is-reward-day suit-heart">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">14</span>
+                                            <span class="dailyCell__gift" aria-hidden="true">🎁</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell is-claimed suit-club">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">15</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell is-today suit-club">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">16</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell suit-club">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">17</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell suit-club">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">18</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell suit-club">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">19</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell suit-club">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">20</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell is-reward-day suit-club">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">21</span>
+                                            <span class="dailyCell__gift" aria-hidden="true">🎁</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell suit-diamond">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">22</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell suit-diamond">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">23</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell suit-diamond">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">24</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell suit-diamond">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">25</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell suit-diamond">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">26</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell suit-diamond">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">27</span>
+                                        </button>
+
+                                        <button type="button" class="dailyCell is-reward-day suit-diamond">
+                                            <span class="dailyCell__top">DAY</span>
+                                            <span class="dailyCell__num">28</span>
+                                            <span class="dailyCell__gift" aria-hidden="true">🎁</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="dailyHero__actions">
+                                        <button type="button" class="btn btn-pill btn-1 dailyHero__btn" data-daily-checkin>
+                                            Check-in
+                                        </button>
+                                    </div>
+
+                                    <div class="dailyHero__hint">
+                                        New day starts at 12:00PM (GMT+08:00)
+                                    </div>
+                                </div>
+                            </section>
+
+                            <aside class="dailyAside context-detail">
+                                <section class="dailyRewardMessage bubbleCard">
+                                    <div class="dailyRewardMessage__head">
+                                        <div class="dailyRewardMessage__title">Reward Claim Message</div>
+
+                                        <div class="dailyRewardMessage__infoWrap">
+                                            <button type="button" class="dailyRewardMessage__infoBtn" data-daily-eligibility-open aria-label="View reward claim note">
+                                                <span aria-hidden="true" data-ico="notification"></span>
+                                            </button>
+
+                                            <div class="dailyRewardMessage__infoCard" data-daily-eligibility-desktop></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="dailyRewardMessage__body" data-daily-reward-desktop></div>
+                                </section>
+                                <div class="noteBox dailyTermsBox" id="noteBox" data-note>
+                                    <h5>Term &amp; Conditions</h5>
+                                    <ol>
+                                        <li>Company reserves the right, at any time and without prior notice, to remove or disable eligibility of any user at its sole discretion.</li>
+                                        <li>In order to claim the sign-in bonus, each member must deposit at least 4 times within the specified week before withdrawing the received bonus, otherwise all bonuses and bonuses will be forfeited.</li>
+                                    </ol>
+                                </div>
+                            </aside>
+                        </div>
+
                     </div>
 
-                </section>
+                </div>
             </div>
 
-            <footer class="footer" data-include="footer.html"></footer>
+
+            <style>
+                .dailyPage { display: block; }
+
+                .dailyDashboard { display: flex; flex-direction: column; gap: var(--space-4); }
+
+                .dailyDashboard__top { display: grid; gap: var(--space-4); align-items: start; }
+
+                @media (min-width: 1200px) {
+                    .dailyDashboard__top { grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.72fr); }
+                }
+
+                .dailyHero,
+                .dailyAside { min-width: 0; }
+
+                .dailyHero { position: relative; overflow: hidden; padding: var(--space-5); background: radial-gradient(circle at top center, color-mix(in srgb, var(--color-info-ui) 16%, transparent) 0%, transparent 28%), radial-gradient(circle at left center, color-mix(in srgb, var(--primary-color) 14%, transparent) 0%, transparent 26%), linear-gradient(180deg, color-mix(in srgb, var(--secondary-color) 96%, var(--bg-color)) 0%, color-mix(in srgb, var(--secondary-color) 86%, black) 100%); }
+
+                .dailyHero__historyBtn { position: absolute; top: var(--space-3); right: var(--space-3); width: var(--icn-w44); height: var(--icn-w44); border: 0; border-radius: var(--radius-md); background: color-mix(in srgb, var(--bg-color) 82%, var(--secondary-color)); color: var(--font-color); display: inline-flex; align-items: center; justify-content: center; z-index: 3; }
+
+                    .dailyHero__historyBtn [data-ico] { width: var(--icn-w18); height: var(--icn-w18); box-shadow: none; }
+
+                .dailyHero__content { display: flex; flex-direction: column; gap: var(--space-4); }
+
+                .dailyHero__headline { display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; }
+
+                .dailyHero__eyebrow { font-size: var(--text-sm); letter-spacing: .18em; font-weight: var(--font-bold); color: var(--primary-color); }
+
+                .dailyHero__title { font-size: clamp(2rem, 4vw, 3.4rem); line-height: .95; letter-spacing: .04em; font-weight: var(--font-bold); color: #ffd76a; text-shadow: 0 4px 18px rgba(0,0,0,.28); }
+
+                .dailyBoard { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: var(--space-2); }
+
+                .dailyCell { position: relative; min-height: 86px; border: 1px solid color-mix(in srgb, var(--font-color) 14%, var(--bg-color)); border-radius: var(--radius-md); background: linear-gradient(180deg, rgba(255,255,255,.97) 0%, rgba(242,244,248,.94) 100%); color: #171717; padding: 24px 6px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer; transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out), border-color var(--duration-fast) var(--ease-out), opacity var(--duration-fast) var(--ease-out); }
+
+                    .dailyCell:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0,0,0,.18); }
+
+                .dailyCell__top { font-size: 10px; line-height: 1; font-weight: var(--font-bold); letter-spacing: .08em; opacity: .72; }
+
+                .dailyCell__num { font-size: clamp(1.45rem, 2vw, 2.2rem); line-height: 1; font-weight: 800; }
+
+                .dailyCell__gift { position: absolute; right: 6px; bottom: 4px; font-size: 1.5rem; line-height: 1; }
+
+                .dailyCell.is-claimed { opacity: .78; }
+
+                    .dailyCell.is-claimed::after { content: "✓"; position: absolute; top: 6px; right: 6px; width: 18px; height: 18px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; background: color-mix(in srgb, var(--color-success-ui) 88%, black); }
+
+                .dailyCell.is-today { border-color: color-mix(in srgb, var(--primary-color) 72%, white); box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary-color) 42%, transparent), 0 0 22px color-mix(in srgb, var(--primary-color) 22%, transparent); transform: translateY(-1px); }
+
+                .dailyCell.is-reward-day { background: radial-gradient(circle at top right, rgba(255, 215, 106, .18), transparent 34%), linear-gradient(180deg, rgba(255,255,255,.98) 0%, rgba(245,241,228,.96) 100%); }
+
+                .dailyCell.suit-spade .dailyCell__num,
+                .dailyCell.suit-club .dailyCell__num { color: #111; }
+
+                .dailyCell.suit-heart .dailyCell__num,
+                .dailyCell.suit-diamond .dailyCell__num { color: #ff3131; }
+
+                .dailyHero__actions { display: flex; justify-content: center; }
+
+                .dailyHero__btn { min-width: 220px; min-height: 50px; font-size: var(--text-lg); font-weight: var(--font-bold); background: linear-gradient(180deg, #ff4040 0%, #e61d33 100%) !important; border-color: #ff5e6a !important; color: #fff !important; box-shadow: 0 10px 22px rgba(255, 45, 85, .22); }
+
+                .dailyHero__hint { text-align: center; font-size: var(--text-sm); color: var(--color-font-50); }
+
+                .dailyAside { display: flex; flex-direction: column; gap: var(--space-3); }
+
+                .dailyTermsBox.noteBox { height: 100%; }
+
+                .dailyRewardSheet__panel { width: min(760px, calc(100vw - 32px)); }
+
+                .dailyRewardSheet__body { padding: var(--space-4); }
+
+                .dailyRewardList { display: flex; flex-direction: column; gap: var(--space-3); }
+
+                .dailyRewardItem { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-md); background: color-mix(in srgb, var(--bg-color) 88%, var(--secondary-color)); border: 1px solid var(--border-from-font-10); }
+
+                .dailyRewardItem__sub { margin-top: 2px; font-size: var(--text-sm); color: var(--color-font-50); }
+
+                .dailyRewardItem__meta { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; min-height: 28px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: var(--font-semibold); line-height: 1; white-space: nowrap; border: 1px solid transparent; background: color-mix(in srgb, var(--secondary-color) 82%, var(--bg-color)); color: var(--font-color); }
+
+                @media (max-width: 1023.98px) {
+                    .dailyHero { padding: var(--space-4); }
+
+                    .dailyBoard { gap: 6px; }
+
+                    .dailyCell { min-height: 74px; padding: 6px 4px 8px; }
+
+                    .dailyCell__num { font-size: 1.6rem; }
+
+                    .dailyHero__btn { width: 100%; min-width: 0; }
+                }
+
+                @media (max-width: 767.98px) {
+                    .dailyRewardSheet__panel {  width:100%;}
+
+                    .dailyRewardSheet__body { padding: var(--space-3); }
+
+                    .dailyRewardItem { align-items: stretch; }
+                    .dailyRewardItem__sub { font-size: var(--text-xs); }
+                    .dailyRewardItem__meta { white-space: normal; }
+
+                    .dailyCell__gift {font-size: 1.1rem;; }
+                }
+
+                @media (max-width: 479.98px) {
+                    .dailyBoard { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+                    .dailyHero__title { font-size: 2.2rem; }
+                }
+
+                .dailyRewardMessage { display: none; gap: var(--space-3); }
+
+                .dailyRewardMessage__title { font-size: var(--text-lg); font-weight: var(--font-semibold); color: var(--font-color); }
+
+                .dailyRewardMessage__body { display: flex; flex-direction: column; gap: var(--space-2); }
+
+                .dailyRewardMessage__item { display: flex; flex-direction: column; gap: 2px; padding: var(--space-3); border-radius: var(--radius-md); background: color-mix(in srgb, var(--bg-color) 88%, var(--secondary-color)); border: 1px solid var(--border-from-font-10); }
+
+                    .dailyRewardMessage__item strong { font-size: var(--text-sm); font-weight: var(--font-semibold); color: var(--font-color); }
+
+                    .dailyRewardMessage__item span { font-size: var(--text-sm); color: var(--color-font-50); line-height: 1.5; }
+
+                @media (min-width: 1500px) {
+                    .dailyRewardMessage { display: flex; }
+
+                    .dailyHero__historyBtn { display: none; }
+                }
+
+                .dailyAside { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; }
+
+                .dailyRewardMessage { display: none; flex-direction: column; min-width: 0; }
+
+                .dailyRewardMessage__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); margin-bottom: var(--space-3); }
+
+                .dailyRewardMessage__title { font-size: var(--text-lg); font-weight: var(--font-semibold); color: var(--font-color); min-width: 0; }
+
+                .dailyRewardMessage__infoWrap { position: relative; flex: 0 0 auto; }
+
+                .dailyRewardMessage__infoBtn { width: var(--icn-w40); height: var(--icn-w40); border: 0; border-radius: 999px; background: color-mix(in srgb, var(--bg-color) 82%, var(--secondary-color)); color: var(--color-font-50); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+
+                    .dailyRewardMessage__infoBtn [data-ico] {  }
+
+                .dailyRewardMessage__infoCard { position: absolute; top: calc(100% + 10px); right: 0; width: 260px; padding: var(--space-3); border-radius: var(--radius-md); background: color-mix(in srgb, var(--secondary-color) 92%, var(--bg-color)); border: 1px solid var(--border-from-primary-70); box-shadow: 0 12px 30px rgba(0,0,0,.28); color: var(--font-color); display: none; z-index: 10; }
+
+                    .dailyRewardMessage__infoCard strong {  margin-bottom: 6px; font-size: var(--text-sm); font-weight: var(--font-semibold); }
+
+                    .dailyRewardMessage__infoCard p { margin: 0; font-size: var(--text-sm); line-height: 1.55; color: var(--color-font-70); }
+
+                .dailyRewardMessage__infoWrap:hover .dailyRewardMessage__infoCard,
+                .dailyRewardMessage__infoWrap:focus-within .dailyRewardMessage__infoCard { display: block; }
+
+                .dailyRewardMessage__body { display: flex; flex-direction: column; gap: var(--space-2); min-height: 0; overflow-y: auto; padding-right: 4px; }
+
+                .dailyRewardMessage__item { display: flex; flex-direction: column; gap: 4px; padding-bottom: var(--space-2); border-bottom: 1px dashed var(--border-from-font-16); }
+
+                    .dailyRewardMessage__item:last-child { border-bottom: 0; padding-bottom: 0; }
+
+                    .dailyRewardMessage__item strong { font-size: var(--text-base); font-weight: var(--font-semibold); color: var(--font-color); }
+
+                    .dailyRewardMessage__item span { font-size: var(--text-sm); color: var(--color-font-50); line-height: 1.5; }
+
+                @media (min-width: 1500px) {
+                    .dailyRewardMessage { display: flex; height: 40px; flex: 0 0 400px; }
+
+                    .dailyTermsBox.noteBox { flex: 1 1 auto; min-height: 0; }
+
+                    .dailyHero__historyBtn { display: none; }
+                }
+
+                @media (max-width: 1499.98px) {
+                    .dailyRewardMessage { display: none; }
+
+                    .dailyHero__historyBtn { display: inline-flex; }
+                }
+
+
+                .dailyRewardEligibility {  }
+
+                    .dailyRewardEligibility strong { margin-bottom: 6px; font-size: var(--text-sm); font-weight: var(--font-semibold); color: var(--font-color); }
+
+                    .dailyRewardEligibility p { margin: 0; font-size: var(--text-sm); line-height: 1.55; color: var(--color-font-70); }
+
+                .dailyRewardMessage__body > .dailyRewardSheet__content { display: flex; flex-direction: column; gap: var(--space-3); min-height: 0; overflow-y: auto; padding-right: 4px; }
+
+                .dailyRewardMessage .dailyRewardEligibility { margin-bottom: 0; }
+
+                .dailyRewardMessage .dailyRewardList { gap: var(--space-2); }
+
+                .dailyRewardMessage .dailyRewardItem { padding: var(--space-3); }
+
+                .dailyRewardSheet__content.is-source-only { display: none !important; }
+
+                .dailyRewardMessage__infoWrap { position: relative; flex: 0 0 auto; }
+
+                .dailyRewardMessage__infoCard { position: absolute; top: calc(100% + 10px); right: 0; width: 260px; padding: var(--space-3); border-radius: var(--radius-md); background: color-mix(in srgb, var(--secondary-color) 92%, var(--bg-color)); border: 1px solid var(--border-from-primary-16); box-shadow: 0 12px 30px rgba(0,0,0,.28); color: var(--font-color); display: none; z-index: 10; }
+                .dailyRewardSheet__topActions{text-align:right;}
+                @media (min-width: 1500px) { .dailyRewardMessage__infoWrap:hover .dailyRewardMessage__infoCard, .dailyRewardMessage__infoWrap:focus-within .dailyRewardMessage__infoCard { display: block; }
+                }
+
+                .dailyRewardItem__meta.is-pending { background: var(--color-yellow-soft); color: var(--color-yellow-contrast); border-color: color-mix(in srgb, var(--color-yellow) 28%, transparent); }
+
+                .dailyRewardItem__meta.is-claimed { background: var(--color-green-soft); color: var(--color-green); border-color: color-mix(in srgb, var(--color-green) 28%, transparent); }
+
+                .dailyRewardItem__meta.is-locked { background: var(--color-red-soft); color: var(--color-red); border-color: color-mix(in srgb, var(--color-red) 24%, transparent); }
+
+                .dailyRewardItem__meta.is-info { background: var(--color-blue-soft); color: var(--color-blue); border-color: color-mix(in srgb, var(--color-blue) 24%, transparent); }
+
+                .dailyRewardItem__meta.is-soon { background: var(--color-orange-soft); color: var(--color-orange); border-color: color-mix(in srgb, var(--color-orange) 24%, transparent); }
+
+                .dailyHero__btn.is-checked,
+                .dailyHero__btn:disabled { opacity: .7; cursor: not-allowed; box-shadow: none; }
+            </style>
+
 
 
             <!--  notice sheet -->
+            <div id="dailyRewardSheet" class="friendSheet appSheet" hidden aria-hidden="true">
+                <div class="friendSheet__backdrop appSheet__backdrop" data-daily-reward-close></div>
+
+                <div class="friendSheet__panel appSheet__panel dailyRewardSheet__panel" role="dialog" aria-modal="true" aria-labelledby="dailyRewardSheetTitle">
+
+                    <div class="friendSheet__header appSheet__header">
+                        <button type="button" class="friendSheet__close appSheet__textBtn btn" data-daily-reward-close>
+                            Close
+                        </button>
+                        <div class="friendSheet__title appSheet__title" id="dailyRewardSheetTitle">Reward Claim Message</div>
+                        <div>
+                            <div class="dailyRewardSheet__topActions">
+                                <button type="button" class="dailyRewardMessage__infoBtn" data-daily-eligibility-open aria-label="View reward claim note">
+                                    <span aria-hidden="true" data-ico="notification"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="friendSheet__body dailyRewardSheet__body">
+                        <div class="dailyRewardSheet__content is-source-only" data-daily-reward-source>
+                            <div class="dailyRewardEligibility" data-daily-eligibility-source>
+                                <strong>Eligibility to claim reward</strong>
+                                <p>
+                                    One-time deposit a package with minimum <strong>51 MYR</strong> and must claim within
+                                    <strong>3 days</strong>. If not claim will be considered an immediate waiver.
+                                </p>
+                            </div>
+
+                            <div class="dailyRewardList">
+
+                                <div class="dailyRewardItem" data-reward-day="28">
+                                    <div>
+                                        <strong>Day 28 Reward</strong>
+                                        <div class="dailyRewardItem__sub">Can claim at 2025-06-22 12:00(GMT+8:00)</div>
+                                    </div>
+                                </div>
+
+                                <div class="dailyRewardItem" data-reward-day="21">
+                                    <div>
+                                        <strong>Day 21 Reward</strong>
+                                        <div class="dailyRewardItem__sub">Can claim at 2025-06-15 12:00(GMT+8:00)</div>
+                                    </div>
+                                </div>
+
+                                <div class="dailyRewardItem" data-reward-day="14">
+                                    <div>
+                                        <strong>Day 14 Reward</strong>
+                                        <div class="dailyRewardItem__sub">Can claim at 2025-06-08 12:00(GMT+8:00)</div>
+                                    </div>
+                                    <div class="dailyRewardItem__meta is-pending">Pending</div>
+                                </div>
+
+                                <div class="dailyRewardItem" data-reward-day="7">
+                                    <div>
+                                        <strong>Day 7 Reward</strong>
+                                        <div class="dailyRewardItem__sub">Can claim at 2025-06-01 12:00(GMT+8:00)</div>
+                                    </div>
+                                    <div class="dailyRewardItem__meta is-claimed">Claimed</div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="dailyRewardList" data-daily-reward-sheet-list></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dailyEligibilitySheet" class="friendSheet appSheet" hidden aria-hidden="true">
+                <div class="friendSheet__backdrop appSheet__backdrop" data-daily-eligibility-close></div>
+
+                <div class="friendSheet__panel appSheet__panel dailyEligibilitySheet__panel" role="dialog" aria-modal="true" aria-labelledby="dailyEligibilitySheetTitle">
+                    <div class="friendSheet__header appSheet__header">
+                        <button type="button" class="friendSheet__close appSheet__textBtn btn" data-daily-eligibility-close>
+                            Close
+                        </button>
+                        <div class="friendSheet__title appSheet__title" id="dailyEligibilitySheetTitle"></div>
+                        <div></div>
+                    </div>
+
+                    <div class="friendSheet__body dailyEligibilitySheet__body" data-daily-eligibility-target></div>
+                </div>
+            </div>
+
+
             <div id="noticeSheet" class="appSheet noticeSheet" aria-hidden="true">
                 <div class="appSheet__backdrop" data-notice-close></div>
 
@@ -101,103 +596,258 @@
                 </div>
             </div>
 
-            <!-- Generic Select Bottom Sheet (reusable) -->
-            <div class="withdrawSheet appSheet" id="withdrawSheet" hidden>
-                <div class="withdrawSheet__backdrop appSheet__backdrop" data-action="close-sheet"></div>
-                <div class="withdrawSheet__panel appSheet__panel">
-                    <div class="withdrawSheet__handle"></div>
-                    <div class="withdrawSheet__body" id="withdrawSheetBody"></div>
-                </div>
-            </div>
-            <div id="pkgSheet" class="appSheet" aria-hidden="true">
-                <div class="appSheet__backdrop" data-sheet-close></div>
 
-                <div class="appSheet__panel">
-                    <div class="appSheet__header">
-                        <button class="appSheet__textBtn" type="button" data-sheet-close>Close</button>
-                        <div class="appSheet__title" data-sheet-title>Select</div>
-                        <button class="appSheet__textBtn appSheet__primary" type="button" data-sheet-done>Done</button>
-                    </div>
 
-                    <div class="wheel" data-sheet-wheel tabindex="0" aria-label="Picker">
-                        <div class="wheel__scroller" data-sheet-list></div>
-                        <div class="wheel__fade"></div>
-                        <div class="wheel__window"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- QR VIEWER -->
-            <div id="qrViewer" class="qrViewer" hidden aria-hidden="true">
-                <div class="qrViewer__backdrop" data-qr-close></div>
-
-                <div class="qrViewer__panel" role="dialog" aria-modal="true" aria-labelledby="qrViewerTitle">
-                    <button type="button" class="qrViewer__close" data-qr-close aria-label="Close QR Viewer">
-                        ×
-                    </button>
-
-                    <div class="qrViewer__head">
-                        <h3 id="qrViewerTitle" class="qrViewer__title">Scan QR code</h3>
-                        <p class="qrViewer__sub">Scan QR and Deposit</p>
-                    </div>
-
-                    <div class="qrViewer__body">
-                        <img id="qrViewerImg" class="qrViewer__img" src="" alt="QR Code">
-                    </div>
-
-                    <div class="qrViewer__actions">
-                        <button type="button" class="qrViewer__action">
-                            <span class="qrViewer__actionIcon">↗</span>
-                            <span class="qrViewer__actionText">Share</span>
-                        </button>
-
-                        <button type="button" class="qrViewer__action">
-                            <span class="qrViewer__actionIcon">⬇</span>
-                            <span class="qrViewer__actionText">Save</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="g2pModal" id="g2pDownloadModal" hidden>
-                <div class="g2pModal__backdrop" data-action="close-g2p-download"></div>
-
-                <div class="g2pModal__dialog" role="dialog" aria-modal="true" aria-labelledby="g2pModalTitle">
-                    <button type="button" class="g2pModal__close" data-action="close-g2p-download" aria-label="Close">×</button>
-
-                    <div class="g2pModal__brand">
-                        <img class="g2pModal__logo" src="image/logo_icon-g2point.png" alt="G2Point">
-                        <div class="g2pModal__title" id="g2pModalTitle">G2Point</div>
-                    </div>
-
-                    <div class="g2pModal__qrWrap">
-                        <img id="g2pModalQr" class="g2pModal__qr" src="" alt="G2Point download QR">
-                    </div>
-
-                    <div class="g2pModal__hint">Scan here to download</div>
-
-                    <div class="g2pModal__actions">
-                        <button type="button" class="g2pModal__iconBtn">
-                            <span class="qrViewer__actionIcon">
-                                <svg class="icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><title>share</title><path d="M385 464Q357 464 339 445 320 426 320 399 320 390 321 388L171 303Q154 320 129 320 102 320 83 301 64 282 64 255 64 229 83 211 102 192 129 192 154 192 171 209L321 125Q320 122 320 111 320 85 339 67 357 48 384 48 410 48 429 67 447 85 448 111 448 138 429 157 410 176 384 176 361 176 341 159L191 244Q192 246 192 255 192 265 191 268L341 353Q361 336 385 336 415 336 431 355 447 374 447 400 447 426 431 445 415 464 385 464Z" /></svg>
-                            </span>
-                            <span class="qrViewer__actionText">Share</span>
-                        </button>
-                        <button type="button" class="g2pModal__iconBtn">
-                            <span class="qrViewer__actionIcon">
-                                <svg viewBox="0 0 14 14" preserveAspectRatio="xMidYMid meet" class="icon" aria-hidden="true">
-                                    <path d="M8 6.641l1.121-1.12a1 1 0 0 1 1.415 1.413L7.707 9.763a.997.997 0 0 1-1.414 0L3.464 6.934A1 1 0 1 1 4.88 5.52L6 6.641V1a1 1 0 1 1 2 0v5.641zM1 12h12a1 1 0 0 1 0 2H1a1 1 0 0 1 0-2z"></path>
-                                </svg>
-                            </span>
-                            <span class="qrViewer__actionText">Save</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
             <footer class="footer" data-include="footer.html"></footer>
         </main>
     </div>
     <script src="js/script-page.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const dailyRewardSheet = document.getElementById("dailyRewardSheet");
+            const dailyRewardOpenBtn = document.querySelector("[data-daily-reward-open]");
+            const dailyRewardSource = document.querySelector("[data-daily-reward-source]");
+            const dailyRewardDesktop = document.querySelector("[data-daily-reward-desktop]");
+            const dailyRewardSheetList = document.querySelector("[data-daily-reward-sheet-list]");
+            const dailyCheckinBtn = document.querySelector("[data-daily-checkin]");
 
+            const dailyEligibilitySource = document.querySelector("[data-daily-eligibility-source]");
+            const dailyEligibilityDesktop = document.querySelector("[data-daily-eligibility-desktop]");
+            const dailyEligibilitySheet = document.getElementById("dailyEligibilitySheet");
+            const dailyEligibilityTarget = document.querySelector("[data-daily-eligibility-target]");
+
+            function syncDailyRewardViews() {
+                if (!dailyRewardSource) return;
+
+                const rewardList = dailyRewardSource.querySelector(".dailyRewardList");
+                if (!rewardList) return;
+
+                if (dailyRewardDesktop) {
+                    dailyRewardDesktop.innerHTML = "";
+                    dailyRewardDesktop.appendChild(rewardList.cloneNode(true));
+                }
+
+                if (dailyRewardSheetList) {
+                    dailyRewardSheetList.innerHTML = "";
+                    dailyRewardSheetList.appendChild(rewardList.cloneNode(true));
+                }
+
+                if (dailyEligibilitySource && dailyEligibilityDesktop) {
+                    dailyEligibilityDesktop.innerHTML = "";
+                    dailyEligibilityDesktop.appendChild(dailyEligibilitySource.cloneNode(true));
+                }
+            }
+
+            function openDailyRewardSheet() {
+                if (!dailyRewardSheet) return;
+
+                dailyRewardSheet.hidden = false;
+                dailyRewardSheet.setAttribute("aria-hidden", "false");
+
+                requestAnimationFrame(() => {
+                    dailyRewardSheet.classList.add("isOpen");
+                });
+
+                document.body.classList.add("no-scroll");
+            }
+
+            function closeDailyRewardSheet() {
+                if (!dailyRewardSheet) return;
+
+                dailyRewardSheet.classList.remove("isOpen");
+                dailyRewardSheet.setAttribute("aria-hidden", "true");
+                document.body.classList.remove("no-scroll");
+
+                setTimeout(() => {
+                    if (!dailyRewardSheet.classList.contains("isOpen")) {
+                        dailyRewardSheet.hidden = true;
+                    }
+                }, 250);
+            }
+
+            function openDailyEligibilitySheet() {
+                if (!dailyEligibilitySheet || !dailyEligibilitySource || !dailyEligibilityTarget) return;
+
+                dailyEligibilityTarget.innerHTML = "";
+                dailyEligibilityTarget.appendChild(dailyEligibilitySource.cloneNode(true));
+
+                dailyEligibilitySheet.hidden = false;
+                dailyEligibilitySheet.setAttribute("aria-hidden", "false");
+
+                requestAnimationFrame(() => {
+                    dailyEligibilitySheet.classList.add("isOpen");
+                });
+
+                document.body.classList.add("no-scroll");
+            }
+
+            function closeDailyEligibilitySheet() {
+                if (!dailyEligibilitySheet) return;
+
+                dailyEligibilitySheet.classList.remove("isOpen");
+                dailyEligibilitySheet.setAttribute("aria-hidden", "true");
+                document.body.classList.remove("no-scroll");
+
+                setTimeout(() => {
+                    if (!dailyEligibilitySheet.classList.contains("isOpen")) {
+                        dailyEligibilitySheet.hidden = true;
+                    }
+                }, 250);
+            }
+
+            syncDailyRewardViews();
+            syncDailyCheckinButton();
+
+            dailyRewardOpenBtn?.addEventListener("click", () => {
+                openDailyRewardSheet();
+            });
+
+            document.addEventListener("click", (e) => {
+                if (e.target.closest("[data-daily-reward-close]")) {
+                    closeDailyRewardSheet();
+                }
+
+                if (e.target.closest("[data-daily-eligibility-open]") && window.innerWidth < 1500) {
+                    openDailyEligibilitySheet();
+                }
+
+                if (e.target.closest("[data-daily-eligibility-close]")) {
+                    closeDailyEligibilitySheet();
+                }
+            });
+
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                    closeDailyRewardSheet();
+                    closeDailyEligibilitySheet();
+                }
+            });
+
+            window.addEventListener("resize", () => {
+                syncDailyRewardViews();
+
+                if (dailyRewardSheet?.classList.contains("isOpen")) {
+                    closeDailyRewardSheet();
+                }
+
+                if (dailyEligibilitySheet?.classList.contains("isOpen")) {
+                    closeDailyEligibilitySheet();
+                }
+            });
+
+
+            function getDailyCells() {
+                return Array.from(document.querySelectorAll(".dailyBoard .dailyCell"));
+            }
+
+            function getTodayCell() {
+                return document.querySelector(".dailyBoard .dailyCell.is-today");
+            }
+
+            function getCellDay(cell) {
+                return Number(cell?.querySelector(".dailyCell__num")?.textContent?.trim() || 0);
+            }
+
+            function getNextCell(currentCell) {
+                const cells = getDailyCells();
+                const index = cells.indexOf(currentCell);
+                if (index < 0) return null;
+                return cells[index + 1] || null;
+            }
+
+            function getRewardItemByDay(dayNumber) {
+                if (!dailyRewardSource) return null;
+                return dailyRewardSource.querySelector(`[data-reward-day="${dayNumber}"]`);
+            }
+
+            function ensureRewardMeta(dayNumber) {
+                const rewardItem = getRewardItemByDay(dayNumber);
+                if (!rewardItem) return null;
+
+                let meta = rewardItem.querySelector(".dailyRewardItem__meta");
+                if (!meta) {
+                    meta = document.createElement("div");
+                    meta.className = "dailyRewardItem__meta";
+                    rewardItem.appendChild(meta);
+                }
+
+                return meta;
+            }
+
+            function setRewardPendingByDay(dayNumber) {
+                const meta = ensureRewardMeta(dayNumber);
+                if (!meta) return;
+
+                meta.className = "dailyRewardItem__meta is-pending";
+                meta.textContent = "Pending";
+            }
+
+            function setRewardClaimedByDay(dayNumber) {
+                const meta = ensureRewardMeta(dayNumber);
+                if (!meta) return;
+
+                meta.className = "dailyRewardItem__meta is-claimed";
+                meta.textContent = "Claimed";
+            }
+
+            function syncRewardMilestonesByCheckedDay(checkedDay) {
+                if (checkedDay >= 18) {
+                    setRewardClaimedByDay(14);
+                }
+
+                if (checkedDay >= 25) {
+                    setRewardClaimedByDay(21);
+                }
+            }
+
+            function syncDailyCheckinButton() {
+                const todayCell = getTodayCell();
+                if (!dailyCheckinBtn) return;
+
+                if (todayCell) {
+                    dailyCheckinBtn.disabled = false;
+                    dailyCheckinBtn.classList.remove("is-checked");
+                    dailyCheckinBtn.textContent = "Check-in";
+                } else {
+                    dailyCheckinBtn.disabled = true;
+                    dailyCheckinBtn.classList.add("is-checked");
+                    dailyCheckinBtn.textContent = "Completed";
+                }
+            }
+
+            function handleDailyCheckin() {
+                const todayCell = getTodayCell();
+                if (!todayCell) return;
+
+                const checkedDay = getCellDay(todayCell);
+
+                todayCell.classList.remove("is-today");
+                todayCell.classList.add("is-claimed");
+
+                if (todayCell.classList.contains("is-reward-day")) {
+                    setRewardPendingByDay(checkedDay);
+                }
+
+                syncRewardMilestonesByCheckedDay(checkedDay);
+
+                const nextCell = getNextCell(todayCell);
+
+                if (nextCell) {
+                    nextCell.classList.add("is-today");
+                } else if (dailyCheckinBtn) {
+                    dailyCheckinBtn.disabled = true;
+                    dailyCheckinBtn.classList.add("is-checked");
+                    dailyCheckinBtn.textContent = "Completed";
+                }
+
+                syncDailyRewardViews();
+                syncDailyCheckinButton();
+            }
+
+            dailyCheckinBtn?.addEventListener("click", () => {
+                handleDailyCheckin();
+            });
+        });
+    </script>
 </body>
 </html>
